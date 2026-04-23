@@ -452,13 +452,14 @@ export default function AboutPage() {
                   const angle = (i / 8) * Math.PI * 2;
                   const radius = 280; // Distance from center
                   return (
-                    <motion.div
+                    <div
                       key={tech.id}
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 30 + i * 2, repeat: Infinity, ease: "linear" }}
                       className="absolute inset-0 pointer-events-none"
                     >
                       <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: i * 0.1 }}
                         style={{ 
                           left: `calc(50% + ${Math.cos(angle) * radius}px)`,
                           top: `calc(50% + ${Math.sin(angle) * radius}px)`
