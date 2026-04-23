@@ -180,6 +180,7 @@ export function ServicesSection() {
               service.id === "01" ? "/services/ai-automation" : 
               service.id === "02" ? "/services/oracle-apex" : 
               service.id === "03" ? "/services/web-development" : 
+              service.id === "04" ? "/services/mobile-development" : 
               "#"
             }
             className="group relative rounded-[3rem] p-12 overflow-hidden transition-all duration-500 bg-white/[0.02] border border-white/10 hover:border-sinai-glow-orange/40 hover:bg-white/[0.04] flex flex-col min-h-[420px]"
