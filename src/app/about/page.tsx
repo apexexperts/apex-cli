@@ -319,8 +319,8 @@ export default function AboutPage() {
                 {/* Floating Meta-Data */}
                 <div className="absolute -top-10 -right-10 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none">
                   <div className="text-[8px] font-mono text-sinai-glow-orange/40 p-4 border-l border-t border-sinai-glow-orange/20">
-                    COORD_X: {Math.random().toFixed(4)}<br/>
-                    COORD_Y: {Math.random().toFixed(4)}<br/>
+                    COORD_X: {(0.4215 + i * 0.1).toFixed(4)}<br/>
+                    COORD_Y: {(0.7821 - i * 0.1).toFixed(4)}<br/>
                     SIG_STRENGTH: NOMINAL
                   </div>
                 </div>
