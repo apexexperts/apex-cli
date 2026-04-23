@@ -164,80 +164,83 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Engineering DNA / Team Section */}
+      {/* Human Intelligence Nexus (Original Planetary Version) */}
       <section className="relative py-48 px-6 bg-[#030303] overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
-             style={{ backgroundImage: 'linear-gradient(#f2a24b 0.5px, transparent 0.5px), linear-gradient(90deg, #f2a24b 0.5px, transparent 0.5px)', backgroundSize: '100px 100px' }} />
-        
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-sinai-glow-orange/20 rounded-full animate-[ping_10s_infinite]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] border border-white/5 rounded-full" />
+        </div>
+
         <div className="max-w-7xl mx-auto relative">
           <div className="mb-32 space-y-6 text-center">
-            <div className="inline-flex items-center gap-4">
-              <div className="w-12 h-px bg-sinai-glow-orange" />
-              <span className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.5em] uppercase">Strategic_DNA</span>
-              <div className="w-12 h-px bg-sinai-glow-orange" />
-            </div>
-            <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none">
-              The Identity <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange to-white">Vault</span>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="inline-flex items-center gap-4 px-6 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-sm"
+            >
+              <span className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.6em] uppercase">Human_Intelligence_Nexus</span>
+            </motion.div>
+            <h2 className="text-6xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.8]">
+              The <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">Architects</span>
             </h2>
           </div>
 
-          {/* The Identity Vault: Architectural Editorial Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 mt-20 border border-white/5 bg-white/5 relative z-10">
+          <div className="relative h-[800px] lg:h-[1000px] w-full mt-20 flex items-center justify-center">
+            {/* Neural Web Background */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.15]">
+              <defs>
+                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#f2a24b" stopOpacity="0" />
+                  <stop offset="50%" stopColor="#f2a24b" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#f2a24b" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <circle cx="50%" cy="50%" r="15%" stroke="white" strokeWidth="0.1" fill="none" className="opacity-20" />
+              <circle cx="50%" cy="50%" r="30%" stroke="white" strokeWidth="0.1" fill="none" className="opacity-10" />
+              <circle cx="50%" cy="50%" r="45%" stroke="white" strokeWidth="0.1" fill="none" className="opacity-5" />
+            </svg>
+
             {[
-              { id: "01", name: "Asma Ali", role: "Marketing Manager", size: "lg:col-span-1 lg:row-span-2", img: "/images/project2.png", skills: ["Branding", "Strategy"], tag: "STRATEGY" },
-              { id: "02", name: "Hisham Mohamed", role: "Sales Manager", size: "lg:col-span-1 lg:row-span-2", img: "/images/project3.png", skills: ["Enterprise", "Scale"], tag: "BUSINESS" },
-              { id: "03", name: "Amr Mohamed", role: "Team Leader", size: "lg:col-span-1 lg:row-span-2", img: "/images/avatars/Amr.png", skills: ["Logic", "Agile"], tag: "ENGINEERING" },
-              { id: "04", name: "Micheal Magdy", role: "Sr. Software Eng.", size: "lg:col-span-1 lg:row-span-2", img: "/images/avatars/mich.png", skills: ["Backend", "Cloud"], tag: "ENGINEERING" },
-              { id: "05", name: "Abdelrahman Ibrahim", role: "Sr. Software Eng.", size: "lg:col-span-1 lg:row-span-2", img: "/images/avatars/abd.png", skills: ["Frontend", "UX Logic"], tag: "ENGINEERING" },
-              { id: "06", name: "Mario Milad", role: "Product Designer", size: "lg:col-span-1 lg:row-span-2", img: "/images/web-dev-cinematic.png", skills: ["Visuals", "Motion"], tag: "DESIGN" },
-              { id: "07", name: "Reham Samer", role: "Quality Eng.", size: "lg:col-span-1 lg:row-span-2", img: "/images/project3.png", skills: ["QA", "UAT"], tag: "QUALITY" },
-              { id: "08", name: "Maha Salam", role: "System Admin", size: "lg:col-span-1 lg:row-span-2", img: "/images/mobile-dev-hero.png", skills: ["Security", "Linux"], tag: "OPS" }
+              { id: "01", name: "Asma Ali", role: "MARKETING MANAGER", pos: "top-[15%] left-[50%] -translate-x-1/2", side: "top-full mt-8 left-1/2 -translate-x-1/2", img: "/images/project2.png", skills: ["Growth", "Branding", "Strategy"] },
+              { id: "02", name: "Hisham Mohamed", role: "SALES MANAGER", pos: "top-[25%] right-[15%]", side: "right-full mr-8 top-0", img: "/images/project3.png", skills: ["Enterprise", "Relations", "Scale"] },
+              { id: "03", name: "Amr Mohamed", role: "TEAM LEADER", pos: "top-[50%] right-[5%] -translate-y-1/2", side: "right-full mr-8 top-1/2 -translate-y-1/2", img: "/images/avatars/Amr.png", skills: ["Management", "Agile", "Delivery"] },
+              { id: "04", name: "Micheal Magdy", role: "SR. SOFTWARE ENG.", pos: "bottom-[25%] right-[15%]", side: "right-full mr-8 bottom-0", img: "/images/avatars/mich.png", skills: ["Backend", "Architecture", "Scaling"] },
+              { id: "05", name: "Abdelrahman Ibrahim", role: "SR. SOFTWARE ENG.", pos: "bottom-[15%] left-[50%] -translate-x-1/2", side: "bottom-full mb-8 left-1/2 -translate-x-1/2", img: "/images/avatars/abd.png", skills: ["Frontend", "Performance", "Logic"] },
+              { id: "06", name: "Mario Milad", role: "PRODUCT DESIGNER", pos: "bottom-[25%] left-[15%]", side: "left-full ml-8 bottom-0", img: "/images/web-dev-cinematic.png", skills: ["Visuals", "Motion", "UX Logic"] },
+              { id: "07", name: "Reham Samer", role: "QUALITY ENGINEERING", pos: "top-[50%] left-[5%] -translate-y-1/2", side: "left-full ml-8 top-1/2 -translate-y-1/2", img: "/images/project3.png", skills: ["Testing", "QA Automation", "UAT"] },
+              { id: "08", name: "Maha Salam", role: "SYSTEM ADMIN", pos: "top-[25%] left-[15%]", side: "left-full ml-8 top-0", img: "/images/mobile-dev-hero.png", skills: ["Infrastructure", "Cloud", "Security"] }
             ].map((member, i) => (
               <motion.div
                 key={member.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`relative group overflow-hidden bg-[#0a0a0a] border-[0.5px] border-white/10 ${member.size} min-h-[400px] cursor-crosshair`}
+                transition={{ delay: i * 0.1, duration: 1 }}
+                className={`absolute ${member.pos} group z-20 hover:z-50`}
               >
-                <div className="absolute top-4 left-4 text-[5vw] font-black text-white/[0.03] leading-none select-none pointer-events-none uppercase">
-                  {member.tag}
-                </div>
-
-                <div className="absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
-                  <Image 
-                    src={member.img}
-                    alt={member.name}
-                    fill
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100"
-                  />
-                  <div className="absolute top-0 left-0 w-full h-[2px] bg-sinai-glow-orange/40 shadow-[0_0_15px_#f2a24b] opacity-0 group-hover:opacity-100 animate-[scan_3s_linear_infinite]" />
-                </div>
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-60 transition-opacity" />
-                
-                <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                  <div className="space-y-4">
-                    <div className="space-y-1">
-                      <div className="text-[8px] font-mono text-sinai-glow-orange tracking-[0.4em] uppercase">Identity_Archive</div>
-                      <h3 className="text-3xl font-black tracking-tighter text-white uppercase leading-none">{member.name}</h3>
-                      <p className="text-[10px] font-mono text-zinc-500 tracking-widest">{member.role}</p>
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                      {member.skills.map(skill => (
-                        <span key={skill} className="text-[7px] font-mono px-2 py-1 bg-sinai-glow-orange/10 border border-sinai-glow-orange/20 text-sinai-glow-orange rounded-sm uppercase">
-                          {skill}
-                        </span>
-                      ))}
+                <div className="relative cursor-pointer">
+                  <div className="absolute inset-0 -m-8 border border-sinai-glow-orange/20 rounded-full group-hover:border-sinai-glow-orange/60 transition-all duration-700 animate-[spin_15s_linear_infinite]" />
+                  <div className="w-24 h-24 lg:w-40 lg:h-40 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-sinai-glow-orange transition-all duration-700 bg-zinc-900 shadow-2xl relative">
+                    <Image src={member.img} alt={member.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-sinai-glow-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <div className={`absolute ${member.side} w-64 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none z-50`}>
+                    <div className="p-6 rounded-2xl bg-black/90 backdrop-blur-xl border border-sinai-glow-orange/20 space-y-3 shadow-3xl">
+                      <div className="space-y-1">
+                        <div className="text-[8px] font-mono text-sinai-glow-orange tracking-[0.4em] uppercase">Identity_Node_{member.id}</div>
+                        <h3 className="text-xl font-black tracking-tighter text-white uppercase">{member.name}</h3>
+                        <p className="text-[10px] font-mono text-zinc-500 tracking-widest leading-none">{member.role}</p>
+                      </div>
+                      <div className="h-px w-full bg-white/5" />
+                      <div className="flex flex-wrap gap-2">
+                        {member.skills.map(skill => (
+                          <span key={skill} className="text-[7px] font-mono px-2 py-1 bg-white/5 border border-white/10 text-zinc-400 rounded-sm">{skill}</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-
-                <div className="absolute top-4 right-4 w-2 h-2 border-t border-r border-white/20 group-hover:border-sinai-glow-orange transition-colors" />
-                <div className="absolute bottom-4 left-4 w-2 h-2 border-b border-l border-white/20 group-hover:border-sinai-glow-orange transition-colors" />
               </motion.div>
             ))}
           </div>
@@ -248,22 +251,15 @@ export default function AboutPage() {
       <section className="relative py-48 px-6 bg-[#050505] overflow-hidden border-t border-white/5">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            
             <div className="space-y-12">
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-3">
                   <div className="w-12 h-px bg-sinai-glow-orange" />
                   <span className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.5em] uppercase">Tech_Telemetry</span>
                 </div>
-                <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none">
-                  The Power <br/>
-                  <span className="text-white">Matrix</span>
-                </h2>
-                <p className="text-zinc-400 text-xl font-light max-w-lg leading-relaxed italic">
-                  Our stack is engineered for extreme performance and enterprise-grade reliability. We only use technologies that define the industry standard.
-                </p>
+                <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none">The Power <br/><span className="text-white">Matrix</span></h2>
+                <p className="text-zinc-400 text-xl font-light max-w-lg leading-relaxed italic">Our stack is engineered for extreme performance and enterprise-grade reliability.</p>
               </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {[
                   { title: "Core Engine", tech: "Oracle APEX", desc: "Enterprise data logic at peak scale." },
@@ -279,35 +275,20 @@ export default function AboutPage() {
                 ))}
               </div>
             </div>
-
-            {/* Kinetic Radar Visualization */}
             <div className="relative aspect-square flex items-center justify-center">
               <div className="absolute inset-0 border border-white/5 rounded-full" />
               <div className="absolute inset-20 border border-white/5 rounded-full" />
               <div className="absolute inset-40 border border-white/10 rounded-full" />
-              
               <div className="absolute inset-0 bg-gradient-to-tr from-sinai-glow-orange/10 to-transparent rounded-full animate-[spin_10s_linear_infinite]" />
-              
-              <div className="relative w-40 h-40 bg-zinc-900 rounded-full border-2 border-sinai-glow-orange flex items-center justify-center shadow-[0_0_50px_rgba(242,162,75,0.2)] overflow-hidden">
-                <Image 
-                  src="/images/oracle-apex-hero-v1_1776958757733.png" 
-                  alt="Oracle" 
-                  fill 
-                  className="object-contain p-8 grayscale hover:grayscale-0 transition-all"
-                />
+              <div className="relative w-40 h-40 bg-zinc-900 rounded-full border-2 border-sinai-glow-orange flex items-center justify-center shadow-[0_0_50px_rgba(242,162,75,0.2)]">
+                <Image src="/images/oracle-apex-hero-v1_1776958757733.png" alt="Oracle" fill className="object-contain p-8 grayscale hover:grayscale-0 transition-all" />
               </div>
-
               {[
                 { label: "Claude", pos: "top-0 left-1/2 -translate-x-1/2", img: "/images/cognitive_data_synthesis_core_1776954400075.png" },
                 { label: "Next.js", pos: "bottom-1/4 -right-10", img: "/images/brand_logo_mark_ae_1776963173769.png" },
                 { label: "AI Core", pos: "bottom-1/4 -left-10", img: "/images/agentic_orchestration_core_1776953703734.png" }
               ].map((sat, i) => (
-                <motion.div
-                  key={i}
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 25 + (i * 5), repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 pointer-events-none"
-                >
+                <motion.div key={i} animate={{ rotate: 360 }} transition={{ duration: 25 + (i * 5), repeat: Infinity, ease: "linear" }} className="absolute inset-0 pointer-events-none">
                   <div className={`absolute ${sat.pos} w-20 h-20 bg-zinc-900 border border-white/10 rounded-2xl flex items-center justify-center p-4 pointer-events-auto hover:border-sinai-glow-orange/50 transition-colors shadow-2xl`}>
                     <Image src={sat.img} alt={sat.label} fill className="object-contain p-4 grayscale hover:grayscale-0 transition-all" />
                   </div>
@@ -318,7 +299,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Global Animation Styles */}
       <style jsx global>{`
         @keyframes scan {
           0% { top: 0%; }
