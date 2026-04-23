@@ -554,7 +554,7 @@ export default function AboutPage() {
               { id: "03", name: "Hesham Abdelwahed", role: "SALES MANAGER", img: "/images/avatars/hesham.png", skills: ["Enterprise", "Scale", "Relations"], cluster: "BUSINESS" },
               { id: "04", name: "Micheal Magdy", role: "SR. SOFTWARE ENG.", img: "/images/avatars/mich.png", skills: ["Backend", "Cloud Scale", "Logic"], cluster: "TECHNICAL" },
               { id: "05", name: "Abdelrahman Ibrahim", role: "SR. SOFTWARE ENG.", img: "/images/avatars/abd.png", skills: ["Frontend", "UX Engine", "Motion"], cluster: "TECHNICAL" },
-              { id: "06", name: "Mario Milad", role: "PRODUCT DESIGNER", img: "/images/web-dev-cinematic.png", skills: ["Visuals", "Human Proxy", "Design"], cluster: "CREATIVE" },
+              { id: "06", name: "Mario Milad", role: "PRODUCT DESIGNER", img: "/images/avatars/mario.png", skills: ["Visuals", "Human Proxy", "Design"], cluster: "CREATIVE" },
               { id: "07", name: "Reham Samer", role: "QUALITY ENGINEERING", img: "/images/project3.png", skills: ["Stability", "QA_Core", "Compliance"], cluster: "TECHNICAL" },
               { id: "08", name: "Maha Salam", role: "SYSTEM ADMIN", img: "/images/mobile-dev-hero.png", skills: ["Infrastructure", "Sec_Ops", "Kernel"], cluster: "TECHNICAL" }
             ].map((member, i) => (
