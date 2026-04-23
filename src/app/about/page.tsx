@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function AboutPage() {
   return (
@@ -562,26 +562,6 @@ export default function AboutPage() {
                             {skill}
                           </span>
                         ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-                      
-                      <div className="h-px w-full bg-white/5" />
-                      
-                      <div className="flex flex-wrap gap-2">
-                        {member.skills.map(skill => (
-                          <span key={skill} className="text-[8px] font-mono px-2 py-1 bg-white/5 border border-white/10 text-zinc-400 rounded-sm">
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="pt-2 flex justify-between items-center text-[7px] font-mono text-zinc-700">
-                        <span>NODE_ID: {member.id}</span>
-                        <span>AUTH: ELITE</span>
                       </div>
                     </div>
                   </div>
