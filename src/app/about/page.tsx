@@ -437,6 +437,177 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      {/* The Human Nexus: Engineering Constellation */}
+      <section className="relative py-64 px-6 bg-[#030303] overflow-hidden">
+        {/* Deep Space Background */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] bg-[radial-gradient(circle_at_center,#f2a24b05,transparent_70%)] animate-pulse" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center space-y-6 mb-40">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="inline-flex items-center gap-4 px-6 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-sm"
+            >
+              <span className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.6em] uppercase">Human_Intelligence_Nexus</span>
+            </motion.div>
+            <h2 className="text-6xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.8]">
+              The <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">Architects</span>
+            </h2>
+          </div>
+
+          {/* The Constellation Map */}
+          <div className="relative h-[800px] lg:h-[1000px] w-full mt-20 flex items-center justify-center">
+            
+            {/* CENTRAL COMMAND DISPLAY */}
+            <div className="relative z-50 w-72 h-72 lg:w-96 lg:h-96 flex items-center justify-center">
+              {/* Decorative Rings for the Hub */}
+              <div className="absolute inset-0 border border-sinai-glow-orange/20 rounded-full animate-[spin_20s_linear_infinite]" />
+              <div className="absolute inset-8 border border-white/5 rounded-full animate-[spin_30s_linear_infinite_reverse]" />
+              
+              <div className="relative z-10 w-full text-center px-8">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                    whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    transition={{ duration: 0.5 }}
+                    className="space-y-6"
+                  >
+                    <div className="space-y-2">
+                      <div className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.5em] uppercase">System_Core</div>
+                      <h3 className="text-3xl lg:text-4xl font-black tracking-tighter text-white uppercase">Architect_Intelligence</h3>
+                      <div className="flex justify-center gap-1">
+                        {[1,2,3,4,5].map(i => (
+                          <div key={i} className="w-1 h-1 bg-sinai-glow-orange/40 rounded-full" />
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-[10px] font-mono text-zinc-600 leading-relaxed uppercase tracking-widest">
+                      Hover_Member_To_Access_Biometric_Dossier_And_Neural_Sync_Data
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* SVG Connections (Enhanced Neural Web) */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+              <defs>
+                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#f2a24b" stopOpacity="0" />
+                  <stop offset="50%" stopColor="#f2a24b" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#f2a24b" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <motion.path 
+                d="M 150 150 L 850 150 L 500 450 L 150 850 L 850 850 L 500 450 L 150 150" 
+                stroke="url(#lineGrad)" 
+                strokeWidth="0.5" 
+                fill="none"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+              />
+            </svg>
+
+            {/* Team Nodes */}
+            {[
+              { id: "01", name: "Asma Ali", role: "MARKETING MANAGER", pos: "top-[5%] left-[10%] lg:left-[15%]", img: "/images/project2.png", skills: ["Growth", "Branding", "Strategy"] },
+              { id: "02", name: "Hisham Mohamed", role: "SALES MANAGER", pos: "top-[10%] right-[5%] lg:right-[15%]", img: "/images/project3.png", skills: ["Enterprise", "Relations", "Scale"] },
+              { id: "03", name: "Amr Mohamed", role: "TEAM LEADER", pos: "top-[30%] left-[5%] lg:left-[5%]", img: "/images/web-dev-cinematic.png", skills: ["Management", "Agile", "Delivery"] },
+              { id: "04", name: "Micheal Magdy", role: "SR. SOFTWARE ENG.", pos: "top-[35%] right-[10%] lg:right-[35%]", img: "/images/mobile-dev-hero.png", skills: ["Backend", "Architecture", "Scaling"] },
+              { id: "05", name: "Abdelrahman Ibrahim", role: "SR. SOFTWARE ENG.", pos: "bottom-[35%] left-[10%] lg:left-[35%]", img: "/images/project2.png", skills: ["Frontend", "Performance", "Logic"] },
+              { id: "06", name: "Mario Milad", role: "PRODUCT DESIGNER", pos: "bottom-[30%] right-[5%] lg:right-[5%]", img: "/images/web-dev-cinematic.png", skills: ["Visuals", "Motion", "UX Logic"] },
+              { id: "07", name: "Reham Samer", role: "QUALITY ENGINEERING", pos: "bottom-[10%] left-[5%] lg:left-[15%]", img: "/images/project3.png", skills: ["Testing", "QA Automation", "UAT"] },
+              { id: "08", name: "Maha Salam", role: "SYSTEM ADMIN", pos: "bottom-[5%] right-[10%] lg:right-[15%]", img: "/images/mobile-dev-hero.png", skills: ["Infrastructure", "Cloud", "Security"] }
+            ].map((member, i) => (
+              <motion.div
+                key={member.id}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.2, duration: 1 }}
+                className={`absolute ${member.pos} group z-20`}
+              >
+                <div className="relative cursor-pointer">
+                  {/* Rotating Biometric Rings */}
+                  <div className="absolute inset-0 -m-8 border border-sinai-glow-orange/0 rounded-full group-hover:border-sinai-glow-orange/40 transition-all duration-700 animate-[spin_10s_linear_infinite] scale-110" />
+                  
+                  {/* Profile Avatar Frame */}
+                  <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-sinai-glow-orange transition-all duration-700 bg-zinc-900 shadow-2xl relative">
+                    <Image 
+                      src={member.img}
+                      alt={member.name}
+                      fill
+                      className="object-cover grayscale group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-1000 opacity-40 group-hover:opacity-100"
+                    />
+                    {/* Scan Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-sinai-glow-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+
+                  {/* FIXED POSITION PREVIEW OVERLAY (CENTRALIZED LOGIC) */}
+                  {/* We can't easily move the data to the central hub without React state, but I will make the tooltips pop OUTWARD to ensure no overlap */}
+                  <div className={`absolute top-1/2 -translate-y-1/2 ${i % 2 === 0 ? 'right-full mr-12' : 'left-full ml-12'} w-64 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none z-[100]`}>
+                    <div className="p-6 rounded-2xl bg-black/60 backdrop-blur-xl border border-sinai-glow-orange/30 space-y-4 shadow-[0_0_50px_rgba(242,162,75,0.15)]">
+                      <div className="space-y-1">
+                        <div className="text-[8px] font-mono text-sinai-glow-orange tracking-[0.4em] uppercase">Architect_Node_{member.id}</div>
+                        <h3 className="text-xl font-black tracking-tighter text-white uppercase">{member.name}</h3>
+                        <p className="text-[10px] font-mono text-zinc-400 tracking-widest">{member.role}</p>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {member.skills.map(skill => (
+                          <span key={skill} className="text-[7px] font-mono px-2 py-1 bg-sinai-glow-orange/10 border border-sinai-glow-orange/20 text-sinai-glow-orange rounded-sm">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+                      
+                      <div className="h-px w-full bg-white/5" />
+                      
+                      <div className="flex flex-wrap gap-2">
+                        {member.skills.map(skill => (
+                          <span key={skill} className="text-[8px] font-mono px-2 py-1 bg-white/5 border border-white/10 text-zinc-400 rounded-sm">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="pt-2 flex justify-between items-center text-[7px] font-mono text-zinc-700">
+                        <span>NODE_ID: {member.id}</span>
+                        <span>AUTH: ELITE</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Background Data Stream (Vertical) */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.02]">
+              <div className="flex justify-around h-full">
+                {[1,2,3,4,5,6].map(i => (
+                  <div key={i} className="w-px h-full bg-gradient-to-b from-transparent via-white to-transparent animate-[pulse_4s_infinite]" />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Global Keyframes for Floating Effect */}
+        <style jsx global>{`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+          }
+        `}</style>
+      </section>
     </div>
   );
 }
