@@ -432,18 +432,18 @@ export default function AboutPage() {
 
                 {/* Orbiting Tech Logos Galaxy */}
                 {[
-                  { id: "oracle", slug: "oracle", color: "#F80000", customIcon: (
+                  { id: "oracle", slug: "oracle", color: "#F80000", status: "CORE_ENGINE", version: "v23c", customIcon: (
                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
                       <path d="M12 4.5C7.305 4.5 3.5 8.305 3.5 13s3.805 8.5 8.5 8.5 8.5-3.805 8.5-8.5-3.805-8.5-8.5-8.5zm0 14c-3.037 0-5.5-2.463-5.5-5.5s2.463-5.5 5.5-5.5 5.5 2.463 5.5 5.5-2.463 5.5-5.5 5.5z" />
                     </svg>
                   ) },
-                  { id: "anthropic", slug: "anthropic", color: "#D19A66" },
-                  { id: "nextdotjs", slug: "nextdotjs", color: "#FFFFFF" },
-                  { id: "react", slug: "react", color: "#61DAFB" },
-                  { id: "nodedotjs", slug: "nodedotjs", color: "#339933" },
-                  { id: "python", slug: "python", color: "#3776AB" },
-                  { id: "tailwindcss", slug: "tailwindcss", color: "#06B6D4" },
-                  { id: "openai", slug: "openai", color: "#FFFFFF", customIcon: (
+                  { id: "anthropic", slug: "anthropic", color: "#D19A66", status: "AI_LLM", version: "CLAUDE_3.5" },
+                  { id: "nextdotjs", slug: "nextdotjs", color: "#FFFFFF", status: "FRAMEWORK", version: "v14.2" },
+                  { id: "react", slug: "react", color: "#61DAFB", status: "UI_LIBRARY", version: "v18.3" },
+                  { id: "nodedotjs", slug: "nodedotjs", color: "#339933", status: "RUNTIME", version: "LTS" },
+                  { id: "python", slug: "python", color: "#3776AB", status: "LOGIC_CORE", version: "v3.12" },
+                  { id: "tailwindcss", slug: "tailwindcss", color: "#06B6D4", status: "STYLING", version: "v3.4" },
+                  { id: "openai", slug: "openai", color: "#FFFFFF", status: "AI_ORCHESTRATOR", version: "GPT-4o", customIcon: (
                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
                       <path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-4.71-2.815 6.04 6.04 0 0 0-5.617 2.379 6.03 6.03 0 0 0-5.321-2.379 6.045 6.045 0 0 0-4.71 2.815 5.985 5.985 0 0 0-.516 4.91 6.046 6.046 0 0 0 1.42 5.108 5.985 5.985 0 0 0 .516 4.91 6.046 6.046 0 0 0 4.71 2.815 6.04 6.04 0 0 0 5.617-2.379 6.03 6.03 0 0 0 5.321 2.379 6.045 6.045 0 0 0 4.71-2.815 5.985 5.985 0 0 0 .516-4.91 6.046 6.046 0 0 0-1.42-5.108zM12 14.285l-1.933-1.116-.01-.006-2.008-1.159v-2.23l1.933 1.115.01.006 2.008 1.159v2.231zm0-3.328l-1.933-1.115V7.611L12 6.496l1.933 1.115v2.231L12 10.957zm1.008 1.74l1.933-1.115V9.351l2.008-1.159v2.231l-1.933 1.115-.01.006-2.008 1.159v-2.231zm2.933-3.328l1.933-1.115V10.37l-1.933 1.115-1.933 1.116v-2.231l1.933-1.115zm-5.866 5.559l-1.933-1.115v-2.231L10.075 12l1.933 1.115v2.231l-1.933-1.115zm-2.008-3.328l-1.933-1.115V8.14l1.933 1.115 1.933 1.116v2.231l-1.933-1.115z" />
                     </svg>
@@ -464,7 +464,7 @@ export default function AboutPage() {
                           left: `calc(50% + ${Math.cos(angle) * radius}px)`,
                           top: `calc(50% + ${Math.sin(angle) * radius}px)`
                         }}
-                        className="absolute -translate-x-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 rounded-xl bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 flex items-center justify-center p-3 pointer-events-auto hover:border-sinai-glow-orange/50 transition-all group shadow-2xl"
+                        className="absolute -translate-x-1/2 -translate-y-1/2 w-14 h-14 lg:w-16 lg:h-16 rounded-xl bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 flex items-center justify-center p-3 pointer-events-auto hover:border-sinai-glow-orange/50 transition-all group shadow-2xl z-20"
                       >
                         {tech.customIcon ? (
                           <div className="w-full h-full opacity-40 group-hover:opacity-100 transition-opacity" style={{ color: tech.color }}>
@@ -478,9 +478,32 @@ export default function AboutPage() {
                             style={{ filter: `drop-shadow(0 0 10px ${tech.color}44)` }}
                           />
                         )}
-                        {/* Technical Label on Hover */}
-                        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[8px] font-mono text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-black/60 px-2 py-1 rounded-sm border border-white/5">
-                          {tech.id.toUpperCase()}
+                        
+                        {/* Premium Tooltip Reveal */}
+                        <div className="absolute bottom-full mb-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none z-50 translate-y-4 group-hover:translate-y-0">
+                          <div className="p-4 rounded-2xl bg-black/80 backdrop-blur-2xl border border-sinai-glow-orange/30 shadow-[0_0_40px_rgba(242,162,75,0.15)] min-w-[160px] relative">
+                            {/* Decorative Corner */}
+                            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black border-r border-b border-sinai-glow-orange/30 rotate-45" />
+                            
+                            <div className="space-y-3">
+                              <div className="flex items-center justify-between gap-4">
+                                <div className="text-[8px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black uppercase whitespace-nowrap">Node_{tech.id}</div>
+                                <div className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                              </div>
+                              
+                              <div className="space-y-1">
+                                <h4 className="text-sm font-black text-white uppercase tracking-tighter">{tech.id.replace('dotjs', '')}</h4>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-[7px] font-mono text-zinc-500 uppercase tracking-widest">{tech.status}</span>
+                                  <span className="w-1 h-1 rounded-full bg-white/10" />
+                                  <span className="text-[7px] font-mono text-sinai-glow-orange uppercase">{tech.version}</span>
+                                </div>
+                              </div>
+
+                              <div className="h-px w-full bg-white/5" />
+                              <div className="text-[6px] font-mono text-zinc-600 tracking-widest uppercase">Connectivity: Nominal</div>
+                            </div>
+                          </div>
                         </div>
                       </motion.div>
                     </div>
