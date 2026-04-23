@@ -236,6 +236,107 @@ export default function AboutPage() {
           Architecture
         </div>
       </section>
+
+      {/* Experimental Engineering DNA: The Architectural Schematics */}
+      <section className="relative py-48 px-6 bg-[#030303] overflow-hidden">
+        {/* Background Mesh Grid */}
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
+             style={{ backgroundImage: 'linear-gradient(#f2a24b 0.5px, transparent 0.5px), linear-gradient(90deg, #f2a24b 0.5px, transparent 0.5px)', backgroundSize: '100px 100px' }} />
+        
+        <div className="max-w-7xl mx-auto relative">
+          <div className="mb-32 space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-4"
+            >
+              <div className="w-12 h-px bg-sinai-glow-orange" />
+              <span className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.5em] uppercase text-left">Strategic_DNA // Schema_v2.0</span>
+            </motion.div>
+            <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none text-left">
+              Engineering <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange to-white">Foundations</span>
+            </h2>
+          </div>
+
+          {/* The Schematic Grid */}
+          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-y-24 items-center">
+            
+            {/* Visual Logic Bridge (The Lines) */}
+            <div className="absolute inset-0 hidden lg:block pointer-events-none">
+              <svg className="w-full h-full opacity-10">
+                <motion.path 
+                  d="M 200 100 L 800 100 L 800 400 L 200 400 Z" 
+                  stroke="#f2a24b" 
+                  strokeWidth="0.5" 
+                  fill="none"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 2 }}
+                />
+                <circle cx="200" cy="100" r="2" fill="#f2a24b" />
+                <circle cx="800" cy="100" r="2" fill="#f2a24b" />
+                <circle cx="800" cy="400" r="2" fill="#f2a24b" />
+                <circle cx="200" cy="400" r="2" fill="#f2a24b" />
+              </svg>
+            </div>
+
+            {/* DNA Nodes */}
+            {[
+              { id: "01", title: "Precision", col: "lg:col-span-5", align: "left", desc: "Military-grade structural integrity in every byte.", tech: "ERR_TOLERANCE: 0.0001%" },
+              { id: "02", title: "Intelligence", col: "lg:col-span-5 lg:col-start-8", align: "right", desc: "Autonomous reasoning embedded in the architecture.", tech: "NEURAL_SYNAPSE: 4.2ms" },
+              { id: "03", title: "Precision", col: "lg:col-span-5", align: "left", desc: "Enterprise-grade Oracle database supremacy.", tech: "QUERY_PRECISION: NANO" },
+              { id: "04", title: "Cinematic", col: "lg:col-span-5 lg:col-start-8", align: "right", desc: "The intersection of high-engineering and art.", tech: "MOTION_FIDELITY: 120fps" }
+            ].map((node, i) => (
+              <motion.div
+                key={node.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className={`${node.col} relative group cursor-crosshair`}
+              >
+                <div className={`space-y-6 ${node.align === 'right' ? 'lg:text-right' : 'lg:text-left'}`}>
+                  <div className={`flex items-center gap-4 ${node.align === 'right' ? 'justify-end' : 'justify-start'}`}>
+                    <span className="text-4xl font-black text-white/5 group-hover:text-sinai-glow-orange/20 transition-colors duration-500">{node.id}</span>
+                    <div className="h-px w-12 bg-white/10 group-hover:w-20 group-hover:bg-sinai-glow-orange/40 transition-all duration-500" />
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <h3 className="text-4xl lg:text-5xl font-black tracking-tighter uppercase text-white group-hover:text-sinai-glow-orange transition-all duration-500">
+                      {node.title}
+                    </h3>
+                    <p className="text-zinc-500 text-lg max-w-sm group-hover:text-zinc-300 transition-colors duration-500 mx-auto lg:mx-0">
+                      {node.desc}
+                    </p>
+                  </div>
+
+                  <div className={`flex items-center gap-3 pt-4 font-mono text-[9px] tracking-[0.3em] text-zinc-600 ${node.align === 'right' ? 'justify-end' : 'justify-start'}`}>
+                    <span className="group-hover:text-sinai-glow-orange transition-colors">{node.tech}</span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-sinai-glow-orange group-hover:animate-ping" />
+                  </div>
+                </div>
+
+                {/* Floating Meta-Data */}
+                <div className="absolute -top-10 -right-10 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none">
+                  <div className="text-[8px] font-mono text-sinai-glow-orange/40 p-4 border-l border-t border-sinai-glow-orange/20">
+                    COORD_X: {Math.random().toFixed(4)}<br/>
+                    COORD_Y: {Math.random().toFixed(4)}<br/>
+                    SIG_STRENGTH: NOMINAL
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Global HUD Decorations */}
+        <div className="absolute top-20 left-10 text-white/5 font-mono text-[10px] tracking-widest hidden lg:block uppercase select-none">
+          Blueprint_Archive // Sec_09
+        </div>
+        <div className="absolute bottom-20 right-10 text-white/5 font-mono text-[10px] tracking-widest hidden lg:block uppercase select-none">
+          Architecture_Verified // 2024
+        </div>
+      </section>
     </div>
   );
 }
