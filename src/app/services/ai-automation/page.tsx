@@ -934,91 +934,71 @@ export default function AIAutomationPage() {
         </div>
       </section>
 
-      {/* CTA Section - HYPER PREMIUM REVAMP */}
-      <section id="engage" className="py-64 relative overflow-hidden bg-black">
-        {/* Cinematic background elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(242,162,75,0.08)_0%,transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(242,162,75,0.05)_0%,transparent_50%)]" />
+      {/* Final CTA Section - Cinematic Masterpiece */}
+      <section className="py-64 relative overflow-hidden bg-black">
+        {/* Background Ambient Layers */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.08)_0%,transparent_70%)]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sinai-glow-orange/5 blur-[120px] rounded-full pointer-events-none" />
         
-        {/* Animated Grid Lines */}
-        <div className="absolute inset-0 opacity-[0.03] [mask-image:radial-gradient(ellipse_at_center,black,transparent)]">
-          <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
+        {/* Technical HUD Frame */}
+        <div className="absolute inset-20 border border-white/[0.03] pointer-events-none hidden md:block">
+          <div className="absolute top-0 left-0 w-20 h-px bg-sinai-glow-orange/30" />
+          <div className="absolute top-0 left-0 w-px h-20 bg-sinai-glow-orange/30" />
+          <div className="absolute bottom-0 right-0 w-20 h-px bg-sinai-glow-orange/30" />
+          <div className="absolute bottom-0 right-0 w-px h-20 bg-sinai-glow-orange/30" />
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
           <SectionReveal>
-            <div className="max-w-6xl mx-auto relative">
-              {/* Technical HUD Markers */}
-              <div className="absolute -top-12 -left-12 w-24 h-24 border-t border-l border-sinai-glow-orange/30 rounded-tl-3xl hidden lg:block" />
-              <div className="absolute -bottom-12 -right-12 w-24 h-24 border-b border-r border-sinai-glow-orange/30 rounded-br-3xl hidden lg:block" />
-
-              <div className="relative p-16 md:p-32 rounded-[5rem] bg-zinc-900/40 border border-white/5 backdrop-blur-3xl text-center overflow-hidden group">
-                {/* Background Animation Layers */}
-                <motion.div 
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    opacity: [0.1, 0.2, 0.1]
-                  }}
-                  transition={{ duration: 10, repeat: Infinity }}
-                  className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.15)_0%,transparent_70%)] pointer-events-none"
-                />
-
-                <div className="relative z-10 space-y-12">
-                  <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-sinai-glow-orange/10 border border-sinai-glow-orange/20">
-                    <span className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-ping" />
-                    <span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.4em] uppercase font-black">Ready_For_Deployment</span>
-                  </div>
-
-                  <h2 className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9] text-white">
-                    Automate <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-sinai-glow-orange/40 bg-[length:200%_auto] animate-gradient">Excellence.</span>
-                  </h2>
-
-                  <p className="text-xl md:text-3xl text-zinc-400 max-w-3xl mx-auto font-light leading-relaxed">
-                    Join the technical elite and deploy autonomous intelligence layers that transform your operational reality into a competitive masterpiece.
-                  </p>
-
-                  <div className="pt-10">
-                    <Link href="/#contact" className="group relative inline-flex items-center justify-center">
-                      {/* Button Outer Glow */}
-                      <div className="absolute inset-0 bg-sinai-glow-orange/40 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      
-                      {/* Button Body */}
-                      <div className="relative px-16 py-8 rounded-full bg-sinai-glow-orange text-black font-black text-sm tracking-[0.4em] uppercase overflow-hidden">
-                        <span className="relative z-10">Initialize Engagement</span>
-                        
-                        {/* Shimmer Effect */}
-                        <motion.div 
-                          animate={{ x: ["-100%", "100%"] }}
-                          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
-                        />
-                      </div>
-
-                      {/* Technical Meta Labels (Hover Only) */}
-                      <div className="absolute -right-32 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 hidden xl:block">
-                        <div className="text-[8px] font-mono text-sinai-glow-orange text-left border-l border-sinai-glow-orange/30 pl-4 py-2">
-                          ENCRYPTED_SYNC: OK<br />
-                          PRIORITY: HIGH<br />
-                          AUTH_LAYER: V4
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
+            <div className="max-w-5xl mx-auto text-center space-y-16">
+              {/* Top Branding Tag */}
+              <div className="flex justify-center">
+                <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/10 backdrop-blur-md">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                  <span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.4em] font-black uppercase">Engagement_Initialization // AI_NODE_V5.0</span>
                 </div>
+              </div>
 
-                {/* Floating HUD Elements */}
-                <div className="absolute top-12 right-12 text-zinc-800 font-mono text-[8px] hidden md:block select-none">
-                  SYSTEM_STATUS: NOMINAL<br />
-                  LATENCY: 0.001MS
-                </div>
-                <div className="absolute bottom-12 left-12 text-zinc-800 font-mono text-[8px] hidden md:block select-none uppercase">
-                  APEX_EXPERTS_SOLUTIONS<br />
-                  ©2026_ALL_RIGHTS_RESERVED
+              <div className="space-y-8">
+                <h2 className="text-7xl md:text-[10rem] font-black tracking-tighter leading-[0.8] text-white">
+                  Ready to <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-sinai-glow-orange/20">Scale Your Vision?</span>
+                </h2>
+                <p className="text-xl md:text-3xl text-zinc-500 font-light max-w-3xl mx-auto leading-relaxed">
+                  Join forces with <span className="text-white font-bold">APEX Experts</span> to engineer the next generation of autonomous intelligence.
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center gap-8 pt-8">
+                <Link href="/#contact" className="group relative px-24 py-10 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-xl tracking-[0.4em] uppercase transition-all hover:shadow-[0_0_100px_rgba(242,162,75,0.6)] hover:scale-105 active:scale-95 duration-500">
+                  <span className="relative z-10">Initialize Project</span>
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" />
+                  
+                  {/* Internal Shimmer */}
+                  <motion.div 
+                    animate={{ left: ["-100%", "200%"] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
+                  />
+                </Link>
+
+                <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600 tracking-widest uppercase">
+                  <span className="flex items-center gap-2">
+                    <div className="w-1 h-1 rounded-full bg-green-500/50" />
+                    Secure_AI_Node: Active
+                  </span>
+                  <span className="w-px h-4 bg-white/10" />
+                  <span>Available for Q3-Q4 2026</span>
                 </div>
               </div>
             </div>
           </SectionReveal>
+        </div>
+
+        {/* Floating Data Decor */}
+        <div className="absolute bottom-12 right-12 text-[8px] font-mono text-zinc-800 tracking-widest hidden lg:block uppercase">
+          Apex_Experts_AI_Automation_Studio<br />
+          System_Build_Hash: 0xAI_5A11
         </div>
       </section>
 

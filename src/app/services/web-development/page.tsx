@@ -1194,27 +1194,71 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      {/* Final CTA Section */}
+      {/* Final CTA Section - Cinematic Masterpiece */}
       <section className="py-64 relative overflow-hidden bg-black">
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.08)_0%,transparent_70%)]" />
+        {/* Background Ambient Layers */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.08)_0%,transparent_70%)]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sinai-glow-orange/5 blur-[120px] rounded-full pointer-events-none" />
+        
+        {/* Technical HUD Frame */}
+        <div className="absolute inset-20 border border-white/[0.03] pointer-events-none hidden md:block">
+          <div className="absolute top-0 left-0 w-20 h-px bg-sinai-glow-orange/30" />
+          <div className="absolute top-0 left-0 w-px h-20 bg-sinai-glow-orange/30" />
+          <div className="absolute bottom-0 right-0 w-20 h-px bg-sinai-glow-orange/30" />
+          <div className="absolute bottom-0 right-0 w-px h-20 bg-sinai-glow-orange/30" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <SectionReveal>
-            <div className="max-w-4xl mx-auto space-y-12">
-              <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-none">
-                Ready to <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-white/20">Scale Your Vision?</span>
-              </h2>
-              <p className="text-xl md:text-2xl text-zinc-500 font-light max-w-2xl mx-auto">
-                Join forces with APEX Experts to build the next generation of web excellence.
-              </p>
-              <div className="flex justify-center pt-8">
-                <Link href="/contact" className="group relative px-20 py-8 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-bold text-lg tracking-[0.3em] uppercase transition-all hover:shadow-[0_0_80px_rgba(242,162,75,0.5)]">
+            <div className="max-w-5xl mx-auto text-center space-y-16">
+              {/* Top Branding Tag */}
+              <div className="flex justify-center">
+                <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/10 backdrop-blur-md">
+                  <span className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                  <span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.4em] font-black uppercase">Engagement_Initialization // V5.0</span>
+                </div>
+              </div>
+
+              <div className="space-y-8">
+                <h2 className="text-7xl md:text-[10rem] font-black tracking-tighter leading-[0.8] text-white">
+                  Ready to <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-sinai-glow-orange/20">Scale Your Vision?</span>
+                </h2>
+                <p className="text-xl md:text-3xl text-zinc-500 font-light max-w-3xl mx-auto leading-relaxed">
+                  Join forces with <span className="text-white font-bold">APEX Experts</span> to engineer the next generation of digital excellence.
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center gap-8 pt-8">
+                <Link href="/#contact" className="group relative px-24 py-10 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-xl tracking-[0.4em] uppercase transition-all hover:shadow-[0_0_100px_rgba(242,162,75,0.6)] hover:scale-105 active:scale-95 duration-500">
                   <span className="relative z-10">Initialize Project</span>
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" />
+                  
+                  {/* Internal Shimmer */}
+                  <motion.div 
+                    animate={{ left: ["-100%", "200%"] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
+                  />
                 </Link>
+
+                <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600 tracking-widest uppercase">
+                  <span className="flex items-center gap-2">
+                    <div className="w-1 h-1 rounded-full bg-green-500/50" />
+                    Secure_Node: Active
+                  </span>
+                  <span className="w-px h-4 bg-white/10" />
+                  <span>Available for Q3-Q4 2026</span>
+                </div>
               </div>
             </div>
           </SectionReveal>
+        </div>
+
+        {/* Floating Data Decor */}
+        <div className="absolute bottom-12 right-12 text-[8px] font-mono text-zinc-800 tracking-widest hidden lg:block uppercase">
+          Apex_Experts_Creative_Studio<br />
+          System_Build_Hash: 0x5a1118f
         </div>
       </section>
     </main>
