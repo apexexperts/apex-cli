@@ -388,7 +388,7 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* Right Side: The Neural Core Visual (Upgraded from Capability Hub) */}
+            {/* Right Side: The Neural Core Visual (Upgraded with Tech Galaxy) */}
             <div className="relative aspect-square flex items-center justify-center">
               <div className="relative w-full h-full flex items-center justify-center scale-90 lg:scale-100">
                 {/* Outer Orbital Rings */}
@@ -404,61 +404,79 @@ export default function AboutPage() {
                 />
                 
                 {/* Central Glass Sphere */}
-                <div className="relative w-72 h-72 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-white/[0.05] to-transparent flex items-center justify-center backdrop-blur-3xl border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group">
+                <div className="relative z-10 w-64 h-64 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-white/[0.05] to-transparent flex items-center justify-center backdrop-blur-3xl border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group">
                   <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
                   
-                  {/* Internal Pulsing Plasma */}
                   <motion.div 
                     animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute w-48 h-48 lg:w-64 lg:h-64 rounded-full bg-sinai-glow-orange/20 blur-[60px]"
+                    className="absolute w-40 h-40 lg:w-56 lg:h-56 rounded-full bg-sinai-glow-orange/20 blur-[60px]"
                   />
 
-                  {/* Central Branding Module */}
                   <div className="relative z-10 flex flex-col items-center">
-                    {/* CORE_CPU Technical Frame */}
                     <div className="px-3 py-1 rounded-sm border border-sinai-glow-orange/40 bg-sinai-glow-orange/5 mb-4 relative overflow-hidden group-hover:border-sinai-glow-orange transition-colors">
                       <div className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black flex items-center gap-2">
                         <span className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
                         POWER_MATRIX_v3.0
                       </div>
-                      <motion.div 
-                        animate={{ left: ["-100%", "200%"] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-0 bottom-0 w-8 bg-white/20 skew-x-12 -translate-x-full"
-                      />
                     </div>
 
-                    {/* APEX Text Branding */}
                     <div className="relative">
-                      <h3 className="text-5xl lg:text-7xl font-black tracking-[-0.05em] text-white flex flex-col items-center leading-none">
+                      <h3 className="text-4xl lg:text-6xl font-black tracking-[-0.05em] text-white flex flex-col items-center leading-none">
                         <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-sinai-glow-orange/50">APEX</span>
-                        <span className="text-[10px] font-mono tracking-[1.5em] text-sinai-glow-orange/60 ml-[1.5em] -mt-1 font-bold">EXPERTS</span>
+                        <span className="text-[8px] font-mono tracking-[1.5em] text-sinai-glow-orange/60 ml-[1.5em] -mt-1 font-bold">EXPERTS</span>
                       </h3>
-                      <div className="absolute -bottom-4 left-0 right-0 h-4 bg-gradient-to-t from-sinai-glow-orange/10 to-transparent blur-sm" />
                     </div>
                   </div>
+                </div>
 
-                  {/* Orbiting Data Fragments */}
-                  {[...Array(3)].map((_, i) => (
+                {/* Orbiting Tech Logos Galaxy */}
+                {[
+                  { id: "oracle", slug: "oracle", color: "#F80000" },
+                  { id: "anthropic", slug: "anthropic", color: "#D19A66" },
+                  { id: "nextdotjs", slug: "nextdotjs", color: "#FFFFFF" },
+                  { id: "react", slug: "react", color: "#61DAFB" },
+                  { id: "nodedotjs", slug: "nodedotjs", color: "#339933" },
+                  { id: "python", slug: "python", color: "#3776AB" },
+                  { id: "tailwindcss", slug: "tailwindcss", color: "#06B6D4" },
+                  { id: "openai", slug: "openai", color: "#412991" }
+                ].map((tech, i) => {
+                  const angle = (i / 8) * Math.PI * 2;
+                  const radius = 280; // Distance from center
+                  return (
                     <motion.div
-                      key={i}
+                      key={tech.id}
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 10 + i * 5, repeat: Infinity, ease: "linear" }}
+                      transition={{ duration: 30 + i * 2, repeat: Infinity, ease: "linear" }}
                       className="absolute inset-0 pointer-events-none"
                     >
-                      <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[8px] font-mono text-white/20 tracking-tighter">
-                        {i === 0 ? "0x7F" : i === 1 ? "PWR_SYNC" : "V_MATRIX"}
-                      </div>
+                      <motion.div
+                        style={{ 
+                          left: `calc(50% + ${Math.cos(angle) * radius}px)`,
+                          top: `calc(50% + ${Math.sin(angle) * radius}px)`
+                        }}
+                        className="absolute -translate-x-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 rounded-xl bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 flex items-center justify-center p-3 pointer-events-auto hover:border-sinai-glow-orange/50 transition-all group shadow-2xl"
+                      >
+                        <img 
+                          src={`https://cdn.simpleicons.org/${tech.slug}/fff`} 
+                          className="w-full h-full object-contain opacity-40 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
+                          alt={tech.id}
+                          style={{ filter: `drop-shadow(0 0 10px ${tech.color}44)` }}
+                        />
+                        {/* Technical Label on Hover */}
+                        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[8px] font-mono text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-black/60 px-2 py-1 rounded-sm border border-white/5">
+                          {tech.id.toUpperCase()}
+                        </div>
+                      </motion.div>
                     </motion.div>
-                  ))}
-                </div>
+                  );
+                })}
 
                 {/* Floating Scanning Ring */}
                 <motion.div 
-                  animate={{ scale: [0.8, 1.2, 0.8], opacity: [0, 0.5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute w-[400px] h-[400px] lg:w-[550px] lg:h-[550px] border-2 border-sinai-glow-orange/30 rounded-full"
+                  animate={{ scale: [0.8, 1.3, 0.8], opacity: [0, 0.4, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute w-[500px] h-[500px] lg:w-[650px] lg:h-[650px] border border-sinai-glow-orange/20 rounded-full"
                 />
               </div>
             </div>
