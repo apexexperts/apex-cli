@@ -501,15 +501,16 @@ export default function AboutPage() {
             ].map((member, i) => (
               <motion.div
                 key={member.id}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1, duration: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05, duration: 0.8 }}
                 animate={{ 
-                  y: [0, i % 2 === 0 ? 15 : -15, 0],
-                  x: [0, i % 2 === 0 ? -10 : 10, 0]
+                  y: [0, i % 2 === 0 ? 8 : -8, 0],
+                  x: [0, i % 2 === 0 ? -5 : 5, 0]
                 }}
                 transition={{ 
-                  duration: 5 + i, 
+                  duration: 8 + i, 
                   repeat: Infinity, 
                   ease: "easeInOut" 
                 }}
@@ -525,7 +526,7 @@ export default function AboutPage() {
                       src={member.img}
                       alt={member.name}
                       fill
-                      className="object-cover grayscale group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-1000 opacity-60 group-hover:opacity-100"
+                      className="object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-1000 opacity-100"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-sinai-glow-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
