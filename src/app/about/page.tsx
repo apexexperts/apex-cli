@@ -164,7 +164,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Engineering DNA */}
+      {/* Engineering DNA / Team Section */}
       <section className="relative py-48 px-6 bg-[#030303] overflow-hidden">
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
              style={{ backgroundImage: 'linear-gradient(#f2a24b 0.5px, transparent 0.5px), linear-gradient(90deg, #f2a24b 0.5px, transparent 0.5px)', backgroundSize: '100px 100px' }} />
@@ -240,6 +240,80 @@ export default function AboutPage() {
                 <div className="absolute bottom-4 left-4 w-2 h-2 border-b border-l border-white/20 group-hover:border-sinai-glow-orange transition-colors" />
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The Power Matrix: Tech Ecosystem */}
+      <section className="relative py-48 px-6 bg-[#050505] overflow-hidden border-t border-white/5">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            
+            <div className="space-y-12">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-3">
+                  <div className="w-12 h-px bg-sinai-glow-orange" />
+                  <span className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.5em] uppercase">Tech_Telemetry</span>
+                </div>
+                <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none">
+                  The Power <br/>
+                  <span className="text-white">Matrix</span>
+                </h2>
+                <p className="text-zinc-400 text-xl font-light max-w-lg leading-relaxed italic">
+                  Our stack is engineered for extreme performance and enterprise-grade reliability. We only use technologies that define the industry standard.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {[
+                  { title: "Core Engine", tech: "Oracle APEX", desc: "Enterprise data logic at peak scale." },
+                  { title: "AI Layer", tech: "Claude / Gemini", desc: "Advanced reasoning and automation." },
+                  { title: "Frontend", tech: "Next.js / React", desc: "Fluid, high-performance experiences." },
+                  { title: "Design", tech: "Architectural UX", desc: "Systematic, scalable design systems." }
+                ].map((item, i) => (
+                  <div key={i} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-sinai-glow-orange/20 transition-colors">
+                    <h4 className="text-[10px] font-mono text-sinai-glow-orange uppercase mb-2 tracking-widest">{item.title}</h4>
+                    <div className="text-xl font-bold text-white mb-2">{item.tech}</div>
+                    <p className="text-xs text-zinc-500 leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Kinetic Radar Visualization */}
+            <div className="relative aspect-square flex items-center justify-center">
+              <div className="absolute inset-0 border border-white/5 rounded-full" />
+              <div className="absolute inset-20 border border-white/5 rounded-full" />
+              <div className="absolute inset-40 border border-white/10 rounded-full" />
+              
+              <div className="absolute inset-0 bg-gradient-to-tr from-sinai-glow-orange/10 to-transparent rounded-full animate-[spin_10s_linear_infinite]" />
+              
+              <div className="relative w-40 h-40 bg-zinc-900 rounded-full border-2 border-sinai-glow-orange flex items-center justify-center shadow-[0_0_50px_rgba(242,162,75,0.2)] overflow-hidden">
+                <Image 
+                  src="/images/oracle-apex-hero-v1_1776958757733.png" 
+                  alt="Oracle" 
+                  fill 
+                  className="object-contain p-8 grayscale hover:grayscale-0 transition-all"
+                />
+              </div>
+
+              {[
+                { label: "Claude", pos: "top-0 left-1/2 -translate-x-1/2", img: "/images/cognitive_data_synthesis_core_1776954400075.png" },
+                { label: "Next.js", pos: "bottom-1/4 -right-10", img: "/images/brand_logo_mark_ae_1776963173769.png" },
+                { label: "AI Core", pos: "bottom-1/4 -left-10", img: "/images/agentic_orchestration_core_1776953703734.png" }
+              ].map((sat, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 25 + (i * 5), repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 pointer-events-none"
+                >
+                  <div className={`absolute ${sat.pos} w-20 h-20 bg-zinc-900 border border-white/10 rounded-2xl flex items-center justify-center p-4 pointer-events-auto hover:border-sinai-glow-orange/50 transition-colors shadow-2xl`}>
+                    <Image src={sat.img} alt={sat.label} fill className="object-contain p-4 grayscale hover:grayscale-0 transition-all" />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
