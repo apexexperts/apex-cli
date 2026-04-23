@@ -459,106 +459,89 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          {/* The Constellation Map */}
+          {/* The Constellation Map: Planetary Orbit Mode */}
           <div className="relative h-[800px] lg:h-[1000px] w-full mt-20 flex items-center justify-center">
             
-            {/* CENTRAL COMMAND DISPLAY */}
-            <div className="relative z-50 w-72 h-72 lg:w-96 lg:h-96 flex items-center justify-center">
-              {/* Decorative Rings for the Hub */}
-              <div className="absolute inset-0 border border-sinai-glow-orange/20 rounded-full animate-[spin_20s_linear_infinite]" />
-              <div className="absolute inset-8 border border-white/5 rounded-full animate-[spin_30s_linear_infinite_reverse]" />
-              
-              <div className="relative z-10 w-full text-center px-8">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-                    whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    transition={{ duration: 0.5 }}
-                    className="space-y-6"
-                  >
-                    <div className="space-y-2">
-                      <div className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.5em] uppercase">System_Core</div>
-                      <h3 className="text-3xl lg:text-4xl font-black tracking-tighter text-white uppercase">Architect_Intelligence</h3>
-                      <div className="flex justify-center gap-1">
-                        {[1,2,3,4,5].map(i => (
-                          <div key={i} className="w-1 h-1 bg-sinai-glow-orange/40 rounded-full" />
-                        ))}
-                      </div>
-                    </div>
-                    <p className="text-[10px] font-mono text-zinc-600 leading-relaxed uppercase tracking-widest">
-                      Hover_Member_To_Access_Biometric_Dossier_And_Neural_Sync_Data
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
-
-            {/* SVG Connections (Enhanced Neural Web) */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+            {/* SVG Connections (Subtle Neural Web) */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.15]">
               <defs>
                 <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#f2a24b" stopOpacity="0" />
-                  <stop offset="50%" stopColor="#f2a24b" stopOpacity="1" />
+                  <stop offset="50%" stopColor="#f2a24b" stopOpacity="0.5" />
                   <stop offset="100%" stopColor="#f2a24b" stopOpacity="0" />
                 </linearGradient>
               </defs>
+              {/* Circular faint orbits */}
+              <circle cx="50%" cy="50%" r="15%" stroke="white" strokeWidth="0.1" fill="none" className="opacity-20" />
+              <circle cx="50%" cy="50%" r="30%" stroke="white" strokeWidth="0.1" fill="none" className="opacity-10" />
+              <circle cx="50%" cy="50%" r="45%" stroke="white" strokeWidth="0.1" fill="none" className="opacity-5" />
+              
+              {/* Dynamic cross-connections */}
               <motion.path 
-                d="M 150 150 L 850 150 L 500 450 L 150 850 L 850 850 L 500 450 L 150 150" 
+                d="M 150 150 L 850 150 L 850 850 L 150 850 Z" 
                 stroke="url(#lineGrad)" 
                 strokeWidth="0.5" 
                 fill="none"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
-                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               />
             </svg>
 
-            {/* Team Nodes */}
+            {/* Team Nodes: Distributed in Orbits */}
             {[
-              { id: "01", name: "Asma Ali", role: "MARKETING MANAGER", pos: "top-[5%] left-[10%] lg:left-[15%]", img: "/images/project2.png", skills: ["Growth", "Branding", "Strategy"] },
-              { id: "02", name: "Hisham Mohamed", role: "SALES MANAGER", pos: "top-[10%] right-[5%] lg:right-[15%]", img: "/images/project3.png", skills: ["Enterprise", "Relations", "Scale"] },
-              { id: "03", name: "Amr Mohamed", role: "TEAM LEADER", pos: "top-[30%] left-[5%] lg:left-[5%]", img: "/images/web-dev-cinematic.png", skills: ["Management", "Agile", "Delivery"] },
-              { id: "04", name: "Micheal Magdy", role: "SR. SOFTWARE ENG.", pos: "top-[35%] right-[10%] lg:right-[35%]", img: "/images/mobile-dev-hero.png", skills: ["Backend", "Architecture", "Scaling"] },
-              { id: "05", name: "Abdelrahman Ibrahim", role: "SR. SOFTWARE ENG.", pos: "bottom-[35%] left-[10%] lg:left-[35%]", img: "/images/project2.png", skills: ["Frontend", "Performance", "Logic"] },
-              { id: "06", name: "Mario Milad", role: "PRODUCT DESIGNER", pos: "bottom-[30%] right-[5%] lg:right-[5%]", img: "/images/web-dev-cinematic.png", skills: ["Visuals", "Motion", "UX Logic"] },
-              { id: "07", name: "Reham Samer", role: "QUALITY ENGINEERING", pos: "bottom-[10%] left-[5%] lg:left-[15%]", img: "/images/project3.png", skills: ["Testing", "QA Automation", "UAT"] },
-              { id: "08", name: "Maha Salam", role: "SYSTEM ADMIN", pos: "bottom-[5%] right-[10%] lg:right-[15%]", img: "/images/mobile-dev-hero.png", skills: ["Infrastructure", "Cloud", "Security"] }
+              { id: "01", name: "Asma Ali", role: "MARKETING MANAGER", pos: "top-[15%] left-[50%] -translate-x-1/2", side: "top-full mt-8 left-1/2 -translate-x-1/2", img: "/images/project2.png", skills: ["Growth", "Branding", "Strategy"] },
+              { id: "02", name: "Hisham Mohamed", role: "SALES MANAGER", pos: "top-[25%] right-[15%]", side: "right-full mr-8 top-0", img: "/images/project3.png", skills: ["Enterprise", "Relations", "Scale"] },
+              { id: "03", name: "Amr Mohamed", role: "TEAM LEADER", pos: "top-[50%] right-[5%] -translate-y-1/2", side: "right-full mr-8 top-1/2 -translate-y-1/2", img: "/images/web-dev-cinematic.png", skills: ["Management", "Agile", "Delivery"] },
+              { id: "04", name: "Micheal Magdy", role: "SR. SOFTWARE ENG.", pos: "bottom-[25%] right-[15%]", side: "right-full mr-8 bottom-0", img: "/images/mobile-dev-hero.png", skills: ["Backend", "Architecture", "Scaling"] },
+              { id: "05", name: "Abdelrahman Ibrahim", role: "bottom-[15%] left-[50%] -translate-x-1/2", side: "bottom-full mb-8 left-1/2 -translate-x-1/2", name: "Abdelrahman Ibrahim", role: "SR. SOFTWARE ENG.", img: "/images/project2.png", skills: ["Frontend", "Performance", "Logic"] },
+              { id: "06", name: "Mario Milad", role: "PRODUCT DESIGNER", pos: "bottom-[25%] left-[15%]", side: "left-full ml-8 bottom-0", img: "/images/web-dev-cinematic.png", skills: ["Visuals", "Motion", "UX Logic"] },
+              { id: "07", name: "Reham Samer", role: "QUALITY ENGINEERING", pos: "top-[50%] left-[5%] -translate-y-1/2", side: "left-full ml-8 top-1/2 -translate-y-1/2", img: "/images/project3.png", skills: ["Testing", "QA Automation", "UAT"] },
+              { id: "08", name: "Maha Salam", role: "SYSTEM ADMIN", pos: "top-[25%] left-[15%]", side: "left-full ml-8 top-0", img: "/images/mobile-dev-hero.png", skills: ["Infrastructure", "Cloud", "Security"] }
             ].map((member, i) => (
               <motion.div
                 key={member.id}
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.2, duration: 1 }}
-                className={`absolute ${member.pos} group z-20`}
+                transition={{ delay: i * 0.1, duration: 1 }}
+                animate={{ 
+                  y: [0, i % 2 === 0 ? 15 : -15, 0],
+                  x: [0, i % 2 === 0 ? -10 : 10, 0]
+                }}
+                transition={{ 
+                  duration: 5 + i, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className={`absolute ${member.pos} group z-20 hover:z-50`}
               >
                 <div className="relative cursor-pointer">
                   {/* Rotating Biometric Rings */}
-                  <div className="absolute inset-0 -m-8 border border-sinai-glow-orange/0 rounded-full group-hover:border-sinai-glow-orange/40 transition-all duration-700 animate-[spin_10s_linear_infinite] scale-110" />
+                  <div className="absolute inset-0 -m-6 border border-sinai-glow-orange/0 rounded-full group-hover:border-sinai-glow-orange/40 transition-all duration-700 animate-[spin_10s_linear_infinite]" />
                   
                   {/* Profile Avatar Frame */}
-                  <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-sinai-glow-orange transition-all duration-700 bg-zinc-900 shadow-2xl relative">
+                  <div className="w-20 h-20 lg:w-32 lg:h-32 rounded-full overflow-hidden border border-white/10 group-hover:border-sinai-glow-orange transition-all duration-700 bg-zinc-900 shadow-2xl relative">
                     <Image 
                       src={member.img}
                       alt={member.name}
                       fill
-                      className="object-cover grayscale group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-1000 opacity-40 group-hover:opacity-100"
+                      className="object-cover grayscale group-hover:grayscale-0 scale-110 group-hover:scale-100 transition-all duration-1000 opacity-60 group-hover:opacity-100"
                     />
-                    {/* Scan Effect */}
                     <div className="absolute inset-0 bg-gradient-to-t from-sinai-glow-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
 
-                  {/* FIXED POSITION PREVIEW OVERLAY (CENTRALIZED LOGIC) */}
-                  {/* We can't easily move the data to the central hub without React state, but I will make the tooltips pop OUTWARD to ensure no overlap */}
-                  <div className={`absolute top-1/2 -translate-y-1/2 ${i % 2 === 0 ? 'right-full mr-12' : 'left-full ml-12'} w-64 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none z-[100]`}>
-                    <div className="p-6 rounded-2xl bg-black/60 backdrop-blur-xl border border-sinai-glow-orange/30 space-y-4 shadow-[0_0_50px_rgba(242,162,75,0.15)]">
+                  {/* Smart Directional Tooltip */}
+                  <div className={`absolute ${member.side} w-64 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none z-50`}>
+                    <div className="p-6 rounded-2xl bg-black/80 backdrop-blur-xl border border-sinai-glow-orange/20 space-y-3 shadow-3xl">
                       <div className="space-y-1">
-                        <div className="text-[8px] font-mono text-sinai-glow-orange tracking-[0.4em] uppercase">Architect_Node_{member.id}</div>
+                        <div className="text-[8px] font-mono text-sinai-glow-orange tracking-[0.4em] uppercase">Identity_Node_{member.id}</div>
                         <h3 className="text-xl font-black tracking-tighter text-white uppercase">{member.name}</h3>
-                        <p className="text-[10px] font-mono text-zinc-400 tracking-widest">{member.role}</p>
+                        <p className="text-[10px] font-mono text-zinc-500 tracking-widest leading-none">{member.role}</p>
                       </div>
+                      <div className="h-px w-full bg-white/5" />
                       <div className="flex flex-wrap gap-2">
                         {member.skills.map(skill => (
-                          <span key={skill} className="text-[7px] font-mono px-2 py-1 bg-sinai-glow-orange/10 border border-sinai-glow-orange/20 text-sinai-glow-orange rounded-sm">
+                          <span key={skill} className="text-[7px] font-mono px-2 py-1 bg-white/5 border border-white/10 text-zinc-400 rounded-sm">
                             {skill}
                           </span>
                         ))}
