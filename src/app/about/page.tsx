@@ -432,14 +432,22 @@ export default function AboutPage() {
 
                 {/* Orbiting Tech Logos Galaxy */}
                 {[
-                  { id: "oracle", slug: "oracle", color: "#F80000" },
+                  { id: "oracle", slug: "oracle", color: "#F80000", customIcon: (
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+                      <path d="M12 4.5C7.305 4.5 3.5 8.305 3.5 13s3.805 8.5 8.5 8.5 8.5-3.805 8.5-8.5-3.805-8.5-8.5-8.5zm0 14c-3.037 0-5.5-2.463-5.5-5.5s2.463-5.5 5.5-5.5 5.5 2.463 5.5 5.5-2.463 5.5-5.5 5.5z" />
+                    </svg>
+                  ) },
                   { id: "anthropic", slug: "anthropic", color: "#D19A66" },
                   { id: "nextdotjs", slug: "nextdotjs", color: "#FFFFFF" },
                   { id: "react", slug: "react", color: "#61DAFB" },
                   { id: "nodedotjs", slug: "nodedotjs", color: "#339933" },
                   { id: "python", slug: "python", color: "#3776AB" },
                   { id: "tailwindcss", slug: "tailwindcss", color: "#06B6D4" },
-                  { id: "openai", slug: "openai", color: "#412991" }
+                  { id: "openai", slug: "openai", color: "#FFFFFF", customIcon: (
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+                      <path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-4.71-2.815 6.04 6.04 0 0 0-5.617 2.379 6.03 6.03 0 0 0-5.321-2.379 6.045 6.045 0 0 0-4.71 2.815 5.985 5.985 0 0 0-.516 4.91 6.046 6.046 0 0 0 1.42 5.108 5.985 5.985 0 0 0 .516 4.91 6.046 6.046 0 0 0 4.71 2.815 6.04 6.04 0 0 0 5.617-2.379 6.03 6.03 0 0 0 5.321 2.379 6.045 6.045 0 0 0 4.71-2.815 5.985 5.985 0 0 0 .516-4.91 6.046 6.046 0 0 0-1.42-5.108zM12 14.285l-1.933-1.116-.01-.006-2.008-1.159v-2.23l1.933 1.115.01.006 2.008 1.159v2.231zm0-3.328l-1.933-1.115V7.611L12 6.496l1.933 1.115v2.231L12 10.957zm1.008 1.74l1.933-1.115V9.351l2.008-1.159v2.231l-1.933 1.115-.01.006-2.008 1.159v-2.231zm2.933-3.328l1.933-1.115V10.37l-1.933 1.115-1.933 1.116v-2.231l1.933-1.115zm-5.866 5.559l-1.933-1.115v-2.231L10.075 12l1.933 1.115v2.231l-1.933-1.115zm-2.008-3.328l-1.933-1.115V8.14l1.933 1.115 1.933 1.116v2.231l-1.933-1.115z" />
+                    </svg>
+                  ) }
                 ].map((tech, i) => {
                   const angle = (i / 8) * Math.PI * 2;
                   const radius = 280; // Distance from center
@@ -457,12 +465,18 @@ export default function AboutPage() {
                         }}
                         className="absolute -translate-x-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 rounded-xl bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 flex items-center justify-center p-3 pointer-events-auto hover:border-sinai-glow-orange/50 transition-all group shadow-2xl"
                       >
-                        <img 
-                          src={`https://cdn.simpleicons.org/${tech.slug}/fff`} 
-                          className="w-full h-full object-contain opacity-40 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
-                          alt={tech.id}
-                          style={{ filter: `drop-shadow(0 0 10px ${tech.color}44)` }}
-                        />
+                        {tech.customIcon ? (
+                          <div className="w-full h-full opacity-40 group-hover:opacity-100 transition-opacity" style={{ color: tech.color }}>
+                            {tech.customIcon}
+                          </div>
+                        ) : (
+                          <img 
+                            src={`https://cdn.simpleicons.org/${tech.slug}/fff`} 
+                            className="w-full h-full object-contain opacity-40 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
+                            alt={tech.id}
+                            style={{ filter: `drop-shadow(0 0 10px ${tech.color}44)` }}
+                          />
+                        )}
                         {/* Technical Label on Hover */}
                         <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[8px] font-mono text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-black/60 px-2 py-1 rounded-sm border border-white/5">
                           {tech.id.toUpperCase()}
