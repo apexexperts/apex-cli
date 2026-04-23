@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
@@ -9,12 +9,14 @@ export default function AboutPage() {
       
       {/* CEO Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
+        {/* Abstract Background Glows */}
         <div className="absolute top-1/4 -left-20 w-96 h-96 bg-sinai-glow-orange/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-sinai-glow-orange/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             
+            {/* Left: Founder Image */}
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -22,6 +24,7 @@ export default function AboutPage() {
               className="relative group"
             >
               <div className="relative aspect-[4/5] md:aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-zinc-900 shadow-2xl">
+                {/* Decorative Frame Elements */}
                 <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-sinai-glow-orange/30 rounded-tl-3xl z-10" />
                 <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-sinai-glow-orange/30 rounded-br-3xl z-10" />
                 
@@ -33,8 +36,10 @@ export default function AboutPage() {
                   priority
                 />
                 
+                {/* Overlay Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60" />
                 
+                {/* Name Tag HUD */}
                 <div className="absolute bottom-8 left-8 right-8 p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
                   <div className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.4em] uppercase mb-1">Architect & Visionary</div>
                   <h3 className="text-2xl font-black tracking-tighter uppercase">Ahmed Al-Saied</h3>
@@ -43,6 +48,7 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
+            {/* Right: CEO Message */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -68,35 +74,61 @@ export default function AboutPage() {
                 <p>
                   Every line of code we write, every model we train, and every interface we design is driven by a single obsession: <span className="text-white font-medium">Technical Excellence without Compromise.</span>
                 </p>
+                <p className="relative">
+                  We are here to empower visionaries with the tools they need to redefine what's possible in their industries.<span className="absolute -right-8 -bottom-4 text-6xl font-serif text-sinai-glow-orange/20 rotate-180">"</span>
+                </p>
               </div>
 
               <div className="pt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[
-                  { val: "17+", label: "Years\nExperience" },
-                  { val: "Oracle", label: "APEX\nSpecialist" },
-                  { val: "Data", label: "Driven\nLogic" },
-                  { val: "AI", label: "Native\nPhilosophy" }
-                ].map((stat, i) => (
-                  <div key={i} className="px-5 py-4 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col gap-1 hover:border-sinai-glow-orange/30 transition-colors group/card">
-                    <span className="text-3xl font-black text-white group-hover/card:text-sinai-glow-orange transition-colors">{stat.val}</span>
-                    <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest leading-tight whitespace-pre-line">{stat.label}</span>
-                  </div>
-                ))}
+                <div className="px-5 py-4 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col gap-1 hover:border-sinai-glow-orange/30 transition-colors group/card">
+                  <span className="text-3xl font-black text-white group-hover/card:text-sinai-glow-orange transition-colors">17+</span>
+                  <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest leading-tight">Years<br/>Experience</span>
+                </div>
+                <div className="px-5 py-4 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col gap-1 hover:border-sinai-glow-orange/30 transition-colors group/card">
+                  <span className="text-3xl font-black text-white group-hover/card:text-sinai-glow-orange transition-colors">Oracle</span>
+                  <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest leading-tight">APEX<br/>Specialist</span>
+                </div>
+                <div className="px-5 py-4 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col gap-1 hover:border-sinai-glow-orange/30 transition-colors group/card">
+                  <span className="text-3xl font-black text-white group-hover/card:text-sinai-glow-orange transition-colors">Data</span>
+                  <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest leading-tight">Driven<br/>Logic</span>
+                </div>
+                <div className="px-5 py-4 rounded-xl bg-white/[0.03] border border-white/10 flex flex-col gap-1 hover:border-sinai-glow-orange/30 transition-colors group/card">
+                  <span className="text-3xl font-black text-white group-hover/card:text-sinai-glow-orange transition-colors">AI</span>
+                  <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-widest leading-tight">Native<br/>Philosophy</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-6 pt-8">
+                <div className="h-[1px] flex-1 bg-white/10" />
+                <div className="flex flex-col items-end">
+                  <div className="text-sm font-mono text-white tracking-widest uppercase">Ahmed Al-Saied</div>
+                  <div className="text-[10px] font-mono text-zinc-500 tracking-widest uppercase">Founder & CEO</div>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Vision & Mission: The Neural Spine */}
+      {/* Experimental Vision & Mission: The Neural Spine */}
       <section className="relative py-40 px-6 overflow-hidden bg-[#050505]">
+        {/* Background Architectural Grid */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
              style={{ backgroundImage: 'radial-gradient(circle, #f2a24b 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
         
         <div className="max-w-7xl mx-auto relative">
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-sinai-glow-orange/30 to-transparent hidden md:block" />
+          
+          {/* Central Logical Spine */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-sinai-glow-orange/30 to-transparent hidden md:block">
+            <motion.div 
+              animate={{ top: ["0%", "100%"] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              className="absolute w-1 h-20 bg-sinai-glow-orange shadow-[0_0_15px_#f2a24b] -left-[1.5px]"
+            />
+          </div>
 
           <div className="space-y-40">
+            
             {/* Vision Node */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
               <div className="relative order-2 md:order-1">
@@ -111,31 +143,56 @@ export default function AboutPage() {
                     <span className="text-sinai-glow-orange font-mono text-[10px] tracking-[0.5em] uppercase">Phase_01</span>
                     <div className="h-px w-20 bg-sinai-glow-orange/20" />
                   </div>
+                  <h2 className="text-7xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.8] opacity-10 absolute -top-10 -left-10 select-none">Vision</h2>
                   <h3 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase leading-none text-left">
                     Architecting <br/>
                     <span className="text-sinai-glow-orange">The Future</span>
                   </h3>
                   <p className="text-zinc-400 text-lg lg:text-xl leading-relaxed max-w-md font-light italic text-left">
-                    To be the global architectural benchmark for AI-native enterprise solutions, redefining how businesses interact with data.
+                    To be the global architectural benchmark for AI-native enterprise solutions, redefining how businesses interact with data through the lens of technical mastery.
                   </p>
+                  <div className="flex items-center gap-6 pt-4">
+                    <div className="w-12 h-12 rounded-full border border-sinai-glow-orange/20 flex items-center justify-center group-hover:border-sinai-glow-orange transition-colors">
+                      <div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-ping" />
+                    </div>
+                    <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">Global_Standard_Protocol</span>
+                  </div>
                 </motion.div>
               </div>
               
               <div className="hidden md:flex justify-center order-1 md:order-2">
-                <div className="w-80 h-80 relative">
+                <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 1.5 }}
+                  className="w-80 h-80 relative"
+                >
                   <div className="absolute inset-0 border-[0.5px] border-sinai-glow-orange/20 rounded-full animate-[spin_20s_linear_infinite]" />
                   <div className="absolute inset-10 border-[0.5px] border-white/10 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
-                </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-40 h-40 bg-sinai-glow-orange/5 rounded-full blur-3xl" />
+                    <span className="text-sinai-glow-orange font-mono text-xs tracking-widest uppercase text-center">Target_Vision</span>
+                  </div>
+                </motion.div>
               </div>
             </div>
 
             {/* Mission Node */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
               <div className="hidden md:flex justify-center">
-                <div className="w-80 h-80 relative">
+                <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 1.5 }}
+                  className="w-80 h-80 relative"
+                >
                   <div className="absolute inset-0 border-t border-l border-white/10 rounded-3xl rotate-45 animate-pulse" />
                   <div className="absolute inset-10 border-b border-r border-sinai-glow-orange/20 rounded-3xl -rotate-45" />
-                </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-40 h-40 bg-white/5 rounded-full blur-3xl" />
+                    <span className="text-white font-mono text-xs tracking-widest uppercase text-center">Execution_Core</span>
+                  </div>
+                </motion.div>
               </div>
 
               <div className="relative">
@@ -150,161 +207,265 @@ export default function AboutPage() {
                     <div className="h-px w-20 bg-white/20" />
                     <span className="text-white font-mono text-[10px] tracking-[0.5em] uppercase">Phase_02</span>
                   </div>
+                  <h2 className="text-7xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.8] opacity-10 absolute -top-10 -right-10 md:-left-10 select-none">Mission</h2>
                   <h3 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase leading-none text-right md:text-left">
                     Engineering <br/>
                     <span className="text-white">The Impact</span>
                   </h3>
                   <p className="text-zinc-400 text-lg lg:text-xl leading-relaxed max-w-md ml-auto md:ml-0 font-light italic text-right md:text-left">
-                    Empowering global industries through radical innovation and database-driven intelligence.
+                    Empowering global industries through radical innovation and database-driven intelligence. We engineer scalable architectures that transform complexity into simplicity.
                   </p>
+                  <div className="flex items-center gap-6 pt-4 justify-end md:justify-start">
+                    <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">Active_Deployment_Logic</span>
+                    <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                    </div>
+                  </div>
                 </motion.div>
               </div>
             </div>
+
           </div>
+        </div>
+        
+        {/* Floating Background Labels */}
+        <div className="absolute top-1/2 left-10 -translate-y-1/2 text-[15vh] font-black text-white/[0.02] uppercase tracking-[0.5em] select-none vertical-text hidden lg:block">
+          Evolution
+        </div>
+        <div className="absolute top-1/2 right-10 -translate-y-1/2 text-[15vh] font-black text-sinai-glow-orange/[0.02] uppercase tracking-[0.5em] select-none vertical-text hidden lg:block">
+          Architecture
         </div>
       </section>
 
-      {/* Human Intelligence Nexus (Original Planetary Version) */}
+      {/* Experimental Engineering DNA: The Architectural Schematics */}
       <section className="relative py-48 px-6 bg-[#030303] overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-sinai-glow-orange/20 rounded-full animate-[ping_10s_infinite]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] border border-white/5 rounded-full" />
-        </div>
-
+        {/* Background Mesh Grid */}
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
+             style={{ backgroundImage: 'linear-gradient(#f2a24b 0.5px, transparent 0.5px), linear-gradient(90deg, #f2a24b 0.5px, transparent 0.5px)', backgroundSize: '100px 100px' }} />
+        
         <div className="max-w-7xl mx-auto relative">
-          <div className="mb-32 space-y-6 text-center">
+          <div className="mb-32 space-y-6">
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-4 px-6 py-2 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-sm"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-4"
             >
-              <span className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.6em] uppercase">Human_Intelligence_Nexus</span>
+              <div className="w-12 h-px bg-sinai-glow-orange" />
+              <span className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.5em] uppercase text-left">Strategic_DNA // Schema_v2.0</span>
             </motion.div>
-            <h2 className="text-6xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.8]">
-              The <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">Architects</span>
+            <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none text-left">
+              Engineering <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange to-white">Foundations</span>
             </h2>
           </div>
 
-          <div className="relative h-[800px] lg:h-[1000px] w-full mt-20 flex items-center justify-center">
-            {/* Neural Web Background */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.15]">
-              <defs>
-                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#f2a24b" stopOpacity="0" />
-                  <stop offset="50%" stopColor="#f2a24b" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="#f2a24b" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <circle cx="50%" cy="50%" r="15%" stroke="white" strokeWidth="0.1" fill="none" className="opacity-20" />
-              <circle cx="50%" cy="50%" r="30%" stroke="white" strokeWidth="0.1" fill="none" className="opacity-10" />
-              <circle cx="50%" cy="50%" r="45%" stroke="white" strokeWidth="0.1" fill="none" className="opacity-5" />
-            </svg>
+          {/* The Schematic Grid */}
+          <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-y-24 items-center">
+            
+            {/* Visual Logic Bridge (The Lines) */}
+            <div className="absolute inset-0 hidden lg:block pointer-events-none">
+              <svg className="w-full h-full opacity-10">
+                <motion.path 
+                  d="M 200 100 L 800 100 L 800 400 L 200 400 Z" 
+                  stroke="#f2a24b" 
+                  strokeWidth="0.5" 
+                  fill="none"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 2 }}
+                />
+                <circle cx="200" cy="100" r="2" fill="#f2a24b" />
+                <circle cx="800" cy="100" r="2" fill="#f2a24b" />
+                <circle cx="800" cy="400" r="2" fill="#f2a24b" />
+                <circle cx="200" cy="400" r="2" fill="#f2a24b" />
+              </svg>
+            </div>
 
+            {/* DNA Nodes */}
             {[
-              { id: "01", name: "Asma Ali", role: "MARKETING MANAGER", pos: "top-[15%] left-[50%] -translate-x-1/2", side: "top-full mt-8 left-1/2 -translate-x-1/2", img: "/images/project2.png", skills: ["Growth", "Branding", "Strategy"] },
-              { id: "02", name: "Hisham Mohamed", role: "SALES MANAGER", pos: "top-[25%] right-[15%]", side: "right-full mr-8 top-0", img: "/images/project3.png", skills: ["Enterprise", "Relations", "Scale"] },
-              { id: "03", name: "Amr Mohamed", role: "TEAM LEADER", pos: "top-[50%] right-[5%] -translate-y-1/2", side: "right-full mr-8 top-1/2 -translate-y-1/2", img: "/images/avatars/Amr.png", skills: ["Management", "Agile", "Delivery"] },
-              { id: "04", name: "Micheal Magdy", role: "SR. SOFTWARE ENG.", pos: "bottom-[25%] right-[15%]", side: "right-full mr-8 bottom-0", img: "/images/avatars/mich.png", skills: ["Backend", "Architecture", "Scaling"] },
-              { id: "05", name: "Abdelrahman Ibrahim", role: "SR. SOFTWARE ENG.", pos: "bottom-[15%] left-[50%] -translate-x-1/2", side: "bottom-full mb-8 left-1/2 -translate-x-1/2", img: "/images/avatars/abd.png", skills: ["Frontend", "Performance", "Logic"] },
-              { id: "06", name: "Mario Milad", role: "PRODUCT DESIGNER", pos: "bottom-[25%] left-[15%]", side: "left-full ml-8 bottom-0", img: "/images/web-dev-cinematic.png", skills: ["Visuals", "Motion", "UX Logic"] },
-              { id: "07", name: "Reham Samer", role: "QUALITY ENGINEERING", pos: "top-[50%] left-[5%] -translate-y-1/2", side: "left-full ml-8 top-1/2 -translate-y-1/2", img: "/images/project3.png", skills: ["Testing", "QA Automation", "UAT"] },
-              { id: "08", name: "Maha Salam", role: "SYSTEM ADMIN", pos: "top-[25%] left-[15%]", side: "left-full ml-8 top-0", img: "/images/mobile-dev-hero.png", skills: ["Infrastructure", "Cloud", "Security"] }
-            ].map((member, i) => (
+              { id: "01", title: "Precision", col: "lg:col-span-5", align: "left", desc: "Military-grade structural integrity in every byte.", tech: "ERR_TOLERANCE: 0.0001%" },
+              { id: "02", title: "Intelligence", col: "lg:col-span-5 lg:col-start-8", align: "right", desc: "Autonomous reasoning embedded in the architecture.", tech: "NEURAL_SYNAPSE: 4.2ms" },
+              { id: "03", title: "Precision", col: "lg:col-span-5", align: "left", desc: "Enterprise-grade Oracle database supremacy.", tech: "QUERY_PRECISION: NANO" },
+              { id: "04", title: "Cinematic", col: "lg:col-span-5 lg:col-start-8", align: "right", desc: "The intersection of high-engineering and art.", tech: "MOTION_FIDELITY: 120fps" }
+            ].map((node, i) => (
               <motion.div
-                key={member.id}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 1 }}
-                className={`absolute ${member.pos} group z-20 hover:z-50`}
+                key={node.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className={`${node.col} relative group cursor-crosshair`}
               >
-                <div className="relative cursor-pointer">
-                  <div className="absolute inset-0 -m-8 border border-sinai-glow-orange/20 rounded-full group-hover:border-sinai-glow-orange/60 transition-all duration-700 animate-[spin_15s_linear_infinite]" />
-                  <div className="w-24 h-24 lg:w-40 lg:h-40 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-sinai-glow-orange transition-all duration-700 bg-zinc-900 shadow-2xl relative">
-                    <Image src={member.img} alt={member.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-sinai-glow-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className={`space-y-6 ${node.align === 'right' ? 'lg:text-right' : 'lg:text-left'}`}>
+                  <div className={`flex items-center gap-4 ${node.align === 'right' ? 'justify-end' : 'justify-start'}`}>
+                    <span className="text-4xl font-black text-white/5 group-hover:text-sinai-glow-orange/20 transition-colors duration-500">{node.id}</span>
+                    <div className="h-px w-12 bg-white/10 group-hover:w-20 group-hover:bg-sinai-glow-orange/40 transition-all duration-500" />
                   </div>
-                  <div className={`absolute ${member.side} w-64 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none z-50`}>
-                    <div className="p-6 rounded-2xl bg-black/90 backdrop-blur-xl border border-sinai-glow-orange/20 space-y-3 shadow-3xl">
-                      <div className="space-y-1">
-                        <div className="text-[8px] font-mono text-sinai-glow-orange tracking-[0.4em] uppercase">Identity_Node_{member.id}</div>
-                        <h3 className="text-xl font-black tracking-tighter text-white uppercase">{member.name}</h3>
-                        <p className="text-[10px] font-mono text-zinc-500 tracking-widest leading-none">{member.role}</p>
-                      </div>
-                      <div className="h-px w-full bg-white/5" />
-                      <div className="flex flex-wrap gap-2">
-                        {member.skills.map(skill => (
-                          <span key={skill} className="text-[7px] font-mono px-2 py-1 bg-white/5 border border-white/10 text-zinc-400 rounded-sm">{skill}</span>
-                        ))}
-                      </div>
-                    </div>
+                  
+                  <div className="space-y-4">
+                    <h3 className="text-4xl lg:text-5xl font-black tracking-tighter uppercase text-white group-hover:text-sinai-glow-orange transition-all duration-500">
+                      {node.title}
+                    </h3>
+                    <p className="text-zinc-500 text-lg max-w-sm group-hover:text-zinc-300 transition-colors duration-500 mx-auto lg:mx-0">
+                      {node.desc}
+                    </p>
+                  </div>
+
+                  <div className={`flex items-center gap-3 pt-4 font-mono text-[9px] tracking-[0.3em] text-zinc-600 ${node.align === 'right' ? 'justify-end' : 'justify-start'}`}>
+                    <span className="group-hover:text-sinai-glow-orange transition-colors">{node.tech}</span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-sinai-glow-orange group-hover:animate-ping" />
+                  </div>
+                </div>
+
+                {/* Floating Meta-Data */}
+                <div className="absolute -top-10 -right-10 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none">
+                  <div className="text-[8px] font-mono text-sinai-glow-orange/40 p-4 border-l border-t border-sinai-glow-orange/20">
+                    COORD_X: {Math.random().toFixed(4)}<br/>
+                    COORD_Y: {Math.random().toFixed(4)}<br/>
+                    SIG_STRENGTH: NOMINAL
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* The Power Matrix: Tech Ecosystem */}
-      <section className="relative py-48 px-6 bg-[#050505] overflow-hidden border-t border-white/5">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="space-y-12">
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-3">
-                  <div className="w-12 h-px bg-sinai-glow-orange" />
-                  <span className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.5em] uppercase">Tech_Telemetry</span>
-                </div>
-                <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none">The Power <br/><span className="text-white">Matrix</span></h2>
-                <p className="text-zinc-400 text-xl font-light max-w-lg leading-relaxed italic">Our stack is engineered for extreme performance and enterprise-grade reliability.</p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {[
-                  { title: "Core Engine", tech: "Oracle APEX", desc: "Enterprise data logic at peak scale." },
-                  { title: "AI Layer", tech: "Claude / Gemini", desc: "Advanced reasoning and automation." },
-                  { title: "Frontend", tech: "Next.js / React", desc: "Fluid, high-performance experiences." },
-                  { title: "Design", tech: "Architectural UX", desc: "Systematic, scalable design systems." }
-                ].map((item, i) => (
-                  <div key={i} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-sinai-glow-orange/20 transition-colors">
-                    <h4 className="text-[10px] font-mono text-sinai-glow-orange uppercase mb-2 tracking-widest">{item.title}</h4>
-                    <div className="text-xl font-bold text-white mb-2">{item.tech}</div>
-                    <p className="text-xs text-zinc-500 leading-relaxed">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative aspect-square flex items-center justify-center">
-              <div className="absolute inset-0 border border-white/5 rounded-full" />
-              <div className="absolute inset-20 border border-white/5 rounded-full" />
-              <div className="absolute inset-40 border border-white/10 rounded-full" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-sinai-glow-orange/10 to-transparent rounded-full animate-[spin_10s_linear_infinite]" />
-              <div className="relative w-40 h-40 bg-zinc-900 rounded-full border-2 border-sinai-glow-orange flex items-center justify-center shadow-[0_0_50px_rgba(242,162,75,0.2)]">
-                <Image src="/images/oracle-apex-hero-v1_1776958757733.png" alt="Oracle" fill className="object-contain p-8 grayscale hover:grayscale-0 transition-all" />
-              </div>
-              {[
-                { label: "Claude", pos: "top-0 left-1/2 -translate-x-1/2", img: "/images/cognitive_data_synthesis_core_1776954400075.png" },
-                { label: "Next.js", pos: "bottom-1/4 -right-10", img: "/images/brand_logo_mark_ae_1776963173769.png" },
-                { label: "AI Core", pos: "bottom-1/4 -left-10", img: "/images/agentic_orchestration_core_1776953703734.png" }
-              ].map((sat, i) => (
-                <motion.div key={i} animate={{ rotate: 360 }} transition={{ duration: 25 + (i * 5), repeat: Infinity, ease: "linear" }} className="absolute inset-0 pointer-events-none">
-                  <div className={`absolute ${sat.pos} w-20 h-20 bg-zinc-900 border border-white/10 rounded-2xl flex items-center justify-center p-4 pointer-events-auto hover:border-sinai-glow-orange/50 transition-colors shadow-2xl`}>
-                    <Image src={sat.img} alt={sat.label} fill className="object-contain p-4 grayscale hover:grayscale-0 transition-all" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+        {/* Global HUD Decorations */}
+        <div className="absolute top-20 left-10 text-white/5 font-mono text-[10px] tracking-widest hidden lg:block uppercase select-none">
+          Blueprint_Archive // Sec_09
+        </div>
+        <div className="absolute bottom-20 right-10 text-white/5 font-mono text-[10px] tracking-widest hidden lg:block uppercase select-none">
+          Architecture_Verified // 2024
         </div>
       </section>
 
-      <style jsx global>{`
-        @keyframes scan {
-          0% { top: 0%; }
-          100% { top: 100%; }
-        }
-      `}</style>
+      {/* Experimental Tech Ecosystem: The Kinetic Matrix */}
+      <section className="relative py-48 px-6 bg-[#050505] overflow-hidden">
+        {/* Animated Neural Background (CSS-based) */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#f2a24b_1px,transparent_1px)] bg-[size:100px_100px] animate-[pulse_8s_infinite]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            
+            {/* Left Side: Tech Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-12"
+            >
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
+                  <div className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                  <span className="text-[10px] font-mono text-zinc-500 tracking-[0.4em] uppercase">Tech_Ecosystem // Integrated</span>
+                </div>
+                <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none">
+                  The <br/>
+                  <span className="text-sinai-glow-orange">Power</span> Matrix
+                </h2>
+                <p className="text-zinc-400 text-xl leading-relaxed max-w-lg font-light italic">
+                  We don't just use tools; we engineer ecosystems. Our tech stack is a curated symphony of enterprise-grade reliability and cutting-edge AI innovation.
+                </p>
+              </div>
+
+              {/* Live System Telemetry List */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { label: "AI_CORE", val: "ANTHROPIC_CLAUDE", status: "STABLE" },
+                  { label: "DB_ENGINE", val: "ORACLE_26", status: "NEXT_GEN" },
+                  { label: "FRONTEND", val: "NEXT.JS", status: "OPTIMIZED" },
+                  { label: "BACKEND", val: "NODE_PRO_MAX", status: "SCALABLE" }
+                ].map((item, i) => (
+                  <div key={item.label} className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2 group hover:border-sinai-glow-orange/30 transition-all duration-500">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[8px] font-mono text-zinc-600 tracking-widest uppercase">{item.label}</span>
+                      <span className="text-[8px] font-mono text-sinai-glow-orange uppercase tracking-widest">{item.status}</span>
+                    </div>
+                    <div className="text-sm font-bold text-white group-hover:text-sinai-glow-orange transition-colors">{item.val}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right Side: The Neural Core Visual (Upgraded from Capability Hub) */}
+            <div className="relative aspect-square flex items-center justify-center">
+              <div className="relative w-full h-full flex items-center justify-center scale-90 lg:scale-100">
+                {/* Outer Orbital Rings */}
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 border border-sinai-glow-orange/10 rounded-full border-dashed"
+                />
+                <motion.div 
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-16 border border-white/5 rounded-full border-dashed"
+                />
+                
+                {/* Central Glass Sphere */}
+                <div className="relative w-72 h-72 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-white/[0.05] to-transparent flex items-center justify-center backdrop-blur-3xl border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group">
+                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
+                  
+                  {/* Internal Pulsing Plasma */}
+                  <motion.div 
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute w-48 h-48 lg:w-64 lg:h-64 rounded-full bg-sinai-glow-orange/20 blur-[60px]"
+                  />
+
+                  {/* Central Branding Module */}
+                  <div className="relative z-10 flex flex-col items-center">
+                    {/* CORE_CPU Technical Frame */}
+                    <div className="px-3 py-1 rounded-sm border border-sinai-glow-orange/40 bg-sinai-glow-orange/5 mb-4 relative overflow-hidden group-hover:border-sinai-glow-orange transition-colors">
+                      <div className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
+                        POWER_MATRIX_v3.0
+                      </div>
+                      <motion.div 
+                        animate={{ left: ["-100%", "200%"] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                        className="absolute top-0 bottom-0 w-8 bg-white/20 skew-x-12 -translate-x-full"
+                      />
+                    </div>
+
+                    {/* APEX Text Branding */}
+                    <div className="relative">
+                      <h3 className="text-5xl lg:text-7xl font-black tracking-[-0.05em] text-white flex flex-col items-center leading-none">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-sinai-glow-orange/50">APEX</span>
+                        <span className="text-[10px] font-mono tracking-[1.5em] text-sinai-glow-orange/60 ml-[1.5em] -mt-1 font-bold">EXPERTS</span>
+                      </h3>
+                      <div className="absolute -bottom-4 left-0 right-0 h-4 bg-gradient-to-t from-sinai-glow-orange/10 to-transparent blur-sm" />
+                    </div>
+                  </div>
+
+                  {/* Orbiting Data Fragments */}
+                  {[...Array(3)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 10 + i * 5, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-0 pointer-events-none"
+                    >
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[8px] font-mono text-white/20 tracking-tighter">
+                        {i === 0 ? "0x7F" : i === 1 ? "PWR_SYNC" : "V_MATRIX"}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Floating Scanning Ring */}
+                <motion.div 
+                  animate={{ scale: [0.8, 1.2, 0.8], opacity: [0, 0.5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute w-[400px] h-[400px] lg:w-[550px] lg:h-[550px] border-2 border-sinai-glow-orange/30 rounded-full"
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
