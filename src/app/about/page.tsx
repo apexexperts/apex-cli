@@ -337,6 +337,106 @@ export default function AboutPage() {
           Architecture_Verified // 2024
         </div>
       </section>
+
+      {/* Experimental Tech Ecosystem: The Kinetic Matrix */}
+      <section className="relative py-48 px-6 bg-[#050505] overflow-hidden">
+        {/* Animated Neural Background (CSS-based) */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#f2a24b_1px,transparent_1px)] bg-[size:100px_100px] animate-[pulse_8s_infinite]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            
+            {/* Left Side: Tech Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-12"
+            >
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
+                  <div className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                  <span className="text-[10px] font-mono text-zinc-500 tracking-[0.4em] uppercase">Tech_Ecosystem // Integrated</span>
+                </div>
+                <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none">
+                  The <br/>
+                  <span className="text-sinai-glow-orange">Power</span> Matrix
+                </h2>
+                <p className="text-zinc-400 text-xl leading-relaxed max-w-lg font-light italic">
+                  We don't just use tools; we engineer ecosystems. Our tech stack is a curated symphony of enterprise-grade reliability and cutting-edge AI innovation.
+                </p>
+              </div>
+
+              {/* Live System Telemetry List */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { label: "AI_CORE", val: "ANTHROPIC_CLAUDE", status: "STABLE" },
+                  { label: "DB_ENGINE", val: "ORACLE_26", status: "NEXT_GEN" },
+                  { label: "FRONTEND", val: "NEXT.JS", status: "OPTIMIZED" },
+                  { label: "BACKEND", val: "NODE_PRO_MAX", status: "SCALABLE" }
+                ].map((item, i) => (
+                  <div key={item.label} className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2 group hover:border-sinai-glow-orange/30 transition-all duration-500">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[8px] font-mono text-zinc-600 tracking-widest uppercase">{item.label}</span>
+                      <span className="text-[8px] font-mono text-sinai-glow-orange uppercase tracking-widest">{item.status}</span>
+                    </div>
+                    <div className="text-sm font-bold text-white group-hover:text-sinai-glow-orange transition-colors">{item.val}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right Side: The Kinetic Core Visual */}
+            <div className="relative aspect-square flex items-center justify-center">
+              {/* Central Core */}
+              <motion.div 
+                animate={{ scale: [1, 1.1, 1], rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="w-48 h-48 lg:w-64 lg:h-64 rounded-full border border-sinai-glow-orange/20 relative flex items-center justify-center"
+              >
+                <div className="absolute inset-0 bg-sinai-glow-orange/5 rounded-full blur-[60px]" />
+                <div className="w-12 h-12 bg-sinai-glow-orange rounded-lg shadow-[0_0_30px_#f2a24b] flex items-center justify-center text-white font-black text-xl">
+                  AE
+                </div>
+                
+                {/* Orbiting Tech Nodes */}
+                {[
+                  { id: "oracle", icon: (
+                    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
+                      <path d="M5.5 2.5 L2.5 5.5 L18.5 21.5 L21.5 18.5 Z" fill="currentColor" fillOpacity="0.3" />
+                      <path d="M5.5 21.5 L2.5 18.5 L18.5 2.5 L21.5 5.5 Z" fill="currentColor" />
+                    </svg>
+                  ), pos: "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" },
+                  { id: "anthropic", slug: "anthropic", pos: "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2" },
+                  { id: "nextdotjs", slug: "nextdotjs", pos: "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2" },
+                  { id: "react", slug: "react", pos: "right-0 top-1/2 translate-x-1/2 -translate-y-1/2" }
+                ].map((tech, i) => (
+                  <motion.div
+                    key={i}
+                    className={`absolute ${tech.pos} w-12 h-12 lg:w-16 lg:h-16 rounded-xl bg-[#0a0a0a] border border-white/10 flex items-center justify-center p-3 shadow-2xl group cursor-pointer hover:border-sinai-glow-orange/50 transition-all text-zinc-500 hover:text-sinai-glow-orange`}
+                  >
+                    {tech.icon ? tech.icon : (
+                      <img 
+                        src={`https://cdn.simpleicons.org/${tech.slug}/fff`} 
+                        className="w-full h-full object-contain opacity-50 group-hover:opacity-100 transition-opacity"
+                        alt={tech.id}
+                      />
+                    )}
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* Extra Floating HUD Decorations */}
+              <div className="absolute top-0 right-0 w-32 h-32 border-t border-r border-white/5" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 border-b border-l border-white/5" />
+              <div className="absolute inset-0 border border-white/[0.02] rounded-full scale-150 animate-pulse" />
+            </div>
+
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
