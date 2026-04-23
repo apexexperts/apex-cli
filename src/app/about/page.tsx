@@ -185,14 +185,14 @@ export default function AboutPage() {
           {/* The Identity Vault: Architectural Editorial Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 mt-20 border border-white/5 bg-white/5 relative z-10">
             {[
-              { id: "01", name: "Asma Ali", role: "Marketing Manager", size: "lg:col-span-2 lg:row-span-2", img: "/images/project2.png", skills: ["Branding", "Strategy"], tag: "STRATEGY" },
-              { id: "02", name: "Hisham Mohamed", role: "Sales Manager", size: "lg:col-span-1 lg:row-span-1", img: "/images/project3.png", skills: ["Enterprise", "Scale"], tag: "BUSINESS" },
+              { id: "01", name: "Asma Ali", role: "Marketing Manager", size: "lg:col-span-1 lg:row-span-2", img: "/images/project2.png", skills: ["Branding", "Strategy"], tag: "STRATEGY" },
+              { id: "02", name: "Hisham Mohamed", role: "Sales Manager", size: "lg:col-span-1 lg:row-span-2", img: "/images/project3.png", skills: ["Enterprise", "Scale"], tag: "BUSINESS" },
               { id: "03", name: "Amr Mohamed", role: "Team Leader", size: "lg:col-span-1 lg:row-span-2", img: "/images/avatars/Amr.png", skills: ["Logic", "Agile"], tag: "ENGINEERING" },
-              { id: "04", name: "Micheal Magdy", role: "Sr. Software Eng.", size: "lg:col-span-1 lg:row-span-1", img: "/images/avatars/mich.png", skills: ["Backend", "Cloud"], tag: "ENGINEERING" },
-              { id: "05", name: "Abdelrahman Ibrahim", role: "Sr. Software Eng.", size: "lg:col-span-2 lg:row-span-1", img: "/images/avatars/abd.png", skills: ["Frontend", "UX Logic"], tag: "ENGINEERING" },
-              { id: "06", name: "Mario Milad", role: "Product Designer", size: "lg:col-span-1 lg:row-span-1", img: "/images/web-dev-cinematic.png", skills: ["Visuals", "Motion"], tag: "DESIGN" },
-              { id: "07", name: "Reham Samer", role: "Quality Eng.", size: "lg:col-span-1 lg:row-span-1", img: "/images/project3.png", skills: ["QA", "UAT"], tag: "QUALITY" },
-              { id: "08", name: "Maha Salam", role: "System Admin", size: "lg:col-span-1 lg:row-span-1", img: "/images/mobile-dev-hero.png", skills: ["Security", "Linux"], tag: "OPS" }
+              { id: "04", name: "Micheal Magdy", role: "Sr. Software Eng.", size: "lg:col-span-1 lg:row-span-2", img: "/images/avatars/mich.png", skills: ["Backend", "Cloud"], tag: "ENGINEERING" },
+              { id: "05", name: "Abdelrahman Ibrahim", role: "Sr. Software Eng.", size: "lg:col-span-1 lg:row-span-2", img: "/images/avatars/abd.png", skills: ["Frontend", "UX Logic"], tag: "ENGINEERING" },
+              { id: "06", name: "Mario Milad", role: "Product Designer", size: "lg:col-span-1 lg:row-span-2", img: "/images/web-dev-cinematic.png", skills: ["Visuals", "Motion"], tag: "DESIGN" },
+              { id: "07", name: "Reham Samer", role: "Quality Eng.", size: "lg:col-span-1 lg:row-span-2", img: "/images/project3.png", skills: ["QA", "UAT"], tag: "QUALITY" },
+              { id: "08", name: "Maha Salam", role: "System Admin", size: "lg:col-span-1 lg:row-span-2", img: "/images/mobile-dev-hero.png", skills: ["Security", "Linux"], tag: "OPS" }
             ].map((member, i) => (
               <motion.div
                 key={member.id}
