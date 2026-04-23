@@ -550,7 +550,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { id: "01", name: "Amr Mohamed", role: "TEAM LEADER", img: "/images/avatars/Amr.png", skills: ["Architecture", "Leadership", "Neural Sync"], cluster: "TECHNICAL" },
-              { id: "02", name: "Asma Ali", role: "MARKETING MANAGER", img: "/images/project2.png", skills: ["Growth", "Branding", "Market_IQ"], cluster: "BUSINESS" },
+              { id: "02", name: "Asma Ali", role: "MARKETING MANAGER", img: "/images/avatars/asma.png", skills: ["Growth", "Branding", "Market_IQ"], cluster: "BUSINESS" },
               { id: "03", name: "Hisham Mohamed", role: "SALES MANAGER", img: "/images/project3.png", skills: ["Enterprise", "Scale", "Relations"], cluster: "BUSINESS" },
               { id: "04", name: "Micheal Magdy", role: "SR. SOFTWARE ENG.", img: "/images/avatars/mich.png", skills: ["Backend", "Cloud Scale", "Logic"], cluster: "TECHNICAL" },
               { id: "05", name: "Abdelrahman Ibrahim", role: "SR. SOFTWARE ENG.", img: "/images/avatars/abd.png", skills: ["Frontend", "UX Engine", "Motion"], cluster: "TECHNICAL" },
