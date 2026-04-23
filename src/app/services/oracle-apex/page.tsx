@@ -1036,11 +1036,168 @@ export default function OracleApexPage() {
         </div>
       </section>
 
-      <section className="py-32 border-t border-white/5">
-        <div className="container mx-auto px-6 text-center">
+      {/* Related Case Study: ApexCloud ERP Transformation - SUPER PREMIUM */}
+      <section className="py-48 relative overflow-hidden bg-[#030303]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(196,42,30,0.05)_0%,transparent_70%)] pointer-events-none" />
+        
+        <div className="container mx-auto px-6">
           <SectionReveal>
-            <div className="inline-block px-8 py-4 rounded-2xl bg-white/[0.02] border border-white/5 text-zinc-500 font-mono text-xs uppercase tracking-widest">
-              Section_Coming_Soon: Enterprise_Integration_Architecture
+            <div className="flex items-center gap-4 mb-20">
+              <div className="h-px w-12 bg-[#C42A1E]" />
+              <span className="text-[#C42A1E] font-mono text-[10px] tracking-[0.5em] font-bold uppercase">Case_Study // 01</span>
+            </div>
+          </SectionReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+            <div className="lg:col-span-8">
+              <SectionReveal>
+                <div className="relative group aspect-[16/9] rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl">
+                  <Image 
+                    src="/images/project2.png" 
+                    alt="ApexCloud ERP Transformation" 
+                    fill 
+                    className="object-cover group-hover:scale-105 transition-transform duration-[3000ms] brightness-75"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+                  
+                  {/* Technical Overlay */}
+                  <div className="absolute bottom-10 left-10 right-10 flex justify-between items-end">
+                    <div className="space-y-4">
+                      <div className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-mono tracking-widest uppercase">
+                        Enterprise_Modernization
+                      </div>
+                      <h3 className="text-4xl md:text-6xl font-black text-white tracking-tighter">ApexCloud ERP</h3>
+                    </div>
+                    <div className="hidden md:block">
+                       <div className="text-[10px] font-mono text-zinc-400 tracking-widest uppercase mb-2">Build_Version</div>
+                       <div className="text-xl font-bold text-[#C42A1E]">APEX_PRO_V24</div>
+                    </div>
+                  </div>
+                </div>
+              </SectionReveal>
+            </div>
+
+            <div className="lg:col-span-4 space-y-12 text-left">
+              <SectionReveal>
+                <div className="space-y-8">
+                  <h4 className="text-2xl font-bold text-white tracking-tight leading-tight">
+                    Transforming complex financial legacy systems into high-performance digital hubs.
+                  </h4>
+                  <p className="text-zinc-500 leading-relaxed font-light">
+                    We migrated a multi-decade legacy ERP system for a global financial institution into a unified Oracle APEX environment, reducing operational complexity by 60% and improving data throughput by 300%.
+                  </p>
+                </div>
+              </SectionReveal>
+
+              <SectionReveal>
+                <div className="grid grid-cols-1 gap-6">
+                  {[
+                    { label: "PERFORMANCE_GAIN", value: "+300%" },
+                    { label: "TCO_REDUCTION", value: "-60%" },
+                    { label: "SECURITY_SYNC", value: "NATIVE" }
+                  ].map((stat, i) => (
+                    <div key={i} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-between">
+                      <div className="text-[9px] font-mono text-zinc-600 tracking-widest uppercase">{stat.label}</div>
+                      <div className="text-xl font-bold text-[#C42A1E] tracking-tight">{stat.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </SectionReveal>
+
+              <SectionReveal>
+                 <Link href="#contact" className="inline-flex items-center gap-4 text-[10px] font-mono text-white tracking-[0.4em] font-black uppercase group">
+                   View Project Details
+                   <div className="w-8 h-px bg-[#C42A1E] group-hover:w-12 transition-all duration-300" />
+                 </Link>
+              </SectionReveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - HYPER PREMIUM REVAMP */}
+      <section id="engage" className="py-64 relative overflow-hidden bg-black">
+        {/* Cinematic background elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(196,42,30,0.08)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(196,42,30,0.05)_0%,transparent_50%)]" />
+        
+        {/* Animated Grid Lines */}
+        <div className="absolute inset-0 opacity-[0.03] [mask-image:radial-gradient(ellipse_at_center,black,transparent)]">
+          <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <SectionReveal>
+            <div className="max-w-6xl mx-auto relative">
+              {/* Technical HUD Markers */}
+              <div className="absolute -top-12 -left-12 w-24 h-24 border-t border-l border-[#C42A1E]/30 rounded-tl-3xl hidden lg:block" />
+              <div className="absolute -bottom-12 -right-12 w-24 h-24 border-b border-r border-[#C42A1E]/30 rounded-br-3xl hidden lg:block" />
+
+              <div className="relative p-16 md:p-32 rounded-[5rem] bg-zinc-900/40 border border-white/5 backdrop-blur-3xl text-center overflow-hidden group">
+                {/* Background Animation Layers */}
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.1, 0.2, 0.1]
+                  }}
+                  transition={{ duration: 10, repeat: Infinity }}
+                  className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(196,42,30,0.15)_0%,transparent_70%)] pointer-events-none"
+                />
+
+                <div className="relative z-10 space-y-12">
+                  <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#C42A1E]/10 border border-[#C42A1E]/20">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C42A1E] animate-ping" />
+                    <span className="text-[9px] font-mono text-[#C42A1E] tracking-[0.4em] uppercase font-black">Ready_For_Deployment</span>
+                  </div>
+
+                  <h2 className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9] text-white">
+                    Automate <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C42A1E] via-white to-[#C42A1E]/40 bg-[length:200%_auto] animate-gradient">Excellence.</span>
+                  </h2>
+
+                  <p className="text-xl md:text-3xl text-zinc-400 max-w-3xl mx-auto font-light leading-relaxed">
+                    Join the technical elite and deploy autonomous intelligence layers that transform your operational reality into a competitive masterpiece.
+                  </p>
+
+                  <div className="pt-10">
+                    <Link href="/#contact" className="group relative inline-flex items-center justify-center">
+                      {/* Button Outer Glow */}
+                      <div className="absolute inset-0 bg-[#C42A1E]/40 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      {/* Button Body */}
+                      <div className="relative px-16 py-8 rounded-full bg-[#C42A1E] text-white font-black text-sm tracking-[0.4em] uppercase overflow-hidden">
+                        <span className="relative z-10">Initialize Engagement</span>
+                        
+                        {/* Shimmer Effect */}
+                        <motion.div 
+                          animate={{ x: ["-100%", "100%"] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
+                        />
+                      </div>
+
+                      {/* Technical Meta Labels (Hover Only) */}
+                      <div className="absolute -right-32 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 hidden xl:block">
+                        <div className="text-[8px] font-mono text-[#C42A1E] text-left border-l border-[#C42A1E]/30 pl-4 py-2">
+                          ENCRYPTED_SYNC: OK<br />
+                          PRIORITY: HIGH<br />
+                          AUTH_LAYER: V4
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Floating HUD Elements */}
+                <div className="absolute top-12 right-12 text-zinc-800 font-mono text-[8px] hidden md:block select-none">
+                  SYSTEM_STATUS: NOMINAL<br />
+                  LATENCY: 0.001MS
+                </div>
+                <div className="absolute bottom-12 left-12 text-zinc-800 font-mono text-[8px] hidden md:block select-none uppercase">
+                  APEX_EXPERTS_SOLUTIONS<br />
+                  ©2026_ALL_RIGHTS_RESERVED
+                </div>
+              </div>
             </div>
           </SectionReveal>
         </div>
