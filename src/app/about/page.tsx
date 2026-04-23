@@ -494,39 +494,26 @@ export default function AboutPage() {
               { id: "02", name: "Hisham Mohamed", role: "SALES MANAGER", pos: "top-[25%] right-[15%]", side: "right-full mr-8 top-0", img: "/images/project3.png", skills: ["Enterprise", "Relations", "Scale"] },
               { id: "03", name: "Amr Mohamed", role: "TEAM LEADER", pos: "top-[50%] right-[5%] -translate-y-1/2", side: "right-full mr-8 top-1/2 -translate-y-1/2", img: "/images/web-dev-cinematic.png", skills: ["Management", "Agile", "Delivery"] },
               { id: "04", name: "Micheal Magdy", role: "SR. SOFTWARE ENG.", pos: "bottom-[25%] right-[15%]", side: "right-full mr-8 bottom-0", img: "/images/mobile-dev-hero.png", skills: ["Backend", "Architecture", "Scaling"] },
-              { id: "05", name: "Abdelrahman Ibrahim", role: "bottom-[15%] left-[50%] -translate-x-1/2", side: "bottom-full mb-8 left-1/2 -translate-x-1/2", name: "Abdelrahman Ibrahim", role: "SR. SOFTWARE ENG.", img: "/images/project2.png", skills: ["Frontend", "Performance", "Logic"] },
+              { id: "05", name: "Abdelrahman Ibrahim", role: "SR. SOFTWARE ENG.", pos: "bottom-[15%] left-[50%] -translate-x-1/2", side: "bottom-full mb-8 left-1/2 -translate-x-1/2", img: "/images/project2.png", skills: ["Frontend", "Performance", "Logic"] },
               { id: "06", name: "Mario Milad", role: "PRODUCT DESIGNER", pos: "bottom-[25%] left-[15%]", side: "left-full ml-8 bottom-0", img: "/images/web-dev-cinematic.png", skills: ["Visuals", "Motion", "UX Logic"] },
               { id: "07", name: "Reham Samer", role: "QUALITY ENGINEERING", pos: "top-[50%] left-[5%] -translate-y-1/2", side: "left-full ml-8 top-1/2 -translate-y-1/2", img: "/images/project3.png", skills: ["Testing", "QA Automation", "UAT"] },
               { id: "08", name: "Maha Salam", role: "SYSTEM ADMIN", pos: "top-[25%] left-[15%]", side: "left-full ml-8 top-0", img: "/images/mobile-dev-hero.png", skills: ["Infrastructure", "Cloud", "Security"] }
             ].map((member, i) => (
-              <motion.div
+              <div
                 key={member.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05, duration: 0.8 }}
-                animate={{ 
-                  y: [0, i % 2 === 0 ? 8 : -8, 0],
-                  x: [0, i % 2 === 0 ? -5 : 5, 0]
-                }}
-                transition={{ 
-                  duration: 8 + i, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
                 className={`absolute ${member.pos} group z-20 hover:z-50`}
               >
                 <div className="relative cursor-pointer">
-                  {/* Rotating Biometric Rings */}
-                  <div className="absolute inset-0 -m-6 border border-sinai-glow-orange/0 rounded-full group-hover:border-sinai-glow-orange/40 transition-all duration-700 animate-[spin_10s_linear_infinite]" />
+                  {/* Rotating Biometric Rings (Subtle) */}
+                  <div className="absolute inset-0 -m-8 border border-sinai-glow-orange/20 rounded-full group-hover:border-sinai-glow-orange/60 transition-all duration-700 animate-[spin_15s_linear_infinite]" />
                   
-                  {/* Profile Avatar Frame */}
-                  <div className="w-20 h-20 lg:w-32 lg:h-32 rounded-full overflow-hidden border border-white/10 group-hover:border-sinai-glow-orange transition-all duration-700 bg-zinc-900 shadow-2xl relative">
+                  {/* Profile Avatar Frame - FIXED LARGE SIZE */}
+                  <div className="w-32 h-32 lg:w-44 lg:h-44 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-sinai-glow-orange transition-all duration-700 bg-zinc-900 shadow-2xl relative">
                     <Image 
                       src={member.img}
                       alt={member.name}
                       fill
-                      className="object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-1000 opacity-100"
+                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-100"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-sinai-glow-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
@@ -550,7 +537,7 @@ export default function AboutPage() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
 
             {/* Background Data Stream (Vertical) */}
