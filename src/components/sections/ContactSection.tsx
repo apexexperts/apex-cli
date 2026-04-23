@@ -60,10 +60,35 @@ export function ContactSection() {
                 <input type="email" placeholder="EMAIL ADDRESS" className="w-full bg-white/[0.03] border border-white/5 rounded-2xl p-4 text-sm text-white placeholder:text-zinc-700 focus:outline-none focus:border-sinai-glow-orange/40 focus:bg-white/[0.05] transition-all" />
               </div>
             </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest px-2">Organization</label>
+                <input type="text" placeholder="COMPANY NAME" className="w-full bg-white/[0.03] border border-white/5 rounded-2xl p-4 text-sm text-white placeholder:text-zinc-700 focus:outline-none focus:border-sinai-glow-orange/40 focus:bg-white/[0.05] transition-all" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest px-2">Geographic & Comms</label>
+                <input type="text" placeholder="COUNTRY & PHONE NUMBER" className="w-full bg-white/[0.03] border border-white/5 rounded-2xl p-4 text-sm text-white placeholder:text-zinc-700 focus:outline-none focus:border-sinai-glow-orange/40 focus:bg-white/[0.05] transition-all" />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest px-2">Service Selection</label>
+              <select className="w-full bg-white/[0.03] border border-white/5 rounded-2xl p-4 text-sm text-white placeholder:text-zinc-700 focus:outline-none focus:border-sinai-glow-orange/40 focus:bg-white/[0.05] transition-all appearance-none cursor-pointer">
+                <option value="" disabled selected className="bg-[#050505]">SELECT REQUIRED SERVICE</option>
+                <option value="ai-automation" className="bg-[#050505]">AI & PROCESS AUTOMATION</option>
+                <option value="oracle-apex" className="bg-[#050505]">ORACLE APEX DEVELOPMENT</option>
+                <option value="web-dev" className="bg-[#050505]">WEB DEVELOPMENT</option>
+                <option value="mobile-dev" className="bg-[#050505]">MOBILE DEVELOPMENT</option>
+                <option value="other" className="bg-[#050505]">OTHER / CUSTOM SOLUTIONS</option>
+              </select>
+            </div>
+
             <div className="space-y-2">
               <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest px-2">Transmission Data</label>
               <textarea placeholder="PROJECT REQUIREMENTS OR INQUIRY" rows={5} className="w-full bg-white/[0.03] border border-white/5 rounded-2xl p-4 text-sm text-white placeholder:text-zinc-700 focus:outline-none focus:border-sinai-glow-orange/40 focus:bg-white/[0.05] transition-all resize-none" />
             </div>
+
             <button type="submit" className="btn-premium w-full py-5 text-xs font-black uppercase tracking-[0.3em] flex items-center justify-center gap-4 group/btn">
               Execute Handshake Protocol
               <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
