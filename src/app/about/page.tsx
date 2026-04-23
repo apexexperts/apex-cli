@@ -551,7 +551,7 @@ export default function AboutPage() {
             {[
               { id: "01", name: "Amr Mohamed", role: "TEAM LEADER", img: "/images/avatars/Amr.png", skills: ["Architecture", "Leadership", "Neural Sync"], cluster: "TECHNICAL" },
               { id: "02", name: "Asma Ali", role: "MARKETING MANAGER", img: "/images/avatars/asma.png", skills: ["Growth", "Branding", "Market_IQ"], cluster: "BUSINESS" },
-              { id: "03", name: "Hisham Mohamed", role: "SALES MANAGER", img: "/images/project3.png", skills: ["Enterprise", "Scale", "Relations"], cluster: "BUSINESS" },
+              { id: "03", name: "Hesham Abdelwahed", role: "SALES MANAGER", img: "/images/project3.png", skills: ["Enterprise", "Scale", "Relations"], cluster: "BUSINESS" },
               { id: "04", name: "Micheal Magdy", role: "SR. SOFTWARE ENG.", img: "/images/avatars/mich.png", skills: ["Backend", "Cloud Scale", "Logic"], cluster: "TECHNICAL" },
               { id: "05", name: "Abdelrahman Ibrahim", role: "SR. SOFTWARE ENG.", img: "/images/avatars/abd.png", skills: ["Frontend", "UX Engine", "Motion"], cluster: "TECHNICAL" },
               { id: "06", name: "Mario Milad", role: "PRODUCT DESIGNER", img: "/images/web-dev-cinematic.png", skills: ["Visuals", "Human Proxy", "Design"], cluster: "CREATIVE" },
