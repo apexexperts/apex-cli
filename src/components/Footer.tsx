@@ -77,8 +77,8 @@ export function Footer() {
               <h4 className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.3em] font-bold">HQ_LOC</h4>
               <div className="space-y-3">
                 <div className="text-xs text-zinc-400 font-mono leading-relaxed">
-                  37.7749° N<br />
-                  122.4194° W
+                  31.2001° N<br />
+                  29.9187° E
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />

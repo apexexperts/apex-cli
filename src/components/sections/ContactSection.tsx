@@ -31,7 +31,7 @@ export function ContactSection() {
               </div>
               <div>
                 <div className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-1">Direct Channel</div>
-                <div className="text-lg font-bold text-white">hello@apexexperts.ai</div>
+                <div className="text-lg font-bold text-white">info@apexexperts.net</div>
               </div>
             </div>
             <div className="flex items-center gap-6 group">
@@ -40,7 +40,7 @@ export function ContactSection() {
               </div>
               <div>
                 <div className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-1">Encrypted HQ</div>
-                <div className="text-lg font-bold text-white">Silicon Valley // Remote Global</div>
+                <div className="text-lg font-bold text-white">Alexandria, EGYPT</div>
               </div>
             </div>
           </div>
