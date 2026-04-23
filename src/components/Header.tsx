@@ -323,10 +323,10 @@ export function Header() {
 
           {/* Action Area */}
           <div className="flex items-center gap-6">
-            <button className="hidden sm:flex items-center gap-3 px-6 py-2.5 rounded-full bg-white text-black hover:bg-sinai-glow-orange hover:text-white transition-all duration-500 text-[10px] font-black uppercase tracking-[0.3em] shadow-[0_10px_30px_rgba(255,255,255,0.1)] group">
+            <Link href="/#contact" className="hidden sm:flex items-center gap-3 px-6 py-2.5 rounded-full bg-white text-black hover:bg-sinai-glow-orange hover:text-white transition-all duration-500 text-[10px] font-black uppercase tracking-[0.3em] shadow-[0_10px_30px_rgba(255,255,255,0.1)] group">
               Connect_Node
               <div className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange group-hover:bg-white animate-pulse" />
-            </button>
+            </Link>
 
             {/* Mobile Toggle */}
             <button 
