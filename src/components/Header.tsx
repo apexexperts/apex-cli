@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
@@ -34,8 +35,12 @@ export function Header() {
         
         {/* Logo Area */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-lg bg-sinai-glow-orange flex items-center justify-center shadow-[0_0_20px_rgba(138,59,19,0.3)] group-hover:shadow-[0_0_30px_rgba(138,59,19,0.6)] transition-all">
-            <span className="text-white font-black text-lg">A</span>
+          <div className="w-12 h-12 rounded-xl bg-sinai-glow-orange flex items-center justify-center shadow-[0_0_20px_rgba(138,59,19,0.3)] group-hover:shadow-[0_0_30px_rgba(138,59,19,0.6)] transition-all relative overflow-hidden">
+            <span className="text-white font-black text-xl z-10">AE</span>
+            {/* Subtle Overlay of the 3D logo for texture */}
+            <div className="absolute inset-0 opacity-40 scale-150">
+              <Image src="/images/brand-logo-ae.png" alt="" fill className="object-cover" />
+            </div>
           </div>
           <div className="flex flex-col">
             <span className="text-lg font-black tracking-tighter text-white uppercase leading-none">APEX Experts</span>

@@ -22,21 +22,21 @@ const APEX_CAPABILITIES = [
     title: "Development",
     desc: "End-to-end engineering of mission-critical APEX applications. We specialize in advanced data modeling, custom plugin development, high-performance database design, and hybrid mobile solutions with enterprise reporting.",
     icon: <Code2 className="w-8 h-8" />,
-    image: "/images/project1.png"
+    image: "/images/apex-dev-core.png"
   },
   {
     id: "02",
     title: "Integration",
     desc: "Seamlessly connecting your APEX ecosystem with third-party interfaces, advanced JavaScript libraries, and modern utility frameworks. Robust implementations of payment gateways, mailing protocols, and complex API orchestrations.",
     icon: <Cpu className="w-8 h-8" />,
-    image: "/images/project2.png"
+    image: "/images/apex-ai-workflow.png"
   },
   {
     id: "03",
     title: "Training",
     desc: "Elite corporate and educational training modules tailored for all levels. From fundamental APEX building blocks to expert-level architectural mastery, our specialists empower your team with Oracle excellence.",
     icon: <GraduationCap className="w-8 h-8" />,
-    image: "/images/project3.png"
+    image: "/images/apex-training-hub.png"
   },
   {
     id: "04",
@@ -57,7 +57,7 @@ const APEX_CAPABILITIES = [
     title: "Support",
     desc: "Round-the-clock enterprise support for servers and applications. Proactive 24-hour monitoring and rapid-response maintenance to ensure your Oracle APEX infrastructure remains synchronized and optimal.",
     icon: <ShieldCheck className="w-8 h-8" />,
-    image: "/images/project3.png"
+    image: "/images/apex-training-hub.png"
   }
 ];
 
@@ -206,7 +206,7 @@ const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: any
 
 const CapabilityDetailView = ({ cap }: { cap: any }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group pointer-events-auto">
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
       
       <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl z-10">
@@ -342,10 +342,35 @@ const OracleApexHero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-            className="relative flex items-center justify-center"
+            className="relative"
           >
-            <div className="relative w-full aspect-square max-w-2xl">
-               <NeuralCore />
+            <div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(196,42,30,0.15)] group">
+              <Image 
+                src="/images/oracle-apex-hero.png" 
+                alt="Oracle APEX Premium Development" 
+                fill 
+                className="object-cover group-hover:scale-110 transition-transform duration-[5000ms] brightness-75"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+              
+              {/* Technical HUD Overlays */}
+              <div className="absolute top-10 right-10 text-[8px] font-mono text-[#C42A1E]/80 tracking-[0.2em] text-right">
+                SYSTEM_STATUS: NOMINAL<br />
+                DB_MASTERY: LEVEL_MAX
+              </div>
+              
+              <div className="absolute bottom-10 left-10 text-[8px] font-mono text-zinc-500 tracking-[0.2em]">
+                CORE_ENGINE_V24.1<br />
+                © APEX_EXPERTS_SOLUTIONS
+              </div>
+
+              {/* Scanning Line Animation */}
+              <motion.div 
+                animate={{ top: ["-10%", "110%"] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C42A1E]/40 to-transparent z-20 pointer-events-none"
+              />
             </div>
           </motion.div>
         </div>
@@ -385,7 +410,7 @@ export default function OracleApexPage() {
 
           <div className="relative max-w-7xl mx-auto h-[700px] flex items-center justify-center">
             {/* Orbital Nodes - Always Visible */}
-            <div className="absolute inset-0 z-30 pointer-events-none">
+            <div className="absolute inset-0 z-50 pointer-events-none">
               {APEX_CAPABILITIES.map((cap, i) => (
                 <OrbitalNode 
                   key={cap.id} 
@@ -400,7 +425,7 @@ export default function OracleApexPage() {
             </div>
 
             {/* Central Area: Hub or Detail */}
-            <div className="relative w-full max-w-4xl h-full flex items-center justify-center z-20">
+            <div className="relative w-full max-w-4xl h-full flex items-center justify-center z-40 pointer-events-none">
               <AnimatePresence mode="wait">
                 {!activeCapId ? (
                   <motion.div 
@@ -518,7 +543,7 @@ export default function OracleApexPage() {
                 {/* Main Holographic Core */}
                 <div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(196,42,30,0.1)] group">
                   <Image 
-                    src="/images/project1.png" 
+                    src="/images/apex-dev-core.png" 
                     alt="APEX Development Core" 
                     fill 
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"
@@ -585,7 +610,7 @@ export default function OracleApexPage() {
                 {/* Main Holographic Core */}
                 <div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(196,42,30,0.05)] group">
                   <Image 
-                    src="/images/project2.png" 
+                    src="/images/apex-ai-workflow.png" 
                     alt="AI Integration Hub" 
                     fill 
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"
@@ -838,7 +863,7 @@ export default function OracleApexPage() {
                 {/* Main Holographic Core */}
                 <div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(196,42,30,0.05)] group">
                   <Image 
-                    src="/images/project1.png" 
+                    src="/images/apex-training-hub.png" 
                     alt="APEX Training Hub" 
                     fill 
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"

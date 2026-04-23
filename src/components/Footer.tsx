@@ -59,7 +59,7 @@ export function Footer() {
               links={[
                 { name: "AI & Process Automation", href: "/services/ai-automation" },
                 { name: "Oracle APEX development", href: "/services/oracle-apex" },
-                { name: "Web Development", href: "/#services" },
+                { name: "Web Development", href: "/services/web-development" },
                 { name: "Mobile Development", href: "/#services" }
               ]} 
             />
