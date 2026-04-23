@@ -483,7 +483,7 @@ export default function AboutPage() {
                           {tech.id.toUpperCase()}
                         </div>
                       </motion.div>
-                    </motion.div>
+                    </div>
                   );
                 })}
 
