@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function ContactSection() {
   return (
@@ -72,16 +73,9 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 relative">
               <label className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest px-2">Service Selection</label>
-              <select className="w-full bg-white/[0.03] border border-white/5 rounded-2xl p-4 text-sm text-white placeholder:text-zinc-700 focus:outline-none focus:border-sinai-glow-orange/40 focus:bg-white/[0.05] transition-all appearance-none cursor-pointer">
-                <option value="" disabled selected className="bg-[#050505]">SELECT REQUIRED SERVICE</option>
-                <option value="ai-automation" className="bg-[#050505]">AI & PROCESS AUTOMATION</option>
-                <option value="oracle-apex" className="bg-[#050505]">ORACLE APEX DEVELOPMENT</option>
-                <option value="web-dev" className="bg-[#050505]">WEB DEVELOPMENT</option>
-                <option value="mobile-dev" className="bg-[#050505]">MOBILE DEVELOPMENT</option>
-                <option value="other" className="bg-[#050505]">OTHER / CUSTOM SOLUTIONS</option>
-              </select>
+              <CustomServiceSelect />
             </div>
 
             <div className="space-y-2">
@@ -97,5 +91,71 @@ export function ContactSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function CustomServiceSelect() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("");
+
+  const options = [
+    { id: "ai-automation", label: "AI & PROCESS AUTOMATION", icon: "🧠" },
+    { id: "oracle-apex", label: "ORACLE APEX DEVELOPMENT", icon: "💎" },
+    { id: "web-dev", label: "WEB DEVELOPMENT", icon: "🌐" },
+    { id: "mobile-dev", label: "MOBILE DEVELOPMENT", icon: "📱" },
+    { id: "other", label: "OTHER / CUSTOM SOLUTIONS", icon: "⚡" },
+  ];
+
+  return (
+    <div className="relative">
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full bg-white/[0.03] border border-white/5 rounded-2xl p-4 text-sm text-white cursor-pointer flex justify-between items-center hover:border-sinai-glow-orange/30 transition-all group"
+      >
+        <span className={selected ? "text-white" : "text-zinc-700"}>
+          {selected ? options.find(o => o.id === selected)?.label : "SELECT REQUIRED SERVICE"}
+        </span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          className="text-sinai-glow-orange"
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M6 9l6 6 6-6"/></svg>
+        </motion.div>
+      </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            className="absolute top-full left-0 right-0 mt-3 bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden z-50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-3xl"
+          >
+            <div className="p-2 space-y-1">
+              {options.map((opt) => (
+                <div
+                  key={opt.id}
+                  onClick={() => {
+                    setSelected(opt.id);
+                    setIsOpen(false);
+                  }}
+                  className={`flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all ${
+                    selected === opt.id 
+                      ? "bg-sinai-glow-orange/10 text-sinai-glow-orange border border-sinai-glow-orange/20" 
+                      : "text-zinc-400 hover:bg-white/[0.05] hover:text-white"
+                  }`}
+                >
+                  <span className="text-xs grayscale group-hover:grayscale-0">{opt.icon}</span>
+                  <span className="text-[10px] font-mono tracking-widest font-bold uppercase">{opt.label}</span>
+                  {selected === opt.id && (
+                    <div className="ml-auto w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
