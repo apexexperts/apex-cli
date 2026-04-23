@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const POSITIONS = [
   {
@@ -105,10 +106,23 @@ export function AboutSection() {
                   
                   {/* Progress Indicator line for active item */}
                   {activeIdx === i && (
-                    <motion.div 
-                      layoutId="activePosition"
-                      className="absolute left-0 top-0 bottom-0 w-1 bg-sinai-glow-orange rounded-full"
-                    />
+                    <>
+                      <motion.div 
+                        layoutId="activePosition"
+                        className="absolute left-0 top-0 bottom-0 w-1 bg-sinai-glow-orange rounded-full"
+                      />
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="mt-6"
+                      >
+                        <Link href="/about" className="inline-flex items-center gap-3 text-[10px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black uppercase hover:text-white transition-all group/btn">
+                          Explore_Full_Record
+                          <div className="w-6 h-px bg-sinai-glow-orange group-hover/btn:w-10 transition-all duration-500" />
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover/btn:translate-x-1 transition-transform"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                        </Link>
+                      </motion.div>
+                    </>
                   )}
                 </div>
               ))}
