@@ -556,7 +556,7 @@ export default function AboutPage() {
               { id: "05", name: "Abdelrahman Ibrahim", role: "SR. SOFTWARE ENG.", img: "/images/avatars/abd.png", skills: ["Frontend", "UX Engine", "Motion"], cluster: "TECHNICAL" },
               { id: "06", name: "Mario Milad", role: "PRODUCT DESIGNER", img: "/images/avatars/mario.png", skills: ["Visuals", "Human Proxy", "Design"], cluster: "CREATIVE" },
               { id: "07", name: "Reham Samer", role: "QUALITY ENGINEERING", img: "/images/avatars/reham.png", skills: ["Stability", "QA_Core", "Compliance"], cluster: "TECHNICAL" },
-              { id: "08", name: "Maha Salam", role: "SYSTEM ADMIN", img: "/images/mobile-dev-hero.png", skills: ["Infrastructure", "Sec_Ops", "Kernel"], cluster: "TECHNICAL" }
+              { id: "08", name: "Maha Salam", role: "SYSTEM ADMIN", img: "/images/avatars/maha.png", skills: ["Infrastructure", "Sec_Ops", "Kernel"], cluster: "TECHNICAL" }
             ].map((member, i) => (
               <motion.div
                 key={member.id}
