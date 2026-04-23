@@ -176,7 +176,11 @@ export function ServicesSection() {
         {SERVICES.map((service) => (
           <Link
             key={service.id}
-            href={service.id === "01" ? "/services/ai-automation" : "#"}
+            href={
+              service.id === "01" ? "/services/ai-automation" : 
+              service.id === "02" ? "/services/oracle-apex" : 
+              "#"
+            }
             className="group relative rounded-[3rem] p-12 overflow-hidden transition-all duration-500 bg-white/[0.02] border border-white/10 hover:border-sinai-glow-orange/40 hover:bg-white/[0.04] flex flex-col min-h-[420px]"
           >
             {/* Technical Corner ID */}
