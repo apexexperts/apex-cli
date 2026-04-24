@@ -395,7 +395,7 @@ export default function OracleApexPage() {
   const activeCap = APEX_CAPABILITIES.find(c => c.id === activeCapId);
 
   return (
-    <main className="bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
+    <div className="bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
       <OracleApexHero />
       
       {/* The Core: Oracle APEX Capability Hub - Design Identical to AI-Automation */}
@@ -1219,6 +1219,6 @@ export default function OracleApexPage() {
           System_Build_Hash: 0xAPEX_5A11
         </div>
       </section>
-    </main>
+    </div>
   );
 }

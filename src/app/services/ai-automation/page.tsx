@@ -285,7 +285,7 @@ export default function AIAutomationPage() {
   const activeCap = CAPABILITIES.find(c => c.id === activeCapId);
 
   return (
-    <main ref={containerRef} className="bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
+    <div ref={containerRef} className="bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Layers */}
         <motion.div 
@@ -1019,6 +1019,6 @@ export default function AIAutomationPage() {
         </div>
       </section>
 
-    </main>
+    </div>
   );
 }

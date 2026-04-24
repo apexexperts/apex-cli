@@ -568,7 +568,7 @@ export default function WebDevelopmentPage() {
   const activeCap = WEB_CAPABILITIES.find(c => c.id === activeCapId);
 
   return (
-    <main className="bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
+    <div className="bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
       <Header />
       
       <WebDevelopmentHero />
@@ -1272,6 +1272,6 @@ export default function WebDevelopmentPage() {
           System_Build_Hash: 0x5a1118f
         </div>
       </section>
-    </main>
+    </div>
   );
 }

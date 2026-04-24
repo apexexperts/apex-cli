@@ -325,7 +325,7 @@ export default function MobileDevelopmentPage() {
   const activeCap = MOBILE_CAPABILITIES.find(c => c.id === activeCapId);
 
   return (
-    <main className="bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black font-sans">
+    <div className="bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black font-sans">
       <Header />
       <MobileHero />
       
@@ -608,6 +608,6 @@ export default function MobileDevelopmentPage() {
           System_Build_Hash: 0x5a1118f
         </div>
       </section>
-    </main>
+    </div>
   );
 }
