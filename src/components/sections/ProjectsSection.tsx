@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 
 interface Project {
@@ -10,13 +11,12 @@ interface Project {
   category: string;
   metrics: Record<string, string>;
   image: string;
-  logo?: string; // Support for project/product logo
-  videoUrl?: string; // Support for project videos
+  logo?: string;
+  videoUrl?: string;
   desc: string;
   features?: string[];
-  ctaText?: string; // Support for custom button text
+  ctaText?: string;
   tech: string[];
-  layout: "wide" | "hero" | "split";
 }
 
 const PROJECTS: Project[] = [
@@ -39,8 +39,7 @@ const PROJECTS: Project[] = [
       "Purpose-Built for Oracle APEX"
     ],
     ctaText: "Explore ASKLYZE",
-    tech: ["Oracle APEX", "Oracle Database", "Natural Language", "AI Analytics"],
-    layout: "wide"
+    tech: ["Oracle APEX", "Oracle Database", "Natural Language", "AI Analytics"]
   },
   {
     id: "02",
@@ -50,8 +49,7 @@ const PROJECTS: Project[] = [
     metrics: { recall: "96%", precision: "98%", speed: "Sub-second" },
     image: "/images/project2.png",
     desc: "Enterprise-grade retrieval-augmented generation (RAG) platform optimized for processing multi-million document legal repositories with extreme precision.",
-    tech: ["Pinecone", "GPT-4o", "LangGraph"],
-    layout: "hero"
+    tech: ["Pinecone", "GPT-4o", "LangGraph"]
   },
   {
     id: "03",
@@ -61,130 +59,169 @@ const PROJECTS: Project[] = [
     metrics: { error_rate: "-12%", processing: "Real-time", scale: "Global" },
     image: "/images/project3.png",
     desc: "Next-generation strategic forecasting platform that leverages time-series AI to predict market shifts with industrial-grade reliability.",
-    tech: ["PyTorch", "Rust", "Apache Kafka"],
-    layout: "split"
+    tech: ["PyTorch", "Rust", "Apache Kafka"]
   }
 ];
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="scroll-mt-28 py-40 relative">
-      {/* Section Header */}
-      <div className="max-w-6xl mx-auto px-6 mb-32">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="h-px w-12 bg-sinai-glow-orange" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-sinai-glow-orange font-bold">
-            04 // Selected Works
-          </span>
+    <section id="projects" className="relative py-40 !bg-transparent">
+      {/* Decorative Blur - Exact match from ProcessSection background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sinai-glow-orange/5 blur-[120px] pointer-events-none" />
+
+      {/* Aggressive Reset for any inherited glows */}
+      <style jsx>{`
+        section#projects::after, section#projects::before { display: none !important; }
+      `}</style>
+      {/* Header Section - Clean & Strong */}
+      <div className="max-w-7xl mx-auto px-6 mb-40 relative z-10 !bg-transparent">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
+          <div className="space-y-6">
+            <div className="flex items-center gap-4">
+              <div className="h-px w-12 bg-sinai-glow-orange" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-sinai-glow-orange font-bold">
+                04 // Selected Works
+              </span>
+            </div>
+            <h2 className="text-7xl md:text-9xl font-black tracking-tighter text-white leading-[0.85] uppercase">
+              Engineering <br />
+              <span className="text-zinc-800">Excellence.</span>
+            </h2>
+          </div>
+          <div className="max-w-sm text-right hidden md:block">
+            <p className="text-zinc-500 font-mono text-[10px] leading-relaxed tracking-widest uppercase">
+              Curated selection of high-performance <br />
+              AI implementations & digital systems.
+            </p>
+          </div>
         </div>
-        <h2 className="text-6xl md:text-9xl font-black tracking-tighter text-white leading-none">
-          ENGINEERING <br /> <span className="opacity-20 italic">EXCELLENCE.</span>
-        </h2>
       </div>
 
-      {/* Projects Grid/Wall */}
-      <div className="space-y-40">
-        {PROJECTS.map((project) => (
-          <div key={project.id} className="px-4 md:px-8">
-            <ProjectLayoutSelector project={project} />
-          </div>
+      {/* Projects Feed */}
+      <div className="container mx-auto px-6 space-y-64 relative z-10">
+        {PROJECTS.map((project, index) => (
+          <ProjectShowcase key={project.id} project={project} index={index} />
         ))}
       </div>
     </section>
   );
 }
 
-function ProjectLayoutSelector({ project }: { project: Project }) {
-  switch (project.layout) {
-    case "wide":
-      return <WideLayout project={project} />;
-    case "hero":
-      return <HeroLayout project={project} />;
-    case "split":
-      return <SplitLayout project={project} />;
-    default:
-      return <WideLayout project={project} />;
-  }
-}
+function ProjectShowcase({ project, index }: { project: Project; index: number }) {
+  const isEven = index % 2 === 0;
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
-/* ── Wide Layout: Classic Tech Showcase ── */
-function WideLayout({ project }: { project: Project }) {
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
   return (
-    <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
-      <div className="lg:col-span-8 group relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-black">
-        <ProjectMedia project={project} />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 pointer-events-none" />
-        {!project.videoUrl && (
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
-              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1" />
-            </div>
+    <motion.div 
+      ref={containerRef}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center"
+    >
+      {/* Media Column */}
+      <motion.div 
+        style={{ y: isEven ? y : 0 }}
+        className={`lg:col-span-7 relative ${isEven ? "" : "lg:order-2"}`}
+      >
+        <div className="relative aspect-[16/10] rounded-[2rem] overflow-hidden bg-zinc-950 border border-white/5 group shadow-2xl">
+          <ProjectMedia project={project} />
+          
+          {/* Internal Glow Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 pointer-events-none" />
+          <div className="absolute inset-0 bg-sinai-glow-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+          
+          {/* Subtle Technical Label */}
+          <div className="absolute top-8 left-8 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-2 group-hover:translate-y-0">
+            <div className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
+            <span className="text-[8px] font-mono text-white/60 tracking-[0.4em] uppercase">Deployment_Active // 0x{project.id}</span>
           </div>
-        )}
+        </div>
+      </motion.div>
+
+      {/* Info Column */}
+      <div className={`lg:col-span-5 space-y-12 ${isEven ? "" : "lg:order-1"}`}>
+        <div className="space-y-8">
+          {project.logo ? (
+            <div className="h-10 w-auto relative">
+              <img 
+                src={project.logo} 
+                alt={`${project.title} Logo`} 
+                className="h-full w-auto object-contain brightness-0 invert opacity-100"
+              />
+            </div>
+          ) : (
+            <div className="space-y-2">
+              <div className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.4em] font-bold uppercase">{project.client}</div>
+              <h3 className="text-5xl font-black tracking-tighter text-white uppercase">{project.title}</h3>
+            </div>
+          )}
+
+          <p className="text-lg text-zinc-400 font-light leading-relaxed max-w-md">
+            {project.desc}
+          </p>
+        </div>
+
+        {/* Minimal Metrics */}
+        <div className="flex gap-16">
+          {Object.entries(project.metrics).map(([key, value]) => (
+            <div key={key} className="space-y-1">
+              <div className="text-[8px] font-mono text-zinc-600 uppercase tracking-[0.3em] mb-2">{key}</div>
+              <div className="text-2xl font-bold text-white font-mono tracking-tighter">{value}</div>
+              <div className="h-0.5 w-4 bg-sinai-glow-orange/20" />
+            </div>
+          ))}
+        </div>
+
+        {/* Tech Stack - Clean Line */}
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-zinc-600 font-mono text-[9px] tracking-widest uppercase border-t border-white/5 pt-8">
+          {project.tech.map((t) => (
+            <span key={t}>{t}</span>
+          ))}
+        </div>
+
+        <div>
+          <button className="group relative py-4 flex items-center gap-6 overflow-hidden">
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white group-hover:text-sinai-glow-orange transition-colors">
+              {project.ctaText || "Explore Case Study"}
+            </span>
+            <div className="h-px w-12 bg-white/10 group-hover:w-20 group-hover:bg-sinai-glow-orange transition-all duration-500" />
+          </button>
+        </div>
       </div>
-      <div className="lg:col-span-4 space-y-8 lg:pl-10">
-        <ProjectMeta project={project} />
-      </div>
-    </div>
+    </motion.div>
   );
 }
 
-/* ── Hero Layout: Full-Width Immersive ── */
-function HeroLayout({ project }: { project: Project }) {
-  return (
-    <div className="relative h-[80vh] rounded-[4rem] overflow-hidden group border border-white/5 mx-auto max-w-7xl">
-      <ProjectMedia project={project} />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black pointer-events-none" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 pointer-events-none">
-        <ProjectMeta project={project} centered />
-      </div>
-    </div>
-  );
-}
-
-/* ── Split Layout: Reverse Classic ── */
-function SplitLayout({ project }: { project: Project }) {
-  return (
-    <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
-      <div className="lg:col-span-4 space-y-8 lg:pr-10 lg:order-1 order-2">
-        <ProjectMeta project={project} />
-      </div>
-      <div className="lg:col-span-8 group relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-black lg:order-2 order-1">
-        <ProjectMedia project={project} />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 pointer-events-none" />
-      </div>
-    </div>
-  );
-}
-
-/* ── Reusable Project Media Component ── */
 function ProjectMedia({ project }: { project: Project }) {
   if (project.videoUrl) {
     const isGif = project.videoUrl.endsWith(".gif");
-    
     if (isGif) {
       return (
-        <div className="absolute inset-0 w-full h-full">
-          <img 
-            src={project.videoUrl} 
-            alt={project.title}
-            className="w-full h-full object-cover opacity-80"
-          />
-        </div>
+        <img 
+          src={project.videoUrl} 
+          alt={project.title}
+          className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2000ms]"
+        />
       );
     }
-
     return (
-      <div className="absolute inset-0 w-full h-full">
-        <video
-          src={project.videoUrl}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover opacity-80"
-        />
-      </div>
+      <video
+        src={project.videoUrl}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2000ms]"
+      />
     );
   }
 
@@ -193,74 +230,7 @@ function ProjectMedia({ project }: { project: Project }) {
       src={project.image} 
       alt={project.title} 
       fill 
-      sizes="(max-width: 1024px) 100vw, 66vw"
-      className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" 
+      className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-[2000ms]"
     />
-  );
-}
-
-/* ── Reusable Project Meta Component ── */
-function ProjectMeta({ project, centered = false }: { project: Project; centered?: boolean }) {
-  return (
-    <div className={`space-y-8 ${centered ? "items-center text-center max-w-3xl" : ""}`}>
-      <div className={`space-y-4 ${centered ? "flex flex-col items-center" : ""}`}>
-        {project.logo && (
-          <div className="mb-6 h-12 w-auto relative">
-            <img 
-              src={project.logo} 
-              alt={`${project.title} Logo`} 
-              className="h-full w-auto object-contain brightness-0 invert opacity-80"
-            />
-          </div>
-        )}
-        <div className="font-mono text-[10px] text-sinai-glow-orange tracking-[0.4em] uppercase flex items-center gap-3 font-bold">
-          {project.client} <span className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange/40" /> {project.category}
-        </div>
-        {!project.logo && (
-          <h3 className={`${centered ? "text-6xl md:text-8xl" : "text-5xl md:text-7xl"} font-bold tracking-tighter text-white leading-tight uppercase`}>
-            {project.title}
-          </h3>
-        )}
-      </div>
-
-      <p className={`text-xl text-zinc-500 leading-relaxed ${centered ? "mx-auto" : "max-w-md"}`}>
-        {project.desc}
-      </p>
-
-      {project.features && (
-        <ul className={`space-y-3 ${centered ? "flex flex-col items-center" : ""}`}>
-          {project.features.map((feature, i) => (
-            <li key={i} className="flex items-center gap-3 text-sm text-zinc-400 group/feature">
-              <div className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange/60 group-hover/feature:bg-sinai-glow-orange transition-colors" />
-              {feature}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 ${centered ? "w-full justify-center" : ""}`}>
-        {Object.entries(project.metrics).map(([key, value]) => (
-          <div key={key} className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 text-left">
-            <div className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest mb-1">{key}</div>
-            <div className="text-[10px] font-bold text-sinai-glow-orange font-mono leading-tight">{value}</div>
-          </div>
-        ))}
-      </div>
-
-      <div className={`flex flex-wrap gap-2 ${centered ? "justify-center" : ""}`}>
-        {project.tech.map((t) => (
-          <span key={t} className="px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-[9px] font-mono uppercase tracking-[0.2em] text-zinc-500">
-            {t}
-          </span>
-        ))}
-      </div>
-
-      <div className={`pt-6 ${centered ? "w-full flex justify-center" : ""}`}>
-        <button className="btn-premium flex items-center gap-4 group/btn">
-          {project.ctaText || "Explore Intelligence"}
-          <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-        </button>
-      </div>
-    </div>
   );
 }
