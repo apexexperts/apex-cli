@@ -1,16 +1,24 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, Share2, Cpu, Zap, Layers } from "lucide-react";
+import { Share2, Cpu, Zap, Layers } from "lucide-react";
 import { SectionReveal } from "@/components/SectionReveal";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
+}
+
+interface AutomationCapability {
+  id: string;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  image: string;
 }
 
 const CAPABILITIES = [
@@ -43,6 +51,38 @@ const CAPABILITIES = [
     image: "/images/agentic-orchestration-detail.png"
   }
 ];
+
+const SynthesisVisualizer = () => {
+  const [mounted, setMounted] = React.useState(false);
+  const [bars, setBars] = React.useState<{ h1: string, h2: string, h3: string }[]>([]);
+
+  React.useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setBars([...Array(8)].map(() => ({
+        h1: `${20 + Math.random() * 80}%`,
+        h2: `${10 + Math.random() * 90}%`,
+        h3: `${20 + Math.random() * 80}%`
+      })));
+      setMounted(true);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  if (!mounted) return null;
+
+  return (
+    <div className="grid grid-cols-8 gap-1 h-12 items-end">
+      {bars.map((bar, i) => (
+        <motion.div 
+          key={i}
+          animate={{ height: [bar.h1, bar.h2, bar.h3] }}
+          transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.1 }}
+          className="w-full bg-sinai-glow-orange/40 rounded-t-sm"
+        />
+      ))}
+    </div>
+  );
+};
 
 const NeuralCore = () => {
   return (
@@ -122,7 +162,7 @@ const NeuralCore = () => {
   );
 };
 
-const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: any, index: number, total: number, active: boolean, onEnter: () => void, onLeave: () => void }) => {
+const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: AutomationCapability, index: number, total: number, active: boolean, onEnter: () => void, onLeave: () => void }) => {
   const angle = (index / total) * Math.PI * 2;
   const radius = 320; 
   const x = Math.cos(angle) * radius;
@@ -171,7 +211,7 @@ const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: any
   );
 };
 
-const CapabilityDetailView = ({ cap }: { cap: any }) => {
+const CapabilityDetailView = ({ cap }: { cap: AutomationCapability }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group">
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
@@ -222,13 +262,16 @@ const Particles = ({ count = 10 }: { count?: number }) => {
   const [positions, setPositions] = React.useState<{ x: string, delay: number }[]>([]);
 
   React.useEffect(() => {
-    setMounted(true);
-    setPositions(
-      [...Array(count)].map(() => ({
-        x: Math.random() * 100 + "%",
-        delay: Math.random() * 10,
-      }))
-    );
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+      setPositions(
+        [...Array(count)].map(() => ({
+          x: Math.random() * 100 + "%",
+          delay: Math.random() * 10,
+        }))
+      );
+    });
+    return () => cancelAnimationFrame(frame);
   }, [count]);
 
   if (!mounted) return null;
@@ -252,7 +295,6 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
   const [displayedText, setDisplayedText] = React.useState("");
   
   React.useEffect(() => {
-    let timeout: NodeJS.Timeout;
     const startTimeout = setTimeout(() => {
       let i = 0;
       const interval = setInterval(() => {
@@ -382,13 +424,9 @@ export default function AIAutomationPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeCapId, setActiveCapId] = React.useState<string | null>(null);
   
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
 
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 400]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+
+
 
   const activeCap = CAPABILITIES.find(c => c.id === activeCapId);
 
@@ -503,7 +541,7 @@ export default function AIAutomationPage() {
                       Autonomous Reasoning
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">
-                      Our engines don't just follow scripts. They perceive environment changes, weigh constraints, and synthesize optimal execution paths in real-time. This is the difference between simple automation and true enterprise intelligence.
+                      Our engines don&apos;t just follow scripts. They perceive environment changes, weigh constraints, and synthesize optimal execution paths in real-time. This is the difference between simple automation and true enterprise intelligence.
                     </p>
                   </div>
 
@@ -791,16 +829,7 @@ export default function AIAutomationPage() {
                   className="absolute -right-12 top-1/3 p-6 rounded-3xl bg-black/80 backdrop-blur-3xl border border-sinai-glow-orange/30 z-30 shadow-2xl max-w-[220px]"
                 >
                   <div className="text-[10px] font-mono text-sinai-glow-orange mb-4 tracking-widest font-black uppercase">Realtime_Synthesis</div>
-                  <div className="grid grid-cols-8 gap-1 h-12 items-end">
-                    {[...Array(8)].map((_, i) => (
-                      <motion.div 
-                        key={i}
-                        animate={{ height: [`${20 + Math.random() * 80}%`, `${10 + Math.random() * 90}%`, `${20 + Math.random() * 80}%`] }}
-                        transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.1 }}
-                        className="w-full bg-sinai-glow-orange/40 rounded-t-sm"
-                      />
-                    ))}
-                  </div>
+                  <SynthesisVisualizer />
                 </motion.div>
               </div>
             </SectionReveal>
