@@ -320,7 +320,7 @@ const OracleApexHero = () => {
             </div>
 
             <div className="flex flex-wrap gap-6 pt-4">
-              <Link href="#contact" className="group relative px-12 py-6 rounded-full overflow-hidden bg-sinai-glow-orange text-black font-bold text-sm tracking-[0.3em] uppercase transition-all hover:shadow-[0_0_50px_rgba(242,162,75,0.4)]">
+              <Link href="/contact" className="group relative px-12 py-6 rounded-full overflow-hidden bg-sinai-glow-orange text-black font-bold text-sm tracking-[0.3em] uppercase transition-all hover:shadow-[0_0_50px_rgba(242,162,75,0.4)]">
                 <span className="relative z-10">Initialize Engagement</span>
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               </Link>
@@ -519,7 +519,7 @@ export default function OracleApexPage() {
                       { title: "Support", desc: "24/7 Enterprise monitoring & maintenance.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="#contact" key={i} className="p-6 rounded-2xl bg-[#C42A1E]/10 border border-[#C42A1E]/40 hover:bg-[#C42A1E]/20 transition-all duration-300 group/item relative overflow-hidden">
+                        <Link href="/contact" key={i} className="p-6 rounded-2xl bg-[#C42A1E]/10 border border-[#C42A1E]/40 hover:bg-[#C42A1E]/20 transition-all duration-300 group/item relative overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-br from-[#C42A1E]/20 to-transparent opacity-50" />
                           <div className="relative z-10">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2">
@@ -707,7 +707,7 @@ export default function OracleApexPage() {
                       { title: "AI Support", desc: "24/7 AI model monitoring & maintenance.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="#contact" key={i} className="p-6 rounded-2xl bg-[#C42A1E]/10 border border-[#C42A1E]/40 hover:bg-[#C42A1E]/20 transition-all duration-300 group/item relative overflow-hidden">
+                        <Link href="/contact" key={i} className="p-6 rounded-2xl bg-[#C42A1E]/10 border border-[#C42A1E]/40 hover:bg-[#C42A1E]/20 transition-all duration-300 group/item relative overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-br from-[#C42A1E]/20 to-transparent opacity-50" />
                           <div className="relative z-10 text-right lg:text-left">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2 justify-end lg:justify-start">
@@ -776,7 +776,7 @@ export default function OracleApexPage() {
                       { title: "Support", desc: "24/7 Enterprise monitoring & maintenance.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="#contact" key={i} className="p-6 rounded-2xl bg-[#C42A1E]/10 border border-[#C42A1E]/40 hover:bg-[#C42A1E]/20 transition-all duration-300 group/item relative overflow-hidden">
+                        <Link href="/contact" key={i} className="p-6 rounded-2xl bg-[#C42A1E]/10 border border-[#C42A1E]/40 hover:bg-[#C42A1E]/20 transition-all duration-300 group/item relative overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-br from-[#C42A1E]/20 to-transparent opacity-50" />
                           <div className="relative z-10">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2">
@@ -959,7 +959,7 @@ export default function OracleApexPage() {
                       { title: "Expert Support", desc: "24/7 Enterprise monitoring & maintenance.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="#contact" key={i} className="p-6 rounded-2xl bg-[#C42A1E]/10 border border-[#C42A1E]/40 hover:bg-[#C42A1E]/20 transition-all duration-300 group/item relative overflow-hidden">
+                        <Link href="/contact" key={i} className="p-6 rounded-2xl bg-[#C42A1E]/10 border border-[#C42A1E]/40 hover:bg-[#C42A1E]/20 transition-all duration-300 group/item relative overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-br from-[#C42A1E]/20 to-transparent opacity-50" />
                           <div className="relative z-10 text-right lg:text-left">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2 justify-end lg:justify-start">
@@ -1142,7 +1142,7 @@ export default function OracleApexPage() {
               </SectionReveal>
 
               <SectionReveal>
-                 <Link href="#contact" className="inline-flex items-center gap-4 text-[10px] font-mono text-white tracking-[0.4em] font-black uppercase group">
+                 <Link href="/contact" className="inline-flex items-center gap-4 text-[10px] font-mono text-white tracking-[0.4em] font-black uppercase group">
                    View Project Details
                    <div className="w-8 h-px bg-[#C42A1E] group-hover:w-12 transition-all duration-300" />
                  </Link>
@@ -1188,7 +1188,7 @@ export default function OracleApexPage() {
               </div>
 
               <div className="flex flex-col items-center gap-8 pt-8">
-                <Link href="/#contact" className="group relative px-24 py-10 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-xl tracking-[0.4em] uppercase transition-all hover:shadow-[0_0_100px_rgba(242,162,75,0.6)] hover:scale-105 active:scale-95 duration-500">
+                <Link href="/contact" className="group relative px-24 py-10 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-xl tracking-[0.4em] uppercase transition-all hover:shadow-[0_0_100px_rgba(242,162,75,0.6)] hover:scale-105 active:scale-95 duration-500">
                   <span className="relative z-10">Initialize Project</span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" />
                   

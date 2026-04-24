@@ -493,7 +493,7 @@ const WebDevelopmentHero = () => {
             </div>
 
             <div className="flex flex-wrap gap-6 pt-4">
-              <Link href="#contact" className="group relative px-12 py-6 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-bold text-sm tracking-[0.3em] uppercase transition-all hover:shadow-[0_0_50px_rgba(242,162,75,0.4)]">
+              <Link href="/contact" className="group relative px-12 py-6 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-bold text-sm tracking-[0.3em] uppercase transition-all hover:shadow-[0_0_50px_rgba(242,162,75,0.4)]">
                 <span className="relative z-10">Initialize Engagement</span>
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               </Link>
@@ -692,7 +692,7 @@ export default function WebDevelopmentPage() {
                       { title: "Support", desc: "24/7 surveillance & optimization.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 group/item relative overflow-hidden">
+                        <Link href="/contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 group/item relative overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/20 to-transparent opacity-50" />
                           <div className="relative z-10">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2">
@@ -878,7 +878,7 @@ export default function WebDevelopmentPage() {
                       { title: "Support", desc: "Continuous technical maintenance.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 group/item relative overflow-hidden">
+                        <Link href="/contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 group/item relative overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/20 to-transparent opacity-50" />
                           <div className="relative z-10">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2">
@@ -950,7 +950,7 @@ export default function WebDevelopmentPage() {
                       { title: "Support", desc: "Technical surveillance & optimization.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 group/item relative overflow-hidden">
+                        <Link href="/contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 group/item relative overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/20 to-transparent opacity-50" />
                           <div className="relative z-10">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2">
@@ -1140,7 +1140,7 @@ export default function WebDevelopmentPage() {
                       { title: "Support", desc: "24/7 technical surveillance.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 group/item relative overflow-hidden">
+                        <Link href="/contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 group/item relative overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/20 to-transparent opacity-50" />
                           <div className="relative z-10">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2">
@@ -1241,7 +1241,7 @@ export default function WebDevelopmentPage() {
               </div>
 
               <div className="flex flex-col items-center gap-8 pt-8">
-                <Link href="/#contact" className="group relative px-24 py-10 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-xl tracking-[0.4em] uppercase transition-all hover:shadow-[0_0_100px_rgba(242,162,75,0.6)] hover:scale-105 active:scale-95 duration-500">
+                <Link href="/contact" className="group relative px-24 py-10 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-xl tracking-[0.4em] uppercase transition-all hover:shadow-[0_0_100px_rgba(242,162,75,0.6)] hover:scale-105 active:scale-95 duration-500">
                   <span className="relative z-10">Initialize Project</span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" />
                   
