@@ -269,6 +269,115 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
   return <span className={className}>{displayedText}<span className="animate-pulse inline-block w-1 h-8 md:h-12 bg-sinai-glow-orange ml-1" /></span>;
 };
 
+const AIAutomationHero = () => {
+  return (
+    <section className="relative min-h-screen flex items-center pt-32 overflow-hidden bg-black">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(242,162,75,0.08)_0%,transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(242,162,75,0.05)_0%,transparent_50%)]" />
+      
+      <div className="absolute inset-0 opacity-[0.02] [mask-image:radial-gradient(ellipse_at_center,black,transparent)]">
+        <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-12 text-left"
+          >
+            <div className="space-y-6">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="h-px w-12 bg-sinai-glow-orange/30" />
+                <span className="px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-[9px] uppercase tracking-[0.5em] text-sinai-glow-orange font-bold">
+                  AUTONOMOUS_ORCHESTRATION // SOL_01
+                </span>
+              </div>
+              
+              <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] text-white">
+                AI & Process <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-white/40">
+                  Automation.
+                </span>
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-zinc-400 max-w-xl font-light leading-relaxed">
+                Engineering autonomous enterprise intelligence through agentic workflows, cognitive RPA, and predictive optimization.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-6 pt-4">
+              <Link href="/contact" className="group relative px-12 py-6 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-sm tracking-[0.3em] uppercase transition-all hover:shadow-[0_0_50px_rgba(242,162,75,0.4)] hover:scale-105 active:scale-95 duration-500">
+                <span className="relative z-10">Initialize Engagement</span>
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              </Link>
+              
+              <Link href="#capabilities" className="px-12 py-6 rounded-full bg-white/[0.03] border border-white/10 text-white font-black text-sm tracking-[0.3em] uppercase hover:bg-white/[0.08] hover:border-white/20 transition-all">
+                Registry Details
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-3 gap-8 pt-12 border-t border-white/5">
+              {[
+                { label: "AUTO_REASONING", value: "L5" },
+                { label: "LATENCY", value: "<10ms" },
+                { label: "EFFICIENCY", value: "100%" }
+              ].map((stat, i) => (
+                <div key={i}>
+                  <div className="text-[8px] font-mono text-zinc-600 mb-1 tracking-widest uppercase">{stat.label}</div>
+                  <div className="text-xl font-bold text-white font-mono">{stat.value}</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+            className="relative"
+          >
+            <div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.15)] group">
+              <Image 
+                src="/images/agentic-orchestration-core.png" 
+                alt="AI Automation Core" 
+                fill 
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover group-hover:scale-110 transition-transform duration-[5000ms] brightness-75"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+              
+              {/* Technical HUD Overlays */}
+              <div className="absolute top-10 right-10 text-[8px] font-mono text-sinai-glow-orange/80 tracking-[0.2em] text-right">
+                REASONING_CORE: ACTIVE<br />
+                INTEGRATION_PIPELINE: SYNC
+              </div>
+              
+              <div className="absolute bottom-10 left-10 text-[8px] font-mono text-zinc-500 tracking-[0.2em]">
+                AGENT_ORCHESTRATOR_V4.0<br />
+                © APEX_EXPERTS_SOLUTIONS
+              </div>
+
+              {/* Scanning Line Animation */}
+              <motion.div 
+                animate={{ top: ["-10%", "110%"] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sinai-glow-orange/40 to-transparent z-20 pointer-events-none"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+      
+      <div className="absolute inset-0 pointer-events-none">
+        <Particles count={8} />
+      </div>
+    </section>
+  );
+};
+
 export default function AIAutomationPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeCapId, setActiveCapId] = React.useState<string | null>(null);
@@ -285,80 +394,7 @@ export default function AIAutomationPage() {
 
   return (
     <div ref={containerRef} className="relative bg-[#06080a] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Layers */}
-        <motion.div 
-          style={{ y: heroY, opacity: heroOpacity }}
-          className="absolute inset-0 z-0"
-        >
-          <Image 
-            src="/images/ai-automation-hero.png" 
-            alt="AI Automation Core" 
-            fill 
-            sizes="100vw"
-            className="object-cover opacity-60 scale-105 brightness-[0.4]"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#06080a]/50 to-[#06080a]" />
-          
-          {/* Technical Grid Overlay */}
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] mix-blend-overlay" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#06080a_100%)] opacity-80" />
-        </motion.div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-7xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex items-center justify-center gap-4 mb-10">
-                <div className="h-px w-12 bg-sinai-glow-orange/30" />
-                <span className="px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-[10px] uppercase tracking-[0.5em] text-sinai-glow-orange font-bold">
-                  AUTONOMOUS_ORCHESTRATION // SOL_01
-                </span>
-                <div className="h-px w-12 bg-sinai-glow-orange/30" />
-              </div>
-
-              <h1 className="text-5xl md:text-8xl lg:text-[7rem] font-black tracking-tighter mb-10 leading-[0.85] inline-block">
-                <StreamingText 
-                  text="AI & Process Automation" 
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-white/40"
-                />
-              </h1>
-
-              <div className="max-w-4xl mx-auto min-h-[4rem]">
-                <p className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed mb-16 tracking-tight">
-                  <StreamingText 
-                    text="Engineering autonomous enterprise intelligence through agentic workflows, cognitive RPA, and predictive optimization." 
-                    delay={1500}
-                  />
-                </p>
-              </div>
-
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 4, duration: 1 }}
-                className="flex flex-col md:flex-row gap-6 justify-center items-center"
-              >
-                <Link href="/contact" className="btn-premium px-12 py-6 text-[10px] font-black uppercase tracking-[0.3em]">
-                  Initialize_Engagement
-                </Link>
-                <Link href="#capabilities" className="btn-premium px-12 py-6 text-[10px] font-black uppercase tracking-[0.3em] opacity-60 hover:opacity-100">
-                  Registry_Details
-                </Link>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Cinematic Particles Placeholder */}
-        <div className="absolute inset-0 pointer-events-none">
-          <Particles count={10} />
-        </div>
-      </section>
+      <AIAutomationHero />
 
       {/* The Core: Neural Capability Hub - Super Premium Redesign */}
       <section id="capabilities" className="py-48 relative overflow-hidden bg-[#06080a] min-h-[1000px]">
@@ -938,8 +974,9 @@ export default function AIAutomationPage() {
                         </div>
                       ))}
                     </div>
-                    <Link href="/projects#01" className="btn-premium px-10 py-5 text-[10px] font-black uppercase tracking-[0.3em]">
-                      View Full Intelligence Report
+                    <Link href="/projects#01" className="group relative px-10 py-5 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-[10px] tracking-[0.3em] uppercase transition-all hover:shadow-[0_0_50px_rgba(242,162,75,0.4)] hover:scale-105 active:scale-95 duration-500">
+                      <span className="relative z-10">View Full Intelligence Report</span>
+                      <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     </Link>
                   </div>
                 </div>
@@ -985,8 +1022,16 @@ export default function AIAutomationPage() {
               </div>
 
               <div className="flex flex-col items-center gap-8 pt-8">
-                <Link href="/contact" className="btn-premium px-24 py-10 text-[18px] font-black uppercase tracking-[0.4em]">
-                  Initialize_Project
+                <Link href="/contact" className="group relative px-24 py-10 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-xl tracking-[0.4em] uppercase transition-all hover:shadow-[0_0_100px_rgba(242,162,75,0.6)] hover:scale-105 active:scale-95 duration-500">
+                  <span className="relative z-10">Initialize Project</span>
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" />
+                  
+                  {/* Internal Shimmer */}
+                  <motion.div 
+                    animate={{ left: ["-100%", "200%"] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
+                  />
                 </Link>
 
                 <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600 tracking-widest uppercase">
