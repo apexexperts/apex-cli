@@ -76,6 +76,7 @@ export function BlogSection() {
                 src={featured.image} 
                 alt={featured.title} 
                 fill 
+                sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 opacity-60" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
@@ -106,7 +107,13 @@ export function BlogSection() {
             <Link key={post.id} href="#" className="group block pb-12 border-b border-white/5 last:border-0">
               <div className="flex gap-8 items-start">
                 <div className="relative w-32 h-32 flex-shrink-0 rounded-2xl overflow-hidden border border-white/10 bg-black">
-                  <Image src={post.image} alt={post.title} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                  <Image 
+                    src={post.image} 
+                    alt={post.title} 
+                    fill 
+                    sizes="128px"
+                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                  />
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center gap-4 text-[9px] font-mono text-zinc-600 uppercase tracking-widest">

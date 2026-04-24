@@ -224,7 +224,13 @@ const CapabilityDetailView = ({ cap }: { cap: any }) => {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group">
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
       <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl z-10">
-        <Image src={cap.image} alt={cap.title} fill className="object-cover scale-105 group-hover:scale-110 transition-transform duration-1000" />
+        <Image 
+          src={cap.image} 
+          alt={cap.title} 
+          fill 
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover scale-105 group-hover:scale-110 transition-transform duration-1000" 
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
       </div>
       <div className="space-y-8 relative z-10 text-left">
@@ -297,7 +303,14 @@ const MobileHero = () => (
         </motion.div>
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2 }} className="relative">
           <div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.15)] group">
-            <Image src="/images/mobile-dev-hero.png" alt="Mobile Excellence" fill className="object-cover group-hover:scale-110 transition-transform duration-[5000ms] brightness-75" priority />
+            <Image 
+              src="/images/mobile-dev-hero.png" 
+              alt="Mobile Excellence" 
+              fill 
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover group-hover:scale-110 transition-transform duration-[5000ms] brightness-75" 
+              priority 
+            />
             <motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sinai-glow-orange/40 to-transparent z-20 pointer-events-none" />
           </div>
         </motion.div>
@@ -379,7 +392,7 @@ export default function MobileDevelopmentPage() {
                 </div>
               </div>
             </SectionReveal>
-            <SectionReveal><div className="relative"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-dev-hero.png" alt="Custom Mobile App Development" fill className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
+            <SectionReveal><div className="relative"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-dev-hero.png" alt="Custom Mobile App Development" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
           </div>
         </div>
       </section>
@@ -389,7 +402,7 @@ export default function MobileDevelopmentPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.03)_0%,transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <SectionReveal><div className="relative order-2 lg:order-1"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-uiux.png" alt="UI/UX Mastery" fill className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
+            <SectionReveal><div className="relative order-2 lg:order-1"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-uiux.png" alt="UI/UX Mastery" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
             <SectionReveal>
               <div className="space-y-16 text-left order-1 lg:order-2">
                 <div className="space-y-6">
@@ -461,7 +474,7 @@ export default function MobileDevelopmentPage() {
                 </div>
               </div>
             </SectionReveal>
-            <SectionReveal><div className="relative"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-backend.png" alt="Backend Core" fill className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
+            <SectionReveal><div className="relative"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-backend.png" alt="Backend Core" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
           </div>
         </div>
       </section>
@@ -471,7 +484,7 @@ export default function MobileDevelopmentPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.03)_0%,transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <SectionReveal><div className="relative order-2 lg:order-1"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-dev-hero.png" alt="Maintenance Hub" fill className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
+            <SectionReveal><div className="relative order-2 lg:order-1"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-dev-hero.png" alt="Maintenance Hub" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
             <SectionReveal>
               <div className="space-y-16 text-left order-1 lg:order-2">
                 <div className="space-y-6">

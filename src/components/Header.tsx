@@ -115,7 +115,13 @@ export function Header() {
             <div className="w-10 h-10 rounded-xl bg-sinai-glow-orange flex items-center justify-center shadow-[0_0_20px_rgba(138,59,19,0.3)] group-hover:shadow-[0_0_30px_rgba(138,59,19,0.6)] transition-all relative overflow-hidden">
               <span className="text-white font-black text-lg z-10">AE</span>
               <div className="absolute inset-0 opacity-40 scale-150">
-                <Image src="/images/brand-logo-ae.png" alt="" fill className="object-cover" />
+                <Image 
+                  src="/images/brand-logo-ae.png" 
+                  alt="APEX Experts" 
+                  fill 
+                  sizes="40px"
+                  className="object-cover" 
+                />
               </div>
             </div>
             <div className="flex flex-col">
@@ -222,8 +228,9 @@ export function Header() {
                                     <div className="absolute inset-0 z-0">
                                       <Image 
                                         src={hoveredService.image} 
-                                        alt={hoveredService.title}
+                                        alt=""
                                         fill
+                                        sizes="(max-width: 1024px) 100vw, 40vw"
                                         className="object-cover opacity-20 blur-sm scale-110"
                                       />
                                       <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/50" />
@@ -240,6 +247,7 @@ export function Header() {
                                             src={hoveredService.image} 
                                             alt={hoveredService.title}
                                             fill
+                                            sizes="(max-width: 1024px) 100vw, 40vw"
                                             className="object-cover group-hover:scale-105 transition-transform duration-[2s]"
                                           />
                                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

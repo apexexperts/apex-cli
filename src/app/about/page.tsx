@@ -44,6 +44,7 @@ export default function AboutPage() {
                   src="/images/avatars/ahmed.png"
                   alt="Ahmed Al-Saied - Founder & CEO"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                   className="object-cover scale-[1.02] group-hover:scale-110 transition-transform duration-[3s] ease-out grayscale hover:grayscale-0"
                   priority
                 />
@@ -587,6 +588,7 @@ export default function AboutPage() {
                     src={member.img}
                     alt={member.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 opacity-60 group-hover:opacity-100"
                   />
                 </div>

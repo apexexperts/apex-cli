@@ -210,7 +210,13 @@ const CapabilityDetailView = ({ cap }: { cap: any }) => {
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
       
       <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl z-10">
-        <Image src={cap.image} alt={cap.title} fill className="object-cover scale-105 group-hover:scale-110 transition-transform duration-1000" />
+        <Image 
+          src={cap.image} 
+          alt={cap.title} 
+          fill 
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover scale-105 group-hover:scale-110 transition-transform duration-1000" 
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
       </div>
 
@@ -349,6 +355,7 @@ const OracleApexHero = () => {
                 src="/images/oracle-apex-hero.png" 
                 alt="Oracle APEX Premium Development" 
                 fill 
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover group-hover:scale-110 transition-transform duration-[5000ms] brightness-75"
                 priority
               />
@@ -546,6 +553,7 @@ export default function OracleApexPage() {
                     src="/images/apex-dev-core.png" 
                     alt="APEX Development Core" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"
                   />
                   
@@ -613,6 +621,7 @@ export default function OracleApexPage() {
                     src="/images/apex-ai-workflow.png" 
                     alt="AI Integration Hub" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"
                   />
                   
@@ -797,12 +806,13 @@ export default function OracleApexPage() {
               <div className="relative">
                 {/* Main Holographic Core */}
                 <div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(196,42,30,0.1)] group">
-                  <Image 
-                    src="/images/project3.png" 
-                    alt="APEX Migration Core" 
-                    fill 
-                    className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"
-                  />
+                    <Image 
+                      src="/images/project3.png" 
+                      alt="APEX Migration Core" 
+                      fill 
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"
+                    />
                   
                   {/* Dynamic HUD Overlays */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
@@ -866,6 +876,7 @@ export default function OracleApexPage() {
                     src="/images/apex-training-hub.png" 
                     alt="APEX Training Hub" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"
                   />
                   
@@ -1081,6 +1092,7 @@ export default function OracleApexPage() {
                     src="/images/project2.png" 
                     alt="ApexCloud ERP Transformation" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 66vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-[3000ms] brightness-75"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />

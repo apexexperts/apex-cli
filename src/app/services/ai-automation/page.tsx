@@ -178,7 +178,13 @@ const CapabilityDetailView = ({ cap }: { cap: any }) => {
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
       
       <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl z-10">
-        <Image src={cap.image} alt={cap.title} fill className="object-cover scale-105 group-hover:scale-110 transition-transform duration-1000" />
+        <Image 
+          src={cap.image} 
+          alt={cap.title} 
+          fill 
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover scale-105 group-hover:scale-110 transition-transform duration-1000" 
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
       </div>
 
@@ -290,6 +296,7 @@ export default function AIAutomationPage() {
             src="/images/ai-automation-hero.png" 
             alt="AI Automation Core" 
             fill 
+            sizes="100vw"
             className="object-cover opacity-60 scale-105 brightness-[0.4]"
             priority
           />
@@ -491,6 +498,7 @@ export default function AIAutomationPage() {
                     src="/images/autonomous-reasoning-core.png" 
                     alt="Autonomous Reasoning Core" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms]"
                   />
                   
@@ -556,6 +564,7 @@ export default function AIAutomationPage() {
                     src="/images/agentic-orchestration-core.png" 
                     alt="Agentic Orchestration Hub" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms]"
                   />
                   
@@ -710,6 +719,7 @@ export default function AIAutomationPage() {
                     src="/images/cognitive-data-synthesis-core.png" 
                     alt="Cognitive Data Synthesis Hub" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms]"
                   />
                   
@@ -824,7 +834,13 @@ export default function AIAutomationPage() {
                     <div className="absolute inset-0 bg-sinai-glow-orange/10 rounded-full blur-3xl opacity-0 group-hover:opacity-40 transition-opacity duration-700" />
                     {step.image ? (
                       <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10 group-hover:border-sinai-glow-orange/40 transition-colors">
-                        <Image src={step.image} alt={step.label} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                        <Image 
+                          src={step.image} 
+                          alt={step.label} 
+                          fill 
+                          sizes="128px"
+                          className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                        />
                       </div>
                     ) : (
                       <div className="w-full h-full rounded-3xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-sinai-glow-orange group-hover:border-sinai-glow-orange/40 transition-colors">
@@ -885,6 +901,7 @@ export default function AIAutomationPage() {
                 src="/images/project1.png" 
                 alt="NeuralStream 2.0" 
                 fill 
+                sizes="(max-width: 1280px) 100vw, 1280px"
                 className="object-cover opacity-40 group-hover:scale-105 transition-transform duration-[3000ms]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />

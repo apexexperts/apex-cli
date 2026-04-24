@@ -98,7 +98,13 @@ function WideLayout({ project }: { project: Project }) {
   return (
     <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
       <div className="lg:col-span-8 group relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-black">
-        <Image src={project.image} alt={project.title} fill className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" />
+        <Image 
+          src={project.image} 
+          alt={project.title} 
+          fill 
+          sizes="(max-width: 1024px) 100vw, 66vw"
+          className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" 
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
            <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
@@ -117,7 +123,13 @@ function WideLayout({ project }: { project: Project }) {
 function HeroLayout({ project }: { project: Project }) {
   return (
     <div className="relative h-[80vh] rounded-[4rem] overflow-hidden group border border-white/5 mx-auto max-w-7xl">
-      <Image src={project.image} alt={project.title} fill className="object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000" />
+      <Image 
+        src={project.image} 
+        alt={project.title} 
+        fill 
+        sizes="(max-width: 1280px) 100vw, 1280px"
+        className="object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000" 
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
         <ProjectMeta project={project} centered />
@@ -134,7 +146,13 @@ function SplitLayout({ project }: { project: Project }) {
         <ProjectMeta project={project} />
       </div>
       <div className="lg:col-span-8 group relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-black lg:order-2 order-1">
-        <Image src={project.image} alt={project.title} fill className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" />
+        <Image 
+          src={project.image} 
+          alt={project.title} 
+          fill 
+          sizes="(max-width: 1024px) 100vw, 66vw"
+          className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" 
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
       </div>
     </div>

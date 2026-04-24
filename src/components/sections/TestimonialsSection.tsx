@@ -73,6 +73,7 @@ export function TestimonialsSection() {
                   src={review.avatar}
                   alt={review.author}
                   fill
+                  sizes="64px"
                   className="object-cover"
                 />
               </div>

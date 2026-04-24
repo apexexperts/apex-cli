@@ -383,7 +383,13 @@ const CapabilityDetailView = ({ cap }: { cap: any }) => {
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
       
       <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl z-10">
-        <Image src={cap.image} alt={cap.title} fill className="object-cover scale-105 group-hover:scale-110 transition-transform duration-1000" />
+        <Image 
+          src={cap.image} 
+          alt={cap.title} 
+          fill 
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover scale-105 group-hover:scale-110 transition-transform duration-1000" 
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
       </div>
 
@@ -522,6 +528,7 @@ const WebDevelopmentHero = () => {
                 src="/images/web-dev-hero-orange.png" 
                 alt="Web Development Excellence" 
                 fill 
+                sizes="(max-width: 1200px) 100vw, 800px"
                 className="object-cover group-hover:scale-110 transition-transform duration-[5000ms] brightness-75"
                 priority
               />
@@ -719,6 +726,7 @@ export default function WebDevelopmentPage() {
                     src="/images/web-custom-dev.png" 
                     alt="Custom Website Development" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"
                   />
                   
@@ -784,6 +792,7 @@ export default function WebDevelopmentPage() {
                     src="/images/web-fullstack-dev.png" 
                     alt="Full-Stack Architecture" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"
                   />
                   
@@ -976,6 +985,7 @@ export default function WebDevelopmentPage() {
                     src="/images/web-ecommerce-portal.png" 
                     alt="E-Commerce & Portal Core" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"
                   />
                   
@@ -1041,6 +1051,7 @@ export default function WebDevelopmentPage() {
                     src="/images/web-opt-support.png" 
                     alt="Website Optimization Hub" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50"
                   />
                   

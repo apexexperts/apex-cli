@@ -106,7 +106,7 @@ const SERVICES = [
     icon: (
       <div className="relative w-12 h-12">
         <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-          <motion.path d="M12 2l10 5v10l-10 5-10-5V7l10-5z" stroke="url(#grad3)" strokeWidth="1.5" animate={{ strokeDashoffset: [0, 100] }} strokeDasharray="10 5" transition={{ duration: 5, repeat: Infinity, ease: "linear" }} />
+          <motion.path d="M12 2l10 5v10l-10 5-10-5V7l10-5z" stroke="url(#grad3)" strokeWidth="1.5" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: [0, 100] }} strokeDasharray="10 5" transition={{ duration: 5, repeat: Infinity, ease: "linear" }} />
           <circle cx="12" cy="12" r="3" fill="white" className="animate-pulse" />
           <defs>
             <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -121,7 +121,7 @@ const SERVICES = [
     diagram: (
       <div className="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none group-hover:opacity-20 transition-opacity">
         <svg width="200" height="200" viewBox="0 0 200 200">
-          <motion.path d="M50 100 Q100 20 150 100 T250 100" stroke="currentColor" fill="none" strokeDasharray="10 5" animate={{ strokeDashoffset: -100 }} transition={{ duration: 5, repeat: Infinity, ease: "linear" }} />
+          <motion.path d="M50 100 Q100 20 150 100 T250 100" stroke="currentColor" fill="none" strokeDasharray="10 5" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: -100 }} transition={{ duration: 5, repeat: Infinity, ease: "linear" }} />
         </svg>
       </div>
     )
@@ -150,7 +150,7 @@ const SERVICES = [
     diagram: (
       <div className="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none group-hover:opacity-20 transition-opacity">
         <svg width="200" height="200" viewBox="0 0 200 200">
-          <motion.path d="M100 20 L180 160 L20 160 Z" stroke="currentColor" fill="none" animate={{ strokeDashoffset: [0, 400] }} transition={{ duration: 10, repeat: Infinity }} />
+          <motion.path d="M100 20 L180 160 L20 160 Z" stroke="currentColor" fill="none" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: [0, 400] }} transition={{ duration: 10, repeat: Infinity }} />
         </svg>
       </div>
     )
