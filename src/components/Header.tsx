@@ -78,11 +78,61 @@ const SERVICES_DATA = [
   }
 ];
 
+const PROJECTS_DATA = [
+  {
+    id: "asklyze",
+    title: "ASKLYZE",
+    desc: "Oracle APEX plugin for AI-powered business insights. Turn natural-language questions into reports, charts, and dashboards inside Oracle APEX.",
+    href: "/projects/asklyze",
+    image: "/images/asklyze-premium.png",
+    logo: "/images/asklyze-logo.png",
+    detail: "AI INSIGHTS PLUGIN // Enterprise Ready",
+    tech: ["oracle", "javascript", "openai", "css3"],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
+    )
+  },
+  {
+    id: "myquery",
+    title: "MyQuery",
+    desc: "The AI analytics platform that puts data in everyone's hands. Type a question in plain English, and get accurate reports instantly.",
+    href: "/projects/myquery",
+    image: "/images/myquery-premium.png",
+    logo: "/images/myquery-logo.png",
+    detail: "AI ANALYTICS PLATFORM // Data Democracy",
+    tech: ["nextdotjs", "react", "postgresql", "tailwindcss"],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    )
+  },
+  {
+    id: "tasto",
+    title: "Tasto",
+    desc: "Tasto unites analytics, forecasting, and benchmarks into one real-time view with automated subscription tracking.",
+    href: "/projects/tasto",
+    image: "/images/tasto-premium.png",
+    logo: "/images/tasto-logo.png",
+    detail: "SAAS METRICS & GROWTH // Financial AI",
+    tech: ["typescript", "nodedotjs", "framer", "greensock"],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+        <path d="M12 20v-8m0 0l-3 3m3-3l3 3M4 12a8 8 0 018-8 8 8 0 018 8 8 8 0 01-8 8 8 8 0 01-8-8z" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
+    )
+  }
+];
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   const [hoveredService, setHoveredService] = useState(SERVICES_DATA[0]);
+  const [hoveredProject, setHoveredProject] = useState(PROJECTS_DATA[0]);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -293,6 +343,189 @@ export function Header() {
                                           <div className="space-y-2">
                                             <div className="text-[10px] font-mono text-zinc-500 tracking-[0.5em] uppercase">{hoveredService.detail}</div>
                                             <h4 className="text-3xl font-black tracking-tighter text-white uppercase leading-none">{hoveredService.title}</h4>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                </AnimatePresence>
+                              </div>
+                            </div>
+                          </motion.div>
+                        </div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              if (link.label === "PROJECTS") {
+                return (
+                  <div 
+                    key={link.label}
+                    onMouseEnter={() => setIsProjectsOpen(true)}
+                    onMouseLeave={() => setIsProjectsOpen(false)}
+                    className="relative"
+                  >
+                    <button 
+                      className={`px-5 py-2 text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-300 relative ${
+                        active || isProjectsOpen ? "text-sinai-glow-orange" : "text-zinc-400 hover:text-white"
+                      }`}
+                    >
+                      {link.label}
+                      {(active || isProjectsOpen) && (
+                        <motion.div 
+                          layoutId="nav-dot"
+                          className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-sinai-glow-orange rounded-full"
+                        />
+                      )}
+                    </button>
+
+                    <AnimatePresence>
+                      {isProjectsOpen && (
+                        <div className="absolute top-[calc(100%+10px)] left-1/2 -translate-x-1/2 w-[90vw] max-w-6xl z-50">
+                          <motion.div
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 10 }}
+                            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                            className="bg-[#0a0a0a]/95 backdrop-blur-3xl rounded-3xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] overflow-hidden"
+                          >
+                            <div className="grid grid-cols-1 lg:grid-cols-5 h-full min-h-[500px]">
+                              {/* Left Column: Projects List */}
+                              <div className="lg:col-span-3 p-10 lg:p-14 border-r border-white/5 space-y-12 text-left">
+                                <div className="flex items-center gap-4 text-zinc-500">
+                                  <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-left">Project_Registry // NODE_04</span>
+                                  <div className="h-px flex-1 bg-white/5" />
+                                </div>
+
+                                <div className="grid gap-2 text-left">
+                                  {PROJECTS_DATA.map((project) => (
+                                    <Link 
+                                      key={project.id}
+                                      href={project.href}
+                                      onClick={() => setIsProjectsOpen(false)}
+                                      onMouseEnter={() => setHoveredProject(project)}
+                                      className={`group/item flex items-start gap-6 p-6 rounded-2xl transition-all duration-500 text-left ${
+                                        hoveredProject.id === project.id ? "bg-white/[0.03] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]" : "hover:bg-white/[0.01]"
+                                      }`}
+                                    >
+                                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 border ${
+                                        hoveredProject.id === project.id ? "bg-sinai-glow-orange text-white border-sinai-glow-orange shadow-[0_0_20px_rgba(242,162,75,0.3)]" : "bg-white/5 text-zinc-500 border-white/5 group-hover/item:border-white/10"
+                                      }`}>
+                                        {project.icon}
+                                      </div>
+                                      <div className="space-y-2 flex-1 text-left">
+                                        <h3 className={`text-xl font-bold tracking-tight transition-colors duration-500 text-left ${
+                                          hoveredProject.id === project.id ? "text-white" : "text-zinc-500 group-hover/item:text-zinc-300"
+                                        }`}>
+                                          {project.title}
+                                        </h3>
+                                        <p className={`text-sm leading-relaxed transition-colors duration-500 max-w-md text-left ${
+                                          hoveredProject.id === project.id ? "text-zinc-400" : "text-zinc-600 line-clamp-1"
+                                        }`}>
+                                          {project.desc}
+                                        </p>
+                                      </div>
+                                      <motion.div 
+                                        animate={{ x: hoveredProject.id === project.id ? 0 : -10, opacity: hoveredProject.id === project.id ? 1 : 0 }}
+                                        className="text-sinai-glow-orange pt-1"
+                                      >
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                                      </motion.div>
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+
+                              {/* Right Column: Dynamic Preview */}
+                              <div className="lg:col-span-2 relative bg-black/40 overflow-hidden flex flex-col">
+                                <AnimatePresence mode="wait">
+                                  <motion.div
+                                    key={hoveredProject.id}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    transition={{ duration: 0.5, ease: "easeOut" }}
+                                    className="flex-1 flex flex-col p-12 lg:p-16 relative"
+                                  >
+                                    <div className="absolute inset-0 z-0">
+                                      <Image 
+                                        src={hoveredProject.image} 
+                                        alt=""
+                                        fill
+                                        sizes="(max-width: 1024px) 100vw, 40vw"
+                                        className="object-cover opacity-20 blur-sm scale-110"
+                                      />
+                                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/50" />
+                                    </div>
+
+                                    <div className="relative z-10 flex-1 flex flex-col justify-between">
+                                      <div className="space-y-8">
+                                        <div className="flex items-center justify-between">
+                                          <div className="inline-block px-3 py-1 rounded-sm bg-sinai-glow-orange/10 border border-sinai-glow-orange/20">
+                                            <span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black uppercase">Case_Study_Preview</span>
+                                          </div>
+                                          <div className="flex gap-1.5">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-green-500/40 animate-pulse" />
+                                            <div className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange/40" />
+                                          </div>
+                                        </div>
+                                        
+                                        <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                                          <Image 
+                                            src={hoveredProject.image} 
+                                            alt={hoveredProject.title}
+                                            fill
+                                            sizes="(max-width: 1024px) 100vw, 40vw"
+                                            className="object-cover group-hover:scale-105 transition-transform duration-[2s]"
+                                          />
+                                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                                        </div>
+                                      </div>
+
+                                      <div className="space-y-10 pt-10">
+                                        <div className="flex flex-col gap-8">
+                                          <div className="flex items-center gap-3">
+                                            {hoveredProject?.tech?.map((slug: string) => (
+                                              <div key={slug} className="group/tech relative">
+                                                <div className="w-8 h-8 rounded-lg bg-white/[0.03] border border-white/10 flex items-center justify-center p-1.5 hover:border-sinai-glow-orange/40 transition-colors">
+                                                  {slug === 'openai' ? (
+                                                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 fill-white opacity-40 group-hover/tech:opacity-100 transition-opacity">
+                                                      <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" />
+                                                    </svg>
+                                                  ) : slug === 'oracle' ? (
+                                                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 fill-white opacity-40 group-hover/tech:opacity-100 transition-opacity">
+                                                      <path d="M7.957359,18.9123664 C4.11670252,18.9123664 1,15.803458 1,11.9617373 C1,8.12000773 4.11670252,5 7.957359,5 L16.0437948,5 C19.8855156,5 23,8.12000773 23,11.9617373 C23,15.803458 19.8855156,18.9123664 16.0437948,18.9123664 L7.957359,18.9123664 L7.957359,18.9123664 Z M15.8639176,16.4585488 C18.352201,16.4585488 20.3674397,14.448858 20.3674397,11.9617373 C20.3674397,9.47460595 18.352201,7.45381934 15.8639176,7.45381934 L8.1360824,7.45381934 C5.64895285,7.45381934 3.63255855,9.47460595 3.63255855,11.9617373 C3.63255855,14.448858 5.64895285,16.4585488 8.1360824,16.4585488 L15.8639176,16.4585488 L15.8639176,16.4585488 Z" />
+                                                    </svg>
+                                                  ) : (
+                                                    <img 
+                                                      src={`https://cdn.simpleicons.org/${slug}/fff`} 
+                                                      alt={slug}
+                                                      className="w-5 h-5 object-contain opacity-40 group-hover/tech:opacity-100 transition-opacity"
+                                                    />
+                                                  )}
+                                                </div>
+                                                
+                                                <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-md bg-[#1a1a1a] border border-white/10 opacity-0 group-hover/tech:opacity-100 transition-all duration-300 pointer-events-none translate-y-2 group-hover/tech:translate-y-0 shadow-2xl z-50">
+                                                  <div className="text-[8px] font-mono text-white tracking-widest uppercase whitespace-nowrap">
+                                                    {slug.replace('dotjs', '.js').replace('tailwindcss', 'Tailwind').replace('nextdotjs', 'Next.js').replace('nodedotjs', 'Node.js').replace('postgresql', 'Postgres').replace('greensock', 'GSAP').replace('huggingface', 'Hugging Face').replace('openai', 'OpenAI').replace('googleplay', 'Google Play').replace('anthropic', 'Claude AI')}
+                                                  </div>
+                                                  <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-[#1a1a1a]" />
+                                                </div>
+                                              </div>
+                                            ))}
+                                          </div>
+                                          <div className="space-y-4">
+                                            <div className="text-[10px] font-mono text-zinc-500 tracking-[0.5em] uppercase">{hoveredProject.detail}</div>
+                                            <div className="relative h-16 w-full">
+                                              <Image 
+                                                src={hoveredProject.logo} 
+                                                alt={hoveredProject.title}
+                                                fill
+                                                className="object-contain object-left filter brightness-0 invert opacity-90"
+                                              />
+                                            </div>
                                           </div>
                                         </div>
                                       </div>

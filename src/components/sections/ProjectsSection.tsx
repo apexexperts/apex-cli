@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Project {
   id: string;
@@ -17,6 +18,7 @@ interface Project {
   features?: string[];
   ctaText?: string;
   tech: string[];
+  href?: string;
 }
 
 const PROJECTS: Project[] = [
@@ -38,7 +40,8 @@ const PROJECTS: Project[] = [
       "Purpose-Built for Oracle APEX"
     ],
     ctaText: "Explore ASKLYZE",
-    tech: ["Oracle APEX", "Oracle Database", "Natural Language", "AI Analytics"]
+    tech: ["Oracle APEX", "Oracle Database", "Natural Language", "AI Analytics"],
+    href: "/projects/asklyze"
   },
   {
     id: "02",
@@ -58,7 +61,8 @@ const PROJECTS: Project[] = [
       "Auto-Generated Dashboards"
     ],
     ctaText: "Explore MyQuery",
-    tech: ["Natural Language", "AI Analytics", "150+ Connections"]
+    tech: ["Natural Language", "AI Analytics", "150+ Connections"],
+    href: "/projects/myquery"
   },
   {
     id: "03",
@@ -78,7 +82,8 @@ const PROJECTS: Project[] = [
       "Accurate MRR Reporting"
     ],
     ctaText: "Explore Tasto",
-    tech: ["Financial AI", "SaaS Analytics", "Forecasting", "Billing Integration"]
+    tech: ["Financial AI", "SaaS Analytics", "Forecasting", "Billing Integration"],
+    href: "/projects/tasto"
   }
 ];
 
@@ -151,19 +156,21 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
         style={{ y: isEven ? y : 0 }}
         className={`lg:col-span-7 relative ${isEven ? "" : "lg:order-2"}`}
       >
-        <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-zinc-950 border border-white/5 group shadow-2xl">
-          <ProjectMedia project={project} />
-          
-          {/* Internal Glow Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 pointer-events-none" />
-          <div className="absolute inset-0 bg-sinai-glow-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-          
-          {/* Subtle Technical Label */}
-          <div className="absolute top-8 left-8 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-2 group-hover:translate-y-0">
-            <div className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
-            <span className="text-[8px] font-mono text-white/60 tracking-[0.4em] uppercase">Deployment_Active // 0x{project.id}</span>
+        <Link href={project.href || "#"}>
+          <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-zinc-950 border border-white/5 group shadow-2xl cursor-pointer">
+            <ProjectMedia project={project} />
+            
+            {/* Internal Glow Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 pointer-events-none" />
+            <div className="absolute inset-0 bg-sinai-glow-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            
+            {/* Subtle Technical Label */}
+            <div className="absolute top-8 left-8 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-2 group-hover:translate-y-0">
+              <div className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
+              <span className="text-[8px] font-mono text-white/60 tracking-[0.4em] uppercase">Deployment_Active // 0x{project.id}</span>
+            </div>
           </div>
-        </div>
+        </Link>
       </motion.div>
 
       {/* Info Column */}
@@ -210,12 +217,15 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
         </div>
 
         <div>
-          <button className="group relative py-4 flex items-center gap-6 overflow-hidden">
+          <Link 
+            href={project.href || "#"} 
+            className="group relative py-4 flex items-center gap-6 overflow-hidden"
+          >
             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white group-hover:text-sinai-glow-orange transition-colors">
               {project.ctaText || "Explore Case Study"}
             </span>
             <div className="h-px w-12 bg-white/10 group-hover:w-20 group-hover:bg-sinai-glow-orange transition-all duration-500" />
-          </button>
+          </Link>
         </div>
       </div>
     </motion.div>
