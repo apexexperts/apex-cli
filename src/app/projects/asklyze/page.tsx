@@ -6,11 +6,19 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, Database, MessageSquare, ShieldCheck, BarChart3, Cpu, Zap, Code2 } from "lucide-react";
+import { Database, MessageSquare, ShieldCheck, BarChart3, Zap, Code2 } from "lucide-react";
 import { SectionReveal } from "@/components/SectionReveal";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
+}
+
+interface Capability {
+  id: string;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  image: string;
 }
 
 const NeuralCore = () => {
@@ -75,7 +83,7 @@ const NeuralCore = () => {
   );
 };
 
-const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: any, index: number, total: number, active: boolean, onEnter: () => void, onLeave: () => void }) => {
+const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: Capability, index: number, total: number, active: boolean, onEnter: () => void, onLeave: () => void }) => {
   const angle = (index / total) * Math.PI * 2;
   const radius = 320; 
   const x = Math.cos(angle) * radius;
@@ -122,7 +130,7 @@ const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: any
   );
 };
 
-const CapabilityDetailView = ({ cap }: { cap: any }) => {
+const CapabilityDetailView = ({ cap }: { cap: Capability }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group">
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
@@ -172,7 +180,6 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
   const [displayedText, setDisplayedText] = React.useState("");
   
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
     const startTimeout = setTimeout(() => {
       let i = 0;
       const interval = setInterval(() => {
@@ -232,13 +239,16 @@ const Particles = ({ count = 12 }: { count?: number }) => {
   const [positions, setPositions] = React.useState<{ x: string, delay: number }[]>([]);
 
   useEffect(() => {
-    setMounted(true);
-    setPositions(
-      [...Array(count)].map(() => ({
-        x: Math.random() * 100 + "%",
-        delay: Math.random() * 10,
-      }))
-    );
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+      setPositions(
+        [...Array(count)].map(() => ({
+          x: Math.random() * 100 + "%",
+          delay: Math.random() * 10,
+        }))
+      );
+    });
+    return () => cancelAnimationFrame(frame);
   }, [count]);
 
   if (!mounted) return null;
@@ -317,9 +327,6 @@ export default function AsklyzePage() {
       if (index >= 0) setActiveStep(index);
     });
   }, [pipelineProgress]);
-
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 400]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
 
   const activeFeature = FEATURES.find(f => f.id === activeFeatureId);
 
@@ -456,7 +463,7 @@ export default function AsklyzePage() {
                 <div className="space-y-10">
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative">
                     <p className="text-zinc-400 leading-relaxed font-light text-xl">
-                      Business users are the ones who need answers, but they don't speak SQL. The "Report Request" cycle creates bottlenecks that slow down decision-making. Existing AI tools require moving sensitive database records to the cloud—a non-starter for enterprise security.
+                      Business users are the ones who need answers, but they don&apos;t speak SQL. The &quot;Report Request&quot; cycle creates bottlenecks that slow down decision-making. Existing AI tools require moving sensitive database records to the cloud&mdash;a non-starter for enterprise security.
                     </p>
                   </div>
                   
@@ -696,7 +703,8 @@ export default function AsklyzePage() {
                     <div className="absolute bottom-12 left-12 text-[8px] font-mono text-zinc-500 tracking-[0.3em] uppercase space-y-2 z-40">
                       <div className="flex items-center gap-3">
                         <div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />
-                        PIPELINE_STEP: 0{activeStep + 1} // ACTIVE
+                        {/* PIPELINE_STEP: 0{activeStep + 1} // ACTIVE */}
+                        PIPELINE_STEP: 0{activeStep + 1}
                       </div>
                       <div>ENCRYPTION: AES_256</div>
                       <div>LATENCY: {120 - activeStep * 20}ms</div>
