@@ -12,6 +12,8 @@ interface Project {
   image: string;
   videoUrl?: string; // Support for project videos
   desc: string;
+  features?: string[];
+  ctaText?: string; // Support for custom button text
   tech: string[];
   layout: "wide" | "hero" | "split";
 }
@@ -19,13 +21,22 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     id: "01",
-    title: "NeuralStream 2.0",
-    client: "GLOBAL LOGISTICS CORP",
-    category: "Computer Vision / Real-time Inference",
-    metrics: { latency: "42ms", accuracy: "99.8%", efficiency: "+40%" },
+    title: "ASKLYZE",
+    client: "APEX EXPERTS",
+    category: "AI INSIGHTS PLUGIN",
+    metrics: { dashboards: "Native", charts: "AI-Gen", reports: "Automated" },
     image: "/images/project1.png",
-    desc: "A high-fidelity computer vision engine designed for real-time tracking and automated anomaly detection in high-throughput environments.",
-    tech: ["YOLOv10", "TensorRT", "CUDA"],
+    desc: "Oracle APEX plugin for AI-powered business insights. Turn natural-language questions into reports, charts, and dashboards inside Oracle APEX with zero data movement.",
+    features: [
+      "Fast Time to Value",
+      "Natural-Language Analytics",
+      "Built Inside Oracle APEX",
+      "Zero Data Movement",
+      "Less Effort, More Productivity",
+      "Purpose-Built for Oracle APEX"
+    ],
+    ctaText: "Explore ASKLYZE",
+    tech: ["Oracle APEX", "Oracle Database", "Natural Language", "AI Analytics"],
     layout: "wide"
   },
   {
@@ -176,11 +187,22 @@ function ProjectMeta({ project, centered = false }: { project: Project; centered
         {project.desc}
       </p>
 
+      {project.features && (
+        <ul className={`space-y-3 ${centered ? "flex flex-col items-center" : ""}`}>
+          {project.features.map((feature, i) => (
+            <li key={i} className="flex items-center gap-3 text-sm text-zinc-400 group/feature">
+              <div className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange/60 group-hover/feature:bg-sinai-glow-orange transition-colors" />
+              {feature}
+            </li>
+          ))}
+        </ul>
+      )}
+
       <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 ${centered ? "w-full justify-center" : ""}`}>
         {Object.entries(project.metrics).map(([key, value]) => (
           <div key={key} className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 text-left">
             <div className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest mb-1">{key}</div>
-            <div className="text-sm font-bold text-sinai-glow-orange font-mono">{value}</div>
+            <div className="text-[10px] font-bold text-sinai-glow-orange font-mono leading-tight">{value}</div>
           </div>
         ))}
       </div>
@@ -195,7 +217,7 @@ function ProjectMeta({ project, centered = false }: { project: Project; centered
 
       <div className={`pt-6 ${centered ? "w-full flex justify-center" : ""}`}>
         <button className="btn-premium flex items-center gap-4 group/btn">
-          Explore Intelligence
+          {project.ctaText || "Explore Intelligence"}
           <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
         </button>
       </div>
