@@ -493,11 +493,13 @@ export default function AboutPage() {
                         className="absolute -translate-x-1/2 -translate-y-1/2 w-14 h-14 lg:w-16 lg:h-16 rounded-xl bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 flex items-center justify-center p-3 pointer-events-auto hover:border-sinai-glow-orange/50 transition-all group shadow-2xl z-20"
                       >
                         <div className="relative w-12 h-12">
-                          <img 
+                          <Image 
                             src={`/images/tech/${tech.slug}.svg`} 
                             className="w-full h-full object-contain opacity-40 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
                             alt={tech.id}
                             style={{ filter: `drop-shadow(0 0 10px ${tech.color}44)` }}
+                            fill
+                            priority
                           />
                         </div>
                         
