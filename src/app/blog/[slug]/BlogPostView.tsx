@@ -40,6 +40,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     },
     keywords: post.categories.join(", "),
   };
+  let headingIndex = 0;
 
   return (
     <article className="min-h-screen bg-[#06080a] text-white pt-40 pb-40 overflow-hidden relative">
@@ -162,12 +163,15 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
             <div className="prose prose-invert max-w-none space-y-12">
               {post.body.map((block, i) => {
-                if (block.type === "h2") return (
-                  <h2 key={i} className="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-24 mb-12 text-white leading-tight flex items-center gap-6">
-                    <span className="text-sinai-glow-orange/40 font-mono text-2xl">0{Math.floor(i/2) + 1}</span>
-                    {block.text}
-                  </h2>
-                );
+                if (block.type === "h2") {
+                  const headingNumber = String(++headingIndex).padStart(2, "0");
+                  return (
+                    <h2 key={i} className="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-24 mb-12 text-white leading-tight flex items-center gap-6">
+                      <span className="text-sinai-glow-orange/40 font-mono text-2xl">{headingNumber}</span>
+                      {block.text}
+                    </h2>
+                  );
+                }
                 if (block.type === "p") return <p key={i} className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed mb-12">{block.text}</p>;
                 if (block.type === "image") return (
                   <div key={i} className="my-20 space-y-6">

@@ -652,6 +652,8 @@ Before publishing these Terms, APEX should confirm:
 * Whether the company wants a dedicated legal email, such as [legal@apexexperts.net](mailto:legal@apexexperts.net).
 `;
 
+import OfficialStamp from "@/components/OfficialStamp";
+
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-[#06080a] text-zinc-400 font-mono text-[10px] pt-48 pb-32 px-6">
@@ -696,12 +698,11 @@ export default function TermsPage() {
             >
               {TERMS_CONTENT}
             </ReactMarkdown>
-          </div>
 
-          <div className="mt-12 pt-12 border-t border-white/5 flex justify-between items-center text-[7px] text-zinc-700">
-            <div>// AUTHENTICATED_BY_APEX_LEGAL_NODE</div>
-            <div className="font-bold uppercase">System_Status: Markdown_Enabled_Sync</div>
-            <div>// END_OF_MASTER_TERMS</div>
+            {/* Integrated Official Company Stamp */}
+            <div className="flex justify-end mt-8 relative">
+              <OfficialStamp className="opacity-70 grayscale hover:grayscale-0 transition-all duration-300 transform -translate-x-4 -translate-y-4" />
+            </div>
           </div>
         </div>
       </div>

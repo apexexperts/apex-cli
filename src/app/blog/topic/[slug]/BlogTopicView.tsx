@@ -17,7 +17,7 @@ export default function BlogTopicPage({ params }: { params: Promise<{ slug: stri
   // Filter posts that contain this category
   const filteredPosts = BLOG_POSTS.filter(post => 
     post.categories.some(cat => cat.toLowerCase().replace(/\s+/g, '-') === slug.toLowerCase())
-  );
+  ).sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
   if (filteredPosts.length === 0) {
     const allCategories = Array.from(new Set(BLOG_POSTS.flatMap(p => p.categories.map(c => c.toLowerCase().replace(/\s+/g, '-')))));

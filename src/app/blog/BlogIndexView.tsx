@@ -8,7 +8,9 @@ import { ArrowRight, Calendar, User, Clock } from "lucide-react";
 import { BLOG_POSTS } from "@/data/blog";
 
 export default function BlogPage() {
-  const posts = BLOG_POSTS;
+  const posts = [...BLOG_POSTS].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
 
   // Extract unique topics and count them
   const topicsMap: Record<string, number> = {};

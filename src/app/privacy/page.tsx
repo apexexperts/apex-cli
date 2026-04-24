@@ -864,6 +864,8 @@ Before publishing this Privacy Policy, APEX should complete the following intern
 * Confirm whether a Data Processing Agreement is available for enterprise customers.
 * Confirm whether the company needs a cookie policy, acceptable use policy, security policy, or sub-processor page.`;
 
+import OfficialStamp from "@/components/OfficialStamp";
+
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-[#06080a] text-zinc-400 font-mono text-[10px] pt-48 pb-32 px-6">
@@ -909,12 +911,11 @@ export default function PrivacyPage() {
             >
               {PRIVACY_CONTENT}
             </ReactMarkdown>
-          </div>
 
-          <div className="mt-12 pt-12 border-t border-white/5 flex justify-between items-center text-[7px] text-zinc-700">
-            <div>// AUTHENTICATED_BY_APEX_LEGAL_NODE</div>
-            <div className="font-bold uppercase">System_Status: Markdown_Enabled_Sync</div>
-            <div>// END_OF_FULL_PRIVACY_PROTOCOL</div>
+            {/* Integrated Official Company Stamp */}
+            <div className="flex justify-end mt-8 relative">
+              <OfficialStamp className="opacity-70 grayscale hover:grayscale-0 transition-all duration-300 transform -translate-x-4 -translate-y-4" />
+            </div>
           </div>
         </div>
       </div>

@@ -72,6 +72,2151 @@ export const AUTHORS = {
 
 export const BLOG_POSTS: Post[] = [
   {
+    id: "post-50",
+    title: "How to Decide If a Workflow Deserves AI Automation",
+    slug: "decide-workflow-deserves-ai-automation",
+    publishedAt: "2026-04-24T16:40:00Z",
+    excerpt:
+      "A practical decision framework for separating strong AI automation candidates from workflows that need process cleanup first.",
+    synopsis:
+      "Use this checklist before starting an AI automation project: repeatability, data quality, exception patterns, risk level, integration readiness, and human approval points.",
+    mainImage: "/images/ai-automation-hero.png",
+    author: AUTHORS.ahmed,
+    categories: ["AI AUTOMATION", "PROCESS AUTOMATION", "AI STRATEGY"],
+    body: [
+      {
+        type: "p",
+        text:
+          "The first question in an AI automation project should not be which model to use. It should be whether the workflow is ready to be automated at all. Some processes become faster with AI. Others only become faster at producing confusion.",
+      },
+      { type: "h2", text: "1. Look for Repeated Decisions" },
+      {
+        type: "p",
+        text:
+          "A good automation candidate has repeated decisions with visible inputs and clear outcomes. Examples include classifying requests, extracting fields, routing cases, preparing summaries, checking completeness, or drafting a response for approval.",
+      },
+      {
+        type: "p",
+        text:
+          "If every case is unique, political, or dependent on undocumented judgment, the better first step is process discovery. AI can assist the discovery, but it should not own the decision yet.",
+      },
+      { type: "image", src: "/images/cognitive-rpa-detail.png", caption: "Strong automation starts with visible process structure, not model selection." },
+      { type: "h2", text: "2. Check the Data Before the Demo" },
+      {
+        type: "p",
+        text:
+          "AI automation depends on the quality of the data it sees. Missing fields, inconsistent statuses, duplicate records, stale documents, and unclear ownership will surface as unreliable automation later.",
+      },
+      {
+        type: "p",
+        text:
+          "Before writing prompts, review the data sources. Ask where the truth lives, who can change it, how often it updates, and whether the automation can access it through a stable interface.",
+      },
+      { type: "h2", text: "3. Map Exceptions Early" },
+      {
+        type: "p",
+        text:
+          "The normal path is easy to automate. The exceptions decide whether the system is useful. Identify rejected requests, missing documents, conflicting records, urgent overrides, and cases where a person must remain accountable.",
+      },
+      {
+        type: "p",
+        text:
+          "A serious automation plan defines what the system should do when it is uncertain. Refuse, ask for more information, escalate, or draft a recommendation. Each option needs a product state and an audit trail.",
+      },
+      { type: "h2", text: "4. Automate the Assistive Layer First" },
+      {
+        type: "p",
+        text:
+          "The safest first release often helps a human complete the work faster instead of executing the full workflow alone. Summaries, validation checks, suggested routing, and prepared decision packets can produce value while preserving control.",
+      },
+      {
+        type: "p",
+        text:
+          "When the assistive layer proves reliable, the team can promote selected steps into higher autonomy with evidence, approvals, and monitoring already in place.",
+      },
+    ],
+  },
+  {
+    id: "post-49",
+    title: "The AI Automation Brief That Saves Discovery Time",
+    slug: "ai-automation-brief-saves-discovery-time",
+    publishedAt: "2026-04-23T15:30:00Z",
+    excerpt:
+      "A buyer-friendly brief structure that helps teams explain the workflow, constraints, systems, and success criteria behind an AI automation request.",
+    synopsis:
+      "A good automation brief describes the business workflow in operational terms so engineering can assess scope, data, risk, integrations, and measurable value without guesswork.",
+    mainImage: "/images/process-step-1.png",
+    author: AUTHORS.hesham,
+    categories: ["AI AUTOMATION", "PROCESS AUTOMATION", "BUSINESS STRATEGY"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Many AI automation projects start with a vague request: we want to automate support, finance, sales, or operations. That is understandable, but it is not enough to estimate architecture, risk, or delivery effort.",
+      },
+      { type: "h2", text: "1. Start With the Workflow Name" },
+      {
+        type: "p",
+        text:
+          "Name the workflow in business language. For example: invoice exception review, lead enrichment, procurement request triage, contract intake, field service report cleanup, or customer support knowledge lookup.",
+      },
+      {
+        type: "p",
+        text:
+          "The name should be narrow enough that a user can describe where the workflow starts and where it ends. If the workflow cannot be named, discovery should begin with mapping rather than automation design.",
+      },
+      { type: "image", src: "/images/process-step-2.png", caption: "A useful brief makes workflow boundaries visible before technology choices begin." },
+      { type: "h2", text: "2. List the Systems Involved" },
+      {
+        type: "p",
+        text:
+          "Document the software touched by the workflow: Oracle APEX, ERP, CRM, email, spreadsheets, document storage, ticketing, payment tools, or internal databases. Include whether each system has an API, database access, export process, or only a manual interface.",
+      },
+      {
+        type: "p",
+        text:
+          "This single section often changes the project plan. A workflow with clean APIs is very different from a workflow that depends on screenshots, inbox rules, and undocumented spreadsheet formulas.",
+      },
+      { type: "h2", text: "3. Define the Human Checkpoints" },
+      {
+        type: "p",
+        text:
+          "State who approves the work today and who remains accountable after automation. AI can prepare decisions, but some workflows still require human authority because of financial, legal, operational, or customer impact.",
+      },
+      {
+        type: "p",
+        text:
+          "A strong brief separates low-risk assistance from high-risk execution. That separation protects both the user and the project timeline.",
+      },
+      { type: "h2", text: "4. Describe Success in Operational Terms" },
+      {
+        type: "p",
+        text:
+          "Avoid vague targets like smarter or faster. Use practical indicators: fewer manual checks, shorter response time, better routing accuracy, reduced duplicate entry, fewer incomplete submissions, or faster exception review.",
+      },
+      {
+        type: "p",
+        text:
+          "The best brief does not need to be long. It needs to be honest enough that the team can design the first useful release instead of chasing an abstract AI transformation.",
+      },
+    ],
+  },
+  {
+    id: "post-48",
+    title: "Chatbot, Copilot, Agent: Choosing the Right Product Shape",
+    slug: "chatbot-copilot-agent-product-shape",
+    publishedAt: "2026-04-22T15:30:00Z",
+    excerpt:
+      "Not every AI product should become an autonomous agent. This guide explains when a chatbot, copilot, or agent is the right interface for the job.",
+    synopsis:
+      "Choosing the correct AI product shape keeps scope realistic: chatbots answer, copilots assist, and agents coordinate actions under explicit boundaries.",
+    mainImage: "/images/autonomous-reasoning-core.png",
+    author: AUTHORS.mario,
+    categories: ["PRODUCT DESIGN", "AI STRATEGY", "AGENTIC SYSTEMS"],
+    body: [
+      {
+        type: "p",
+        text:
+          "The terms chatbot, copilot, and agent are often used as if they mean the same thing. They do not. The distinction matters because each shape creates different expectations for users, safety, engineering, and measurement.",
+      },
+      { type: "h2", text: "1. Use a Chatbot for Information Access" },
+      {
+        type: "p",
+        text:
+          "A chatbot is appropriate when the main job is to answer questions, explain policies, retrieve knowledge, summarize documents, or guide users to the right page. The user remains in control of the work.",
+      },
+      {
+        type: "p",
+        text:
+          "The quality bar is still high. The bot needs source-aware answers, refusal behavior, clear escalation, and a way to admit when it does not have enough evidence.",
+      },
+      { type: "image", src: "/images/apex-ai-workflow.png", caption: "The product shape should match the level of authority the system actually needs." },
+      { type: "h2", text: "2. Use a Copilot for Assisted Work" },
+      {
+        type: "p",
+        text:
+          "A copilot is useful when the user is inside a workflow and needs help producing or checking work. It may draft text, validate a record, compare options, or suggest the next field to complete.",
+      },
+      {
+        type: "p",
+        text:
+          "The interface should keep editing and approval close. A copilot should feel like it is helping the user think, not silently operating the business process.",
+      },
+      { type: "h2", text: "3. Use an Agent for Coordinated Action" },
+      {
+        type: "p",
+        text:
+          "An agent becomes relevant when the system needs to plan across steps, call tools, inspect results, recover from errors, and coordinate work between software systems.",
+      },
+      {
+        type: "p",
+        text:
+          "That power requires stronger architecture: scoped tools, audit logs, approvals, test cases, and a clear policy for what the agent is not allowed to do.",
+      },
+      { type: "h2", text: "4. Do Not Overbuild the First Version" },
+      {
+        type: "p",
+        text:
+          "Many strong AI products begin as a chatbot or copilot and only become agentic after the team understands the workflow. This is not a compromise. It is how trust is built.",
+      },
+      {
+        type: "p",
+        text:
+          "The right product shape is the one that gives the user enough help without giving the system unnecessary authority.",
+      },
+    ],
+  },
+  {
+    id: "post-47",
+    title: "Approval Gates Are the Control Layer for Agentic Workflows",
+    slug: "approval-gates-agentic-workflows-control-layer",
+    publishedAt: "2026-04-21T15:30:00Z",
+    excerpt:
+      "Human approval is not a slowdown in agentic systems. It is the point where autonomy becomes accountable and production-safe.",
+    synopsis:
+      "Approval gates work best when they are tied to risk, evidence, reversibility, tool scope, and clear user interface states.",
+    mainImage: "/images/agentic-workflow.png",
+    author: AUTHORS.reham,
+    categories: ["AGENTIC SYSTEMS", "SECURITY", "QUALITY ENGINEERING"],
+    body: [
+      {
+        type: "p",
+        text:
+          "The phrase human in the loop is often used loosely. In a real agentic workflow, the approval gate is not decoration. It is a designed control layer that determines when software may move from recommendation to action.",
+      },
+      { type: "h2", text: "1. Tie Approval to Risk" },
+      {
+        type: "p",
+        text:
+          "Not every action needs the same level of review. Reading a record, drafting a response, changing a status, sending an email, and approving a refund have different risk profiles.",
+      },
+      {
+        type: "p",
+        text:
+          "A good system classifies actions by impact and reversibility. Low-risk suggestions can be fast. High-risk execution should require explicit approval and a visible record of why the action was proposed.",
+      },
+      { type: "image", src: "/images/agentic-orchestration-detail.png", caption: "Approval gates should match the impact of the action, not the complexity of the prompt." },
+      { type: "h2", text: "2. Show Evidence, Not Just a Button" },
+      {
+        type: "p",
+        text:
+          "An approval screen should include the relevant source data, the agent's proposed action, the affected system, and the expected result. A simple approve button without context turns the human into a rubber stamp.",
+      },
+      {
+        type: "p",
+        text:
+          "Evidence quality matters. If the agent used outdated, incomplete, or conflicting information, the interface should make that visible before the user approves anything.",
+      },
+      { type: "h2", text: "3. Separate Drafting From Execution" },
+      {
+        type: "p",
+        text:
+          "Drafting is usually safe. Execution is where risk appears. Keep those paths separate in the tool design, permission model, and interface language.",
+      },
+      {
+        type: "p",
+        text:
+          "A user should always know whether they are reviewing a draft, requesting a change, or authorizing an action that will touch a live system.",
+      },
+      { type: "h2", text: "4. Log the Decision" },
+      {
+        type: "p",
+        text:
+          "Approval is only useful if the system records who approved, what evidence was shown, what changed, and which version of the agent or workflow proposed it.",
+      },
+      {
+        type: "p",
+        text:
+          "That record protects the business, improves quality review, and gives the team the feedback needed to reduce unnecessary approvals over time.",
+      },
+    ],
+  },
+  {
+    id: "post-46",
+    title: "The Enterprise Data Readiness Checklist for AI Projects",
+    slug: "enterprise-data-readiness-checklist-ai-projects",
+    publishedAt: "2026-04-20T15:30:00Z",
+    excerpt:
+      "AI projects fail when teams skip data ownership, access, freshness, classification, and integration planning. This checklist keeps the work grounded.",
+    synopsis:
+      "Before connecting models to business workflows, evaluate data ownership, structure, quality, permissions, freshness, identifiers, and operational access paths.",
+    mainImage: "/images/cognitive-data-synthesis-core.png",
+    author: AUTHORS.maha,
+    categories: ["DATA ENGINEERING", "AI STRATEGY", "SECURITY"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Enterprise AI does not start with a model. It starts with the data environment the model will have to understand. If that environment is unclear, the AI layer will inherit every hidden inconsistency.",
+      },
+      { type: "h2", text: "1. Name the System of Record" },
+      {
+        type: "p",
+        text:
+          "Every important field needs an owner and a source of truth. Customer name, contract status, invoice total, approval state, risk flag, and delivery date cannot be treated as casual text if the AI system will use them for decisions.",
+      },
+      {
+        type: "p",
+        text:
+          "When multiple systems disagree, the project needs a rule before launch. Otherwise the model will be blamed for a data governance problem.",
+      },
+      { type: "image", src: "/images/cognitive-data-synthesis-core.png", caption: "AI readiness depends on data ownership before model behavior." },
+      { type: "h2", text: "2. Check Freshness and Access" },
+      {
+        type: "p",
+        text:
+          "Freshness requirements vary by workflow. A marketing summary may tolerate daily updates. A support escalation or payment decision may need current data at request time.",
+      },
+      {
+        type: "p",
+        text:
+          "Access is equally important. A data source that requires manual export will slow the system and create stale knowledge. Stable APIs, database views, or governed file pipelines make the AI product more reliable.",
+      },
+      { type: "h2", text: "3. Classify Sensitive Data" },
+      {
+        type: "p",
+        text:
+          "Identify personal data, financial data, internal strategy, customer records, credentials, and restricted operational details. Then define what the model can see, what it can store, and what must remain outside the workflow.",
+      },
+      {
+        type: "p",
+        text:
+          "This classification should influence retrieval, logging, prompt construction, redaction, and user permissions.",
+      },
+      { type: "h2", text: "4. Build a Small Test Corpus" },
+      {
+        type: "p",
+        text:
+          "Before a full rollout, create a representative test set with clean cases, messy cases, missing data, contradictory records, and examples the system should refuse.",
+      },
+      {
+        type: "p",
+        text:
+          "A small honest corpus is more useful than a large polished demo set. It tells the team whether the data is ready for production behavior.",
+      },
+    ],
+  },
+  {
+    id: "post-45",
+    title: "How to Build an Evaluation Set Before an AI Launch",
+    slug: "build-evaluation-set-before-ai-launch",
+    publishedAt: "2026-04-19T15:30:00Z",
+    excerpt:
+      "Evaluation sets give AI products a way to improve beyond demos. Here is how teams can define useful tests before launch.",
+    synopsis:
+      "A practical guide to building evals from real user tasks, edge cases, refusal cases, quality criteria, and regression checks.",
+    mainImage: "/images/predictive-analytics-detail.png",
+    author: AUTHORS.reham,
+    categories: ["QUALITY ENGINEERING", "AI STRATEGY", "AI AUTOMATION"],
+    body: [
+      {
+        type: "p",
+        text:
+          "A demo shows what an AI system can do once. An evaluation set shows whether it can keep doing the right thing as prompts, data, tools, and models change.",
+      },
+      { type: "h2", text: "1. Start With Real Tasks" },
+      {
+        type: "p",
+        text:
+          "The first evaluation examples should come from the workflow itself: questions users ask, documents they upload, records they search, fields they edit, and decisions they need to make.",
+      },
+      {
+        type: "p",
+        text:
+          "Avoid filling the set with ideal prompts. Real users are incomplete, impatient, and specific in ways demos rarely capture.",
+      },
+      { type: "image", src: "/images/predictive-analytics-detail.png", caption: "Evaluation quality improves when test cases reflect real workflow pressure." },
+      { type: "h2", text: "2. Include Refusal Cases" },
+      {
+        type: "p",
+        text:
+          "A good AI system should know when not to answer, not to call a tool, and not to invent missing information. Refusal cases test that behavior directly.",
+      },
+      {
+        type: "p",
+        text:
+          "Examples include restricted records, unsupported legal or medical advice, missing evidence, ambiguous approvals, and requests outside the system's purpose.",
+      },
+      { type: "h2", text: "3. Define the Grade Before Running the Test" },
+      {
+        type: "p",
+        text:
+          "Decide what good means. Accuracy, completeness, tone, citation quality, tool choice, latency, permission handling, and escalation behavior can all matter, but not equally for every workflow.",
+      },
+      {
+        type: "p",
+        text:
+          "If the grade is vague, the eval becomes a debate. If the grade is clear, the team can compare changes without relying on memory.",
+      },
+      { type: "h2", text: "4. Keep the Set Alive" },
+      {
+        type: "p",
+        text:
+          "Evaluation sets should grow after launch. Add production failures, unusual success cases, new business rules, and changed data structures.",
+      },
+      {
+        type: "p",
+        text:
+          "The point is not to freeze the AI product. The point is to make change safer.",
+      },
+    ],
+  },
+  {
+    id: "post-44",
+    title: "RAG for Customer Support Knowledge Bases",
+    slug: "rag-customer-support-knowledge-bases",
+    publishedAt: "2026-04-18T15:30:00Z",
+    excerpt:
+      "Support RAG is not a document upload project. It requires ownership, source hygiene, escalation paths, and answer design that respects customer trust.",
+    synopsis:
+      "Useful support RAG depends on current content, permission-aware retrieval, answer boundaries, source references, and a clear route to human escalation.",
+    mainImage: "/images/agentic-orchestration-core.png",
+    author: AUTHORS.asma,
+    categories: ["AI STRATEGY", "DATA ENGINEERING", "CUSTOMER EXPERIENCE"],
+    body: [
+      {
+        type: "p",
+        text:
+          "A support knowledge base looks like an obvious RAG candidate. The content already exists, the questions repeat, and users want faster answers. The risk is assuming that uploading documents is the same as building a support product.",
+      },
+      { type: "h2", text: "1. Clean the Knowledge Before Retrieval" },
+      {
+        type: "p",
+        text:
+          "Support content often contains duplicates, outdated instructions, region-specific rules, internal notes, and articles written for different audiences. Retrieval will expose those weaknesses.",
+      },
+      {
+        type: "p",
+        text:
+          "Start by assigning owners, archiving stale pages, tagging content by product or policy, and separating internal guidance from customer-facing answers.",
+      },
+      { type: "image", src: "/images/agentic-orchestration-core.png", caption: "Support RAG needs content governance before answer generation." },
+      { type: "h2", text: "2. Design the Answer Boundary" },
+      {
+        type: "p",
+        text:
+          "A support assistant should know what it can answer, what it can suggest, and what it must escalate. Refunds, account access, legal commitments, and safety issues may need a human route.",
+      },
+      {
+        type: "p",
+        text:
+          "The answer should also show confidence through evidence, not through tone. Source references and concise limitations help users trust the system.",
+      },
+      { type: "h2", text: "3. Measure Resolution, Not Just Response Time" },
+      {
+        type: "p",
+        text:
+          "A fast answer that creates a second ticket is not success. Track whether users found the answer useful, whether they escalated, whether the answer matched policy, and whether support agents had to correct it later.",
+      },
+      {
+        type: "p",
+        text:
+          "Support RAG should reduce confusion, not simply increase message volume.",
+      },
+      { type: "h2", text: "4. Keep Agents in the Feedback Loop" },
+      {
+        type: "p",
+        text:
+          "Support teams know where documentation is weak. Give them a way to flag bad answers, missing sources, outdated articles, and recurring questions that need better official content.",
+      },
+      {
+        type: "p",
+        text:
+          "The knowledge base and the AI layer should improve together. That is what turns RAG from a search feature into a support capability.",
+      },
+    ],
+  },
+  {
+    id: "post-43",
+    title: "Vector Search in Oracle Databases: A Business-First Guide",
+    slug: "vector-search-oracle-databases-business-guide",
+    publishedAt: "2026-04-17T15:30:00Z",
+    excerpt:
+      "Oracle AI Vector Search lets teams search by meaning, but the business value depends on choosing the right records, metadata, and user workflow.",
+    synopsis:
+      "Semantic search inside the database is most useful when vectors stay connected to business data, permissions, metadata, and clear product use cases.",
+    mainImage: "/images/apex-ai-workflow.png",
+    author: AUTHORS.amr,
+    categories: ["ORACLE APEX", "DATA ENGINEERING", "AI STRATEGY"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Vector search is often explained with abstract examples, but the enterprise value is simple: users can find relevant business information by meaning instead of exact wording.",
+      },
+      { type: "h2", text: "1. Start With a Search Problem" },
+      {
+        type: "p",
+        text:
+          "Do not add vectors because the database supports them. Start with a real search problem: policy lookup, similar cases, product documentation, contract clauses, support history, or operational notes.",
+      },
+      {
+        type: "p",
+        text:
+          "The best use cases involve users who already know the answer may exist, but do not know the exact terms used to describe it.",
+      },
+      { type: "image", src: "/images/apex-ai-workflow.png", caption: "Vector search is valuable when semantic results remain tied to business records." },
+      { type: "h2", text: "2. Keep Metadata Close" },
+      {
+        type: "p",
+        text:
+          "Semantic similarity alone is not enough. Users may need results filtered by customer, region, product, effective date, status, permission level, or document type.",
+      },
+      {
+        type: "p",
+        text:
+          "Oracle's database-centered approach is useful because vectors can live near structured business data. That makes hybrid filtering and governance easier to design.",
+      },
+      { type: "h2", text: "3. Treat Embeddings as Data Assets" },
+      {
+        type: "p",
+        text:
+          "Embeddings need lifecycle management. When source content changes, vectors may need to be regenerated. When permissions change, search results must respect the new access rule.",
+      },
+      {
+        type: "p",
+        text:
+          "The implementation plan should include refresh strategy, deletion behavior, model versioning, and monitoring for low-quality results.",
+      },
+      { type: "h2", text: "4. Design the Result Experience" },
+      {
+        type: "p",
+        text:
+          "A semantic result should not feel mysterious. Show the source, date, context, and why it may be relevant. Let users open the original record instead of trusting a generated summary alone.",
+      },
+      {
+        type: "p",
+        text:
+          "Vector search becomes useful when it shortens discovery while preserving the reliability of the business system.",
+      },
+    ],
+  },
+  {
+    id: "post-42",
+    title: "Oracle APEX REST Integrations Without Hidden Fragility",
+    slug: "oracle-apex-rest-integrations-without-fragility",
+    publishedAt: "2026-04-16T15:30:00Z",
+    excerpt:
+      "REST integrations in Oracle APEX are powerful, but they need clear contracts, credentials, error states, and monitoring to stay reliable.",
+    synopsis:
+      "Strong APEX REST integrations define operations, authentication, response mapping, retries, user-visible failures, and ownership before the page depends on them.",
+    mainImage: "/images/apex-dev-core.png",
+    author: AUTHORS.micheal,
+    categories: ["ORACLE APEX", "DATA ENGINEERING", "WEB ENGINEERING"],
+    body: [
+      {
+        type: "p",
+        text:
+          "REST Data Sources make Oracle APEX a strong integration surface, but the page experience is only as reliable as the external contract behind it.",
+      },
+      { type: "h2", text: "1. Define the Operation Contract" },
+      {
+        type: "p",
+        text:
+          "Each REST operation should have a clear purpose, expected parameters, response shape, authentication method, timeout expectation, and owner. If the endpoint changes, the APEX application should not be the first place the team discovers it.",
+      },
+      {
+        type: "p",
+        text:
+          "Document whether the service supports filtering, pagination, sorting, and partial failures. These details affect reports, forms, charts, and process logic.",
+      },
+      { type: "image", src: "/images/apex-dev-core.png", caption: "APEX REST integrations need stable contracts before they become application dependencies." },
+      { type: "h2", text: "2. Handle Errors as Product States" },
+      {
+        type: "p",
+        text:
+          "A failed integration should not leave users staring at a generic error. The interface should explain whether the data is unavailable, stale, incomplete, or waiting for retry.",
+      },
+      {
+        type: "p",
+        text:
+          "Different errors deserve different responses. Authentication failure, rate limit, validation error, and upstream downtime should not collapse into the same message.",
+      },
+      { type: "h2", text: "3. Protect Credentials and Access" },
+      {
+        type: "p",
+        text:
+          "Credentials should be configured through the platform's secure mechanisms, not embedded in page logic. Access to integration actions should align with the user's role and the sensitivity of the downstream system.",
+      },
+      {
+        type: "p",
+        text:
+          "If an APEX page can trigger an external write, that action needs the same seriousness as a database update.",
+      },
+      { type: "h2", text: "4. Monitor the Dependency" },
+      {
+        type: "p",
+        text:
+          "Integration health belongs in operations. Track latency, failure rate, response changes, and user impact. If a service becomes unreliable, the business should know before support tickets pile up.",
+      },
+      {
+        type: "p",
+        text:
+          "REST integration is not just connection work. It is application reliability work.",
+      },
+    ],
+  },
+  {
+    id: "post-41",
+    title: "When Oracle APEX Is the Right Platform for Internal Tools",
+    slug: "when-oracle-apex-right-platform-internal-tools",
+    publishedAt: "2026-04-15T15:30:00Z",
+    excerpt:
+      "Oracle APEX is strongest when the application is data-centric, workflow-heavy, and close to enterprise records. This guide helps teams choose wisely.",
+    synopsis:
+      "APEX fits internal tools that need secure forms, reports, approvals, dashboards, database logic, and rapid iteration near Oracle data.",
+    mainImage: "/images/oracle-apex-hero.png",
+    author: AUTHORS.amr,
+    categories: ["ORACLE APEX", "MODERNIZATION", "BUSINESS STRATEGY"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Choosing a platform is not a loyalty test. It is a fit decision. Oracle APEX is often the right choice when the work is close to enterprise data and the team needs secure applications faster than a full custom stack can justify.",
+      },
+      { type: "h2", text: "1. The App Is Data-Centric" },
+      {
+        type: "p",
+        text:
+          "APEX fits applications where forms, reports, validation, dashboards, approvals, and database logic are central to the experience. Internal operations tools often match this pattern naturally.",
+      },
+      {
+        type: "p",
+        text:
+          "If most of the product value depends on data quality and workflow clarity, building close to the database can reduce unnecessary complexity.",
+      },
+      { type: "image", src: "/images/oracle-apex-hero.png", caption: "APEX is strongest when business workflow and enterprise data sit close together." },
+      { type: "h2", text: "2. The Users Need Utility, Not Novelty" },
+      {
+        type: "p",
+        text:
+          "Internal tools should be efficient, legible, and reliable. Users care about getting work done: finding records, submitting requests, reviewing exceptions, approving tasks, and exporting evidence.",
+      },
+      {
+        type: "p",
+        text:
+          "APEX can support polished UX, but the design should serve repeated use rather than decorative complexity.",
+      },
+      { type: "h2", text: "3. The Workflow Changes Often" },
+      {
+        type: "p",
+        text:
+          "Business workflows evolve. APEX supports fast iteration around forms, reports, validations, and process logic, which helps teams adapt without turning every change into a long engineering cycle.",
+      },
+      {
+        type: "p",
+        text:
+          "That speed is most valuable when paired with disciplined naming, testing, access control, and documentation.",
+      },
+      { type: "h2", text: "4. Know When Not to Use It" },
+      {
+        type: "p",
+        text:
+          "APEX may not be the best fit for every public-facing, animation-heavy, highly custom consumer product. It should be chosen because it matches the workflow, not because it is familiar.",
+      },
+      {
+        type: "p",
+        text:
+          "The right platform decision respects the application, the team, and the long-term maintenance burden.",
+      },
+    ],
+  },
+  {
+    id: "post-40",
+    title: "APEX Workflow Design for Approvals That Users Actually Use",
+    slug: "apex-workflow-design-approvals-users-use",
+    publishedAt: "2026-04-14T15:30:00Z",
+    excerpt:
+      "APEX Workflow can formalize approvals, but adoption depends on clear states, useful notifications, and decisions that match how people work.",
+    synopsis:
+      "Approval workflows succeed when participants, states, variables, notifications, escalation, and reporting are designed around real operational behavior.",
+    mainImage: "/images/apex-training-hub.png",
+    author: AUTHORS.reham,
+    categories: ["ORACLE APEX", "PROCESS AUTOMATION", "QUALITY ENGINEERING"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Approvals fail when the workflow is technically correct but operationally awkward. Users need to know what is waiting, why it matters, what evidence supports the request, and what happens after they decide.",
+      },
+      { type: "h2", text: "1. Name the States Clearly" },
+      {
+        type: "p",
+        text:
+          "A workflow should use states that business users understand: draft, submitted, under review, needs information, approved, rejected, cancelled, or escalated.",
+      },
+      {
+        type: "p",
+        text:
+          "Avoid status names that only make sense to developers. The state label is part of the product experience.",
+      },
+      { type: "image", src: "/images/apex-training-hub.png", caption: "Approval design works when workflow states match user language." },
+      { type: "h2", text: "2. Put Evidence Next to the Decision" },
+      {
+        type: "p",
+        text:
+          "Approvers should not search across five pages to understand a request. The approval view should show the important fields, attachments, history, comments, and policy context needed for a confident decision.",
+      },
+      {
+        type: "p",
+        text:
+          "This reduces approval fatigue and improves accountability because the decision is made with visible evidence.",
+      },
+      { type: "h2", text: "3. Design Escalation Before It Is Needed" },
+      {
+        type: "p",
+        text:
+          "Every approval process needs a path for absence, conflict, timeout, and priority change. If escalation is manual, the system will eventually become a hidden inbox process again.",
+      },
+      {
+        type: "p",
+        text:
+          "Define when escalation happens, who receives it, and how the original participant sees the final outcome.",
+      },
+      { type: "h2", text: "4. Report on Flow, Not Just Outcomes" },
+      {
+        type: "p",
+        text:
+          "Approval reporting should show bottlenecks, average time in state, rejected reasons, missing information patterns, and repeated escalations.",
+      },
+      {
+        type: "p",
+        text:
+          "That data helps improve the business process instead of simply digitizing its delays.",
+      },
+    ],
+  },
+  {
+    id: "post-39",
+    title: "Modernizing Spreadsheet Operations Into Governed APEX Apps",
+    slug: "modernizing-spreadsheet-operations-governed-apex-apps",
+    publishedAt: "2026-04-13T15:30:00Z",
+    excerpt:
+      "Spreadsheets often hold real business logic. Moving them into Oracle APEX requires preserving intent while removing fragile manual control.",
+    synopsis:
+      "Spreadsheet modernization should uncover hidden rules, owners, approvals, calculations, exceptions, and reporting needs before rebuilding the workflow.",
+    mainImage: "/images/apex-dev-core.png",
+    author: AUTHORS.amr,
+    categories: ["ORACLE APEX", "MODERNIZATION", "DATA ENGINEERING"],
+    body: [
+      {
+        type: "p",
+        text:
+          "A spreadsheet is rarely just a file. In many organizations it is a workflow, database, report, approval tool, audit trail, and personal operating system combined into one fragile artifact.",
+      },
+      { type: "h2", text: "1. Study the Spreadsheet as a Process" },
+      {
+        type: "p",
+        text:
+          "Before rebuilding anything, identify who edits the file, which tabs matter, which formulas encode business rules, what gets copied from other systems, and where approvals happen.",
+      },
+      {
+        type: "p",
+        text:
+          "The goal is not to reproduce every cell. The goal is to understand the work the spreadsheet has been carrying.",
+      },
+      { type: "image", src: "/images/apex-dev-core.png", caption: "Spreadsheet modernization starts by extracting process rules from the file." },
+      { type: "h2", text: "2. Replace Manual Control With Roles" },
+      {
+        type: "p",
+        text:
+          "Spreadsheets often rely on trust and habit. A governed APEX app can replace that with permissions, validation, status transitions, required fields, and traceable edits.",
+      },
+      {
+        type: "p",
+        text:
+          "This is where modernization creates value beyond a prettier interface. It makes the business rules enforceable.",
+      },
+      { type: "h2", text: "3. Keep Familiar Terms Where They Help" },
+      {
+        type: "p",
+        text:
+          "Users may trust the spreadsheet language. Preserve labels, calculations, and report names where they remain accurate. Change the interaction model where the spreadsheet created avoidable manual work.",
+      },
+      {
+        type: "p",
+        text:
+          "Good modernization respects user memory while improving data quality and control.",
+      },
+      { type: "h2", text: "4. Validate the Cutover" },
+      {
+        type: "p",
+        text:
+          "Run old and new outputs side by side for a controlled period. Compare totals, statuses, exception handling, and reports before retiring the spreadsheet.",
+      },
+      {
+        type: "p",
+        text:
+          "The result should feel like the process became safer, not like users lost the tool they depended on.",
+      },
+    ],
+  },
+  {
+    id: "post-38",
+    title: "Prompt Requirements Are Product Requirements",
+    slug: "prompt-requirements-product-requirements",
+    publishedAt: "2026-04-12T15:30:00Z",
+    excerpt:
+      "Prompts should not live as informal developer notes. For AI products, they encode behavior, boundaries, tone, and operational policy.",
+    synopsis:
+      "Prompt work becomes product work when it defines user intent, constraints, refusal behavior, tool selection, output structure, and evaluation criteria.",
+    mainImage: "/images/apex-ai-workflow.png",
+    author: AUTHORS.mario,
+    categories: ["PRODUCT DESIGN", "AI STRATEGY", "QUALITY ENGINEERING"],
+    body: [
+      {
+        type: "p",
+        text:
+          "In AI products, prompts often carry product requirements that were never written elsewhere. They describe what the system should do, what it should avoid, how it should speak, and when it should ask for help.",
+      },
+      { type: "h2", text: "1. Write the User Intent First" },
+      {
+        type: "p",
+        text:
+          "A prompt should start from the job the user is trying to complete. Summarize this record, draft a reply, classify this request, extract contract dates, or compare two policies are clearer than be helpful.",
+      },
+      {
+        type: "p",
+        text:
+          "Specific intent makes it easier to design tools, evaluate answers, and explain behavior to users.",
+      },
+      { type: "image", src: "/images/apex-ai-workflow.png", caption: "Prompts encode product behavior and should be reviewed like product requirements." },
+      { type: "h2", text: "2. Make Boundaries Explicit" },
+      {
+        type: "p",
+        text:
+          "Prompts should state what the system cannot do: invent missing facts, approve financial actions, provide regulated advice, ignore permissions, or continue without sufficient evidence.",
+      },
+      {
+        type: "p",
+        text:
+          "Boundaries are not only safety language. They shape the user experience when the correct answer is a question, refusal, or escalation.",
+      },
+      { type: "h2", text: "3. Define the Output Contract" },
+      {
+        type: "p",
+        text:
+          "If another system consumes the response, the output should be structured. If a human consumes it, the response should be readable, concise, and tied to evidence.",
+      },
+      {
+        type: "p",
+        text:
+          "A product team should decide format deliberately instead of leaving it to whichever prompt version happened to work in a demo.",
+      },
+      { type: "h2", text: "4. Version Prompts With the Product" },
+      {
+        type: "p",
+        text:
+          "Prompts should change under version control, with evaluation notes and a reason for the change. A silent prompt edit can change product behavior as much as a code deployment.",
+      },
+      {
+        type: "p",
+        text:
+          "Treating prompts as requirements makes AI products easier to govern and easier to improve.",
+      },
+    ],
+  },
+  {
+    id: "post-37",
+    title: "Tool Calling Needs API Design Discipline",
+    slug: "tool-calling-api-design-discipline",
+    publishedAt: "2026-04-11T15:30:00Z",
+    excerpt:
+      "When models can call tools, every tool becomes an API contract. Weak names, broad permissions, and vague outputs create production risk.",
+    synopsis:
+      "A reliable tool layer uses narrow functions, typed inputs, deterministic validation, clear errors, and separation between reading, drafting, and executing.",
+    mainImage: "/images/autonomous-integration-detail.png",
+    author: AUTHORS.micheal,
+    categories: ["AGENTIC SYSTEMS", "WEB ENGINEERING", "SECURITY"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Tool calling makes AI systems useful because it connects reasoning to real software. It also raises the engineering standard. A tool is not a prompt helper. It is an API surface the model can request.",
+      },
+      { type: "h2", text: "1. Name Tools by Business Action" },
+      {
+        type: "p",
+        text:
+          "A tool called update_record is too broad. A tool called draft_customer_status_note, fetch_invoice_summary, or request_shipping_exception_review tells the model and the developer what the action is for.",
+      },
+      {
+        type: "p",
+        text:
+          "Clear naming reduces accidental misuse and makes trace review easier when something goes wrong.",
+      },
+      { type: "image", src: "/images/autonomous-integration-detail.png", caption: "The tool layer should be designed like a narrow, typed API surface." },
+      { type: "h2", text: "2. Keep Inputs Typed and Small" },
+      {
+        type: "p",
+        text:
+          "Tool arguments should use explicit fields, enums, ranges, identifiers, and validation rules. Do not ask the model to pass a large free-form instruction when the application can enforce a schema.",
+      },
+      {
+        type: "p",
+        text:
+          "The more deterministic the tool contract, the easier it is to test and secure.",
+      },
+      { type: "h2", text: "3. Separate Read From Write" },
+      {
+        type: "p",
+        text:
+          "Read-only tools can be available more broadly. Write tools need stricter permissions, confirmation, logging, and sometimes approval. Mixing them creates unnecessary risk.",
+      },
+      {
+        type: "p",
+        text:
+          "A model should not reach a write-capable path when all it needs is context.",
+      },
+      { type: "h2", text: "4. Return Structured Errors" },
+      {
+        type: "p",
+        text:
+          "A failed tool call should return a useful error code and safe explanation. Timeout, permission denied, validation failed, not found, and conflict are different conditions.",
+      },
+      {
+        type: "p",
+        text:
+          "Good tool design lets the agent recover where it can and escalate where it should.",
+      },
+    ],
+  },
+  {
+    id: "post-36",
+    title: "What to Log in an AI Agent Without Collecting Too Much",
+    slug: "what-to-log-ai-agent-without-collecting-too-much",
+    publishedAt: "2026-04-10T15:30:00Z",
+    excerpt:
+      "AI agent logs need to support debugging and audit without turning every interaction into unnecessary data retention.",
+    synopsis:
+      "Useful agent logging captures intent, tool calls, decisions, model versions, outcomes, and errors while minimizing sensitive content and respecting retention rules.",
+    mainImage: "/images/agentic-workflow.png",
+    author: AUTHORS.maha,
+    categories: ["SECURITY", "AGENTIC SYSTEMS", "QUALITY ENGINEERING"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Agent observability creates a tension. Teams need enough detail to debug and audit behavior, but not so much that logs become a second uncontrolled copy of sensitive business data.",
+      },
+      { type: "h2", text: "1. Log the Decision Path" },
+      {
+        type: "p",
+        text:
+          "Capture the user intent, selected workflow, model version, tool calls, tool results status, approvals, refusal events, and final outcome. These fields explain what happened without always storing every raw document.",
+      },
+      {
+        type: "p",
+        text:
+          "When raw content is necessary for debugging, store it intentionally with access control and retention limits.",
+      },
+      { type: "image", src: "/images/agentic-workflow.png", caption: "Agent logs should explain behavior without becoming uncontrolled data stores." },
+      { type: "h2", text: "2. Redact Before Storage" },
+      {
+        type: "p",
+        text:
+          "Credentials, personal data, payment details, secrets, and restricted customer information should not casually appear in logs. Redaction should happen before storage, not only in the viewer.",
+      },
+      {
+        type: "p",
+        text:
+          "If the system cannot safely redact a category, decide whether that content should enter the agent workflow at all.",
+      },
+      { type: "h2", text: "3. Keep Trace IDs Across Systems" },
+      {
+        type: "p",
+        text:
+          "Agent workflows often cross APIs, databases, queues, and user interfaces. A trace ID connects those events so the team can reconstruct the path without searching manually across systems.",
+      },
+      {
+        type: "p",
+        text:
+          "This is especially important when a tool succeeds but the user-visible workflow fails later.",
+      },
+      { type: "h2", text: "4. Define Retention by Risk" },
+      {
+        type: "p",
+        text:
+          "Not all logs deserve the same lifetime. Security events, approvals, and financial actions may need longer retention than ordinary low-risk drafts.",
+      },
+      {
+        type: "p",
+        text:
+          "Logging should help the business operate the agent, not create a permanent archive of everything users ever typed.",
+      },
+    ],
+  },
+  {
+    id: "post-35",
+    title: "Prompt Injection Testing for Business Applications",
+    slug: "prompt-injection-testing-business-applications",
+    publishedAt: "2026-04-09T15:30:00Z",
+    excerpt:
+      "Prompt injection is a normal operating risk when AI reads untrusted content. Business apps need testing that reflects documents, emails, tickets, and web pages.",
+    synopsis:
+      "Prompt injection testing should cover hostile content, tool misuse, data exfiltration attempts, role confusion, and safe refusal behavior.",
+    mainImage: "/images/agentic-orchestration-detail.png",
+    author: AUTHORS.reham,
+    categories: ["SECURITY", "QUALITY ENGINEERING", "AGENTIC SYSTEMS"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Prompt injection is not limited to public chatbots. Any AI system that reads untrusted content can encounter instructions hidden inside emails, documents, tickets, web pages, comments, or uploaded files.",
+      },
+      { type: "h2", text: "1. Test the Content the Agent Reads" },
+      {
+        type: "p",
+        text:
+          "If the agent summarizes support tickets, test malicious ticket text. If it reads documents, test instructions inside documents. If it browses web pages, test hostile page content.",
+      },
+      {
+        type: "p",
+        text:
+          "The attack surface follows the workflow. Security testing should follow it too.",
+      },
+      { type: "image", src: "/images/agentic-orchestration-detail.png", caption: "Prompt injection tests should use the same content paths the agent uses in production." },
+      { type: "h2", text: "2. Separate Instructions From Evidence" },
+      {
+        type: "p",
+        text:
+          "The system should treat retrieved content as evidence, not authority. A document can inform the answer, but it should not be allowed to override system instructions or tool policies.",
+      },
+      {
+        type: "p",
+        text:
+          "This boundary should be reinforced in prompts, tool validation, permissions, and review tests.",
+      },
+      { type: "h2", text: "3. Try to Trigger Tool Misuse" },
+      {
+        type: "p",
+        text:
+          "Testing should include attempts to send emails, reveal hidden data, change records, ignore approvals, or call tools outside the user's permission.",
+      },
+      {
+        type: "p",
+        text:
+          "The goal is not to make the model sound cautious. The goal is to ensure the application refuses unsafe actions even when the model is pressured.",
+      },
+      { type: "h2", text: "4. Keep a Regression Set" },
+      {
+        type: "p",
+        text:
+          "Every successful injection test belongs in a regression suite. As models, prompts, retrieval, and tools change, previous failures should stay fixed.",
+      },
+      {
+        type: "p",
+        text:
+          "Prompt injection defense is not a one-time review. It is part of operating AI software.",
+      },
+    ],
+  },
+  {
+    id: "post-34",
+    title: "Insecure Output Handling Is the Quiet AI Risk",
+    slug: "insecure-output-handling-quiet-ai-risk",
+    publishedAt: "2026-04-08T15:30:00Z",
+    excerpt:
+      "Generated SQL, JSON, HTML, emails, and workflow payloads need validation before another system trusts them.",
+    synopsis:
+      "AI output should be treated as untrusted data until deterministic code validates schema, permissions, escaping, business rules, and side effects.",
+    mainImage: "/images/autonomous-integration-detail.png",
+    author: AUTHORS.maha,
+    categories: ["SECURITY", "WEB ENGINEERING", "AGENTIC SYSTEMS"],
+    body: [
+      {
+        type: "p",
+        text:
+          "A model response can look polished and still be unsafe for direct execution. The quiet risk appears when generated output is passed into another system without validation.",
+      },
+      { type: "h2", text: "1. Treat Output as Untrusted" },
+      {
+        type: "p",
+        text:
+          "Generated SQL, JSON, HTML, shell commands, workflow payloads, and emails should be validated like any other untrusted input. The source is a model, not a guarantee.",
+      },
+      {
+        type: "p",
+        text:
+          "If an output can change data, trigger communication, or affect a customer, deterministic checks should run before the action.",
+      },
+      { type: "image", src: "/images/autonomous-integration-detail.png", caption: "Generated output needs validation before it enters business systems." },
+      { type: "h2", text: "2. Validate Structure and Meaning" },
+      {
+        type: "p",
+        text:
+          "Schema validation catches malformed fields. Business validation catches fields that are well-formed but wrong: invalid status transitions, excessive amounts, impossible dates, or unauthorized changes.",
+      },
+      {
+        type: "p",
+        text:
+          "Both layers matter. A perfect JSON object can still request a bad action.",
+      },
+      { type: "h2", text: "3. Escape for the Destination" },
+      {
+        type: "p",
+        text:
+          "An output displayed in HTML, inserted into SQL, sent to a command line, or passed to a downstream API requires destination-specific handling.",
+      },
+      {
+        type: "p",
+        text:
+          "Never assume that a model will consistently escape content correctly. Make the application responsible.",
+      },
+      { type: "h2", text: "4. Prefer Drafts for High-Risk Content" },
+      {
+        type: "p",
+        text:
+          "For sensitive workflows, generate drafts rather than final actions. Let users review emails, data changes, and approvals before the system commits them.",
+      },
+      {
+        type: "p",
+        text:
+          "Insecure output handling is preventable when AI is treated as a reasoning component, not an execution authority.",
+      },
+    ],
+  },
+  {
+    id: "post-33",
+    title: "AI Governance for Small Teams That Still Need Speed",
+    slug: "ai-governance-small-teams-need-speed",
+    publishedAt: "2026-04-07T15:30:00Z",
+    excerpt:
+      "Small teams do not need heavy governance theater, but they do need clear ownership, risk levels, approvals, and change control for AI systems.",
+    synopsis:
+      "Practical AI governance can start with a lightweight register, risk tiers, data rules, evals, human checkpoints, and launch review.",
+    mainImage: "/images/process-step-1.png",
+    author: AUTHORS.asma,
+    categories: ["AI STRATEGY", "SECURITY", "BUSINESS STRATEGY"],
+    body: [
+      {
+        type: "p",
+        text:
+          "AI governance often sounds like a large-enterprise problem, but small teams need it too. The difference is that the system should be lightweight enough to support speed rather than bury it.",
+      },
+      { type: "h2", text: "1. Keep an AI Register" },
+      {
+        type: "p",
+        text:
+          "List every AI feature or workflow: purpose, owner, model or provider, data sources, user group, tools, risk level, and launch status. A simple register prevents invisible AI from spreading across the business.",
+      },
+      {
+        type: "p",
+        text:
+          "The register also helps when vendors, clients, or internal stakeholders ask how AI is being used.",
+      },
+      { type: "image", src: "/images/process-step-1.png", caption: "Lightweight governance starts by making AI usage visible." },
+      { type: "h2", text: "2. Use Risk Tiers" },
+      {
+        type: "p",
+        text:
+          "Not every AI feature needs the same review. A blog outline assistant is different from a tool that changes customer records or summarizes legal contracts.",
+      },
+      {
+        type: "p",
+        text:
+          "Risk tiers let teams move quickly on low-risk features while applying stronger review to sensitive workflows.",
+      },
+      { type: "h2", text: "3. Define Data Rules" },
+      {
+        type: "p",
+        text:
+          "Decide what data may be sent to AI services, what must be redacted, what can be logged, and which workflows require private or on-premises handling.",
+      },
+      {
+        type: "p",
+        text:
+          "These rules should be written in language that product, sales, support, and engineering can all understand.",
+      },
+      { type: "h2", text: "4. Review Changes, Not Just Launches" },
+      {
+        type: "p",
+        text:
+          "AI behavior can change when prompts, tools, models, retrieval content, or workflows change. Governance should cover those updates, not only the first release.",
+      },
+      {
+        type: "p",
+        text:
+          "Small-team governance works when it makes responsible delivery easier to repeat.",
+      },
+    ],
+  },
+  {
+    id: "post-32",
+    title: "ISO 42001 Without the Theater: What Teams Can Borrow Now",
+    slug: "iso-42001-without-the-theater",
+    publishedAt: "2026-04-06T15:30:00Z",
+    excerpt:
+      "ISO 42001 is a formal AI management system standard, but product teams can still borrow useful habits before pursuing certification.",
+    synopsis:
+      "Teams can apply ISO 42001 ideas pragmatically: ownership, risk assessment, policies, documentation, monitoring, and continual improvement.",
+    mainImage: "/images/process-step-2.png",
+    author: AUTHORS.maha,
+    categories: ["AI STRATEGY", "SECURITY", "QUALITY ENGINEERING"],
+    body: [
+      {
+        type: "p",
+        text:
+          "ISO 42001 is a formal standard for AI management systems. Not every team is ready for certification work, but many teams can still borrow useful operating habits from the standard.",
+      },
+      { type: "h2", text: "1. Assign Real Ownership" },
+      {
+        type: "p",
+        text:
+          "An AI system should have an accountable owner. That person or function should know the purpose, data sources, user groups, risk level, launch status, and review cycle.",
+      },
+      {
+        type: "p",
+        text:
+          "Ownership prevents AI features from becoming orphaned experiments that nobody monitors after launch.",
+      },
+      { type: "image", src: "/images/process-step-2.png", caption: "AI management begins with ownership, documentation, and review discipline." },
+      { type: "h2", text: "2. Document the Intended Use" },
+      {
+        type: "p",
+        text:
+          "Write down what the system is for, who uses it, what decisions it supports, what data it uses, and what it should not be used for.",
+      },
+      {
+        type: "p",
+        text:
+          "This is not paperwork for its own sake. Intended use helps product, engineering, and governance teams agree on boundaries.",
+      },
+      { type: "h2", text: "3. Manage Change" },
+      {
+        type: "p",
+        text:
+          "AI systems change when models, prompts, retrieval sources, tools, or policies change. Teams should record significant changes and retest the workflows they affect.",
+      },
+      {
+        type: "p",
+        text:
+          "Change control does not need to be slow. It needs to be visible.",
+      },
+      { type: "h2", text: "4. Improve Continuously" },
+      {
+        type: "p",
+        text:
+          "The most practical governance habit is review. Look at incidents, user feedback, eval results, latency, refusals, and unexpected tool calls on a schedule.",
+      },
+      {
+        type: "p",
+        text:
+          "The point is not to make AI delivery heavy. It is to make responsible delivery repeatable.",
+      },
+    ],
+  },
+  {
+    id: "post-31",
+    title: "NIST AI RMF for Product Teams: A Practical Reading",
+    slug: "nist-ai-rmf-product-teams-practical-reading",
+    publishedAt: "2026-04-05T15:30:00Z",
+    excerpt:
+      "NIST's AI Risk Management Framework gives product teams a useful vocabulary for mapping, measuring, managing, and governing AI risk.",
+    synopsis:
+      "Product teams can use the AI RMF as a working checklist: map context, measure behavior, manage controls, and govern ownership.",
+    mainImage: "/images/predictive-analytics-detail.png",
+    author: AUTHORS.reham,
+    categories: ["AI STRATEGY", "QUALITY ENGINEERING", "SECURITY"],
+    body: [
+      {
+        type: "p",
+        text:
+          "The NIST AI Risk Management Framework can look abstract at first, but product teams can use its core pattern in a very practical way: understand context, measure behavior, manage controls, and govern responsibility.",
+      },
+      { type: "h2", text: "1. Map the Context" },
+      {
+        type: "p",
+        text:
+          "Start by describing the system's purpose, users, affected stakeholders, data sources, operating environment, and potential harm if it behaves incorrectly.",
+      },
+      {
+        type: "p",
+        text:
+          "This mapping keeps the team from treating every AI feature as the same kind of risk.",
+      },
+      { type: "image", src: "/images/predictive-analytics-detail.png", caption: "Risk work becomes useful when it is tied to a concrete product workflow." },
+      { type: "h2", text: "2. Measure What Matters" },
+      {
+        type: "p",
+        text:
+          "Measurement should include accuracy, refusal quality, fairness concerns where relevant, latency, security behavior, source grounding, and user outcomes.",
+      },
+      {
+        type: "p",
+        text:
+          "A product team does not need every metric on day one, but it does need metrics that match the actual risk of the workflow.",
+      },
+      { type: "h2", text: "3. Manage With Controls" },
+      {
+        type: "p",
+        text:
+          "Controls can include permissions, approval gates, tool restrictions, redaction, logging, human review, data retention, and launch limits.",
+      },
+      {
+        type: "p",
+        text:
+          "The question should be specific: which control reduces which risk in which workflow?",
+      },
+      { type: "h2", text: "4. Govern the Lifecycle" },
+      {
+        type: "p",
+        text:
+          "AI governance is not a meeting at the end of a project. It covers design, build, testing, release, monitoring, incident response, and retirement.",
+      },
+      {
+        type: "p",
+        text:
+          "The practical value of the AI RMF is that it gives teams a shared language before something goes wrong.",
+      },
+    ],
+  },
+  {
+    id: "post-30",
+    title: "Core Web Vitals for Cinematic Websites",
+    slug: "core-web-vitals-cinematic-websites",
+    publishedAt: "2026-04-04T15:30:00Z",
+    excerpt:
+      "Premium motion and strong Core Web Vitals can coexist when design, assets, rendering, and interaction costs are planned together.",
+    synopsis:
+      "Cinematic websites need performance discipline around LCP, INP, CLS, image loading, animation cost, and client JavaScript budgets.",
+    mainImage: "/images/web-dev-cinematic.png",
+    author: AUTHORS.abdelrahman,
+    categories: ["WEB ENGINEERING", "PERFORMANCE", "SEO"],
+    body: [
+      {
+        type: "p",
+        text:
+          "A cinematic website does not get a pass on performance. Users may appreciate motion, but they still feel slow loading, delayed input, and layout shifts.",
+      },
+      { type: "h2", text: "1. Protect the Largest Contentful Paint" },
+      {
+        type: "p",
+        text:
+          "The hero is often the visual center of a premium site, so it is also a common LCP risk. Use optimized images, intentional preload, stable dimensions, and avoid blocking the first meaningful render with unnecessary client logic.",
+      },
+      {
+        type: "p",
+        text:
+          "If the hero needs animation, the first frame should still be fast, readable, and on brand.",
+      },
+      { type: "image", src: "/images/web-dev-cinematic.png", caption: "Cinematic design works best when first render and motion are planned together." },
+      { type: "h2", text: "2. Keep Interaction Cost Low" },
+      {
+        type: "p",
+        text:
+          "Interaction to Next Paint rewards interfaces that respond quickly. Heavy JavaScript, long tasks, and overly broad client components can make a polished page feel sluggish.",
+      },
+      {
+        type: "p",
+        text:
+          "Use small interactive islands, CSS where possible, and defer non-critical scripts until after the core experience is usable.",
+      },
+      { type: "h2", text: "3. Design Against Layout Shift" },
+      {
+        type: "p",
+        text:
+          "Motion should move elements intentionally, not accidentally. Reserve space for images, cards, nav bars, embeds, and dynamic text before they appear.",
+      },
+      {
+        type: "p",
+        text:
+          "Stable layout makes the site feel more premium because the interface does not jump while the user is reading.",
+      },
+      { type: "h2", text: "4. Make Performance a Design Constraint" },
+      {
+        type: "p",
+        text:
+          "Performance should be discussed during design, not patched after development. Asset size, animation style, scroll effects, and typography choices all affect the final experience.",
+      },
+      {
+        type: "p",
+        text:
+          "The strongest sites feel rich because the engineering supports the design instead of fighting it.",
+      },
+    ],
+  },
+  {
+    id: "post-29",
+    title: "Next.js Metadata Mistakes That Hurt Technical SEO",
+    slug: "nextjs-metadata-mistakes-hurt-technical-seo",
+    publishedAt: "2026-04-03T15:30:00Z",
+    excerpt:
+      "Metadata bugs are easy to miss in Next.js projects. Canonicals, Open Graph, sitemaps, and dynamic routes need deliberate implementation.",
+    synopsis:
+      "Technical SEO in Next.js depends on accurate metadata per route, canonical URLs, dynamic generation, sitemap coverage, and avoiding client-only content traps.",
+    mainImage: "/images/web-opt-support.png",
+    author: AUTHORS.asma,
+    categories: ["SEO", "WEB ENGINEERING", "PERFORMANCE"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Next.js gives teams strong metadata tools, but the tools do not fix weak implementation automatically. SEO bugs often hide in dynamic routes, inconsistent domains, and pages that render important content only on the client.",
+      },
+      { type: "h2", text: "1. Missing Dynamic Metadata" },
+      {
+        type: "p",
+        text:
+          "Blog posts, services, projects, and topic pages should not share generic titles and descriptions. Dynamic metadata should reflect the exact page intent.",
+      },
+      {
+        type: "p",
+        text:
+          "For content pages, include a clear title, useful description, canonical route, Open Graph fields, and the right article metadata where appropriate.",
+      },
+      { type: "image", src: "/images/web-opt-support.png", caption: "Metadata should match the route's actual search intent." },
+      { type: "h2", text: "2. Canonical Domain Drift" },
+      {
+        type: "p",
+        text:
+          "A site should use one canonical domain consistently across metadata, robots, sitemap, and internal links. Mixed domains create avoidable confusion for crawlers.",
+      },
+      {
+        type: "p",
+        text:
+          "This is a small detail with outsized impact because it affects every indexed URL.",
+      },
+      { type: "h2", text: "3. Forgetting Dynamic Routes in Sitemaps" },
+      {
+        type: "p",
+        text:
+          "Static pages are easy to list. Dynamic content needs generation from the same data source that powers the pages. Blog posts and category pages should not be invisible to the sitemap.",
+      },
+      {
+        type: "p",
+        text:
+          "When content publishing grows, sitemap generation should grow with it automatically.",
+      },
+      { type: "h2", text: "4. Client-Only Content for Search Pages" },
+      {
+        type: "p",
+        text:
+          "Interactive components are useful, but core content should be crawlable and available in the initial HTML wherever possible.",
+      },
+      {
+        type: "p",
+        text:
+          "The technical SEO baseline is simple: make the page understandable before any animation or client state is required.",
+      },
+    ],
+  },
+  {
+    id: "post-28",
+    title: "Internal Linking for AI Solution Websites",
+    slug: "internal-linking-ai-solution-websites",
+    publishedAt: "2026-04-02T15:30:00Z",
+    excerpt:
+      "Internal links help users and search engines understand how services, projects, topics, and articles connect across an AI company website.",
+    synopsis:
+      "A useful internal linking system connects service pages, project pages, blog topics, comparison content, and contact paths around user intent.",
+    mainImage: "/images/web-fullstack-dev.png",
+    author: AUTHORS.asma,
+    categories: ["SEO", "WEB ENGINEERING", "BUSINESS STRATEGY"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Internal linking is not just an SEO tactic. It is information architecture. For an AI solutions website, links help a visitor move from a problem to a service, from a service to proof, and from proof to contact.",
+      },
+      { type: "h2", text: "1. Link From Problems to Services" },
+      {
+        type: "p",
+        text:
+          "Articles about workflow bottlenecks should connect to AI automation. Posts about Oracle modernization should connect to Oracle APEX development. Performance articles should connect to web engineering.",
+      },
+      {
+        type: "p",
+        text:
+          "The link should help the reader continue the task, not simply push them to a sales page.",
+      },
+      { type: "image", src: "/images/web-fullstack-dev.png", caption: "Internal links should reflect how buyers move from learning to action." },
+      { type: "h2", text: "2. Build Topic Clusters" },
+      {
+        type: "p",
+        text:
+          "A topic cluster groups related articles around a central service or concept. For example, agent security, tool calling, evals, and RAG can all support an AI automation cluster.",
+      },
+      {
+        type: "p",
+        text:
+          "This helps search engines understand expertise and helps users compare adjacent ideas without returning to the main navigation.",
+      },
+      { type: "h2", text: "3. Connect Projects to Methods" },
+      {
+        type: "p",
+        text:
+          "Project pages should link to the methods and services behind them. If a project uses Oracle APEX, AI analytics, or mobile architecture, the site should help users learn how those capabilities work.",
+      },
+      {
+        type: "p",
+        text:
+          "Do not invent case study claims. Link the real project context to the real service capability.",
+      },
+      { type: "h2", text: "4. Keep Contact Paths Contextual" },
+      {
+        type: "p",
+        text:
+          "A reader on an APEX migration article should reach a contact path that preserves that context. A reader on mobile AI should not land in a generic form with no way to identify their need.",
+      },
+      {
+        type: "p",
+        text:
+          "Good internal linking reduces friction because the site remembers what the user is trying to solve.",
+      },
+    ],
+  },
+  {
+    id: "post-27",
+    title: "Writing Service Pages That Help Buyers Decide",
+    slug: "writing-service-pages-help-buyers-decide",
+    publishedAt: "2026-04-01T15:30:00Z",
+    excerpt:
+      "High-performing service pages do not rely on buzzwords. They help buyers understand fit, scope, process, outcomes, and next steps.",
+    synopsis:
+      "A useful service page explains the problem, who the service is for, what is included, how work happens, what evidence is needed, and how to start.",
+    mainImage: "/images/web-custom-dev.png",
+    author: AUTHORS.asma,
+    categories: ["SEO", "BUSINESS STRATEGY", "WEB ENGINEERING"],
+    body: [
+      {
+        type: "p",
+        text:
+          "A service page should help a serious buyer make a decision. It should explain whether the service fits their problem, what the work includes, and what the next conversation needs to cover.",
+      },
+      { type: "h2", text: "1. Define the Problem Clearly" },
+      {
+        type: "p",
+        text:
+          "Avoid opening with broad claims. State the concrete problem the service addresses: manual workflows, legacy APEX applications, slow websites, disconnected systems, weak mobile UX, or unreliable AI prototypes.",
+      },
+      {
+        type: "p",
+        text:
+          "Clear problem language helps the right visitor recognize themselves quickly.",
+      },
+      { type: "image", src: "/images/web-custom-dev.png", caption: "Strong service pages help buyers understand fit before they contact sales." },
+      { type: "h2", text: "2. Explain What Is Included" },
+      {
+        type: "p",
+        text:
+          "List the work in a structured way: discovery, architecture, UX, implementation, integration, testing, deployment, training, support, or optimization.",
+      },
+      {
+        type: "p",
+        text:
+          "This does not need to become a long menu. It should reduce uncertainty about the shape of the engagement.",
+      },
+      { type: "h2", text: "3. Avoid Fake Proof" },
+      {
+        type: "p",
+        text:
+          "If case studies, metrics, certifications, or client logos are not available, do not fabricate them. Use placeholder-safe structures and explain methodology clearly.",
+      },
+      {
+        type: "p",
+        text:
+          "Trust is built by accuracy. A polished site with invented proof creates the wrong kind of risk.",
+      },
+      { type: "h2", text: "4. Make the Next Step Specific" },
+      {
+        type: "p",
+        text:
+          "The contact path should ask for the context needed to qualify the project: workflow, systems, timeline, constraints, and desired outcome.",
+      },
+      {
+        type: "p",
+        text:
+          "A service page works when it makes the first meeting sharper.",
+      },
+    ],
+  },
+  {
+    id: "post-26",
+    title: "Motion Design for Technical Brands Without Performance Debt",
+    slug: "motion-design-technical-brands-performance-debt",
+    publishedAt: "2026-03-31T15:30:00Z",
+    excerpt:
+      "Technical brands can use motion to signal quality and intelligence, but the animation system needs purpose, restraint, and performance discipline.",
+    synopsis:
+      "Good motion clarifies state, hierarchy, transition, and feedback. Bad motion adds JavaScript weight, distraction, and accessibility problems.",
+    mainImage: "/images/web-dev-hero-orange.png",
+    author: AUTHORS.mario,
+    categories: ["PRODUCT DESIGN", "WEB ENGINEERING", "PERFORMANCE"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Motion can make a technical brand feel alive, precise, and premium. It can also make a site feel slow, noisy, and self-important. The difference is whether motion has a job.",
+      },
+      { type: "h2", text: "1. Give Every Animation a Purpose" },
+      {
+        type: "p",
+        text:
+          "Useful motion communicates entry, exit, hierarchy, loading, completion, selection, or spatial transition. If an animation does not clarify something, it probably belongs in the cutting room.",
+      },
+      {
+        type: "p",
+        text:
+          "Technical audiences notice when motion is pretending to be sophistication.",
+      },
+      { type: "image", src: "/images/web-dev-hero-orange.png", caption: "Motion should express system behavior, not decorate every surface." },
+      { type: "h2", text: "2. Keep the System Consistent" },
+      {
+        type: "p",
+        text:
+          "A site should not use five unrelated motion languages. Define easing, duration, delay, and reveal patterns so pages feel like they belong to the same product system.",
+      },
+      {
+        type: "p",
+        text:
+          "Consistency makes motion feel intentional rather than assembled from effects.",
+      },
+      { type: "h2", text: "3. Respect Reduced Motion" },
+      {
+        type: "p",
+        text:
+          "Users who prefer reduced motion should still get a complete, polished experience. Replace large movement with opacity, color, or instant state changes where appropriate.",
+      },
+      {
+        type: "p",
+        text:
+          "Accessibility is not a separate version of the design. It is part of the design system.",
+      },
+      { type: "h2", text: "4. Measure the Cost" },
+      {
+        type: "p",
+        text:
+          "Animation affects CPU, GPU, JavaScript, layout, and input responsiveness. Test on real mobile devices, not only on a powerful development machine.",
+      },
+      {
+        type: "p",
+        text:
+          "Premium motion feels effortless because the implementation carries its weight quietly.",
+      },
+    ],
+  },
+  {
+    id: "post-25",
+    title: "React Server Actions Need UX States",
+    slug: "react-server-actions-need-ux-states",
+    publishedAt: "2026-03-30T15:30:00Z",
+    excerpt:
+      "Server Actions can simplify form logic, but users still need pending, success, error, validation, and recovery states.",
+    synopsis:
+      "React Actions and Server Actions improve architecture only when the interface communicates request state, optimistic updates, failure, and retry clearly.",
+    mainImage: "/images/web-fullstack-dev.png",
+    author: AUTHORS.abdelrahman,
+    categories: ["FRONTEND", "WEB ENGINEERING", "PRODUCT DESIGN"],
+    body: [
+      {
+        type: "p",
+        text:
+          "React Actions and Server Actions can make form submission and server mutations cleaner, but they do not remove the need for product states. Users still need to know what happened.",
+      },
+      { type: "h2", text: "1. Pending Is an Interface State" },
+      {
+        type: "p",
+        text:
+          "When a user submits a form, the interface should show that the request is in progress. Disable unsafe duplicate actions, preserve entered data, and make the waiting state visible without blocking unrelated work.",
+      },
+      {
+        type: "p",
+        text:
+          "A silent form submission feels broken even when the backend is working correctly.",
+      },
+      { type: "image", src: "/images/web-fullstack-dev.png", caption: "Server-side mutations still need client-visible states." },
+      { type: "h2", text: "2. Validation Should Be Specific" },
+      {
+        type: "p",
+        text:
+          "Validation errors should point to the field or business rule that failed. Generic failure messages force users to guess and repeat work.",
+      },
+      {
+        type: "p",
+        text:
+          "The server may own the rule, but the interface owns the explanation.",
+      },
+      { type: "h2", text: "3. Optimism Needs Reversibility" },
+      {
+        type: "p",
+        text:
+          "Optimistic UI can make applications feel fast, but it should be reserved for actions that can be reversed or corrected cleanly if the server rejects the change.",
+      },
+      {
+        type: "p",
+        text:
+          "For high-risk actions, show progress and confirmation rather than pretending the operation already succeeded.",
+      },
+      { type: "h2", text: "4. Recovery Is Part of the Flow" },
+      {
+        type: "p",
+        text:
+          "Network errors, permission failures, and validation conflicts should give users a way to retry, edit, or contact support without losing context.",
+      },
+      {
+        type: "p",
+        text:
+          "A clean architecture becomes a good product only when the user experience handles the full request lifecycle.",
+      },
+    ],
+  },
+  {
+    id: "post-24",
+    title: "Partial Prerendering Changes How We Plan Pages",
+    slug: "partial-prerendering-changes-how-we-plan-pages",
+    publishedAt: "2026-03-29T15:30:00Z",
+    excerpt:
+      "Modern rendering patterns make teams separate static shells from dynamic islands. That changes how marketers, designers, and engineers plan pages.",
+    synopsis:
+      "Partial prerendering thinking helps teams decide what should be static, what should stream, and what needs personalized runtime data.",
+    mainImage: "/images/web-dev-hero.png",
+    author: AUTHORS.abdelrahman,
+    categories: ["WEB ENGINEERING", "PERFORMANCE", "FRONTEND"],
+    body: [
+      {
+        type: "p",
+        text:
+          "The best web pages are no longer planned as one static page or one dynamic app. Modern rendering encourages a more precise question: which parts can be ready immediately, and which parts truly need runtime data?",
+      },
+      { type: "h2", text: "1. Keep the Shell Stable" },
+      {
+        type: "p",
+        text:
+          "Navigation, core page copy, primary headings, service descriptions, and major layout structure should usually render quickly and predictably.",
+      },
+      {
+        type: "p",
+        text:
+          "A stable shell helps users, search engines, and performance metrics before personalized or dynamic sections load.",
+      },
+      { type: "image", src: "/images/web-dev-hero.png", caption: "Page planning should separate stable content from dynamic experiences." },
+      { type: "h2", text: "2. Isolate Dynamic Islands" },
+      {
+        type: "p",
+        text:
+          "Pricing calculators, dashboards, account-specific recommendations, availability checks, and live status panels may need runtime data. They should not force the entire page into the same rendering mode.",
+      },
+      {
+        type: "p",
+        text:
+          "Designers should know where dynamic islands exist so loading states, skeletons, and fallback content feel intentional.",
+      },
+      { type: "h2", text: "3. Plan Suspense as UX" },
+      {
+        type: "p",
+        text:
+          "Streaming and suspense are not only technical tools. They create visible states in the interface. Those states need copy, spacing, and design treatment.",
+      },
+      {
+        type: "p",
+        text:
+          "A placeholder should preserve layout and tell the user what kind of content is arriving.",
+      },
+      { type: "h2", text: "4. Use Rendering Strategy as a Content Decision" },
+      {
+        type: "p",
+        text:
+          "If content is important for search and first impression, it should not depend on late client execution. If content is user-specific, it needs privacy and loading design.",
+      },
+      {
+        type: "p",
+        text:
+          "Rendering strategy is now part of product planning, not only infrastructure.",
+      },
+    ],
+  },
+  {
+    id: "post-23",
+    title: "Structured Data for Technical Blogs Without Fake Signals",
+    slug: "structured-data-technical-blogs-without-fake-signals",
+    publishedAt: "2026-03-28T15:30:00Z",
+    excerpt:
+      "Structured data should help search engines understand real content. It should not invent reviews, ratings, organizations, or proof that does not exist.",
+    synopsis:
+      "Technical blogs can use truthful Article schema, authorship, dates, images, canonical URLs, and breadcrumbs without adding spammy trust signals.",
+    mainImage: "/images/web-opt-support.png",
+    author: AUTHORS.asma,
+    categories: ["SEO", "WEB ENGINEERING", "CONTENT STRATEGY"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Structured data is useful when it describes the page truthfully. It becomes a liability when teams use it to invent proof, fake reviews, or misleading organization details.",
+      },
+      { type: "h2", text: "1. Use Article Schema for Articles" },
+      {
+        type: "p",
+        text:
+          "A technical blog post can include headline, description, image, author, publisher, date published, date modified, and canonical page URL.",
+      },
+      {
+        type: "p",
+        text:
+          "These fields help search systems understand what the page is without pretending the article has ratings or awards it never earned.",
+      },
+      { type: "image", src: "/images/web-opt-support.png", caption: "Structured data should describe real page content, not manufacture credibility." },
+      { type: "h2", text: "2. Keep Dates Honest" },
+      {
+        type: "p",
+        text:
+          "Published and modified dates should reflect real editorial changes. Updating a date without improving the content weakens trust.",
+      },
+      {
+        type: "p",
+        text:
+          "For fast-changing technical topics, it is better to revise the article and make the change meaningful.",
+      },
+      { type: "h2", text: "3. Do Not Add Fake Review Schema" },
+      {
+        type: "p",
+        text:
+          "Review and rating markup should only be used when genuine reviews exist and meet the platform guidelines. Adding fake ratings is not SEO. It is misrepresentation.",
+      },
+      {
+        type: "p",
+        text:
+          "Technical companies build stronger authority by being precise and useful.",
+      },
+      { type: "h2", text: "4. Match Schema to Visible Content" },
+      {
+        type: "p",
+        text:
+          "Structured data should align with what users can see on the page. If the author, title, date, or topic is hidden or different, the markup creates inconsistency.",
+      },
+      {
+        type: "p",
+        text:
+          "The safest SEO strategy is also the simplest: make the page truthful, crawlable, and clear.",
+      },
+    ],
+  },
+  {
+    id: "post-22",
+    title: "On-Device AI Product Decisions for iOS Apps",
+    slug: "on-device-ai-product-decisions-ios-apps",
+    publishedAt: "2026-03-27T15:30:00Z",
+    excerpt:
+      "Apple's Foundation Models framework gives supported apps local intelligence options, but product teams still need availability checks, fallback, and safety design.",
+    synopsis:
+      "iOS on-device AI features should be scoped around supported tasks, device availability, structured output, tool use, privacy expectations, and fallback states.",
+    mainImage: "/images/mobile-dev-hero.png",
+    author: AUTHORS.mario,
+    categories: ["MOBILE ENGINEERING", "PRODUCT DESIGN", "AI STRATEGY"],
+    body: [
+      {
+        type: "p",
+        text:
+          "On-device AI changes the product conversation for iOS apps. Features like summarization, entity extraction, refinement, structured output, and tool-assisted tasks can feel faster and more private when they run locally on supported devices.",
+      },
+      { type: "h2", text: "1. Design Around Availability" },
+      {
+        type: "p",
+        text:
+          "A local model may depend on device support, user settings, model download state, language support, and system conditions. The app needs to check availability before promising the feature.",
+      },
+      {
+        type: "p",
+        text:
+          "Unavailable should not feel like broken. Offer a manual path, delayed path, or cloud-backed alternative where appropriate.",
+      },
+      { type: "image", src: "/images/mobile-dev-hero.png", caption: "On-device AI needs product states for availability, fallback, and user control." },
+      { type: "h2", text: "2. Use Structured Output Where It Helps" },
+      {
+        type: "p",
+        text:
+          "Generated prose is not always the best output. For business apps, structured fields, tags, summaries, and extracted entities may be more useful than long text.",
+      },
+      {
+        type: "p",
+        text:
+          "When the app knows the shape of the data it needs, the AI feature becomes easier to validate and easier to review.",
+      },
+      { type: "h2", text: "3. Explain Local Processing Simply" },
+      {
+        type: "p",
+        text:
+          "Users do not need a technical lecture, but they should understand when a task runs on device and when data may leave the device.",
+      },
+      {
+        type: "p",
+        text:
+          "This is especially important for enterprise mobile apps where users may handle customer, field, or operational information.",
+      },
+      { type: "h2", text: "4. Keep the Feature Narrow" },
+      {
+        type: "p",
+        text:
+          "The best first on-device AI feature is usually focused: summarize a note, classify a message, extract follow-up tasks, or rewrite a short update.",
+      },
+      {
+        type: "p",
+        text:
+          "A narrow feature is easier to test, easier to explain, and easier for users to trust.",
+      },
+    ],
+  },
+  {
+    id: "post-21",
+    title: "Android On-Device AI: What Product Teams Should Plan For",
+    slug: "android-on-device-ai-product-planning",
+    publishedAt: "2026-03-26T15:30:00Z",
+    excerpt:
+      "Gemini Nano and ML Kit GenAI APIs create practical local AI paths on Android, but teams still need device strategy, capability checks, and fallback UX.",
+    synopsis:
+      "Android local AI planning should cover supported tasks, device capability, AICore readiness, privacy messaging, performance, and cloud fallback.",
+    mainImage: "/images/mobile-backend.png",
+    author: AUTHORS.abdelrahman,
+    categories: ["MOBILE ENGINEERING", "AI STRATEGY", "PRODUCT DESIGN"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Android's on-device AI direction gives product teams new options for summarization, rewrite, image description, speech recognition, and prompt-based local tasks. The product work is deciding where local AI actually improves the experience.",
+      },
+      { type: "h2", text: "1. Plan for Uneven Capability" },
+      {
+        type: "p",
+        text:
+          "Not every Android device will support the same on-device model path at the same time. The app should detect capability and present a graceful experience when local AI is unavailable.",
+      },
+      {
+        type: "p",
+        text:
+          "This is a product requirement, not only an engineering branch.",
+      },
+      { type: "image", src: "/images/mobile-backend.png", caption: "Android on-device AI needs fallback planning across a diverse device ecosystem." },
+      { type: "h2", text: "2. Match Features to Local Strengths" },
+      {
+        type: "p",
+        text:
+          "Local AI is strongest when the task benefits from immediacy, privacy, and small context. Message cleanup, quick summaries, field notes, and lightweight extraction are good candidates.",
+      },
+      {
+        type: "p",
+        text:
+          "Long, high-stakes, or deeply integrated reasoning may still belong in a controlled backend workflow.",
+      },
+      { type: "h2", text: "3. Measure Battery and Latency" },
+      {
+        type: "p",
+        text:
+          "A local model can feel responsive, but it still consumes device resources. Test on mid-range devices, low battery conditions, and real network states.",
+      },
+      {
+        type: "p",
+        text:
+          "A feature that feels impressive once may become annoying if it slows repeated mobile work.",
+      },
+      { type: "h2", text: "4. Design the Cloud Boundary" },
+      {
+        type: "p",
+        text:
+          "When the app falls back to cloud AI, the user experience should make that boundary clear where privacy expectations matter.",
+      },
+      {
+        type: "p",
+        text:
+          "Hybrid AI is powerful when users understand which path is being used and why.",
+      },
+    ],
+  },
+  {
+    id: "post-20",
+    title: "Offline-First Mobile Workflows for Field Operations",
+    slug: "offline-first-mobile-workflows-field-operations",
+    publishedAt: "2026-03-25T15:30:00Z",
+    excerpt:
+      "Field teams need mobile apps that keep working when the network does not. Offline-first design starts with data priority and conflict rules.",
+    synopsis:
+      "Offline-first mobile architecture requires local state, sync strategy, conflict resolution, user feedback, security, and clear limits on unavailable actions.",
+    mainImage: "/images/mobile-uiux.png",
+    author: AUTHORS.micheal,
+    categories: ["MOBILE ENGINEERING", "PRODUCT DESIGN", "DATA ENGINEERING"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Field operations do not happen in perfect network conditions. Warehouses, sites, vehicles, basements, hospitals, and remote areas all create moments where a mobile app must keep the work moving offline.",
+      },
+      { type: "h2", text: "1. Decide What Must Work Offline" },
+      {
+        type: "p",
+        text:
+          "Not every feature needs offline support. Identify the critical tasks: viewing assigned jobs, capturing notes, scanning items, saving photos, completing checklists, and recording signatures.",
+      },
+      {
+        type: "p",
+        text:
+          "The offline scope should match real field pressure, not a theoretical feature list.",
+      },
+      { type: "image", src: "/images/mobile-uiux.png", caption: "Offline-first design starts with the work that must continue without network access." },
+      { type: "h2", text: "2. Make Sync Visible" },
+      {
+        type: "p",
+        text:
+          "Users should know whether a record is saved locally, queued for sync, synced successfully, or needs attention. Silent sync creates uncertainty.",
+      },
+      {
+        type: "p",
+        text:
+          "Clear status indicators reduce duplicate work and support calls.",
+      },
+      { type: "h2", text: "3. Define Conflict Rules" },
+      {
+        type: "p",
+        text:
+          "Conflicts happen when multiple users or systems change the same record. The product needs rules: last write wins, manual merge, supervisor review, or field-level conflict resolution.",
+      },
+      {
+        type: "p",
+        text:
+          "Do not leave conflict handling as an afterthought. It is where user trust can collapse quickly.",
+      },
+      { type: "h2", text: "4. Secure Local Data" },
+      {
+        type: "p",
+        text:
+          "Offline data still needs protection. Use encryption, session rules, selective caching, remote wipe strategy, and clear retention limits for sensitive records.",
+      },
+      {
+        type: "p",
+        text:
+          "Offline-first is not only a convenience feature. For field teams, it is operational reliability.",
+      },
+    ],
+  },
+  {
+    id: "post-19",
+    title: "Mobile App Security Starts With Data Flow Mapping",
+    slug: "mobile-app-security-data-flow-mapping",
+    publishedAt: "2026-03-24T15:30:00Z",
+    excerpt:
+      "Before choosing security libraries, mobile teams should map what data is collected, stored, transmitted, displayed, and deleted.",
+    synopsis:
+      "Mobile security improves when teams understand data flows across device storage, APIs, identity, analytics, logs, push notifications, and third-party SDKs.",
+    mainImage: "/images/mobile-backend.png",
+    author: AUTHORS.maha,
+    categories: ["MOBILE ENGINEERING", "SECURITY", "DATA ENGINEERING"],
+    body: [
+      {
+        type: "p",
+        text:
+          "Mobile app security often starts too late, after screens and APIs are already built. A better starting point is data flow mapping: what data enters the app, where it goes, and who can access it.",
+      },
+      { type: "h2", text: "1. Map Collection Points" },
+      {
+        type: "p",
+        text:
+          "List every place the app collects data: forms, camera, microphone, location, files, device identifiers, analytics events, and background services.",
+      },
+      {
+        type: "p",
+        text:
+          "Each collection point should have a purpose, permission model, and retention expectation.",
+      },
+      { type: "image", src: "/images/mobile-backend.png", caption: "Mobile security begins by tracing data from collection to deletion." },
+      { type: "h2", text: "2. Review Local Storage" },
+      {
+        type: "p",
+        text:
+          "Mobile apps often store tokens, cached records, drafts, images, logs, and offline queues. Decide what needs encryption, what should never be stored, and what should expire.",
+      },
+      {
+        type: "p",
+        text:
+          "Sensitive local data deserves the same design attention as server-side data.",
+      },
+      { type: "h2", text: "3. Inspect Third-Party SDKs" },
+      {
+        type: "p",
+        text:
+          "Analytics, messaging, crash reporting, maps, and payment SDKs may collect or transmit data. Treat each SDK as part of the security and privacy surface.",
+      },
+      {
+        type: "p",
+        text:
+          "If a dependency does not need a data category, do not give it access by accident.",
+      },
+      { type: "h2", text: "4. Include Logs and Notifications" },
+      {
+        type: "p",
+        text:
+          "Sensitive data can leak through crash logs, debug logs, push notification previews, and analytics event names. These paths are easy to miss because they are not product screens.",
+      },
+      {
+        type: "p",
+        text:
+          "A mobile app is secure when the entire data path is designed, not just the login screen.",
+      },
+    ],
+  },
+  {
+    id: "post-18",
+    title: "Post-Launch Care for AI Products: Monitoring, Evals, and Change Control",
+    slug: "post-launch-care-ai-products-monitoring-evals-change-control",
+    publishedAt: "2026-03-23T15:30:00Z",
+    excerpt:
+      "Shipping an AI product is the start of operations. Teams need monitoring, evaluation, user feedback, and controlled change after launch.",
+    synopsis:
+      "Post-launch AI care includes traces, quality review, incident handling, eval updates, retrieval maintenance, prompt versioning, and business ownership.",
+    mainImage: "/images/predictive-analytics-detail.png",
+    author: AUTHORS.reham,
+    categories: ["QUALITY ENGINEERING", "AI STRATEGY", "AI AUTOMATION"],
+    body: [
+      {
+        type: "p",
+        text:
+          "AI products do not become stable simply because they launched. Models, data, prompts, tools, and user behavior all change. Post-launch care is where the system becomes dependable.",
+      },
+      { type: "h2", text: "1. Monitor the Workflow, Not Just the Server" },
+      {
+        type: "p",
+        text:
+          "Uptime matters, but it is not enough. Track answer quality, tool failures, refusal rates, latency, escalation, approval outcomes, and user corrections.",
+      },
+      {
+        type: "p",
+        text:
+          "The most important failures may be semantic, not technical.",
+      },
+      { type: "image", src: "/images/predictive-analytics-detail.png", caption: "AI operations should monitor quality, decisions, and workflow outcomes." },
+      { type: "h2", text: "2. Keep Evaluations Current" },
+      {
+        type: "p",
+        text:
+          "Evaluation sets should grow with production usage. Add new edge cases, failed answers, policy changes, and examples where users needed a different output.",
+      },
+      {
+        type: "p",
+        text:
+          "A stale eval set gives a false sense of safety.",
+      },
+      { type: "h2", text: "3. Version Prompts and Retrieval" },
+      {
+        type: "p",
+        text:
+          "Prompt edits, model changes, embedding refreshes, and source document updates can all change behavior. Record meaningful changes and test the workflows they affect.",
+      },
+      {
+        type: "p",
+        text:
+          "Change control helps teams improve without losing the ability to explain what changed.",
+      },
+      { type: "h2", text: "4. Assign an Operational Owner" },
+      {
+        type: "p",
+        text:
+          "Someone should own the live AI product: reviewing metrics, triaging incidents, approving changes, and deciding when the system needs redesign.",
+      },
+      {
+        type: "p",
+        text:
+          "Launch proves the system can run. Operations proves it can be trusted.",
+      },
+    ],
+  },
+  {
     id: "post-17",
     title: "Agent Interoperability Is the Enterprise AI Story of 2026",
     slug: "agent-interoperability-enterprise-ai-2026",
