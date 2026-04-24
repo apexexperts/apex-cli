@@ -1,14 +1,27 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import Image from "next/image";
 import Link from "next/link";
-import { Smartphone, Apple, Zap, Layers, Cpu, Palette, ShieldCheck, Database, Lock, BarChart3, CloudUpload } from "lucide-react";
+import { Smartphone, Apple, Zap, Palette, Database } from "lucide-react";
 import { Header } from "@/components/Header";
 import { SectionReveal } from "@/components/SectionReveal";
+
+interface MobileCapability {
+  id: string;
+  title: string;
+  icon: React.ReactNode;
+  desc: string;
+  image: string;
+}
+
+interface MobileTechItem {
+  name: string;
+  slug: string;
+  desc: string;
+}
 
 const MOBILE_CAPABILITIES = [
   {
@@ -59,7 +72,7 @@ const MOBILE_TECH = [
   { name: "Play Store", slug: "googleplay", desc: "Android Store" }
 ];
 
-const TechSingularityNode = ({ item, index, total, active }: { item: any, index: number, total: number, active: boolean }) => {
+const TechSingularityNode = ({ item, index, total, active }: { item: MobileTechItem, index: number, total: number, active: boolean }) => {
   const angle = (index / total) * Math.PI * 2;
   const radius = active ? 400 : 340;
   const x = Math.cos(angle) * radius;
@@ -201,7 +214,7 @@ const NeuralCore = () => {
   );
 };
 
-const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: any) => {
+const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: MobileCapability, index: number, total: number, active: boolean, onEnter: () => void, onLeave: () => void }) => {
   const angle = (index / total) * Math.PI * 2;
   const radius = 320; 
   const x = Math.cos(angle) * radius;
@@ -219,7 +232,7 @@ const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: any) => {
   );
 };
 
-const CapabilityDetailView = ({ cap }: { cap: any }) => {
+const CapabilityDetailView = ({ cap }: { cap: MobileCapability }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group">
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
@@ -247,14 +260,17 @@ const Particles = ({ count = 20 }: { count?: number }) => {
   const [positions, setPositions] = useState<{ left: string, top: string, delay: number, duration: number }[]>([]);
 
   useEffect(() => {
-    setMounted(true);
-    const newPositions = [...Array(count)].map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      delay: Math.random() * 5,
-      duration: Math.random() * 5 + 5
-    }));
-    setPositions(newPositions);
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+      const newPositions = [...Array(count)].map(() => ({
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        delay: Math.random() * 5,
+        duration: Math.random() * 5 + 5
+      }));
+      setPositions(newPositions);
+    });
+    return () => cancelAnimationFrame(frame);
   }, [count]);
 
   if (!mounted) return null;
