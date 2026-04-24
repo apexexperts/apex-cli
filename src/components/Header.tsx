@@ -91,9 +91,10 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isActive = (href: string) => {
-    if (href === "/about" && pathname === "/about") return true;
-    if (href === "#services" && pathname.startsWith("/services")) return true;
+  const isActive = (href: string, label: string) => {
+    if (label === "ABOUT" && pathname === "/about") return true;
+    if (label === "SERVICES" && pathname.startsWith("/services")) return true;
+    if (label === "CONTACT" && pathname === "/contact") return true;
     return pathname === href;
   };
 
@@ -132,7 +133,7 @@ export function Header() {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map((link) => {
-              const active = isActive(link.href);
+              const active = isActive(link.href, link.label);
               
               if (link.label === "SERVICES") {
                 return (
