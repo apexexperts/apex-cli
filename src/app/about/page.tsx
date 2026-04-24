@@ -20,10 +20,13 @@ const TelemetryData = () => {
   const [coords, setCoords] = React.useState({ x: "0.0000", y: "0.0000" });
   
   React.useEffect(() => {
-    setCoords({
-      x: Math.random().toFixed(4),
-      y: Math.random().toFixed(4)
+    const frame = requestAnimationFrame(() => {
+      setCoords({
+        x: Math.random().toFixed(4),
+        y: Math.random().toFixed(4)
+      });
     });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   return (
@@ -101,14 +104,14 @@ export default function AboutPage() {
 
               <div className="space-y-6 text-zinc-400 text-lg md:text-xl leading-relaxed font-light italic">
                 <p className="relative">
-                  <span className="absolute -left-8 -top-4 text-6xl font-serif text-sinai-glow-orange/20">"</span>
-                  At APEX Experts, we don't just build software; we engineer the future of digital intelligence. Our mission is to bridge the gap between complex AI capabilities and real-world enterprise scalability.
+                  <span className="absolute -left-8 -top-4 text-6xl font-serif text-sinai-glow-orange/20">&quot;</span>
+                  At APEX Experts, we don&apos;t just build software; we engineer the future of digital intelligence. Our mission is to bridge the gap between complex AI capabilities and real-world enterprise scalability.
                 </p>
                 <p>
                   Every line of code we write, every model we train, and every interface we design is driven by a single obsession: <span className="text-white font-medium">Technical Excellence without Compromise.</span>
                 </p>
                 <p className="relative">
-                  We are here to empower visionaries with the tools they need to redefine what's possible in their industries.<span className="absolute -right-8 -bottom-4 text-6xl font-serif text-sinai-glow-orange/20 rotate-180">"</span>
+                  We are here to empower visionaries with the tools they need to redefine what&apos;s possible in their industries.<span className="absolute -right-8 -bottom-4 text-6xl font-serif text-sinai-glow-orange/20 rotate-180">&quot;</span>
                 </p>
               </div>
 
@@ -396,7 +399,7 @@ export default function AboutPage() {
                   <span className="text-sinai-glow-orange">Power</span> Matrix
                 </h2>
                 <p className="text-zinc-400 text-xl leading-relaxed max-w-lg font-light italic">
-                  We don't just use tools; we engineer ecosystems. Our tech stack is a curated symphony of enterprise-grade reliability and cutting-edge AI innovation.
+                  We don&apos;t just use tools; we engineer ecosystems. Our tech stack is a curated symphony of enterprise-grade reliability and cutting-edge AI innovation.
                 </p>
               </div>
 
@@ -407,7 +410,7 @@ export default function AboutPage() {
                   { label: "DB_ENGINE", val: "ORACLE_26", status: "NEXT_GEN" },
                   { label: "FRONTEND", val: "NEXT.JS", status: "OPTIMIZED" },
                   { label: "BACKEND", val: "NODE_PRO_MAX", status: "SCALABLE" }
-                ].map((item, i) => (
+                ].map((item) => (
                   <div key={item.label} className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2 group hover:border-sinai-glow-orange/30 transition-all duration-500">
                     <div className="flex justify-between items-center">
                       <span className="text-[8px] font-mono text-zinc-600 tracking-widest uppercase">{item.label}</span>
@@ -502,11 +505,12 @@ export default function AboutPage() {
                             {tech.customIcon}
                           </div>
                         ) : (
-                          <img 
+                          <Image 
                             src={`https://cdn.simpleicons.org/${tech.slug}/fff`} 
                             className="w-full h-full object-contain opacity-40 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
                             alt={tech.id}
                             style={{ filter: `drop-shadow(0 0 10px ${tech.color}44)` }}
+                            fill
                           />
                         )}
                         
