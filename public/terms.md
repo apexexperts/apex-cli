@@ -1,13 +1,4 @@
-import React from "react";
-import { Metadata } from "next";
-import ReactMarkdown from "react-markdown";
-
-export const metadata: Metadata = {
-  title: "Terms of Service | APEX Experts AI Solutions",
-  description: "Official Master Terms and Conditions governing the use of APEX Experts AI Solutions and platforms.",
-};
-
-const TERMS_CONTENT = `# Terms of Service
+# Terms of Service
 
 **APEX Experts AI Solutions**
 **Effective Date:** [Insert Date]
@@ -308,7 +299,7 @@ We appreciate feedback, but you should not provide confidential information in f
 
 ## 26. Third-Party Services
 
-Our services may include or integrate with third-party products, platforms, APIs, cloud services, AI providers, databases, payment processors, identity providers, communication tools, analytics platforms, source code repositories, project management systems, and customer-selected systems.
+Our services may include or integrate with third-party products, platforms, APIs, cloud services, AI providers, databases, payment processors, identity providers, communication tools, analytics tools, open-source software, app stores, or customer-selected systems.
 
 Third-party services are governed by their own terms and policies. APEX is not responsible for third-party services that we do not control. If you enable or require a third-party integration, you are responsible for ensuring that you have the right to use it and that the integration is appropriate for your needs.
 
@@ -650,61 +641,3 @@ Before publishing these Terms, APEX should confirm:
 * Whether mobile apps require app store-specific terms.
 * Whether any open-source notices must be added.
 * Whether the company wants a dedicated legal email, such as [legal@apexexperts.net](mailto:legal@apexexperts.net).
-`;
-
-export default function TermsPage() {
-  return (
-    <div className="min-h-screen bg-[#06080a] text-zinc-400 font-mono text-[10px] pt-48 pb-32 px-6">
-      {/* Background Subtle Elements */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.03] overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-      </div>
-
-      <div className="max-w-5xl mx-auto relative">
-        {/* Document Header Info */}
-        <div className="flex justify-between items-end mb-4 px-4">
-          <div className="space-y-1">
-            <div className="text-sinai-glow-orange font-bold uppercase tracking-widest">Master_Protocol_Archive: AX-TOS-V1.0-RAW</div>
-            <div className="text-[8px] text-zinc-600">TIMESTAMP: 2024-04-24T17:48:00Z</div>
-          </div>
-          <div className="text-right">
-            <div className="text-white font-bold uppercase tracking-widest">Classification: BINDING_COMMERCIAL_INSTRUMENT</div>
-            <div className="text-[8px] text-zinc-600">AUTH: APEX_LEGAL_NODE</div>
-          </div>
-        </div>
-
-        {/* The Main Document Container */}
-        <div className="bg-white/[0.01] border border-white/10 rounded-sm p-12 backdrop-blur-sm shadow-2xl relative overflow-hidden">
-          {/* Decorative Corner Accents */}
-          <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-sinai-glow-orange/30" />
-          <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-sinai-glow-orange/30" />
-          <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-sinai-glow-orange/30" />
-          <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-sinai-glow-orange/30" />
-
-          {/* Document Content rendered with ReactMarkdown */}
-          <div className="prose prose-invert max-w-none prose-p:text-[10px] prose-headings:text-white prose-strong:text-sinai-glow-orange prose-a:text-sinai-glow-orange prose-a:no-underline hover:prose-a:underline prose-li:text-[10px]">
-            <ReactMarkdown
-              components={{
-                h1: ({ node, ...props }) => <h1 className="text-xl font-bold mb-8 uppercase tracking-tighter border-b border-white/10 pb-4" {...props} />,
-                h2: ({ node, ...props }) => <h2 className="text-sm font-bold mt-12 mb-4 uppercase tracking-widest text-white/90" {...props} />,
-                p: ({ node, ...props }) => <p className="mb-4 leading-relaxed text-zinc-400" {...props} />,
-                ul: ({ node, ...props }) => <ul className="list-disc ml-6 mb-6 space-y-2" {...props} />,
-                li: ({ node, ...props }) => <li className="text-zinc-400" {...props} />,
-                strong: ({ node, ...props }) => <strong className="text-white font-bold" {...props} />,
-                a: ({ node, ...props }) => <a className="text-sinai-glow-orange hover:text-white transition-colors underline decoration-sinai-glow-orange/30 underline-offset-4" {...props} />,
-              }}
-            >
-              {TERMS_CONTENT}
-            </ReactMarkdown>
-          </div>
-
-          <div className="mt-12 pt-12 border-t border-white/5 flex justify-between items-center text-[7px] text-zinc-700">
-            <div>// AUTHENTICATED_BY_APEX_LEGAL_NODE</div>
-            <div className="font-bold uppercase">System_Status: Markdown_Enabled_Sync</div>
-            <div>// END_OF_MASTER_TERMS</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}

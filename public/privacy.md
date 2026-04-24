@@ -1,18 +1,9 @@
-import React from "react";
-import { Metadata } from "next";
-import ReactMarkdown from "react-markdown";
-
-export const metadata: Metadata = {
-  title: "Privacy Protocol | APEX Experts AI Solutions",
-  description: "Official Data Protection and Privacy Governance Framework for APEX Experts AI Solutions.",
-};
-
-const PRIVACY_CONTENT = `# Privacy Policy
+# Privacy Policy
 
 **APEX Experts AI Solutions**
-**Effective Date:** April 24, 2024
-**Last Updated:** April 24, 2024
-**Version:** 3.0 FINAL - Official Publication
+**Effective Date:** [Insert Date]
+**Last Updated:** [Insert Date]
+**Version:** 3.0 — Public Website Draft
 
 This Privacy Policy explains how APEX Experts AI Solutions and its affiliated business units, products, and service teams, including APEX Experts, Asklyze, MyQuery, and Tasto, collect, use, store, protect, disclose, and delete personal data. It is written for website visitors, prospective customers, customers, users of our products, business partners, suppliers, job applicants, and any person whose personal data may be processed through our websites, platforms, applications, support channels, professional services, or AI-enabled solutions.
 
@@ -229,7 +220,7 @@ Depending on the deployment and configuration, Asklyze may process prompts, meta
 
 Where Asklyze is deployed in a zero-data-movement or customer-controlled architecture, customer data remains within the customer’s environment except for the minimum context required to operate the agreed AI workflow, if any. The exact technical behavior should be confirmed in the applicable product documentation, deployment guide, and customer agreement.
 
-Asklyze is not intended to bypass Oracle database permissions, Oracle APEX authorization schemes, row-level security, application security, customer governance rules, or internal approval workflows. Customers are responsible for configuring safe access boundaries and validating that generated outputs are appropriate for their users and use cases.
+Asklyze is not intended to bypass database permissions, application authorization, row-level security, or customer governance policies. Customers are responsible for configuring safe access boundaries and validating that generated outputs are appropriate for their users and use cases.
 
 ### 7.2 MyQuery
 
@@ -267,16 +258,16 @@ We do not intentionally use customer confidential data to train general AI model
 
 ## 9. Cookies and Similar Technologies
 
-Our websites and products may use cookies, pixels, local storage, software development kits, analytics tools, and similar technologies. These technologies help us operate websites, remember preferences, measure performance, understand traffic, improve content, measure campaign performance, detect abuse, and secure user sessions.
+Our websites and products may use cookies, pixels, local storage, software development kits, analytics tools, and similar technologies. These technologies help us operate websites, remember preferences, measure performance, understand traffic, improve design, secure accounts, detect abuse, and support marketing campaigns.
 
 Cookies may be categorized as:
 
 * **Strictly necessary cookies:** Required for website operation, account login, security, session management, and basic functionality.
 * **Performance and analytics cookies:** Help us understand how visitors use our websites and products, which pages are useful, and where errors occur.
 * **Preference cookies:** Remember settings such as language, region, or interface choices.
-* **Marketing cookies:** Help us measure campaigns or provide relevant content where allowed.
+* **Marketing cookies:** Help us measure campaigns or show relevant content where permitted by law.
 
-Where required by applicable law, we will ask for consent before using non-essential cookies. You can control cookies through your browser settings and, where available, our cookie banner or preference center. Blocking certain cookies may affect website or product functionality.
+Where required by applicable law, we will request consent before using non-essential cookies. You can control cookies through your browser settings and, where available, our cookie banner or preference center. Blocking certain cookies may affect website or product functionality.
 
 ## 10. How We Share Personal Data
 
@@ -428,7 +419,7 @@ Billing records may be retained for accounting, audit, tax, legal, and dispute p
 
 If you apply for a job, contractor role, partnership, or freelance opportunity with APEX, we may process recruitment information such as your name, email, phone number, CV, portfolio, qualifications, experience, interview feedback, references, expected compensation, location, and work authorization information.
 
-We use recruitment data to evaluate applications, conduct interviews, communicate with candidates, negotiate terms, prepare contracts, manage onboarding, and comply with legal obligations. We may retain candidate information for future opportunities where permitted by law or with your consent where required.
+We use recruitment data to evaluate applications, communicate with candidates, manage interviews, make hiring decisions, prepare contracts, and comply with legal obligations. We may retain candidate information for future opportunities where permitted by law or with your consent where required.
 
 ## 23. Support Tickets, Screenshots, and Logs
 
@@ -474,7 +465,7 @@ We rely on customers, users, and business contacts to provide accurate informati
 
 For customer-controlled systems, the customer is usually responsible for correcting the underlying records. APEX may assist where required by contract.
 
-## 28. Third-Party Integrations
+28. Third-Party Integrations
 
 Our products and projects may connect with third-party platforms, tools, databases, applications, cloud services, artificial intelligence providers, payment processors, identity providers, communication tools, analytics platforms, source code repositories, project management systems, and customer-owned APIs. These integrations are often necessary to deliver the functionality requested by customers, such as authentication, reporting, workflow automation, business intelligence, payment processing, email delivery, data synchronization, AI-assisted analysis, mobile notifications, or enterprise system integration.
 
@@ -492,7 +483,7 @@ Customers should also periodically review active integrations, revoke unused tok
 
 Where APEX selects a third-party provider on behalf of a customer, we aim to choose providers that offer appropriate technical, organizational, contractual, and security safeguards. Where the customer selects or requires a specific provider, the customer is responsible for assessing that provider’s suitability unless otherwise agreed in writing.
 
-## 29. Sub-Processors and Service Providers
+29. Sub-Processors and Service Providers
 
 To operate our business, deliver products, provide support, host infrastructure, send communications, secure systems, process payments, analyze product performance, and support customer projects, we may use trusted service providers and sub-processors.
 
@@ -500,15 +491,15 @@ These providers may process personal data only for authorized purposes and only 
 
 Service providers may include categories such as:
 
-* Cloud hosting and infrastructure providers.
-* Database, storage, backup, and monitoring providers.
-* Security, logging, authentication, and vulnerability management providers.
-* Email, messaging, communication, and support ticketing providers.
-* Payment, billing, accounting, and tax administration providers.
-* Analytics and product performance providers.
-* AI infrastructure, model, or automation providers, where applicable.
-* Development, quality assurance, and project delivery partners.
-* Legal, accounting, audit, insurance, and professional advisory firms.
+Cloud hosting and infrastructure providers.
+Database, storage, backup, and monitoring providers.
+Security, logging, authentication, and vulnerability management providers.
+Email, messaging, communication, and support ticketing providers.
+Payment, billing, accounting, and tax administration providers.
+Analytics and product performance providers.
+AI infrastructure, model, or automation providers, where applicable.
+Development, quality assurance, and project delivery partners.
+Legal, accounting, audit, insurance, and professional advisory firms.
 
 Where we act as a processor for a customer, the use of sub-processors may be governed by the applicable data processing agreement. That agreement may include notification rights, objection rights, security commitments, transfer mechanisms, audit information, or other requirements.
 
@@ -516,7 +507,7 @@ We do not authorize our service providers to use customer data for their own unr
 
 Customers with strict sub-processor requirements should request the relevant contractual documentation before production use or before approving a project that involves personal data.
 
-## 30. International Data Transfers
+30. International Data Transfers
 
 APEX may operate, support, develop, or host services across different countries. Our team, customers, hosting providers, support providers, infrastructure providers, and technology vendors may be located in more than one jurisdiction. As a result, personal data may be transferred to, stored in, or accessed from countries other than the country in which the data was originally collected.
 
@@ -528,29 +519,29 @@ When APEX provides professional services for systems hosted in the customer’s 
 
 If a customer requires that certain data remain within a specific country or region, this requirement must be clearly documented in the contract, statement of work, data processing agreement, or deployment specification. Without a written residency requirement, we may use infrastructure and providers that support the practical delivery of the service while applying reasonable safeguards.
 
-## 31. Data Security Measures
+31. Data Security Measures
 
 We use technical and organizational measures designed to protect personal data and customer data against unauthorized access, loss, misuse, alteration, disclosure, or destruction. The specific controls depend on the service, deployment model, customer requirements, sensitivity of the data, hosting environment, and risk profile.
 
 Our security approach may include:
 
-* Encryption in transit using modern transport security protocols.
-* Encryption at rest where supported by the architecture and hosting environment.
-* Role-based access control and least-privilege permissions.
-* Strong authentication for administrative access.
-* Multi-factor authentication where appropriate.
-* Audit logging and activity monitoring.
-* Network security controls.
-* Secure software development practices.
-* Code review and controlled deployment processes.
-* Vulnerability management and patching.
-* Segregation of duties where practical.
-* Secure secret management.
-* Backup and recovery controls.
-* Incident response procedures.
-* Personnel confidentiality obligations.
-* Access reviews for sensitive systems.
-* Security reviews for high-risk integrations.
+Encryption in transit using modern transport security protocols.
+Encryption at rest where supported by the architecture and hosting environment.
+Role-based access control and least-privilege permissions.
+Strong authentication for administrative access.
+Multi-factor authentication where appropriate.
+Audit logging and activity monitoring.
+Network security controls.
+Secure software development practices.
+Code review and controlled deployment processes.
+Vulnerability management and patching.
+Segregation of duties where practical.
+Secure secret management.
+Backup and recovery controls.
+Incident response procedures.
+Personnel confidentiality obligations.
+Access reviews for sensitive systems.
+Security reviews for high-risk integrations.
 
 Some customer projects may use specific technologies such as AES-256-GCM encryption, TLS, Oracle Transparent Data Encryption, database row-level security, web application firewalls, API gateway controls, security headers, identity provider integration, or private networking. We only represent that a specific security measure applies where it is actually implemented in the relevant product, environment, or customer agreement.
 
@@ -558,52 +549,52 @@ Security is a shared responsibility. APEX is responsible for the systems, code, 
 
 No website, application, database, network, cloud environment, AI workflow, or integration can be guaranteed to be completely secure. However, we work to apply reasonable safeguards and to continuously improve our security practices as our products, services, and customer requirements evolve.
 
-## 32. Customer Security Responsibilities
+32. Customer Security Responsibilities
 
 Customers play a critical role in protecting personal data and business data. In many projects, APEX provides the software, implementation, integration, or support, while the customer controls the users, permissions, connected systems, business rules, data classification, and operational environment.
 
 Customers should:
 
-* Assign access only to users who need it.
-* Review administrator accounts regularly.
-* Use strong passwords and multi-factor authentication where available.
-* Avoid shared accounts where possible.
-* Rotate credentials and API keys periodically.
-* Remove access when employees, contractors, or vendors leave.
-* Restrict service accounts to the minimum permissions needed.
-* Avoid placing secrets in emails, tickets, screenshots, prompts, or chat messages.
-* Review connected integrations and revoke unused tokens.
-* Configure database permissions carefully.
-* Validate AI-generated outputs before business use.
-* Review logs and administrative activity where available.
-* Maintain internal privacy notices and lawful basis documentation.
-* Train users on safe handling of sensitive information.
+Assign access only to users who need it.
+Review administrator accounts regularly.
+Use strong passwords and multi-factor authentication where available.
+Avoid shared accounts where possible.
+Rotate credentials and API keys periodically.
+Remove access when employees, contractors, or vendors leave.
+Restrict service accounts to the minimum permissions needed.
+Avoid placing secrets in emails, tickets, screenshots, prompts, or chat messages.
+Review connected integrations and revoke unused tokens.
+Configure database permissions carefully.
+Validate AI-generated outputs before business use.
+Review logs and administrative activity where available.
+Maintain internal privacy notices and lawful basis documentation.
+Train users on safe handling of sensitive information.
 
 For AI analytics and database-connected tools, customers should carefully define which schemas, tables, views, columns, reports, dashboards, or APIs are available to each user or workflow. Sensitive fields should be excluded, masked, restricted, or governed through database and application controls whenever possible.
 
 APEX is not responsible for unauthorized access caused by customer misconfiguration, weak credentials, compromised customer accounts, excessive permissions, unsafe sharing of secrets, insecure customer networks, or third-party systems outside our control, except to the extent required by applicable law or contract.
 
-## 33. Data Retention
+33. Data Retention
 
 We retain personal data only for as long as necessary for the purposes described in this Privacy Policy, unless a longer retention period is required or permitted by law, contract, accounting rules, security needs, dispute resolution, backup practices, or legitimate business requirements.
 
 Retention periods vary depending on the type of data and the context. Examples include:
 
-* Contact form submissions may be retained for sales, support, and relationship management.
-* Account information may be retained while the account remains active and for a reasonable period after termination.
-* Billing and tax records may be retained for legally required accounting periods.
-* Support tickets may be retained to provide continuity, troubleshoot recurring issues, and maintain service history.
-* Security logs may be retained for monitoring, investigation, compliance, and abuse prevention.
-* Product usage data may be retained to operate, secure, and improve the service.
-* Project documents may be retained according to the contract or statement of work.
-* Recruitment data may be retained for hiring administration and future opportunities where permitted.
-* Backups may remain for a limited time according to backup cycles and disaster recovery policies.
+Contact form submissions may be retained for sales, support, and relationship management.
+Account information may be retained while the account remains active and for a reasonable period after termination.
+Billing and tax records may be retained for legally required accounting periods.
+Support tickets may be retained to provide continuity, troubleshoot recurring issues, and maintain service history.
+Security logs may be retained for monitoring, investigation, compliance, and abuse prevention.
+Product usage data may be retained to operate, secure, and improve the service.
+Project documents may be retained according to the contract or statement of work.
+Recruitment data may be retained for hiring administration and future opportunities where permitted.
+Backups may remain for a limited time according to backup cycles and disaster recovery policies.
 
 Where we process customer data under a customer agreement, that agreement may define specific retention, deletion, return, or export obligations. If the agreement contains a retention rule that differs from this public policy, the agreement will govern the relevant customer data.
 
 Deletion from active systems may not immediately delete data from backup systems, disaster recovery storage, audit logs, or legally retained records. Backup copies are protected and are deleted or overwritten according to standard backup schedules unless earlier deletion is technically feasible and legally required.
 
-## 34. Data Return, Export, and Deletion
+34. Data Return, Export, and Deletion
 
 Customers may request return, export, deletion, or transition assistance for customer data according to the applicable agreement and product capabilities. The available options may depend on the product, deployment model, data type, account status, technical architecture, and contractual terms.
 
@@ -611,38 +602,38 @@ For SaaS products, export functionality may be provided through the product inte
 
 Deletion may involve several layers, including:
 
-* Application records.
-* Database records.
-* File storage.
-* Object storage.
-* Logs and audit trails.
-* Support attachments.
-* Project repositories.
-* Backups.
-* Integration tokens.
-* API keys.
-* User accounts.
-* Workspace or tenant configuration.
+Application records.
+Database records.
+File storage.
+Object storage.
+Logs and audit trails.
+Support attachments.
+Project repositories.
+Backups.
+Integration tokens.
+API keys.
+User accounts.
+Workspace or tenant configuration.
 
 If a customer requires a formal deletion certificate, the scope must be clearly defined. Any confirmation of deletion will apply only to the systems, data categories, and environments actually controlled by APEX and covered by the agreed deletion process. We will not claim deletion from customer systems, third-party systems, user devices, email inboxes, external backups, or environments outside our control unless that deletion has actually occurred and can reasonably be confirmed.
 
 We may retain certain information after deletion if required for legal, tax, accounting, security, fraud prevention, dispute resolution, compliance, or legitimate business purposes.
 
-## 35. Your Privacy Rights
+35. Your Privacy Rights
 
 Depending on your location and the laws that apply, you may have rights regarding your personal data. These rights may include:
 
-* The right to access personal data we hold about you.
-* The right to request correction of inaccurate or incomplete data.
-* The right to request deletion of personal data.
-* The right to restrict or limit processing.
-* The right to object to certain processing.
-* The right to withdraw consent where processing is based on consent.
-* The right to data portability where applicable.
-* The right to object to direct marketing.
-* The right to receive information about how we process your data.
-* The right to complain to a data protection authority or regulator.
-* Rights relating to certain automated decisions, where applicable.
+The right to access personal data we hold about you.
+The right to request correction of inaccurate or incomplete data.
+The right to request deletion of personal data.
+The right to restrict or limit processing.
+The right to object to certain processing.
+The right to withdraw consent where processing is based on consent.
+The right to data portability where applicable.
+The right to object to direct marketing.
+The right to receive information about how we process your data.
+The right to complain to a data protection authority or regulator.
+Rights relating to certain automated decisions, where applicable.
 
 These rights are not absolute. They may be subject to identity verification, legal exceptions, contractual obligations, protection of third-party rights, security requirements, legal claims, accounting obligations, or technical limitations.
 
@@ -650,7 +641,7 @@ To exercise your rights, contact us using the details in the “Contact Us” se
 
 If your request relates to data controlled by one of our customers, we may direct you to that customer. Where APEX acts as a processor, we generally cannot delete, correct, export, or restrict customer-controlled data without the customer’s instruction.
 
-## 36. Requests Involving Customer-Controlled Data
+36. Requests Involving Customer-Controlled Data
 
 Many systems built, integrated, supported, or operated by APEX are controlled by our customers. This means the customer determines why the data is processed, who can access it, how long it is retained, what business purpose it serves, and what legal basis applies.
 
@@ -658,15 +649,15 @@ If you are an employee, contractor, supplier, customer, patient, student, citize
 
 When we receive a request relating to customer-controlled data, we may:
 
-* Refer you to the relevant customer.
-* Notify the customer of the request.
-* Assist the customer in responding where required by contract.
-* Follow the customer’s documented instructions.
-* Decline to act directly if we are not authorized to do so.
+Refer you to the relevant customer.
+Notify the customer of the request.
+Assist the customer in responding where required by contract.
+Follow the customer’s documented instructions.
+Decline to act directly if we are not authorized to do so.
 
 We do not independently decide whether customer-controlled data should be deleted, corrected, disclosed, restricted, or exported unless we have a separate legal role or contractual authority to make that decision.
 
-## 37. Marketing Communications
+37. Marketing Communications
 
 We may use business contact information to send marketing communications about APEX services, products, events, articles, updates, case studies, webinars, offers, or industry insights. We do this where permitted by law and, where required, with consent.
 
@@ -676,22 +667,22 @@ Unsubscribing from marketing emails does not stop service-related messages. We m
 
 We aim to make our marketing relevant and respectful. We do not want to send unnecessary communications to people who have no interest in our products or services.
 
-## 38. Cookies, Analytics, and Tracking Preferences
+38. Cookies, Analytics, and Tracking Preferences
 
 Our websites and digital services may use cookies, pixels, tags, local storage, software development kits, analytics tools, and similar technologies. These technologies help us operate the website, remember preferences, understand traffic, improve content, measure campaign performance, detect abuse, and secure user sessions.
 
 Cookies may include:
 
-* Necessary cookies required for website operation and security.
-* Preference cookies that remember choices such as language or region.
-* Analytics cookies that help us understand website usage and performance.
-* Marketing cookies that help us measure campaigns or provide relevant content where allowed.
+Necessary cookies required for website operation and security.
+Preference cookies that remember choices such as language or region.
+Analytics cookies that help us understand website usage and performance.
+Marketing cookies that help us measure campaigns or provide relevant content where allowed.
 
 Where required by law, we will ask for consent before using non-essential cookies. You can control cookies through your browser settings and, where available, through our cookie banner or preference center.
 
 If you disable cookies, some website or product features may not work correctly. Necessary cookies may still be used because they are required to provide core functionality, maintain security, or remember privacy choices.
 
-## 39. Children’s Privacy
+39. Children’s Privacy
 
 Our websites, products, and services are designed for businesses, professionals, developers, organizations, and enterprise users. They are not directed to children, and we do not knowingly collect personal data from children through our public websites or business services.
 
@@ -699,7 +690,7 @@ If you believe that a child has provided personal data to us without appropriate
 
 Customers that use APEX-built or APEX-supported systems in contexts involving children, students, minors, or education-related records are responsible for ensuring that the system complies with applicable child privacy, education privacy, consent, notice, access control, and retention requirements.
 
-## 40. Sensitive Personal Data
+40. Sensitive Personal Data
 
 We do not intentionally request sensitive personal data through our public websites, contact forms, demo forms, marketing forms, or general support channels. Sensitive personal data may include information relating to health, biometrics, precise location, financial account details, government identifiers, racial or ethnic origin, religion, political opinions, union membership, criminal records, sexual life, or other protected categories under applicable law.
 
@@ -709,7 +700,7 @@ Users should not place sensitive personal data in prompts, support tickets, scre
 
 If sensitive data is accidentally provided to us, we may delete it, restrict access to it, request a replacement file, ask the customer to mask the data, or handle it according to the applicable agreement and legal requirements.
 
-## 41. AI Outputs, Human Review, and Business Decisions
+41. AI Outputs, Human Review, and Business Decisions
 
 AI-assisted tools can help users generate reports, summaries, charts, SQL, dashboards, recommendations, classifications, workflow actions, or explanations. However, AI outputs may be incomplete, inaccurate, outdated, biased, or unsuitable for a particular business context.
 
@@ -719,7 +710,7 @@ APEX products and services are intended to support human decision-making, not to
 
 Customers should establish appropriate review processes, access controls, validation rules, output testing, user training, and governance procedures before deploying AI features in production.
 
-## 42. Automated Decision-Making
+42. Automated Decision-Making
 
 APEX does not intend its general websites or standard product features to make legally significant automated decisions about individuals without human involvement. Some products may include automation features, workflow suggestions, analytics classifications, or AI-generated recommendations, but these are generally designed to assist users.
 
@@ -727,7 +718,7 @@ If a customer designs or configures an APEX-supported system to make automated d
 
 APEX may assist customers with implementation, but the customer remains responsible for the business purpose, legal basis, governance model, and operational use of the automated decision workflow unless otherwise agreed in writing.
 
-## 43. Payment and Billing Information
+43. Payment and Billing Information
 
 When customers purchase products or services, we may process billing contact details, invoice information, tax details, purchase orders, payment status, subscription information, contract records, and related commercial information.
 
@@ -735,7 +726,7 @@ Payments may be processed through banks, payment gateways, accounting systems, o
 
 We do not intentionally collect or store full payment card details on our own systems unless specifically required and protected through appropriate controls. Billing and accounting records may be retained for tax, audit, legal, financial reporting, and dispute purposes.
 
-## 44. Recruitment, Contractors, and Business Partners
+44. Recruitment, Contractors, and Business Partners
 
 If you apply for a role, contractor position, partnership, freelance opportunity, or supplier relationship with APEX, we may process information such as your name, contact details, CV, portfolio, work history, qualifications, references, interview notes, compensation expectations, availability, location, and communications with us.
 
@@ -743,30 +734,30 @@ We use this information to evaluate applications, conduct interviews, communicat
 
 If you provide references or third-party information, you should ensure that you are authorized to share that information.
 
-## 45. Business Transfers and Corporate Changes
+45. Business Transfers and Corporate Changes
 
 If APEX is involved in a merger, acquisition, investment, financing, restructuring, sale of assets, transfer of product lines, joint venture, or similar transaction, personal data may be disclosed, reviewed, transferred, or otherwise processed as part of the transaction.
 
 In such cases, we will use reasonable measures to protect personal data and require appropriate confidentiality commitments from parties involved in the transaction. If the transaction results in a material change to how personal data is handled, we will provide notice where required by law.
 
-## 46. Legal Requests, Compliance, and Protection of Rights
+46. Legal Requests, Compliance, and Protection of Rights
 
 We may disclose personal data where we believe it is necessary to comply with applicable law, regulation, court order, subpoena, government request, regulatory inquiry, or other legal process.
 
 We may also disclose or process personal data where necessary to:
 
-* Enforce contracts or terms of service.
-* Protect the rights, property, or safety of APEX, customers, users, employees, or others.
-* Investigate fraud, abuse, misuse, or security incidents.
-* Prevent unauthorized access or malicious activity.
-* Collect amounts owed.
-* Defend against legal claims.
-* Protect confidential information and intellectual property.
-* Comply with audit, tax, accounting, or regulatory obligations.
+Enforce contracts or terms of service.
+Protect the rights, property, or safety of APEX, customers, users, employees, or others.
+Investigate fraud, abuse, misuse, or security incidents.
+Prevent unauthorized access or malicious activity.
+Collect amounts owed.
+Defend against legal claims.
+Protect confidential information and intellectual property.
+Comply with audit, tax, accounting, or regulatory obligations.
 
 Where legally permitted and appropriate, we may notify affected customers before disclosing customer-controlled data in response to legal requests.
 
-## 47. Security Incidents and Breach Notification
+47. Security Incidents and Breach Notification
 
 We maintain procedures to identify, investigate, escalate, contain, and respond to suspected security incidents. If we determine that a personal data breach has occurred, we will take appropriate action based on the nature of the incident, the data involved, the affected systems, the risk to individuals, our contractual role, and applicable legal requirements.
 
@@ -776,7 +767,7 @@ Where we act as a processor, we will notify the relevant customer according to t
 
 Not every security event is a personal data breach. We assess incidents based on evidence, risk, data exposure, system impact, and applicable law.
 
-## 48. Regional Privacy Considerations
+48. Regional Privacy Considerations
 
 APEX may serve customers and users in the United Arab Emirates, Egypt, Saudi Arabia, the European Economic Area, the United Kingdom, the United States, and other regions. Privacy obligations may differ depending on the location of the individual, the location of the customer, the type of data, the sector, the deployment model, and the role of APEX.
 
@@ -786,28 +777,28 @@ Where UAE, Egyptian, Saudi, or other regional privacy laws apply, individuals ma
 
 This Privacy Policy provides a general notice. It does not describe every legal requirement in every country. Customers operating in regulated industries or processing sensitive data should obtain legal advice and ensure that their deployment, contracts, notices, consents, retention rules, and operating procedures comply with applicable law.
 
-## 49. Data Processing Agreements
+49. Data Processing Agreements
 
 Where APEX processes personal data on behalf of a customer, the customer may require a data processing agreement or privacy addendum. Such agreements may define:
 
-* The subject matter of processing.
-* The duration of processing.
-* The nature and purpose of processing.
-* The categories of personal data.
-* The categories of data subjects.
-* Customer instructions.
-* Confidentiality obligations.
-* Security measures.
-* Sub-processor rules.
-* International transfer mechanisms.
-* Assistance with privacy rights requests.
-* Breach notification requirements.
-* Return or deletion of data.
-* Audit and compliance information.
+The subject matter of processing.
+The duration of processing.
+The nature and purpose of processing.
+The categories of personal data.
+The categories of data subjects.
+Customer instructions.
+Confidentiality obligations.
+Security measures.
+Sub-processor rules.
+International transfer mechanisms.
+Assistance with privacy rights requests.
+Breach notification requirements.
+Return or deletion of data.
+Audit and compliance information.
 
 Where a signed data processing agreement conflicts with this public Privacy Policy, the signed agreement will control for the relevant customer data.
 
-## 50. Product-Specific Terms and Documentation
+50. Product-Specific Terms and Documentation
 
 Some APEX products or services may have additional privacy, security, or data handling documentation. This may include product terms, security whitepapers, deployment guides, data processing addenda, support policies, AI usage terms, acceptable use policies, service level agreements, or customer-specific statements of work.
 
@@ -815,7 +806,7 @@ If a product-specific document provides more detailed information for a particul
 
 Customers should review product-specific documentation before connecting production systems, enabling AI features, processing sensitive data, or deploying integrations that involve regulated information.
 
-## 51. Changes to This Privacy Policy
+51. Changes to This Privacy Policy
 
 We may update this Privacy Policy from time to time to reflect changes in our products, services, legal requirements, security practices, business operations, or data handling activities.
 
@@ -825,18 +816,18 @@ The updated policy will apply from the effective date stated in the policy or, i
 
 We encourage customers and users to review this Privacy Policy periodically.
 
-## 52. Contact Us
+52. Contact Us
 
 If you have questions about this Privacy Policy, want to exercise privacy rights, need to submit a privacy request, or want to discuss a data processing agreement, please contact us:
 
-**APEX Experts AI Solutions**
-Website: **[https://apexexperts.net](https://apexexperts.net)**
-Email: **[info@apexexperts.net](mailto:info@apexexperts.net)**
+APEX Experts AI Solutions
+Website: https://apexexperts.net
+Email: info@apexexperts.net
 Locations: Alexandria, Egypt and Dubai, United Arab Emirates
 
 For product-specific support, customers may also use the support channels listed in the relevant product portal, onboarding documentation, customer agreement, or service desk.
 
-## 53. Plain-English Summary
+53. Plain-English Summary
 
 We collect personal data when you contact us, visit our websites, use our products, request support, work with us on a project, or communicate with our team. We use that data to provide services, communicate with you, secure our systems, improve our products, manage our business, and comply with legal obligations.
 
@@ -844,80 +835,22 @@ We do not want unnecessary personal data. We do not sell personal data as our bu
 
 Because we build AI, Oracle APEX, web, mobile, analytics, automation, and enterprise systems, privacy depends on both our safeguards and the customer’s configuration. Customers should apply least privilege, restrict sensitive data, review integrations, protect credentials, and validate AI outputs before relying on them.
 
-If you have a privacy question, contact us at **[info@apexexperts.net](mailto:info@apexexperts.net)**.
+If you have a privacy question, contact us at info@apexexperts.net.
 
-## 54. Implementation Note for Website Publication
+54. Implementation Note for Website Publication
 
 Before publishing this Privacy Policy, APEX should complete the following internal review:
 
-* Confirm the official legal company name.
-* Confirm whether the company wants to list Alexandria, Dubai, or both as public locations.
-* Confirm the official privacy contact email.
-* Confirm whether a dedicated privacy email should be created, such as [privacy@apexexperts.net](mailto:privacy@apexexperts.net).
-* Confirm whether any specific third-party providers must be listed.
-* Confirm whether cookie banner behavior matches the cookie section.
-* Confirm whether any products use third-party AI providers and whether this must be disclosed in more detail.
-* Confirm whether any product stores prompts, generated SQL, query logs, dashboards, or analytics outputs.
-* Confirm retention periods for support tickets, audit logs, backups, billing records, and marketing contacts.
-* Confirm whether Asklyze, MyQuery, or Tasto need separate product-specific privacy pages.
-* Confirm whether any security certifications are actually held before mentioning them publicly.
-* Confirm whether a Data Processing Agreement is available for enterprise customers.
-* Confirm whether the company needs a cookie policy, acceptable use policy, security policy, or sub-processor page.`;
-
-export default function PrivacyPage() {
-  return (
-    <div className="min-h-screen bg-[#06080a] text-zinc-400 font-mono text-[10px] pt-48 pb-32 px-6">
-      {/* Background Subtle Elements */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.03] overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-      </div>
-
-      <div className="max-w-5xl mx-auto relative">
-        {/* Document Header Info */}
-        <div className="flex justify-between items-end mb-4 px-4">
-          <div className="space-y-1">
-            <div className="text-sinai-glow-orange font-bold uppercase tracking-widest">Master_Protocol_Archive: AX-PRV-3.0.FULL</div>
-            <div className="text-[8px] text-zinc-600">TIMESTAMP: 2024-04-24T17:40:00Z</div>
-          </div>
-          <div className="text-right">
-            <div className="text-white font-bold uppercase tracking-widest">Classification: INSTITUTIONAL_UNABRIDGED</div>
-            <div className="text-[8px] text-zinc-600">AUTH: APEX_GLOBAL_COMPLIANCE_NODE</div>
-          </div>
-        </div>
-
-        {/* The Main Document Container */}
-        <div className="bg-white/[0.01] border border-white/10 rounded-sm p-12 backdrop-blur-sm shadow-2xl relative overflow-hidden">
-          {/* Decorative Corner Accents */}
-          <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-sinai-glow-orange/30" />
-          <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-sinai-glow-orange/30" />
-          <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-sinai-glow-orange/30" />
-          <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-sinai-glow-orange/30" />
-
-          {/* Document Content rendered with ReactMarkdown */}
-          <div className="prose prose-invert max-w-none prose-p:text-[10px] prose-headings:text-white prose-strong:text-sinai-glow-orange prose-a:text-sinai-glow-orange prose-a:no-underline hover:prose-a:underline prose-li:text-[10px]">
-            <ReactMarkdown
-              components={{
-                h1: ({ node, ...props }) => <h1 className="text-xl font-bold mb-8 uppercase tracking-tighter border-b border-white/10 pb-4" {...props} />,
-                h2: ({ node, ...props }) => <h2 className="text-sm font-bold mt-12 mb-4 uppercase tracking-widest text-white/90" {...props} />,
-                h3: ({ node, ...props }) => <h3 className="text-[10px] font-bold mt-8 mb-3 uppercase tracking-wider text-white/80 border-l-2 border-sinai-glow-orange pl-3" {...props} />,
-                p: ({ node, ...props }) => <p className="mb-4 leading-relaxed text-zinc-400" {...props} />,
-                ul: ({ node, ...props }) => <ul className="list-disc ml-6 mb-6 space-y-2" {...props} />,
-                li: ({ node, ...props }) => <li className="text-zinc-400" {...props} />,
-                strong: ({ node, ...props }) => <strong className="text-white font-bold" {...props} />,
-                a: ({ node, ...props }) => <a className="text-sinai-glow-orange hover:text-white transition-colors underline decoration-sinai-glow-orange/30 underline-offset-4" {...props} />,
-              }}
-            >
-              {PRIVACY_CONTENT}
-            </ReactMarkdown>
-          </div>
-
-          <div className="mt-12 pt-12 border-t border-white/5 flex justify-between items-center text-[7px] text-zinc-700">
-            <div>// AUTHENTICATED_BY_APEX_LEGAL_NODE</div>
-            <div className="font-bold uppercase">System_Status: Markdown_Enabled_Sync</div>
-            <div>// END_OF_FULL_PRIVACY_PROTOCOL</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+Confirm the official legal company name.
+Confirm whether the company wants to list Alexandria, Dubai, or both as public locations.
+Confirm the official privacy contact email.
+Confirm whether a dedicated privacy email should be created, such as privacy@apexexperts.net.
+Confirm whether any specific third-party providers must be listed.
+Confirm whether cookie banner behavior matches the cookie section.
+Confirm whether any products use third-party AI providers and whether this must be disclosed in more detail.
+Confirm whether any product stores prompts, generated SQL, query logs, dashboards, or analytics outputs.
+Confirm retention periods for support tickets, audit logs, backups, billing records, and marketing contacts.
+Confirm whether Asklyze, MyQuery, or Tasto need separate product-specific privacy pages.
+Confirm whether any security certifications are actually held before mentioning them publicly.
+Confirm whether a Data Processing Agreement is available for enterprise customers.
+Confirm whether the company needs a cookie policy, acceptable use policy, security policy, or sub-processor page.
