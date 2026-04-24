@@ -26,9 +26,8 @@ const PROJECTS: Project[] = [
     client: "APEX EXPERTS",
     category: "AI INSIGHTS PLUGIN",
     metrics: { dashboards: "Native", charts: "AI-Gen", reports: "Automated" },
-    image: "/images/project1.png",
+    image: "/images/asklyze-premium.png",
     logo: "/images/asklyze-logo.png",
-    videoUrl: "/video/asklyze-demo.gif",
     desc: "Oracle APEX plugin for AI-powered business insights. Turn natural-language questions into reports, charts, and dashboards inside Oracle APEX with zero data movement.",
     features: [
       "Fast Time to Value",
@@ -43,23 +42,43 @@ const PROJECTS: Project[] = [
   },
   {
     id: "02",
-    title: "Contextual Engine",
-    client: "LEX LEGAL SYSTEMS",
-    category: "LLM / RAG / Enterprise Search",
-    metrics: { recall: "96%", precision: "98%", speed: "Sub-second" },
-    image: "/images/project2.png",
-    desc: "Enterprise-grade retrieval-augmented generation (RAG) platform optimized for processing multi-million document legal repositories with extreme precision.",
-    tech: ["Pinecone", "GPT-4o", "LangGraph"]
+    title: "MyQuery",
+    client: "APEX EXPERTS",
+    category: "AI ANALYTICS PLATFORM",
+    metrics: { velocity: "Instant", sql: "Zero", integrations: "22+" },
+    image: "/images/myquery-premium.png",
+    logo: "/images/myquery-logo.png",
+    desc: "The AI analytics platform that puts data in everyone's hands. Type a question in plain English, and get accurate reports, charts, and dashboards instantly without SQL.",
+    features: [
+      "Instant Decision Velocity",
+      "Accessibility Without Compromise",
+      "Data Team Leverage",
+      "Governed Self-Service",
+      "22+ Native Integrations",
+      "Auto-Generated Dashboards"
+    ],
+    ctaText: "Explore MyQuery",
+    tech: ["Natural Language", "AI Analytics", "150+ Connections"]
   },
   {
     id: "03",
-    title: "Stratis AI",
-    client: "QUANTUM VENTURES",
-    category: "Predictive Analytics / Forecasting",
-    metrics: { error_rate: "-12%", processing: "Real-time", scale: "Global" },
-    image: "/images/project3.png",
-    desc: "Next-generation strategic forecasting platform that leverages time-series AI to predict market shifts with industrial-grade reliability.",
-    tech: ["PyTorch", "Rust", "Apache Kafka"]
+    title: "Tasto",
+    client: "APEX EXPERTS",
+    category: "SAAS METRICS & GROWTH",
+    metrics: { mrr_sync: "Real-time", forecasts: "AI-Driven", retention: "Cohorts" },
+    image: "/images/tasto-premium.png",
+    logo: "/images/tasto-logo.png",
+    desc: "Tasto unites analytics, forecasting, and benchmarks into one real-time view. Turn recurring revenue into a system of record with automated subscription tracking across multiple billing systems.",
+    features: [
+      "Unified SaaS Clarity",
+      "Predictive Growth Forecasting",
+      "Cohort Analysis & Retention",
+      "Global Benchmarking",
+      "Multi-Billing System Sync",
+      "Accurate MRR Reporting"
+    ],
+    ctaText: "Explore Tasto",
+    tech: ["Financial AI", "SaaS Analytics", "Forecasting", "Billing Integration"]
   }
 ];
 
@@ -132,7 +151,7 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
         style={{ y: isEven ? y : 0 }}
         className={`lg:col-span-7 relative ${isEven ? "" : "lg:order-2"}`}
       >
-        <div className="relative aspect-[16/10] rounded-[2rem] overflow-hidden bg-zinc-950 border border-white/5 group shadow-2xl">
+        <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-zinc-950 border border-white/5 group shadow-2xl">
           <ProjectMedia project={project} />
           
           {/* Internal Glow Overlay */}
@@ -151,11 +170,13 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
       <div className={`lg:col-span-5 space-y-12 ${isEven ? "" : "lg:order-1"}`}>
         <div className="space-y-8">
           {project.logo ? (
-            <div className="h-10 w-auto relative">
-              <img 
+            <div className="relative w-32 h-16 mb-8">
+              <Image 
                 src={project.logo} 
-                alt={`${project.title} Logo`} 
-                className="h-full w-auto object-contain brightness-0 invert opacity-100"
+                alt={`${project.title} logo`} 
+                fill 
+                sizes="128px"
+                className="object-contain object-left opacity-80" 
               />
             </div>
           ) : (
@@ -175,7 +196,7 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
           {Object.entries(project.metrics).map(([key, value]) => (
             <div key={key} className="space-y-1">
               <div className="text-[8px] font-mono text-zinc-600 uppercase tracking-[0.3em] mb-2">{key}</div>
-              <div className="text-2xl font-bold text-white font-mono tracking-tighter">{value}</div>
+              <div className="text-2xl font-bold text-white font-mono tracking-tighter whitespace-nowrap">{value}</div>
               <div className="h-0.5 w-4 bg-sinai-glow-orange/20" />
             </div>
           ))}
@@ -230,6 +251,7 @@ function ProjectMedia({ project }: { project: Project }) {
       src={project.image} 
       alt={project.title} 
       fill 
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-[2000ms]"
     />
   );
