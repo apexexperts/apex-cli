@@ -10,6 +10,7 @@ interface Project {
   category: string;
   metrics: Record<string, string>;
   image: string;
+  logo?: string; // Support for project/product logo
   videoUrl?: string; // Support for project videos
   desc: string;
   features?: string[];
@@ -26,6 +27,8 @@ const PROJECTS: Project[] = [
     category: "AI INSIGHTS PLUGIN",
     metrics: { dashboards: "Native", charts: "AI-Gen", reports: "Automated" },
     image: "/images/project1.png",
+    logo: "/images/asklyze-logo.png",
+    videoUrl: "/video/asklyze-demo.gif",
     desc: "Oracle APEX plugin for AI-powered business insights. Turn natural-language questions into reports, charts, and dashboards inside Oracle APEX with zero data movement.",
     features: [
       "Fast Time to Value",
@@ -109,19 +112,15 @@ function WideLayout({ project }: { project: Project }) {
   return (
     <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
       <div className="lg:col-span-8 group relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-black">
-        <Image 
-          src={project.image} 
-          alt={project.title} 
-          fill 
-          sizes="(max-width: 1024px) 100vw, 66vw"
-          className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" 
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-           <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
-             <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1" />
-           </div>
-        </div>
+        <ProjectMedia project={project} />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 pointer-events-none" />
+        {!project.videoUrl && (
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
+              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1" />
+            </div>
+          </div>
+        )}
       </div>
       <div className="lg:col-span-4 space-y-8 lg:pl-10">
         <ProjectMeta project={project} />
@@ -134,15 +133,9 @@ function WideLayout({ project }: { project: Project }) {
 function HeroLayout({ project }: { project: Project }) {
   return (
     <div className="relative h-[80vh] rounded-[4rem] overflow-hidden group border border-white/5 mx-auto max-w-7xl">
-      <Image 
-        src={project.image} 
-        alt={project.title} 
-        fill 
-        sizes="(max-width: 1280px) 100vw, 1280px"
-        className="object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000" 
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
+      <ProjectMedia project={project} />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black pointer-events-none" />
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 pointer-events-none">
         <ProjectMeta project={project} centered />
       </div>
     </div>
@@ -157,16 +150,52 @@ function SplitLayout({ project }: { project: Project }) {
         <ProjectMeta project={project} />
       </div>
       <div className="lg:col-span-8 group relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-black lg:order-2 order-1">
-        <Image 
-          src={project.image} 
-          alt={project.title} 
-          fill 
-          sizes="(max-width: 1024px) 100vw, 66vw"
-          className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" 
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+        <ProjectMedia project={project} />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 pointer-events-none" />
       </div>
     </div>
+  );
+}
+
+/* ── Reusable Project Media Component ── */
+function ProjectMedia({ project }: { project: Project }) {
+  if (project.videoUrl) {
+    const isGif = project.videoUrl.endsWith(".gif");
+    
+    if (isGif) {
+      return (
+        <div className="absolute inset-0 w-full h-full">
+          <img 
+            src={project.videoUrl} 
+            alt={project.title}
+            className="w-full h-full object-cover opacity-80"
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          src={project.videoUrl}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-80"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <Image 
+      src={project.image} 
+      alt={project.title} 
+      fill 
+      sizes="(max-width: 1024px) 100vw, 66vw"
+      className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" 
+    />
   );
 }
 
@@ -175,12 +204,23 @@ function ProjectMeta({ project, centered = false }: { project: Project; centered
   return (
     <div className={`space-y-8 ${centered ? "items-center text-center max-w-3xl" : ""}`}>
       <div className={`space-y-4 ${centered ? "flex flex-col items-center" : ""}`}>
+        {project.logo && (
+          <div className="mb-6 h-12 w-auto relative">
+            <img 
+              src={project.logo} 
+              alt={`${project.title} Logo`} 
+              className="h-full w-auto object-contain brightness-0 invert opacity-80"
+            />
+          </div>
+        )}
         <div className="font-mono text-[10px] text-sinai-glow-orange tracking-[0.4em] uppercase flex items-center gap-3 font-bold">
           {project.client} <span className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange/40" /> {project.category}
         </div>
-        <h3 className={`${centered ? "text-6xl md:text-8xl" : "text-5xl md:text-7xl"} font-bold tracking-tighter text-white leading-tight uppercase`}>
-          {project.title}
-        </h3>
+        {!project.logo && (
+          <h3 className={`${centered ? "text-6xl md:text-8xl" : "text-5xl md:text-7xl"} font-bold tracking-tighter text-white leading-tight uppercase`}>
+            {project.title}
+          </h3>
+        )}
       </div>
 
       <p className={`text-xl text-zinc-500 leading-relaxed ${centered ? "mx-auto" : "max-w-md"}`}>
