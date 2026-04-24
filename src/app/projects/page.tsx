@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionReveal } from "@/components/SectionReveal";
-import { ArrowRight, Terminal, Database, Layout, Search, Code2, Globe } from "lucide-react";
+import { ArrowRight, Terminal, Database, Layout } from "lucide-react";
 
 const PROJECTS = [
   {
@@ -78,9 +78,9 @@ export default function ProjectsPage() {
                 A definitive catalog of our production-grade deployments. Each entry represents a collision of technical precision and elite aesthetic execution.
               </p>
               <div className="flex flex-col justify-end items-start md:items-end gap-4 text-[10px] font-mono text-zinc-700 tracking-[0.3em] uppercase text-right">
-                <div>// REGISTRY_SECURE: YES</div>
-                <div>// ENCRYPTION: AES_256</div>
-                <div>// ACCESS_LEVEL: GLOBAL_STRATEGIC</div>
+                <div>{"// REGISTRY_SECURE: YES"}</div>
+                <div>{"// ENCRYPTION: AES_256"}</div>
+                <div>{"// ACCESS_LEVEL: GLOBAL_STRATEGIC"}</div>
               </div>
             </div>
           </div>
@@ -88,7 +88,7 @@ export default function ProjectsPage() {
 
         {/* Projects Grid - Mirroring Services Page Structure Exactly */}
         <div className="max-w-7xl mx-auto space-y-32">
-          {PROJECTS.map((project, i) => (
+          {PROJECTS.map((project) => (
             <SectionReveal key={project.id}>
               <div className="group relative grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
                 
