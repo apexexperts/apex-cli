@@ -9,6 +9,7 @@ const MENU_ITEMS = [
   { label: "CORE_SERVICES", id: "services", desc: "Production-grade AI architectures." },
   { label: "ENGINEERING_PIPELINE", id: "process", desc: "Our methodology & delivery flow." },
   { label: "PRODUCTION_REGISTRY", id: "projects", desc: "Live case studies & deployments." },
+  { label: "INTELLECTUAL_CAPITAL", id: "blog", desc: "Engineering dispatches & research." },
   { label: "ENGAGE_PROTOCOL", id: "contact", desc: "Initialize contact & engagement." },
 ];
 

@@ -47,10 +47,9 @@ export function Footer() {
             <FooterLinkGroup 
               title="Navigation" 
               links={[
-                { name: "About", href: "/#about" },
-                { name: "Services", href: "/#services" },
-                { name: "Process", href: "/#process" },
-                { name: "Projects", href: "/#projects" },
+                { name: "About", href: "/about" },
+                { name: "Services", href: "/services" },
+                { name: "Projects", href: "/projects" },
                 { name: "Contact", href: "/contact" }
               ]} 
             />
@@ -64,12 +63,11 @@ export function Footer() {
               ]} 
             />
             <FooterLinkGroup 
-              title="Intelligence" 
+              title="Our Projects" 
               links={[
-                { name: "NeuralStream 2.0", href: "#" },
-                { name: "Contextual Engine", href: "#" },
-                { name: "Stratis AI", href: "#" },
-                { name: "Dossiers", href: "#" }
+                { name: "Asklyze AI", href: "/projects/asklyze" },
+                { name: "MyQuery Data", href: "/projects/myquery" },
+                { name: "Tasto Experience", href: "/projects/tasto" }
               ]} 
             />
             

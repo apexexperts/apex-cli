@@ -3,128 +3,119 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
-interface Post {
-  id: string;
-  title: string;
-  category: string;
-  date: string;
-  readTime: string;
-  image: string;
-  excerpt: string;
-  complexity: "L1" | "L2" | "L3";
-}
-
-const POSTS: Post[] = [
-  {
-    id: "01",
-    title: "Scaling Neural Inference in Distributed Environments",
-    category: "ENGINEERING",
-    date: "OCT 12, 2026",
-    readTime: "8 MIN",
-    image: "/images/project1.png", // Reusing cinematic images for consistency
-    excerpt: "Exploring the bottlenecks of real-time LLM inference and the architectural shifts required for sub-50ms latency in global clusters.",
-    complexity: "L3"
-  },
-  {
-    id: "02",
-    title: "The Future of RAG: Beyond Vector Search",
-    category: "RESEARCH",
-    date: "OCT 08, 2026",
-    readTime: "12 MIN",
-    image: "/images/project2.png",
-    excerpt: "Moving from simple semantic retrieval to agentic knowledge graph synthesis for enterprise-grade context awareness.",
-    complexity: "L2"
-  },
-  {
-    id: "03",
-    title: "Autonomous Logistics: A Case Study in CV",
-    category: "CASE_STUDY",
-    date: "SEP 28, 2026",
-    readTime: "6 MIN",
-    image: "/images/project3.png",
-    excerpt: "How we implemented YOLOv10 for a global shipping giant, achieving 99.8% accuracy in high-motion environments.",
-    complexity: "L1"
-  }
-];
+import { BLOG_POSTS } from "@/data/blog";
+import { ArrowRight, Clock, Hash } from "lucide-react";
 
 export function BlogSection() {
-  const featured = POSTS[0];
-  const others = POSTS.slice(1);
+  const featured = BLOG_POSTS[0];
+  const others = BLOG_POSTS.slice(1, 3);
 
   return (
     <section id="blog" className="py-40 relative">
-      <div className="max-w-6xl mx-auto px-6 mb-24">
-        <div className="flex items-center gap-4 mb-4">
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sinai-glow-orange/5 blur-[150px] rounded-full pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-6 mb-24 relative z-10">
+        <div className="flex items-center gap-4 mb-8">
           <div className="h-px w-12 bg-sinai-glow-orange" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-sinai-glow-orange font-bold">
+          <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-sinai-glow-orange font-bold">
             05 // Intellectual Capital
           </span>
         </div>
-        <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-white">
-          TECHNICAL <span className="opacity-40 italic">INSIGHTS.</span>
-        </h2>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+          <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-white uppercase leading-[0.85]">
+            Intelligence <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange to-white opacity-90 italic">Architecture.</span>
+          </h2>
+          <p className="text-zinc-500 font-mono text-[9px] leading-relaxed tracking-widest uppercase max-w-xs lg:text-right">
+            Dispatches from the front lines of <br />
+            AI architecture & data sovereignty.
+          </p>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 relative z-10">
         
         {/* Featured Post - Large Cinematic Card */}
         <div className="lg:col-span-7 group">
-          <Link href="#" className="block space-y-8">
-            <div className="relative aspect-[16/10] rounded-[3rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
+          <Link href={`/blog/${featured.slug}`} className="block space-y-10">
+            <div className="relative aspect-[16/10] rounded-[3rem] overflow-hidden border border-white/10 bg-zinc-950 shadow-2xl group">
               <Image 
-                src={featured.image} 
+                src={featured.mainImage} 
                 alt={featured.title} 
                 fill 
                 sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105 opacity-60" 
+                className="object-cover group-hover:scale-110 transition-transform duration-[3s] ease-out opacity-60 group-hover:opacity-100 transition-opacity" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
+              
+              {/* Floating ID Tag */}
               <div className="absolute top-8 left-8 flex gap-3">
-                <span className="px-3 py-1 rounded-full bg-sinai-glow-orange text-[9px] font-black text-white uppercase tracking-widest">{featured.category}</span>
-                <span className="px-3 py-1 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-[9px] font-black text-white uppercase tracking-widest">{featured.complexity}</span>
+                <div className="px-4 py-1.5 rounded-full bg-sinai-glow-orange/20 backdrop-blur-xl border border-sinai-glow-orange/40 flex items-center gap-2">
+                  <div className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
+                  <span className="text-[9px] font-black text-white uppercase tracking-widest font-mono">PRIORITY_POST</span>
+                </div>
               </div>
+
+              {/* Decorative Corner */}
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-sinai-glow-orange/10 to-transparent pointer-events-none" />
             </div>
-            <div className="space-y-4 px-4">
-              <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-                <span>{featured.date}</span>
-                <span className="w-1 h-1 bg-zinc-700 rounded-full" />
-                <span>{featured.readTime} READ</span>
+
+            <div className="space-y-6 px-4 relative">
+              <div className="flex items-center gap-6">
+                <div className="flex gap-3">
+                  {featured.categories.map(cat => (
+                    <span key={cat} className="text-sinai-glow-orange text-[9px] font-mono font-bold uppercase tracking-[0.3em]">{cat}</span>
+                  ))}
+                </div>
+                <span className="w-1 h-1 bg-zinc-800 rounded-full" />
+                <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-widest">{new Date(featured.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
               </div>
-              <h3 className="text-4xl md:text-5xl font-bold tracking-tighter text-white group-hover:text-sinai-glow-orange transition-colors duration-500 leading-tight">
+              
+              <h3 className="text-4xl md:text-5xl font-black tracking-tighter text-white group-hover:text-sinai-glow-orange transition-colors duration-500 leading-tight uppercase">
                 {featured.title}
               </h3>
-              <p className="text-lg text-zinc-500 leading-relaxed max-w-2xl">
+              
+              <p className="text-lg text-zinc-500 font-light leading-relaxed max-w-2xl line-clamp-2">
                 {featured.excerpt}
               </p>
+
+              <div className="pt-4">
+                <div className="inline-flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.5em] text-white group-hover:text-sinai-glow-orange transition-colors">
+                  Read Full Insight
+                  <ArrowRight className="w-4 h-4 translate-x-0 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </div>
             </div>
           </Link>
         </div>
 
         {/* Other Posts - Refined Technical List */}
-        <div className="lg:col-span-5 flex flex-col gap-12 lg:pt-4">
+        <div className="lg:col-span-5 flex flex-col gap-16 lg:pt-4">
           {others.map((post) => (
-            <Link key={post.id} href="#" className="group block pb-12 border-b border-white/5 last:border-0">
+            <Link key={post.id} href={`/blog/${post.slug}`} className="group block pb-12 border-b border-white/5 last:border-0 relative">
               <div className="flex gap-8 items-start">
-                <div className="relative w-32 h-32 flex-shrink-0 rounded-2xl overflow-hidden border border-white/10 bg-black">
+                <div className="relative w-32 h-32 flex-shrink-0 rounded-[1.5rem] overflow-hidden border border-white/10 bg-zinc-950">
                   <Image 
-                    src={post.image} 
+                    src={post.mainImage} 
                     alt={post.title} 
                     fill 
                     sizes="128px"
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" 
                   />
                 </div>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-4 text-[9px] font-mono text-zinc-600 uppercase tracking-widest">
-                    <span className="text-sinai-glow-orange">{post.category}</span>
-                    <span>{post.date}</span>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4 text-[8px] font-mono text-zinc-600 uppercase tracking-widest">
+                    <span className="text-sinai-glow-orange font-bold">{post.categories[0]}</span>
+                    <span className="w-1 h-1 bg-zinc-800 rounded-full" />
+                    <span>0x{post.id.slice(-4)}</span>
                   </div>
-                  <h4 className="text-xl font-bold text-white group-hover:text-sinai-glow-orange transition-colors duration-300 leading-tight">
+                  <h4 className="text-2xl font-bold text-white group-hover:text-sinai-glow-orange transition-colors duration-300 leading-tight uppercase tracking-tighter">
                     {post.title}
                   </h4>
-                  <div className="flex items-center gap-2 pt-1">
-                    <span className="text-[9px] font-mono text-zinc-700 uppercase tracking-[0.2em]">{post.readTime} // COMPLEXITY_{post.complexity}</span>
+                  <div className="flex items-center gap-4 pt-1">
+                    <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-[0.2em]">Deployment_Live</span>
+                    <div className="w-10 h-px bg-white/5" />
                   </div>
                 </div>
               </div>
@@ -133,9 +124,12 @@ export function BlogSection() {
 
           {/* CTA: View All */}
           <div className="pt-8">
-            <Link href="#" className="group flex items-center gap-4 text-[10px] font-mono text-zinc-400 uppercase tracking-[0.5em] hover:text-white transition-colors">
-              VIEW_ALL_INSIGHTS
-              <div className="w-8 h-px bg-zinc-800 group-hover:w-16 group-hover:bg-sinai-glow-orange transition-all duration-500" />
+            <Link href="/blog" className="group relative px-12 py-5 rounded-full border border-white/10 overflow-hidden inline-flex items-center gap-6 hover:border-sinai-glow-orange/50 transition-all duration-500">
+              <div className="absolute inset-0 bg-sinai-glow-orange/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.5em] text-white">
+                Access_All_Knowledge
+              </span>
+              <div className="relative z-10 w-8 h-px bg-zinc-700 group-hover:w-12 group-hover:bg-sinai-glow-orange transition-all duration-500" />
             </Link>
           </div>
         </div>

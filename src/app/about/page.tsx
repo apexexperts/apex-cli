@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -14,6 +15,25 @@ const SectionReveal = ({ children, delay = 0 }: { children: React.ReactNode, del
     {children}
   </motion.div>
 );
+
+const TelemetryData = () => {
+  const [coords, setCoords] = React.useState({ x: "0.0000", y: "0.0000" });
+  
+  React.useEffect(() => {
+    setCoords({
+      x: Math.random().toFixed(4),
+      y: Math.random().toFixed(4)
+    });
+  }, []);
+
+  return (
+    <>
+      COORD_X: {coords.x}<br/>
+      COORD_Y: {coords.y}<br/>
+      SIG_STRENGTH: NOMINAL
+    </>
+  );
+};
 
 export default function AboutPage() {
   return (
@@ -332,9 +352,7 @@ export default function AboutPage() {
                 {/* Floating Meta-Data */}
                 <div className="absolute -top-10 -right-10 opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none">
                   <div className="text-[8px] font-mono text-sinai-glow-orange/40 p-4 border-l border-t border-sinai-glow-orange/20">
-                    COORD_X: {Math.random().toFixed(4)}<br/>
-                    COORD_Y: {Math.random().toFixed(4)}<br/>
-                    SIG_STRENGTH: NOMINAL
+                    <TelemetryData />
                   </div>
                 </div>
               </motion.div>
