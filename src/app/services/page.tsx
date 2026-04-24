@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { SectionReveal } from "@/components/SectionReveal";
-import { ArrowRight, Bot, Database, Globe, Smartphone, Terminal, Cpu, Zap, Shield, ChevronRight } from "lucide-react";
+import { ArrowRight, Bot, Database, Globe, Smartphone } from "lucide-react";
 
 const SERVICES = [
   {
@@ -81,9 +81,9 @@ export default function ServicesPage() {
                 A definitive catalog of our engineering operation units. Each module is designed to transform complex enterprise challenges into streamlined technical advantages.
               </p>
               <div className="flex flex-col justify-end items-start md:items-end gap-4 text-[10px] font-mono text-zinc-700 tracking-[0.3em] uppercase">
-                <div>// STATUS: ALL_SYSTEMS_OPERATIONAL</div>
-                <div>// LOCATION: GLOBAL_DISTRIBUTION_NODE</div>
-                <div>// VERSION: 2024.1.Q2</div>
+                <div>{"// STATUS: ALL_SYSTEMS_OPERATIONAL"}</div>
+                <div>{"// LOCATION: GLOBAL_DISTRIBUTION_NODE"}</div>
+                <div>{"// VERSION: 2024.1.Q2"}</div>
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@ export default function ServicesPage() {
 
         {/* Services Grid - High Fidelity / Premium Version of Homepage Design */}
         <div className="max-w-7xl mx-auto space-y-32">
-          {SERVICES.map((service, i) => (
+          {SERVICES.map((service) => (
             <SectionReveal key={service.id}>
               <div className="group relative grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
                 
