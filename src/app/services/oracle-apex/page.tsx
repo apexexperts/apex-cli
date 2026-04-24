@@ -1,18 +1,22 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import Image from "next/image";
 import Link from "next/link";
-import { Code2, Cpu, GraduationCap, Palette, CloudUpload, ShieldCheck, Zap, Layers, Share2, Database, Globe } from "lucide-react";
-import { Header } from "@/components/Header";
+import { Code2, Cpu, GraduationCap, Palette, CloudUpload, ShieldCheck } from "lucide-react";
 import { SectionReveal } from "@/components/SectionReveal";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
+interface OracleCapability {
+  id: string;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  image: string;
 }
+
+
 
 // --- Content Data ---
 
@@ -157,7 +161,7 @@ const NeuralCore = () => {
   );
 };
 
-const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: any, index: number, total: number, active: boolean, onEnter: () => void, onLeave: () => void }) => {
+const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: OracleCapability, index: number, total: number, active: boolean, onEnter: () => void, onLeave: () => void }) => {
   const angle = (index / total) * Math.PI * 2;
   const radius = 320; 
   const x = Math.cos(angle) * radius;
@@ -204,7 +208,7 @@ const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: any
   );
 };
 
-const CapabilityDetailView = ({ cap }: { cap: any }) => {
+const CapabilityDetailView = ({ cap }: { cap: OracleCapability }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group pointer-events-auto">
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
@@ -255,13 +259,16 @@ const Particles = ({ count = 10 }: { count?: number }) => {
   const [positions, setPositions] = React.useState<{ x: string, delay: number }[]>([]);
 
   React.useEffect(() => {
-    setMounted(true);
-    setPositions(
-      [...Array(count)].map(() => ({
-        x: Math.random() * 100 + "%",
-        delay: Math.random() * 10,
-      }))
-    );
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+      setPositions(
+        [...Array(count)].map(() => ({
+          x: Math.random() * 100 + "%",
+          delay: Math.random() * 10,
+        }))
+      );
+    });
+    return () => cancelAnimationFrame(frame);
   }, [count]);
 
   if (!mounted) return null;
