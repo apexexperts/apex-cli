@@ -1,16 +1,24 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
-import { Database, MessageSquare, ShieldCheck, BarChart3, Cpu, Zap, Code2, Layers, Network, Globe } from "lucide-react";
+import { ShieldCheck, BarChart3, Cpu, Zap, Network, Globe } from "lucide-react";
 import { SectionReveal } from "@/components/SectionReveal";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
+}
+
+interface ProjectFeature {
+  id: string;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  image: string;
 }
 
 const NeuralCore = () => {
@@ -67,7 +75,7 @@ const NeuralCore = () => {
   );
 };
 
-const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: any, index: number, total: number, active: boolean, onEnter: () => void, onLeave: () => void }) => {
+const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: ProjectFeature, index: number, total: number, active: boolean, onEnter: () => void, onLeave: () => void }) => {
   const angle = (index / total) * Math.PI * 2;
   const radius = 320; 
   const x = Math.cos(angle) * radius;
@@ -104,7 +112,7 @@ const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: any
   );
 };
 
-const CapabilityDetailView = ({ cap }: { cap: any }) => {
+const CapabilityDetailView = ({ cap }: { cap: ProjectFeature }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group">
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
@@ -197,8 +205,11 @@ const Particles = ({ count = 12 }: { count?: number }) => {
   const [mounted, setMounted] = React.useState(false);
   const [positions, setPositions] = React.useState<{ x: string, delay: number }[]>([]);
   useEffect(() => {
-    setMounted(true);
-    setPositions([...Array(count)].map(() => ({ x: Math.random() * 100 + "%", delay: Math.random() * 10 })));
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+      setPositions([...Array(count)].map(() => ({ x: Math.random() * 100 + "%", delay: Math.random() * 10 })));
+    });
+    return () => cancelAnimationFrame(frame);
   }, [count]);
   if (!mounted) return null;
   return (
@@ -251,7 +262,7 @@ export default function MyQueryPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeFeatureId, setActiveFeatureId] = React.useState<string | null>(null);
   const [activeStep, setActiveStep] = React.useState(0);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
+
   const pipelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: pipelineProgress } = useScroll({ target: pipelineRef, offset: ["start start", "end end"] });
 
@@ -285,7 +296,7 @@ export default function MyQueryPage() {
                   <span className="text-[9px] uppercase tracking-[0.5em] text-sinai-glow-orange font-bold">AI_ANALYTICS_PLATFORM // MYQ_V5</span>
                 </div>
                 <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] text-white uppercase">MYQUERY<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-white/40">Intelligence.</span></h1>
-                <p className="text-xl md:text-2xl text-zinc-400 max-w-xl font-light leading-relaxed">The AI analytics platform that puts data in everyone's hands. Type a question in plain English, and get accurate reports instantly.</p>
+                <p className="text-xl md:text-2xl text-zinc-400 max-w-xl font-light leading-relaxed">The AI analytics platform that puts data in everyone&apos;s hands. Type a question in plain English, and get accurate reports instantly.</p>
               </div>
               <div className="flex flex-wrap gap-6">
                 <Link href="/contact" className="group relative px-12 py-6 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-sm tracking-[0.3em] uppercase transition-all hover:shadow-[0_0_50px_rgba(242,162,75,0.4)] hover:scale-105 duration-500">
@@ -452,7 +463,7 @@ export default function MyQueryPage() {
                         {[...Array(5)].map((_, i) => (<motion.div key={i} animate={{ x: [0, 400, 800], opacity: [0, 1, 0], scale: [0.5, 1.2, 0.5] }} transition={{ duration: 4 - (activeStep * 0.5), repeat: Infinity, delay: i * 0.8, ease: "linear" }} className="absolute top-[300px] left-0 w-2 h-2 bg-sinai-glow-orange rounded-full shadow-[0_0_15px_rgba(242,162,75,0.8)]" />))}
                       </div>
                     </div>
-                    <div className="absolute bottom-12 left-12 text-[8px] font-mono text-zinc-500 tracking-[0.3em] uppercase space-y-2 z-40"><div className="flex items-center gap-3"><div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />PIPELINE_STEP: 0{activeStep + 1} // ACTIVE</div><div>CONNECTIVITY: OPTIMAL</div><div>LATENCY: {80 - activeStep * 15}ms</div></div>
+                    <div className="absolute bottom-12 left-12 text-[8px] font-mono text-zinc-500 tracking-[0.3em] uppercase space-y-2 z-40"><div className="flex items-center gap-3"><div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />{/* PIPELINE_STEP: 0{activeStep + 1} // ACTIVE */}PIPELINE_STEP: 0{activeStep + 1}</div><div>CONNECTIVITY: OPTIMAL</div><div>LATENCY: {80 - activeStep * 15}ms</div></div>
                   </div>
                 </div>
                 <div className="lg:col-span-5 relative space-y-12">
