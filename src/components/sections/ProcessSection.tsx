@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useSpring, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 
 const STEPS = [
   {
@@ -36,19 +36,40 @@ const STEPS = [
 
 export function ProcessSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
+  const [scrollYProgressValue, setScrollYProgressValue] = useState(0);
 
-  const scaleY = useSpring(scrollYProgress, {
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Calculate progress relative to the section's position in the viewport
+      // 0 when section starts entering, 1 when section finishes exiting
+      const start = rect.top - windowHeight;
+      const end = rect.bottom;
+      const progress = Math.min(Math.max(-start / (end - start), 0), 1);
+      setScrollYProgressValue(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scaleY = useSpring(scrollYProgressValue, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
 
   return (
-    <section ref={containerRef} id="process" className="scroll-mt-28 py-40 border-t border-white/5 relative overflow-hidden">
+    <div 
+      ref={containerRef} 
+      id="process" 
+      className="scroll-mt-28 py-40 border-t border-white/5 relative overflow-hidden"
+      style={{ position: 'relative' }}
+    >
       {/* Background Atmosphere */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-white/[0.05]" />
       <motion.div 
@@ -130,6 +151,6 @@ export function ProcessSection() {
 
       {/* Decorative Blur */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sinai-glow-orange/5 blur-[120px] pointer-events-none" />
-    </section>
+    </div>
   );
 }

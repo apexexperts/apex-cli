@@ -359,7 +359,7 @@ export function Header() {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="fixed inset-0 z-40 bg-[#06080a] flex flex-col p-12 lg:hidden"
           >
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
+            <div className="absolute inset-0 bg-[url('/images/noise.svg')] opacity-[0.03] mix-blend-overlay" />
             <div className="flex justify-between items-center mb-20">
               <span className="text-[10px] font-mono text-zinc-600 tracking-widest uppercase">System_Navigation</span>
               <button onClick={() => setMobileMenuOpen(false)} className="text-white text-xs font-mono uppercase tracking-widest">Close_X</button>

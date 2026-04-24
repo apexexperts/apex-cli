@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://apex-experts.com"),
+  metadataBase: new URL("https://apex-experts.net"),
   title: {
     default: "APEX Experts AI Solutions — Premium AI Engineering",
     template: "%s | APEX Experts AI Solutions",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "APEX Experts AI Solutions",
     description:
       "Engineering production-grade AI systems for forward-thinking enterprises.",
-    url: "https://apex-experts.com",
+    url: "https://apex-experts.net",
     siteName: "APEX Experts AI Solutions",
     locale: "en_US",
     type: "website",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://apex-experts.com",
+    canonical: "https://apex-experts.net",
   },
 };
 
