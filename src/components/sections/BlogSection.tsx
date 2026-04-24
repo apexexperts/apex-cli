@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BLOG_POSTS } from "@/data/blog";
-import { ArrowRight, Clock, Hash } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function BlogSection() {
   const featured = BLOG_POSTS[0];

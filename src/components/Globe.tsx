@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+
+interface GlobeParticle {
+  phi: number;
+  theta: number;
+  x: number;
+  y: number;
+  z: number;
+  size: number;
+}
 
 export function CinematicGlobe() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -18,16 +26,13 @@ export function CinematicGlobe() {
     canvas.height = height * window.devicePixelRatio;
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 
-    const particles: any[] = [];
+    const particles: GlobeParticle[] = [];
     const particleCount = 1200;
     const globeRadius = Math.min(width, height) * 0.4;
     const centerX = width / 2;
     const centerY = height / 2;
 
-    // Alexandria, Egypt Coordinates (Approx for 3D projection)
-    // Lat: 31.2, Lon: 29.9
-    const alexLat = (31.2 * Math.PI) / 180;
-    const alexLon = (29.9 * Math.PI) / 180;
+    // alexLat and alexLon removed as they were unused
 
     for (let i = 0; i < particleCount; i++) {
       const phi = Math.acos(-1 + (2 * i) / particleCount);

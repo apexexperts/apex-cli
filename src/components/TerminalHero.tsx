@@ -214,7 +214,7 @@ export function TerminalHero() {
                               animate={{ opacity: 1, x: 0 }}
                               className="text-[10px] text-zinc-500 font-mono italic"
                             >
-                              // {item.desc}
+                              {"// "}{item.desc}
                             </motion.span>
                           )}
                         </div>

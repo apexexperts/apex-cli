@@ -96,7 +96,7 @@ export function TestimonialsSection() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-center space-y-10"
             >
-              <div className="text-sinai-glow-orange opacity-20 text-8xl font-serif italic h-10 leading-none">"</div>
+              <div className="text-sinai-glow-orange opacity-20 text-8xl font-serif italic h-10 leading-none">&quot;</div>
               <p className="text-2xl md:text-5xl font-medium text-white/90 leading-tight tracking-tight text-balance">
                 {REVIEWS[activeIdx].quote}
               </p>

@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -237,9 +237,11 @@ function ProjectMedia({ project }: { project: Project }) {
     const isGif = project.videoUrl.endsWith(".gif");
     if (isGif) {
       return (
-        <img 
+        <Image 
           src={project.videoUrl} 
           alt={project.title}
+          fill
+          unoptimized
           className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2000ms]"
         />
       );

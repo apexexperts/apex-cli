@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -227,7 +227,7 @@ export function ServicesSection() {
 
       {/* Footer System Status */}
       <div className="mt-20 flex justify-between items-center text-[9px] font-mono text-zinc-700 uppercase tracking-[0.3em]">
-        <span>// Operation Units Online</span>
+        <span>{"// Operation Units Online"}</span>
         <div className="flex gap-4 text-zinc-500">
           <span className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-green-500/40" /> SYSTEM: STABLE</span>
           <span className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-sinai-glow-orange/40" /> NODES: ACTIVE</span>

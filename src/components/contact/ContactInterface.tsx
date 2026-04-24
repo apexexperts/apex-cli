@@ -57,13 +57,18 @@ export function ContactInterface() {
   const serviceRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setIsLoaded(true);
+    const frame = requestAnimationFrame(() => {
+      setIsLoaded(true);
+    });
     const handleClickOutside = (event: MouseEvent) => {
       if (countryRef.current && !countryRef.current.contains(event.target as Node)) setIsCountryOpen(false);
       if (serviceRef.current && !serviceRef.current.contains(event.target as Node)) setIsServiceOpen(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      cancelAnimationFrame(frame);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const handleCountrySelect = (country: typeof COUNTRIES[0]) => {
@@ -311,7 +316,13 @@ export function ContactInterface() {
   );
 }
 
-const PremiumField = ({ label, placeholder, type = "text" }: any) => (
+interface PremiumFieldProps {
+  label: string;
+  placeholder: string;
+  type?: string;
+}
+
+const PremiumField = ({ label, placeholder, type = "text" }: PremiumFieldProps) => (
   <div className="space-y-3">
     <label className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4">{label}</label>
     <input 
