@@ -51,7 +51,7 @@ export function Footer() {
                 { name: "Services", href: "/#services" },
                 { name: "Process", href: "/#process" },
                 { name: "Projects", href: "/#projects" },
-                { name: "Blog", href: "/#blog" }
+                { name: "Contact", href: "/contact" }
               ]} 
             />
             <FooterLinkGroup 

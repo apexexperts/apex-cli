@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, Share2, Cpu, Zap, Layers } from "lucide-react";
-import { Header } from "@/components/Header";
 import { SectionReveal } from "@/components/SectionReveal";
 
 if (typeof window !== "undefined") {
@@ -285,7 +284,7 @@ export default function AIAutomationPage() {
   const activeCap = CAPABILITIES.find(c => c.id === activeCapId);
 
   return (
-    <div ref={containerRef} className="relative bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
+    <div ref={containerRef} className="relative bg-[#06080a] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Layers */}
         <motion.div 
@@ -300,11 +299,11 @@ export default function AIAutomationPage() {
             className="object-cover opacity-60 scale-105 brightness-[0.4]"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/50 to-[#050505]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#06080a]/50 to-[#06080a]" />
           
           {/* Technical Grid Overlay */}
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] mix-blend-overlay" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#050505_100%)] opacity-80" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#06080a_100%)] opacity-80" />
         </motion.div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -344,12 +343,11 @@ export default function AIAutomationPage() {
                 transition={{ delay: 4, duration: 1 }}
                 className="flex flex-col md:flex-row gap-6 justify-center items-center"
               >
-                <Link href="#engage" className="group relative px-12 py-6 rounded-full overflow-hidden bg-sinai-glow-orange text-black font-bold text-sm tracking-[0.3em] uppercase transition-all hover:shadow-[0_0_50px_rgba(242,162,75,0.4)]">
-                  <span className="relative z-10">Initialize Engagement</span>
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                <Link href="/contact" className="btn-premium px-12 py-6 text-[10px] font-black uppercase tracking-[0.3em]">
+                  Initialize_Engagement
                 </Link>
-                <Link href="#capabilities" className="px-12 py-6 rounded-full bg-white/[0.03] border border-white/10 text-white font-bold text-sm tracking-[0.3em] uppercase hover:bg-white/[0.08] hover:border-white/20 transition-all">
-                  Registry Details
+                <Link href="#capabilities" className="btn-premium px-12 py-6 text-[10px] font-black uppercase tracking-[0.3em] opacity-60 hover:opacity-100">
+                  Registry_Details
                 </Link>
               </motion.div>
             </motion.div>
@@ -363,7 +361,7 @@ export default function AIAutomationPage() {
       </section>
 
       {/* The Core: Neural Capability Hub - Super Premium Redesign */}
-      <section id="capabilities" className="py-48 relative overflow-hidden bg-[#030303] min-h-[1000px]">
+      <section id="capabilities" className="py-48 relative overflow-hidden bg-[#06080a] min-h-[1000px]">
         <div className="container mx-auto px-6">
           <SectionReveal>
             <div className="text-center mb-32">
@@ -442,7 +440,7 @@ export default function AIAutomationPage() {
       </section>
 
       {/* Workflow Intelligence // Autonomous Reasoning - PREMIUM REVEAL */}
-      <section className="pt-64 pb-32 relative bg-[#050505] overflow-hidden border-t border-white/5">
+      <section className="pt-64 pb-32 relative bg-[#06080a] overflow-hidden border-t border-white/5">
         {/* Ambient background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.05)_0%,transparent_70%)] pointer-events-none" />
 
@@ -549,7 +547,7 @@ export default function AIAutomationPage() {
       </section>
 
       {/* Agentic Orchestration // Swarm Intelligence - EXTRA PREMIUM */}
-      <section className="pt-32 pb-32 relative bg-[#050505] overflow-hidden">
+      <section className="pt-32 pb-32 relative bg-[#06080a] overflow-hidden">
         {/* Ambient background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.03)_0%,transparent_70%)] pointer-events-none" />
 
@@ -661,7 +659,7 @@ export default function AIAutomationPage() {
       </section>
  
       {/* Cognitive Data Synthesis // Decision Intelligence - EXTRA PREMIUM */}
-      <section className="pt-32 pb-64 relative bg-[#050505] overflow-hidden border-b border-white/5">
+      <section className="pt-32 pb-64 relative bg-[#06080a] overflow-hidden border-b border-white/5">
         {/* Ambient background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.04)_0%,transparent_70%)] pointer-events-none" />
 
@@ -875,7 +873,7 @@ export default function AIAutomationPage() {
       </section>
 
       {/* Related Case Study // NeuralStream 2.0 - PREMIUM FEATURE */}
-      <section className="py-48 relative overflow-hidden bg-[#030303]">
+      <section className="py-48 relative overflow-hidden bg-[#06080a]">
         <div className="container mx-auto px-6">
           <SectionReveal>
             <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
@@ -940,7 +938,7 @@ export default function AIAutomationPage() {
                         </div>
                       ))}
                     </div>
-                    <Link href="/projects#01" className="px-10 py-5 rounded-full bg-white text-black font-black text-[10px] tracking-[0.3em] uppercase hover:bg-sinai-glow-orange transition-colors shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+                    <Link href="/projects#01" className="btn-premium px-10 py-5 text-[10px] font-black uppercase tracking-[0.3em]">
                       View Full Intelligence Report
                     </Link>
                   </div>
@@ -952,7 +950,7 @@ export default function AIAutomationPage() {
       </section>
 
       {/* Final CTA Section - Cinematic Masterpiece */}
-      <section className="py-64 relative overflow-hidden bg-black">
+      <section className="py-64 relative overflow-hidden bg-[#06080a]">
         {/* Background Ambient Layers */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.08)_0%,transparent_70%)]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sinai-glow-orange/5 blur-[120px] rounded-full pointer-events-none" />
@@ -987,16 +985,8 @@ export default function AIAutomationPage() {
               </div>
 
               <div className="flex flex-col items-center gap-8 pt-8">
-                <Link href="/#contact" className="group relative px-24 py-10 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-xl tracking-[0.4em] uppercase transition-all hover:shadow-[0_0_100px_rgba(242,162,75,0.6)] hover:scale-105 active:scale-95 duration-500">
-                  <span className="relative z-10">Initialize Project</span>
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" />
-                  
-                  {/* Internal Shimmer */}
-                  <motion.div 
-                    animate={{ left: ["-100%", "200%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
-                  />
+                <Link href="/contact" className="btn-premium px-24 py-10 text-[18px] font-black uppercase tracking-[0.4em]">
+                  Initialize_Project
                 </Link>
 
                 <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600 tracking-widest uppercase">
