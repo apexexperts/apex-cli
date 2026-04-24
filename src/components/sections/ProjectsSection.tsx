@@ -170,13 +170,13 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
       <div className={`lg:col-span-5 space-y-12 ${isEven ? "" : "lg:order-1"}`}>
         <div className="space-y-8">
           {project.logo ? (
-            <div className="relative w-32 h-16 mb-8">
+            <div className="relative w-48 h-24 mb-10">
               <Image 
                 src={project.logo} 
                 alt={`${project.title} logo`} 
                 fill 
-                sizes="128px"
-                className="object-contain object-left opacity-80" 
+                sizes="192px"
+                className="object-contain object-left opacity-95" 
               />
             </div>
           ) : (
