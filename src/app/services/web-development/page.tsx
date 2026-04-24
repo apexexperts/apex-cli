@@ -568,7 +568,7 @@ export default function WebDevelopmentPage() {
   const activeCap = WEB_CAPABILITIES.find(c => c.id === activeCapId);
 
   return (
-    <div className="bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
+    <div className="relative bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
       <Header />
       
       <WebDevelopmentHero />

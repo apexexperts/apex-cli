@@ -325,7 +325,7 @@ export default function MobileDevelopmentPage() {
   const activeCap = MOBILE_CAPABILITIES.find(c => c.id === activeCapId);
 
   return (
-    <div className="bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black font-sans">
+    <div className="relative bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black font-sans">
       <Header />
       <MobileHero />
       

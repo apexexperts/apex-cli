@@ -10,18 +10,12 @@ import { BlogSection } from "@/components/sections/BlogSection";
 
 export default function Home() {
   return (
-    <>
+    <section className="relative">
       {/* ── Hero: Cinematic CLI Experience ── */}
       <TerminalHero />
 
       {/* ── Page Content ── */}
       <div className="relative">
-        {/* Ambient background for content area */}
-        <div
-          className="absolute top-0 left-0 right-0 h-[600px] bg-gradient-to-b from-background via-background to-transparent pointer-events-none"
-          aria-hidden="true"
-        />
-
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* ── About ── */}
           <SectionReveal>
@@ -73,6 +67,6 @@ export default function Home() {
           <div className="h-24" />
         </div>
       </div>
-    </>
+    </section>
   );
 }

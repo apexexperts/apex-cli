@@ -24,7 +24,7 @@ export function TerminalHero() {
   const fullEngine = "AUTONOMOUS INTELLIGENCE ENGINE";
 
   const windowRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Scroll parallax/fade
   const { scrollYProgress } = useScroll({
@@ -93,7 +93,7 @@ export function TerminalHero() {
   }, [stage]);
 
   return (
-    <motion.section 
+    <motion.div 
       ref={containerRef}
       style={{ opacity: opacityScroll, scale: scaleScroll, y: yScroll }}
       className="relative min-h-screen flex items-center justify-center py-20 px-4 overflow-hidden bg-[#06080a]"
@@ -222,6 +222,6 @@ export function TerminalHero() {
           </div>
         </div>
       </div>
-    </motion.section>
+    </motion.div>
   );
 }
