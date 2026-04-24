@@ -145,6 +145,7 @@ export function Header() {
   const isActive = (href: string, label: string) => {
     if (label === "ABOUT" && pathname === "/about") return true;
     if (label === "SERVICES" && pathname.startsWith("/services")) return true;
+    if (label === "PROJECTS" && pathname.startsWith("/projects")) return true;
     if (label === "CONTACT" && pathname === "/contact") return true;
     return pathname === href;
   };
