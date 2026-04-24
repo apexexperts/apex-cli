@@ -505,12 +505,11 @@ export default function AboutPage() {
                             {tech.customIcon}
                           </div>
                         ) : (
-                          <Image 
+                          <img 
                             src={`https://cdn.simpleicons.org/${tech.slug}/fff`} 
                             className="w-full h-full object-contain opacity-40 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
                             alt={tech.id}
                             style={{ filter: `drop-shadow(0 0 10px ${tech.color}44)` }}
-                            fill
                           />
                         )}
                         
