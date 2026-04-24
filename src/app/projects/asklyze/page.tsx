@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
@@ -304,10 +304,7 @@ export default function AsklyzePage() {
   const [activeFeatureId, setActiveFeatureId] = React.useState<string | null>(null);
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
+
 
   // Pipeline Scroll Logic
   const pipelineRef = useRef<HTMLDivElement>(null);
