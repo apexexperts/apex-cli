@@ -4,7 +4,7 @@ import React, { use } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { SectionReveal } from "@/components/SectionReveal";
-import { ArrowLeft, Calendar, User, Clock, Hash } from "lucide-react";
+import { ArrowLeft, Hash } from "lucide-react";
 import { BLOG_POSTS } from "@/data/blog";
 import { notFound } from "next/navigation";
 

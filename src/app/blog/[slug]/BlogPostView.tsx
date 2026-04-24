@@ -4,7 +4,7 @@ import React, { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionReveal } from "@/components/SectionReveal";
-import { Calendar, User, ArrowLeft, Share2, Bookmark } from "lucide-react";
+import { ArrowLeft, Share2, Bookmark } from "lucide-react";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "@/data/blog";
 
@@ -16,8 +16,37 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     notFound();
   }
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.mainImage,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    author: {
+      "@type": "Person",
+      name: post.author.name,
+      jobTitle: post.author.role,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "APEX Experts AI Solutions",
+      url: "https://apex-experts.net",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://apex-experts.net/blog/${post.slug}`,
+    },
+    keywords: post.categories.join(", "),
+  };
+
   return (
     <article className="min-h-screen bg-[#06080a] text-white pt-40 pb-40 overflow-hidden relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-[1000px] pointer-events-none overflow-hidden opacity-30">
         <div className="absolute top-[-20%] left-[20%] w-[60%] h-[60%] bg-sinai-glow-orange/10 blur-[150px] rounded-full" />
@@ -75,6 +104,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                 <div>
                   <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Author_Node</div>
                   <div className="text-lg font-bold text-white uppercase tracking-tight">{post.author.name}</div>
+                  <div className="mt-1 text-[9px] font-mono text-zinc-600 uppercase tracking-[0.2em]">{post.author.role}</div>
                 </div>
               </div>
 
@@ -125,13 +155,13 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               <div className="space-y-4">
                 <div className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.4em] uppercase font-black">Technical_Synopsis</div>
                 <p className="text-xl text-zinc-300 font-light leading-relaxed italic">
-                  This dispatch outlines the architectural requirements for transitioning enterprise workflows from deterministic automation to autonomous agentic orchestration.
+                  {post.synopsis ?? post.excerpt}
                 </p>
               </div>
             </div>
 
             <div className="prose prose-invert max-w-none space-y-12">
-              {post.body.map((block: any, i: number) => {
+              {post.body.map((block, i) => {
                 if (block.type === "h2") return (
                   <h2 key={i} className="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-24 mb-12 text-white leading-tight flex items-center gap-6">
                     <span className="text-sinai-glow-orange/40 font-mono text-2xl">0{Math.floor(i/2) + 1}</span>
@@ -142,7 +172,13 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                 if (block.type === "image") return (
                   <div key={i} className="my-20 space-y-6">
                     <div className="relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 bg-zinc-950 shadow-2xl">
-                      <img src={block.src} alt={block.caption} className="w-full h-full object-cover brightness-90 hover:brightness-100 transition-all duration-700" />
+                      <Image
+                        src={block.src}
+                        alt={block.caption}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 896px"
+                        className="object-cover brightness-90 hover:brightness-100 transition-all duration-700"
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
                     </div>
                     <div className="flex items-center gap-4 px-6">

@@ -50,6 +50,7 @@ export function Footer() {
                 { name: "About", href: "/about" },
                 { name: "Services", href: "/services" },
                 { name: "Projects", href: "/projects" },
+                { name: "Blog", href: "/blog" },
                 { name: "Contact", href: "/contact" }
               ]} 
             />
@@ -93,8 +94,8 @@ export function Footer() {
             © {currentYear} APEX Experts AI Solutions. Engineered with absolute precision.
           </div>
           <div className="flex gap-10">
-            <Link href="#" className="text-[10px] font-mono text-zinc-700 hover:text-white transition-colors uppercase tracking-[0.3em]">Privacy_Protocol</Link>
-            <Link href="#" className="text-[10px] font-mono text-zinc-700 hover:text-white transition-colors uppercase tracking-[0.3em]">Terms_Of_Service</Link>
+            <Link href="/privacy" className="text-[10px] font-mono text-zinc-700 hover:text-white transition-colors uppercase tracking-[0.3em]">Privacy_Protocol</Link>
+            <Link href="/terms" className="text-[10px] font-mono text-zinc-700 hover:text-white transition-colors uppercase tracking-[0.3em]">Terms_Of_Service</Link>
           </div>
         </div>
       </div>

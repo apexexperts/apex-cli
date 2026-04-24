@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://apex-experts.com/sitemap.xml",
+    sitemap: "https://apex-experts.net/sitemap.xml",
   };
 }
