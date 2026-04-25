@@ -27,42 +27,51 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexexperts.net"),
   title: {
-    default: "APEX Experts AI Solutions",
+    default:
+      "APEX Experts AI Solutions | AI Systems, Oracle APEX & Custom Software",
     template: "%s | APEX Experts AI Solutions",
   },
   description:
-    "APEX Experts AI Solutions engineers production-grade artificial intelligence systems. We design, build, and deploy enterprise AI architecture with technical precision.",
+    "APEX Experts AI Solutions builds practical AI systems, Oracle APEX applications, business dashboards, automation workflows, and custom web and mobile software for real business operations.",
   keywords: [
-    "AI solutions",
-    "artificial intelligence",
-    "enterprise AI",
-    "machine learning engineering",
-    "AI architecture",
-    "machine learning",
+    "APEX Experts AI Solutions",
+    "Oracle APEX development",
+    "Oracle APEX AI",
+    "AI software development",
+    "custom AI solutions",
+    "business automation",
+    "AI dashboards",
+    "natural language analytics",
+    "Oracle database reporting",
+    "web development company",
+    "mobile app development",
+    "enterprise software development",
   ],
   openGraph: {
-    title: "APEX Experts AI Solutions",
+    title:
+      "APEX Experts AI Solutions | AI Systems, Oracle APEX & Custom Software",
     description:
-      "Engineering production-grade AI systems for forward-thinking enterprises.",
+      "We build practical AI systems, Oracle APEX solutions, dashboards, automation workflows, and custom software for companies that need technology they can actually use.",
     url: "https://apexexperts.net",
     siteName: "APEX Experts AI Solutions",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/images/mark-logo.png",
+        url: "/images/og-apex-experts.png",
         width: 1200,
         height: 630,
-        alt: "APEX Experts AI Solutions",
+        alt: "APEX Experts AI Solutions - AI, Oracle APEX, Web and Mobile Development",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "APEX Experts AI Solutions",
+    title:
+      "APEX Experts AI Solutions | AI Systems, Oracle APEX & Custom Software",
     description:
-      "Engineering production-grade AI systems for forward-thinking enterprises.",
-    images: ["/images/mark-logo.png"],
+      "Practical AI systems, Oracle APEX applications, dashboards, automation, and custom software built for real business use.",
+    images: ["/images/og-apex-experts.png"],
   },
   robots: {
     index: true,
@@ -81,12 +90,15 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
+        url: "/favicon.ico",
+      },
+      {
         url: "/images/logo-dark.svg",
         type: "image/svg+xml",
       },
     ],
-    shortcut: "/images/logo-dark.svg",
-    apple: "/images/logo-dark.svg",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
