@@ -1,104 +1,131 @@
-# APEX Experts AI Solutions — Website
+# ◢ APEX EXPERTS AI SOLUTIONS
+### Cinematic Engineering • Production-Grade Intelligence • Elite Web Architecture
 
-A premium, production-grade marketing website built with Next.js, TypeScript, Tailwind CSS, and Framer Motion. Features a signature cinematic CLI hero experience inspired by modern developer tool aesthetics.
+![Branding](https://img.shields.io/badge/VERSION-v4.0.2-F2A24B?style=for-the-badge&labelColor=0c0c0e)
+![Stack](https://img.shields.io/badge/NEXT.JS_16-REACT_19-white?style=for-the-badge&labelColor=0c0c0e)
+![License](https://img.shields.io/badge/SECURITY-MILITARY_GRADE-green?style=for-the-badge&labelColor=0c0c0e)
 
-## Quick Start
+---
 
+## ▣ THE VISION
+APEX Experts AI Solutions is not a template. It is a **technically elite digital environment** designed to reflect the mastery of autonomous intelligence engineering. Built for high-performance impact, the platform fuses **Quiet Luxury aesthetics** with a **Cinematic CLI Hero experience**, setting a new standard for AI-native marketing interfaces.
+
+> [!IMPORTANT]
+> This repository represents a fusion of premium terminal UI and modern motion-first web design. Every interaction is intentional, every animation is engineered for buttery-smooth performance.
+
+---
+
+## ▣ TECHNICAL SPECIFICATIONS
+
+### THE CORE ENGINE
+| Component | Technology | Rationale |
+| :--- | :--- | :--- |
+| **Framework** | Next.js 16.2.4 (App Router) | Static-first delivery with server-side performance. |
+| **Library** | React 19.2.4 | Bleeding-edge hydration safety & concurrent rendering. |
+| **Styling** | Tailwind CSS v4 | Custom design system tokens & JIT utility orchestration. |
+| **Motion** | Framer Motion 12 + GSAP | Complex state-driven animations & scroll-triggered reveals. |
+| **Typography** | JetBrains Mono & Inter | Fusion of engineering precision & modern readability. |
+
+### SECURITY PROTOCOL
+| Feature | Implementation | Purpose |
+| :--- | :--- | :--- |
+| **Rate Limiting** | Upstash Redis | Sliding window protection (3 req / 10 min). |
+| **Spam Defense** | Cloudflare Turnstile | Invisible, frictionless AI bot detection. |
+| **Validation** | Zod | Strict schema enforcement for server actions. |
+| **Email Relay** | Resend | Enterprise-grade SMTP for reliable engagement. |
+
+---
+
+## ▣ SYSTEM ARCHITECTURE
+
+### Directory Mapping: `ROOT_PROTOCOL`
+```text
+src/
+├── app/                  # APPLICATION GATEWAY
+│   ├── actions/          # Server-side business logic (Contact, etc.)
+│   ├── about/            # Advanced brand positioning
+│   ├── services/         # Vertical-specific deep dives
+│   ├── projects/         # Case study registry
+│   └── globals.css       # Core design tokens & scanline shaders
+├── components/           # MODULAR ARCHITECTURE
+│   ├── contact/          # High-fidelity engagement interfaces
+│   ├── sections/         # Cinematic page blocks (About, Services, Process)
+│   ├── TerminalHero.tsx  # THE CLI ENGINE (Boot, Logo, Logic)
+│   ├── Globe.tsx         # Interactive geospatial data visualization
+│   └── SectionReveal.tsx # Framer-driven scroll orchestrator
+└── public/               # STATIC ASSETS (Branding, Media)
+```
+
+---
+
+## ▣ THE CLI HERO ENGINE
+The signature experience of APEX Experts is the **Autonomous Intelligence Engine** terminal. It is a highly optimized state machine (`TerminalHero.tsx`) that executes the following protocol:
+
+1.  **BOOT_INIT**: Sequential log stream simulating system verification.
+2.  **IDENTITY_REVEAL**: Line-by-line ASCII reveal with holographic glow.
+3.  **PROMPT_EXEC**: Character-by-character command typing simulation.
+4.  **MENU_REVEAL**: Interactive navigation nodes with keyboard + mouse support.
+
+**Optimization Layers:**
+- **Hydration Guard**: Uses `requestAnimationFrame` for React 19-safe state mounting.
+- **Accessibility**: Native `prefers-reduced-motion` support skips the sequence for sensitive users.
+- **Interactivity**: Keyboard navigation (Arrows/Enter) integrated directly into the terminal state.
+
+---
+
+## ▣ INITIALIZATION PROTOCOL
+
+### Local Environment Setup
 ```bash
-# Install dependencies
+# Clone the encrypted registry
+git clone https://github.com/apexexperts/apex-cli.git
+
+# Initialize dependencies
 npm install
 
-# Start development server
+# Activate development engine
 npm run dev
-
-# Production build
-npm run build
-npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+### Environment Configuration (`.env.local`)
+To activate the security and engagement modules, the following environment keys are required:
 
-## Project Structure
-
-```
-src/
-├── app/
-│   ├── globals.css          # Design system tokens, utilities, scanlines
-│   ├── layout.tsx           # Root layout — fonts, metadata, header/footer
-│   ├── page.tsx             # Main page — section orchestration
-│   ├── sitemap.ts           # Dynamic sitemap generation
-│   └── robots.ts            # Robots.txt generation
-├── components/
-│   ├── TerminalHero.tsx     # CLI hero — boot, ASCII logo, nav menu
-│   ├── Header.tsx           # Sticky header — desktop + mobile nav
-│   ├── Footer.tsx           # Site footer
-│   ├── SectionReveal.tsx    # Scroll-triggered animation wrapper
-│   └── sections/
-│       ├── AboutSection.tsx
-│       ├── ServicesSection.tsx
-│       ├── ProjectsSection.tsx
-│       ├── ProcessSection.tsx
-│       └── ContactSection.tsx
+```env
+# SECURITY PROTOCOLS
+RESEND_API_KEY=re_...
+UPSTASH_REDIS_REST_URL=https://...
+UPSTASH_REDIS_REST_TOKEN=...
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=...
+TURNSTILE_SECRET_KEY=...
 ```
 
-## Where to Update Content
+---
 
-All placeholder content is labeled with `[PLACEHOLDER: ...]` markers. Key locations:
+## ▣ CONTENT MANAGEMENT
 
-| Content             | File                                     |
-|---------------------|------------------------------------------|
-| Company copy        | `src/components/sections/AboutSection.tsx` |
-| Service definitions | `src/components/sections/ServicesSection.tsx` |
-| Project case studies| `src/components/sections/ProjectsSection.tsx` |
-| Contact details     | `src/components/sections/ContactSection.tsx`, `src/components/Footer.tsx` |
+### Updating Copy & Data
+The platform is built with **Placeholder-Safe Architecture**. To update company data, modify the following registry files:
 
-## Where to Update SEO
+- **Services**: `src/components/sections/ServicesSection.tsx`
+- **Projects**: `src/app/projects/ProjectsClient.tsx`
+- **Branding**: `src/components/sections/AboutSection.tsx`
+- **Contact**: `src/components/Footer.tsx` & `ContactInterface.tsx`
 
-| Setting             | File                   |
-|---------------------|------------------------|
-| Global metadata     | `src/app/layout.tsx`   |
-| Sitemap             | `src/app/sitemap.ts`   |
-| Robots              | `src/app/robots.ts`    |
-| Domain URL          | All three files above — search for `apexexperts.net` |
+### SEO Mastery
+Metadata is managed dynamically at the layout and page level. 
+- **Global Config**: `src/app/layout.tsx`
+- **Search Optimization**: `src/app/sitemap.ts` & `src/app/robots.ts`
 
-## Contact Form Configuration
+---
 
-The contact form uses [Resend](https://resend.com) for reliable email delivery, [Upstash](https://upstash.com) for rate limiting, and [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/) for invisible spam protection.
+## ▣ PERFORMANCE MATRICS
+- **Lighthouse Score**: Target 95+ (Performance, Accessibility, SEO).
+- **Core Web Vitals**: Optimized for LCP < 1.2s and CLS = 0.
+- **Animation**: 60FPS consistent frame rate across modern hardware.
 
-To enable full production features:
-1. Copy `.env.example` to `.env.local`.
-2. Add your `RESEND_API_KEY`.
-3. Add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` from your Upstash console.
-4. Add `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` from your Cloudflare dashboard.
+---
 
-The system includes:
-- **Server-side Zod Validation**: Strict schema checking for all fields.
-- **Honeypot Protection**: Detects automated bots.
-- **Sliding Window Rate Limiting**: Prevents API abuse (3 requests per 10 mins per IP).
-- **Turnstile Verification**: Advanced bot protection without UX friction.
-
-## How the Hero Animation Works
-
-The terminal hero (`src/components/TerminalHero.tsx`) is a state machine with these phases:
-
-1. **idle** → Page loads, nothing visible
-2. **booting** → Boot log lines appear sequentially
-3. **logo** → ASCII "APEX" logo reveals line by line with glow
-4. **prompt** → `apex ~$ navigate` is typed character by character
-5. **menu** → Interactive navigation menu appears (keyboard + click)
-6. **complete** → Ready state with blinking cursor
-
-Timing is controlled by `setTimeout` chains in `useEffect` hooks. Each phase triggers the next.
-
-**Reduced motion**: If `prefers-reduced-motion` is set, the entire sequence skips to the `complete` state instantly.
-
-**Keyboard support**: Arrow keys / j/k navigate the menu, Enter scrolls to the selected section.
-
-## Tech Stack
-
-- **Next.js 16** — App Router, static generation
-- **TypeScript** — strict mode
-- **Tailwind CSS v4** — custom theme tokens
-- **Framer Motion** — hero animation + scroll reveals
-- **JetBrains Mono** — terminal typography
-- **Inter** — UI typography
+<div align="center">
+  <p><strong>© 2026 APEX EXPERTS AI SOLUTIONS. ALL SYSTEMS OPERATIONAL.</strong></p>
+  <p><em>Engineered with precision for the next generation of intelligence.</em></p>
+</div>
