@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/logo-footer.png",
+        url: "/images/logo-dark.svg",
         width: 1200,
         height: 630,
         alt: "APEX Experts AI Solutions - AI, Oracle APEX, Web and Mobile Development",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
       "APEX Experts AI Solutions | AI Systems, Oracle APEX & Custom Software",
     description:
       "Practical AI systems, Oracle APEX applications, dashboards, automation, and custom software built for real business use.",
-    images: ["/images/logo-footer.png"],
+    images: ["/images/logo-dark.svg"],
   },
   robots: {
     index: true,
