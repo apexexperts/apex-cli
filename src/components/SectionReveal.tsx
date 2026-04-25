@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useRef, type ReactNode, useState, useEffect } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
 interface SectionRevealProps {
@@ -16,13 +16,20 @@ export function SectionReveal({
 }: SectionRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   
   // Use a more generous margin and remove 'once: true' if we want it to react on every scroll
   // But for professional sites, 'once: true' is usually better to prevent repetitive jumping.
   // We'll keep 'once: true' but significantly improve the transition quality.
   const isInView = useInView(ref, { once: true, margin: "-10%" });
 
-  const initial = shouldReduceMotion 
+  const initial = effectiveReduceMotion 
     ? { opacity: 0 } 
     : { opacity: 0, y: 80, filter: "blur(15px)" };
     
@@ -36,7 +43,7 @@ export function SectionReveal({
       initial={initial}
       animate={animate}
       transition={{
-        duration: shouldReduceMotion ? 0.6 : 1.2, // Shorter duration for simple fade
+        duration: effectiveReduceMotion ? 0.6 : 1.2, // Shorter duration for simple fade
         delay,
         ease: [0.22, 1, 0.36, 1], // Custom cubic-bezier for high-end motion
       }}

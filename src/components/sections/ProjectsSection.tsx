@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -134,6 +134,14 @@ export function ProjectsSection() {
 function ProjectShowcase({ project, index }: { project: Project; index: number }) {
   const isEven = index % 2 === 0;
   const containerRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -145,7 +153,7 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
   return (
     <motion.div 
       ref={containerRef}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: effectiveReduceMotion ? 0 : 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -153,12 +161,12 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
     >
       {/* Media Column */}
       <motion.div 
-        style={{ y: isEven ? y : 0 }}
+        style={{ y: (isEven && !effectiveReduceMotion) ? y : 0 }}
         className={`lg:col-span-7 relative ${isEven ? "" : "lg:order-2"}`}
       >
         <Link href={project.href || "#"}>
           <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-zinc-950 border border-white/5 group shadow-2xl cursor-pointer">
-            <ProjectMedia project={project} />
+            <ProjectMedia project={project} reduced={!!effectiveReduceMotion} />
             
             {/* Internal Glow Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 pointer-events-none" />
@@ -166,7 +174,7 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
             
             {/* Subtle Technical Label */}
             <div className="absolute top-8 left-8 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-2 group-hover:translate-y-0">
-              <div className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
+              <div className={`w-1 h-1 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
               <span className="text-[8px] font-mono text-white/60 tracking-[0.4em] uppercase">Deployment_Active // 0x{project.id}</span>
             </div>
           </div>
@@ -224,7 +232,7 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white group-hover:text-sinai-glow-orange transition-colors">
               {project.ctaText || "Explore Case Study"}
             </span>
-            <div className="h-px w-12 bg-white/10 group-hover:w-20 group-hover:bg-sinai-glow-orange transition-all duration-500" />
+            <div className={`h-px bg-white/10 transition-all duration-500 ${effectiveReduceMotion ? 'w-12' : 'w-12 group-hover:w-20 group-hover:bg-sinai-glow-orange'}`} />
           </Link>
         </div>
       </div>
@@ -232,7 +240,7 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
   );
 }
 
-function ProjectMedia({ project }: { project: Project }) {
+function ProjectMedia({ project, reduced }: { project: Project; reduced: boolean }) {
   if (project.videoUrl) {
     const isGif = project.videoUrl.endsWith(".gif");
     if (isGif) {
@@ -242,7 +250,7 @@ function ProjectMedia({ project }: { project: Project }) {
           alt={project.title}
           fill
           unoptimized
-          className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2000ms]"
+          className={`w-full h-full object-cover opacity-80 transition-transform duration-[2000ms] ${reduced ? '' : 'group-hover:scale-105'}`}
         />
       );
     }
@@ -253,7 +261,7 @@ function ProjectMedia({ project }: { project: Project }) {
         muted
         loop
         playsInline
-        className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2000ms]"
+        className={`w-full h-full object-cover opacity-80 transition-transform duration-[2000ms] ${reduced ? '' : 'group-hover:scale-105'}`}
       />
     );
   }
@@ -264,7 +272,7 @@ function ProjectMedia({ project }: { project: Project }) {
       alt={project.title} 
       fill 
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-[2000ms]"
+      className={`object-cover opacity-60 transition-transform duration-[2000ms] ${reduced ? '' : 'group-hover:scale-105'}`}
     />
   );
 }

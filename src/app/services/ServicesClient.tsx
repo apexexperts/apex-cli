@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { SectionReveal } from "@/components/SectionReveal";
 import { ArrowRight, Bot, Database, Globe, Smartphone } from "lucide-react";
 
@@ -50,6 +50,14 @@ const SERVICES = [
 ];
 
 export default function ServicesClient() {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   return (
     <main className="min-h-screen bg-[#06080a] text-white pt-40 pb-40 overflow-hidden relative selection:bg-sinai-glow-orange selection:text-black">
       {/* Background Architectural Grid (Parity with Homepage) */}
@@ -178,7 +186,7 @@ export default function ServicesClient() {
             <div className="flex flex-col">
               <span className="text-[8px] font-mono text-zinc-700 uppercase tracking-widest mb-1">Status</span>
               <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                <div className={`w-1.5 h-1.5 rounded-full bg-green-500 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                 <span className="text-[10px] font-bold text-white uppercase tracking-widest leading-none">ALL_SYSTEMS_NOMINAL</span>
               </div>
             </div>
@@ -196,17 +204,19 @@ export default function ServicesClient() {
       </div>
 
       {/* Background Particles (Parity with Home) */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{ y: ["110vh", "-10vh"], opacity: [0, 0.6, 0] }}
-            transition={{ duration: 12 + i * 4, repeat: Infinity, ease: "linear", delay: i * 3 }}
-            className="absolute w-px h-24 bg-gradient-to-t from-transparent via-sinai-glow-orange to-transparent"
-            style={{ left: `${15 * i}%` }}
-          />
-        ))}
-      </div>
+      {!effectiveReduceMotion && (
+        <div className="absolute inset-0 pointer-events-none opacity-20">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              animate={{ y: ["110vh", "-10vh"], opacity: [0, 0.6, 0] }}
+              transition={{ duration: 12 + i * 4, repeat: Infinity, ease: "linear", delay: i * 3 }}
+              className="absolute w-px h-24 bg-gradient-to-t from-transparent via-sinai-glow-orange to-transparent"
+              style={{ left: `${15 * i}%` }}
+            />
+          ))}
+        </div>
+      )}
     </main>
   );
 }

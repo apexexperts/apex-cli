@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { motion, useScroll, AnimatePresence } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useScroll, AnimatePresence, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
@@ -22,15 +22,24 @@ interface ProjectFeature {
 }
 
 const NeuralCore = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
+
   return (
     <div className="relative w-[500px] h-[500px] flex items-center justify-center">
       <motion.div 
-        animate={{ rotate: 360 }}
+        animate={effectiveReduceMotion ? {} : { rotate: 360 }}
         transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         className="absolute inset-0 border border-sinai-glow-orange/10 rounded-full border-dashed"
       />
       <motion.div 
-        animate={{ rotate: -360 }}
+        animate={effectiveReduceMotion ? {} : { rotate: -360 }}
         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
         className="absolute inset-16 border border-white/5 rounded-full border-dashed"
       />
@@ -39,7 +48,7 @@ const NeuralCore = () => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
         
         <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+          animate={effectiveReduceMotion ? { opacity: 0.4 } : { scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-56 h-56 rounded-full bg-sinai-glow-orange/20 blur-[60px]"
         />
@@ -47,11 +56,11 @@ const NeuralCore = () => {
         <div className="relative z-10 flex flex-col items-center">
           <div className="px-3 py-1 rounded-sm border border-sinai-glow-orange/40 bg-sinai-glow-orange/5 mb-4 relative overflow-hidden group-hover:border-sinai-glow-orange transition-colors">
             <div className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black flex items-center gap-2">
-              <span className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
+              <span className={`w-1 h-1 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
               MYQUERY_ENGINE_V5.0
             </div>
             <motion.div 
-              animate={{ left: ["-100%", "200%"] }}
+              animate={effectiveReduceMotion ? {} : { left: ["-100%", "200%"] }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               className="absolute top-0 bottom-0 w-8 bg-white/20 skew-x-12 -translate-x-full"
             />
@@ -67,7 +76,7 @@ const NeuralCore = () => {
       </div>
 
       <motion.div 
-        animate={{ scale: [0.8, 1.2, 0.8], opacity: [0, 0.5, 0] }}
+        animate={effectiveReduceMotion ? { opacity: 0.1, scale: 1 } : { scale: [0.8, 1.2, 0.8], opacity: [0, 0.5, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         className="absolute w-[450px] h-[450px] border-2 border-sinai-glow-orange/30 rounded-full"
       />
@@ -113,6 +122,15 @@ const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: Pro
 };
 
 const CapabilityDetailView = ({ cap }: { cap: ProjectFeature }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group">
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
@@ -135,7 +153,7 @@ const CapabilityDetailView = ({ cap }: { cap: ProjectFeature }) => {
         </div>
         <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600">
           <span className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-500/50 animate-pulse" />
+            <div className={`w-1.5 h-1.5 rounded-full bg-green-500/50 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
             ANALYTICS_NODE: ACTIVE
           </span>
           <span className="w-px h-4 bg-white/10" />
@@ -147,7 +165,16 @@ const CapabilityDetailView = ({ cap }: { cap: ProjectFeature }) => {
 };
 
 const StreamingText = ({ text, delay = 0, className = "" }: { text: string, delay?: number, className?: string }) => {
-  const [displayedText, setDisplayedText] = React.useState("");
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
+
   useEffect(() => {
     const startTimeout = setTimeout(() => {
       let i = 0;
@@ -160,7 +187,7 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
     }, delay);
     return () => clearTimeout(startTimeout);
   }, [text, delay]);
-  return <span className={className}>{displayedText}<span className="animate-pulse inline-block w-1 h-8 md:h-12 bg-sinai-glow-orange ml-1" /></span>;
+  return <span className={className}>{displayedText}<span className={`${effectiveReduceMotion ? '' : 'animate-pulse'} inline-block w-1 h-8 md:h-12 bg-sinai-glow-orange ml-1`} /></span>;
 };
 
 const METRICS = [
@@ -202,16 +229,18 @@ const FEATURES = [
 ];
 
 const Particles = ({ count = 12 }: { count?: number }) => {
-  const [mounted, setMounted] = React.useState(false);
-  const [positions, setPositions] = React.useState<{ x: string, delay: number }[]>([]);
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  const [positions, setPositions] = useState<{ x: string, delay: number }[]>([]);
   useEffect(() => {
+    if (shouldReduceMotion) return;
     const frame = requestAnimationFrame(() => {
       setMounted(true);
       setPositions([...Array(count)].map(() => ({ x: Math.random() * 100 + "%", delay: Math.random() * 10 })));
     });
     return () => cancelAnimationFrame(frame);
-  }, [count]);
-  if (!mounted) return null;
+  }, [count, shouldReduceMotion]);
+  if (!mounted || shouldReduceMotion) return null;
   return (
     <>
       {positions.map((pos, i) => (
@@ -259,9 +288,17 @@ const PIPELINE_STEPS = [
 ];
 
 export function MyQueryClient() {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeFeatureId, setActiveFeatureId] = React.useState<string | null>(null);
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeFeatureId, setActiveFeatureId] = useState<string | null>(null);
+  const [activeStep, setActiveStep] = useState(0);
 
   const pipelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: pipelineProgress } = useScroll({ target: pipelineRef, offset: ["start start", "end end"] });
@@ -304,7 +341,7 @@ export function MyQueryClient() {
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                 </Link>
                 <div className="flex items-center gap-4 px-8 py-6 rounded-full bg-white/[0.03] border border-white/10 text-[10px] font-mono tracking-widest text-zinc-400">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className={`w-2 h-2 rounded-full bg-green-500 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                   CORE_READY_0x5
                 </div>
               </div>
@@ -327,7 +364,7 @@ export function MyQueryClient() {
                   <div className="space-y-2">
                     {[1, 2, 3].map(i => (
                       <div key={i} className="h-1 bg-white/5 rounded-full overflow-hidden">
-                        <motion.div animate={{ width: ["0%", "100%", "0%"] }} transition={{ duration: 3, repeat: Infinity, delay: i * 0.4 }} className="h-full bg-sinai-glow-orange/40" />
+                        <motion.div animate={effectiveReduceMotion ? { width: "100%" } : { width: ["0%", "100%", "0%"] }} transition={{ duration: 3, repeat: Infinity, delay: i * 0.4 }} className="h-full bg-sinai-glow-orange/40" />
                       </div>
                     ))}
                   </div>
@@ -429,7 +466,7 @@ export function MyQueryClient() {
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 z-10">
               <div className="w-[700px] h-[700px] border border-white/5 rounded-full" />
               <div className="absolute w-[500px] h-[500px] border border-white/5 rounded-full" />
-              <div className="absolute w-[350px] h-[350px] border border-sinai-glow-orange/10 rounded-full animate-pulse" />
+              <div className={`absolute w-[350px] h-[350px] border border-sinai-glow-orange/10 rounded-full ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
             </div>
           </div>
         </div>
@@ -463,7 +500,7 @@ export function MyQueryClient() {
                         {[...Array(5)].map((_, i) => (<motion.div key={i} animate={{ x: [0, 400, 800], opacity: [0, 1, 0], scale: [0.5, 1.2, 0.5] }} transition={{ duration: 4 - (activeStep * 0.5), repeat: Infinity, delay: i * 0.8, ease: "linear" }} className="absolute top-[300px] left-0 w-2 h-2 bg-sinai-glow-orange rounded-full shadow-[0_0_15px_rgba(242,162,75,0.8)]" />))}
                       </div>
                     </div>
-                    <div className="absolute bottom-12 left-12 text-[8px] font-mono text-zinc-500 tracking-[0.3em] uppercase space-y-2 z-40"><div className="flex items-center gap-3"><div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />{/* PIPELINE_STEP: 0{activeStep + 1} // ACTIVE */}PIPELINE_STEP: 0{activeStep + 1}</div><div>CONNECTIVITY: OPTIMAL</div><div>LATENCY: {80 - activeStep * 15}ms</div></div>
+                    <div className="absolute bottom-12 left-12 text-[8px] font-mono text-zinc-500 tracking-[0.3em] uppercase space-y-2 z-40"><div className="flex items-center gap-3"><div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />PIPELINE_STEP: 0{activeStep + 1}</div><div>CONNECTIVITY: OPTIMAL</div><div>LATENCY: {80 - activeStep * 15}ms</div></div>
                   </div>
                 </div>
                 <div className="lg:col-span-5 relative space-y-12">
@@ -491,9 +528,9 @@ export function MyQueryClient() {
         <div className="container mx-auto px-6 relative z-10">
           <SectionReveal>
             <div className="max-w-5xl mx-auto text-center space-y-16">
-              <div className="flex justify-center"><div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/10 backdrop-blur-md"><span className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" /><span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.4em] font-black uppercase">Engagement_Initialization // MYQ_PLATFORM_V5</span></div></div>
+              <div className="flex justify-center"><div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/10 backdrop-blur-md"><span className={`w-1.5 h-1.5 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} /><span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.4em] font-black uppercase">Engagement_Initialization // MYQ_PLATFORM_V5</span></div></div>
               <div className="space-y-8"><h2 className="text-7xl md:text-[10rem] font-black tracking-tighter leading-[0.8] text-white">Ready to <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-sinai-glow-orange/20">Scale Your Vision?</span></h2><p className="text-xl md:text-3xl text-zinc-500 font-light max-w-3xl mx-auto leading-relaxed">Join forces with <span className="text-white font-bold">APEX Experts</span> to engineer the next generation of autonomous intelligence.</p></div>
-              <div className="flex flex-col items-center gap-8 pt-8"><Link href="/contact" className="group relative px-24 py-10 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-xl tracking-[0.4em] uppercase transition-all hover:shadow-[0_0_100px_rgba(242,162,75,0.6)] hover:scale-105 active:scale-95 duration-500"><span className="relative z-10">Initialize Project</span><div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" /><motion.div animate={{ left: ["-100%", "200%"] }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }} className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none" /></Link><div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600 tracking-widest uppercase"><span className="flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-green-500/50" />Secure_Node: Active</span><span className="w-px h-4 bg-white/10" /><span>Available for Q3-Q4 2026</span></div></div>
+              <div className="flex flex-col items-center gap-8 pt-8"><Link href="/contact" className="group relative px-24 py-10 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-black text-xl tracking-[0.4em] uppercase transition-all hover:shadow-[0_0_100px_rgba(242,162,75,0.6)] hover:scale-105 active:scale-95 duration-500"><span className="relative z-10">Initialize Project</span><div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" /><motion.div animate={effectiveReduceMotion ? {} : { left: ["-100%", "200%"] }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }} className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none" /></Link><div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600 tracking-widest uppercase"><span className="flex items-center gap-2"><div className={`w-1 h-1 rounded-full bg-green-500/50 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />Secure_Node: Active</span><span className="w-px h-4 bg-white/10" /><span>Available for Q3-Q4 2026</span></div></div>
             </div>
           </SectionReveal>
         </div>

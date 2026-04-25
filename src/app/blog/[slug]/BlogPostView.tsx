@@ -1,6 +1,7 @@
 "use client";
 
-import React, { use } from "react";
+import React, { use, useState, useEffect } from "react";
+import { useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionReveal } from "@/components/SectionReveal";
@@ -11,6 +12,14 @@ import { BLOG_POSTS } from "@/data/blog";
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const post = BLOG_POSTS.find(p => p.slug === slug);
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
 
   if (!post) {
     notFound();
@@ -123,7 +132,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               <div>
                 <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Status</div>
                 <div className="flex items-center gap-2 text-lg font-bold text-green-500 font-mono uppercase tracking-tight">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <div className={`w-2 h-2 rounded-full bg-green-500 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                   Live_Node
                 </div>
               </div>
@@ -186,7 +195,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
                     </div>
                     <div className="flex items-center gap-4 px-6">
-                      <div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />
+                      <div className={`w-1.5 h-1.5 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                       <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">{block.caption}</span>
                     </div>
                   </div>

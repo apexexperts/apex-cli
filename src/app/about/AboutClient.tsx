@@ -1,20 +1,31 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
-const SectionReveal = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
-  >
-    {children}
-  </motion.div>
-);
+const SectionReveal = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
+
+  return (
+    <motion.div
+      initial={effectiveReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+      whileInView={effectiveReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const TelemetryData = () => {
   const [coords, setCoords] = React.useState({ x: "0.0000", y: "0.0000" });
@@ -39,6 +50,14 @@ const TelemetryData = () => {
 };
 
 export default function AboutClient() {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   return (
     <div className="bg-[#050505] text-white selection:bg-sinai-glow-orange selection:text-black overflow-hidden">
       
@@ -53,8 +72,8 @@ export default function AboutClient() {
             
             {/* Left: Founder Image */}
             <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={effectiveReduceMotion ? { opacity: 0 } : { opacity: 0, x: -50 }}
+              animate={effectiveReduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="relative group"
             >
@@ -86,8 +105,8 @@ export default function AboutClient() {
 
             {/* Right: CEO Message */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={effectiveReduceMotion ? { opacity: 0 } : { opacity: 0, y: 30 }}
+              animate={effectiveReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="space-y-10"
             >
@@ -157,7 +176,7 @@ export default function AboutClient() {
           {/* Central Logical Spine */}
           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-sinai-glow-orange/30 to-transparent hidden md:block">
             <motion.div 
-              animate={{ top: ["0%", "100%"] }}
+              animate={effectiveReduceMotion ? {} : { top: ["0%", "100%"] }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               className="absolute w-1 h-20 bg-sinai-glow-orange shadow-[0_0_15px_#f2a24b] -left-[1.5px]"
             />
@@ -169,8 +188,8 @@ export default function AboutClient() {
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
               <div className="relative order-2 md:order-1">
                 <motion.div
-                  initial={{ opacity: 0, x: -100 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={effectiveReduceMotion ? { opacity: 0 } : { opacity: 0, x: -100 }}
+                  whileInView={effectiveReduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                   className="space-y-8 relative z-10"
@@ -189,7 +208,7 @@ export default function AboutClient() {
                   </p>
                   <div className="flex items-center gap-6 pt-4">
                     <div className="w-12 h-12 rounded-full border border-sinai-glow-orange/20 flex items-center justify-center group-hover:border-sinai-glow-orange transition-colors">
-                      <div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-ping" />
+                      <div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-ping'}`} />
                     </div>
                     <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">Global_Standard_Protocol</span>
                   </div>
@@ -203,8 +222,8 @@ export default function AboutClient() {
                   transition={{ duration: 1.5 }}
                   className="w-80 h-80 relative"
                 >
-                  <div className="absolute inset-0 border-[0.5px] border-sinai-glow-orange/20 rounded-full animate-[spin_20s_linear_infinite]" />
-                  <div className="absolute inset-10 border-[0.5px] border-white/10 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+                  <div className={`absolute inset-0 border-[0.5px] border-sinai-glow-orange/20 rounded-full ${effectiveReduceMotion ? '' : 'animate-[spin_20s_linear_infinite]'}`} />
+                  <div className={`absolute inset-10 border-[0.5px] border-white/10 rounded-full ${effectiveReduceMotion ? '' : 'animate-[spin_15s_linear_infinite_reverse]'}`} />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-40 h-40 bg-sinai-glow-orange/5 rounded-full blur-3xl" />
                     <span className="text-sinai-glow-orange font-mono text-xs tracking-widest uppercase text-center">Target_Vision</span>
@@ -222,7 +241,7 @@ export default function AboutClient() {
                   transition={{ duration: 1.5 }}
                   className="w-80 h-80 relative"
                 >
-                  <div className="absolute inset-0 border-t border-l border-white/10 rounded-3xl rotate-45 animate-pulse" />
+                  <div className={`absolute inset-0 border-t border-l border-white/10 rounded-3xl rotate-45 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                   <div className="absolute inset-10 border-b border-r border-sinai-glow-orange/20 rounded-3xl -rotate-45" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-40 h-40 bg-white/5 rounded-full blur-3xl" />
@@ -233,8 +252,8 @@ export default function AboutClient() {
 
               <div className="relative">
                 <motion.div
-                  initial={{ opacity: 0, x: 100 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={effectiveReduceMotion ? { opacity: 0 } : { opacity: 0, x: 100 }}
+                  whileInView={effectiveReduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                   className="space-y-8 relative z-10 text-right md:text-left md:pl-20"
@@ -254,7 +273,7 @@ export default function AboutClient() {
                   <div className="flex items-center gap-6 pt-4 justify-end md:justify-start">
                     <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">Active_Deployment_Logic</span>
                     <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                      <div className={`w-2 h-2 rounded-full bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                     </div>
                   </div>
                 </motion.div>
@@ -306,7 +325,7 @@ export default function AboutClient() {
                   stroke="#f2a24b" 
                   strokeWidth="0.5" 
                   fill="none"
-                  initial={{ pathLength: 0 }}
+                  initial={effectiveReduceMotion ? { pathLength: 1 } : { pathLength: 0 }}
                   whileInView={{ pathLength: 1 }}
                   transition={{ duration: 2 }}
                 />
@@ -348,7 +367,7 @@ export default function AboutClient() {
 
                   <div className={`flex items-center gap-3 pt-4 font-mono text-[9px] tracking-[0.3em] text-zinc-600 ${node.align === 'right' ? 'justify-end' : 'justify-start'}`}>
                     <span className="group-hover:text-sinai-glow-orange transition-colors">{node.tech}</span>
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-sinai-glow-orange group-hover:animate-ping" />
+                    <div className={`w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'group-hover:animate-ping'}`} />
                   </div>
                 </div>
 
@@ -376,7 +395,7 @@ export default function AboutClient() {
       <section className="relative py-48 px-6 bg-[#050505] overflow-hidden">
         {/* Animated Neural Background (CSS-based) */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#f2a24b_1px,transparent_1px)] bg-[size:100px_100px] animate-[pulse_8s_infinite]" />
+          <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,#f2a24b_1px,transparent_1px)] bg-[size:100px_100px] ${effectiveReduceMotion ? '' : 'animate-[pulse_8s_infinite]'}`} />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -391,7 +410,7 @@ export default function AboutClient() {
             >
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
-                  <div className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                  <div className={`w-1.5 h-1.5 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                   <span className="text-[10px] font-mono text-zinc-500 tracking-[0.4em] uppercase">Tech_Ecosystem // Integrated</span>
                 </div>
                 <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none">
@@ -427,12 +446,12 @@ export default function AboutClient() {
               <div className="relative w-full h-full flex items-center justify-center scale-90 lg:scale-100">
                 {/* Outer Orbital Rings */}
                 <motion.div 
-                  animate={{ rotate: 360 }}
+                  animate={effectiveReduceMotion ? {} : { rotate: 360 }}
                   transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
                   className="absolute inset-0 border border-sinai-glow-orange/10 rounded-full border-dashed"
                 />
                 <motion.div 
-                  animate={{ rotate: -360 }}
+                  animate={effectiveReduceMotion ? {} : { rotate: -360 }}
                   transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
                   className="absolute inset-16 border border-white/5 rounded-full border-dashed"
                 />
@@ -442,7 +461,7 @@ export default function AboutClient() {
                   <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
                   
                   <motion.div 
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+                    animate={effectiveReduceMotion ? { opacity: 0.4 } : { scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute w-40 h-40 lg:w-56 lg:h-56 rounded-full bg-sinai-glow-orange/20 blur-[60px]"
                   />
@@ -450,7 +469,7 @@ export default function AboutClient() {
                   <div className="relative z-10 flex flex-col items-center">
                     <div className="px-3 py-1 rounded-sm border border-sinai-glow-orange/40 bg-sinai-glow-orange/5 mb-4 relative overflow-hidden group-hover:border-sinai-glow-orange transition-colors">
                       <div className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
+                        <span className={`w-1 h-1 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                         POWER_MATRIX_v3.0
                       </div>
                     </div>
@@ -512,7 +531,7 @@ export default function AboutClient() {
                             <div className="space-y-3">
                               <div className="flex items-center justify-between gap-4">
                                 <div className="text-[8px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black uppercase whitespace-nowrap">Node_{tech.id}</div>
-                                <div className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                                <div className={`w-1.5 h-1.5 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                               </div>
                               
                               <div className="space-y-1">
@@ -536,7 +555,7 @@ export default function AboutClient() {
 
                 {/* Floating Scanning Ring */}
                 <motion.div 
-                  animate={{ scale: [0.8, 1.3, 0.8], opacity: [0, 0.4, 0] }}
+                  animate={effectiveReduceMotion ? { opacity: 0.1, scale: 1 } : { scale: [0.8, 1.3, 0.8], opacity: [0, 0.4, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute w-[500px] h-[500px] lg:w-[650px] lg:h-[650px] border border-sinai-glow-orange/20 rounded-full"
                 />
@@ -560,7 +579,7 @@ export default function AboutClient() {
               whileInView={{ opacity: 1, y: 0 }}
               className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-sinai-glow-orange/5 border border-sinai-glow-orange/20"
             >
-              <div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />
+              <div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
               <span className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.5em] uppercase font-black">Human_Capital // Strategic_Assets</span>
             </motion.div>
             <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none">
@@ -606,7 +625,7 @@ export default function AboutClient() {
 
                 {/* Biometric Scan Line */}
                 <motion.div 
-                  animate={{ top: ["-10%", "110%"] }}
+                  animate={effectiveReduceMotion ? {} : { top: ["-10%", "110%"] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: i * 0.5 }}
                   className="absolute left-0 right-0 h-16 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
                 />
@@ -638,7 +657,7 @@ export default function AboutClient() {
                     {/* Footer: Authorization */}
                     <div className="pt-4 flex items-center justify-between border-t border-white/5 opacity-0 group-hover:opacity-100 transition-opacity delay-300">
                       <span className="text-[7px] font-mono text-zinc-600 uppercase tracking-widest leading-none">Level_04 Authorization</span>
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500/40 shadow-[0_0_10px_rgba(34,197,94,0.4)]" />
+                      <div className={`w-1.5 h-1.5 rounded-full bg-green-500/40 ${effectiveReduceMotion ? '' : 'shadow-[0_0_10px_rgba(34,197,94,0.4)]'}`} />
                     </div>
                   </div>
                 </div>
@@ -656,7 +675,7 @@ export default function AboutClient() {
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
-              animate={{ y: ["100vh", "-10vh"], opacity: [0, 1, 0] }}
+              animate={effectiveReduceMotion ? { opacity: 0.2 } : { y: ["100vh", "-10vh"], opacity: [0, 1, 0] }}
               transition={{ duration: 10 + i * 5, repeat: Infinity, ease: "linear", delay: i * 2 }}
               className="absolute w-px h-20 bg-gradient-to-t from-transparent via-sinai-glow-orange to-transparent"
               style={{ left: `${20 * i}%` }}
@@ -684,7 +703,7 @@ export default function AboutClient() {
               {/* Top Branding Tag */}
               <div className="flex justify-center">
                 <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/10 backdrop-blur-md">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                  <span className={`w-1.5 h-1.5 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                   <span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.4em] font-black uppercase">Engagement_Initialization // APEX_NODE_V24.1</span>
                 </div>
               </div>
@@ -706,7 +725,7 @@ export default function AboutClient() {
                   
                   {/* Internal Shimmer */}
                   <motion.div 
-                    animate={{ left: ["-100%", "200%"] }}
+                    animate={effectiveReduceMotion ? {} : { left: ["-100%", "200%"] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
                   />
@@ -714,7 +733,7 @@ export default function AboutClient() {
 
                 <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600 tracking-widest uppercase">
                   <span className="flex items-center gap-2">
-                    <div className="w-1 h-1 rounded-full bg-green-500/50" />
+                    <div className={`w-1 h-1 rounded-full bg-green-500/50 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                     Secure_Node: Active
                   </span>
                   <span className="w-px h-4 bg-white/10" />

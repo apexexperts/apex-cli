@@ -1,10 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useReducedMotion } from "framer-motion";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
 
   return (
     <footer className="relative pt-32 pb-16 px-6 md:px-12 border-t border-white/5 bg-[#06080a] overflow-hidden">
@@ -80,7 +89,7 @@ export function Footer() {
                   29.9187° E
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                  <span className={`w-1.5 h-1.5 rounded-full bg-green-500 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                   <span className="text-[8px] font-mono text-zinc-700 uppercase tracking-widest">LIVE</span>
                 </div>
               </div>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
@@ -128,7 +128,15 @@ const PROJECTS_DATA = [
 ];
 
 export function Header() {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
@@ -486,7 +494,7 @@ export function Header() {
                                             <span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black uppercase">Case_Study_Preview</span>
                                           </div>
                                           <div className="flex gap-1.5">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-green-500/40 animate-pulse" />
+                                            <div className={`w-1.5 h-1.5 rounded-full bg-green-500/40 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                                             <div className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange/40" />
                                           </div>
                                         </div>
@@ -588,7 +596,7 @@ export function Header() {
           <div className="flex items-center gap-6">
             <Link href="/contact" className="hidden sm:flex items-center gap-3 px-6 py-2.5 rounded-full bg-white text-black hover:bg-sinai-glow-orange hover:text-white transition-all duration-500 text-[10px] font-black uppercase tracking-[0.3em] shadow-[0_10px_30px_rgba(255,255,255,0.1)] group">
               Connect_Node
-              <div className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange group-hover:bg-white animate-pulse" />
+              <div className={`w-1.5 h-1.5 rounded-full bg-sinai-glow-orange group-hover:bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
             </Link>
 
             {/* Mobile Toggle */}
@@ -642,7 +650,7 @@ export function Header() {
             <div className="mt-auto space-y-6">
               <div className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">Operational_Status</div>
               <div className="flex items-center gap-4">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <div className={`w-2 h-2 rounded-full bg-green-500 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                 <span className="text-xs text-white font-mono">ALL_SYSTEMS_OPTIMAL</span>
               </div>
             </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
@@ -53,6 +53,7 @@ const CAPABILITIES = [
 ];
 
 const SynthesisVisualizer = () => {
+  const shouldReduceMotion = useReducedMotion();
   const [mounted, setMounted] = React.useState(false);
   const [bars, setBars] = React.useState<{ h1: string, h2: string, h3: string }[]>([]);
 
@@ -75,7 +76,7 @@ const SynthesisVisualizer = () => {
       {bars.map((bar, i) => (
         <motion.div 
           key={i}
-          animate={{ height: [bar.h1, bar.h2, bar.h3] }}
+          animate={shouldReduceMotion ? { height: bar.h2 } : { height: [bar.h1, bar.h2, bar.h3] }}
           transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.1 }}
           className="w-full bg-sinai-glow-orange/40 rounded-t-sm"
         />
@@ -85,16 +86,24 @@ const SynthesisVisualizer = () => {
 };
 
 const NeuralCore = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   return (
     <div className="relative w-[500px] h-[500px] flex items-center justify-center">
       {/* Outer Orbital Rings */}
       <motion.div 
-        animate={{ rotate: 360 }}
+        animate={effectiveReduceMotion ? {} : { rotate: 360 }}
         transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         className="absolute inset-0 border border-sinai-glow-orange/10 rounded-full border-dashed"
       />
       <motion.div 
-        animate={{ rotate: -360 }}
+        animate={effectiveReduceMotion ? {} : { rotate: -360 }}
         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
         className="absolute inset-16 border border-white/5 rounded-full border-dashed"
       />
@@ -105,7 +114,7 @@ const NeuralCore = () => {
         
         {/* Internal Pulsing Plasma */}
         <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+          animate={effectiveReduceMotion ? { opacity: 0.4 } : { scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-56 h-56 rounded-full bg-sinai-glow-orange/20 blur-[60px]"
         />
@@ -115,15 +124,17 @@ const NeuralCore = () => {
           {/* CORE_CPU Technical Frame */}
           <div className="px-3 py-1 rounded-sm border border-sinai-glow-orange/40 bg-sinai-glow-orange/5 mb-4 relative overflow-hidden group-hover:border-sinai-glow-orange transition-colors">
             <div className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black flex items-center gap-2">
-              <span className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
+              <span className={`w-1 h-1 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
               CORE_ENGINE_V4.0
             </div>
             {/* Inner Scanline */}
-            <motion.div 
-              animate={{ left: ["-100%", "200%"] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              className="absolute top-0 bottom-0 w-8 bg-white/20 skew-x-12 -translate-x-full"
-            />
+            {!effectiveReduceMotion && (
+              <motion.div 
+                animate={{ left: ["-100%", "200%"] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                className="absolute top-0 bottom-0 w-8 bg-white/20 skew-x-12 -translate-x-full"
+              />
+            )}
           </div>
 
           {/* APEX Text Branding */}
@@ -141,7 +152,7 @@ const NeuralCore = () => {
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={i}
-            animate={{ rotate: 360 }}
+            animate={effectiveReduceMotion ? {} : { rotate: 360 }}
             transition={{ duration: 10 + i * 5, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0 pointer-events-none"
           >
@@ -153,11 +164,13 @@ const NeuralCore = () => {
       </div>
 
       {/* Floating Scanning Ring */}
-      <motion.div 
-        animate={{ scale: [0.8, 1.2, 0.8], opacity: [0, 0.5, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute w-[450px] h-[450px] border-2 border-sinai-glow-orange/30 rounded-full"
-      />
+      {!effectiveReduceMotion && (
+        <motion.div 
+          animate={{ scale: [0.8, 1.2, 0.8], opacity: [0, 0.5, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute w-[450px] h-[450px] border-2 border-sinai-glow-orange/30 rounded-full"
+        />
+      )}
     </div>
   );
 };
@@ -212,6 +225,14 @@ const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: Aut
 };
 
 const CapabilityDetailView = ({ cap }: { cap: AutomationCapability }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group">
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
@@ -246,7 +267,7 @@ const CapabilityDetailView = ({ cap }: { cap: AutomationCapability }) => {
 
         <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600">
           <span className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-500/50 animate-pulse" />
+            <div className={`w-1.5 h-1.5 rounded-full bg-green-500/50 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
             SYSTEM_SYNC: ACTIVE
           </span>
           <span className="w-px h-4 bg-white/10" />
@@ -258,6 +279,7 @@ const CapabilityDetailView = ({ cap }: { cap: AutomationCapability }) => {
 };
 
 const Particles = ({ count = 10 }: { count?: number }) => {
+  const shouldReduceMotion = useReducedMotion();
   const [mounted, setMounted] = React.useState(false);
   const [positions, setPositions] = React.useState<{ x: string, delay: number }[]>([]);
 
@@ -281,8 +303,8 @@ const Particles = ({ count = 10 }: { count?: number }) => {
       {positions.map((pos, i) => (
         <motion.div
           key={i}
-          initial={{ x: pos.x, y: "110%" }}
-          animate={{ y: "-10%", rotate: 360 }}
+          initial={{ x: pos.x, y: shouldReduceMotion ? "50%" : "110%" }}
+          animate={shouldReduceMotion ? {} : { y: "-10%", rotate: 360 }}
           transition={{ duration: 15 + i * 2, repeat: Infinity, ease: "linear", delay: pos.delay }}
           className="absolute w-1 h-1 bg-sinai-glow-orange/20 rounded-full blur-[1px]"
         />
@@ -292,6 +314,14 @@ const Particles = ({ count = 10 }: { count?: number }) => {
 };
 
 const StreamingText = ({ text, delay = 0, className = "" }: { text: string, delay?: number, className?: string }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   const [displayedText, setDisplayedText] = React.useState("");
   
   React.useEffect(() => {
@@ -308,10 +338,18 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
     return () => clearTimeout(startTimeout);
   }, [text, delay]);
 
-  return <span className={className}>{displayedText}<span className="animate-pulse inline-block w-1 h-8 md:h-12 bg-sinai-glow-orange ml-1" /></span>;
+  return <span className={className}>{displayedText}<span className={`${effectiveReduceMotion ? '' : 'animate-pulse'} inline-block w-1 h-8 md:h-12 bg-sinai-glow-orange ml-1`} /></span>;
 };
 
 const AIAutomationHero = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   return (
     <section className="relative min-h-screen flex items-center pt-32 overflow-hidden bg-black">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(242,162,75,0.08)_0%,transparent_50%)]" />
@@ -402,12 +440,13 @@ const AIAutomationHero = () => {
                 © APEX_EXPERTS_SOLUTIONS
               </div>
 
-              {/* Scanning Line Animation */}
-              <motion.div 
-                animate={{ top: ["-10%", "110%"] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sinai-glow-orange/40 to-transparent z-20 pointer-events-none"
-              />
+              {!effectiveReduceMotion && (
+                <motion.div 
+                  animate={{ top: ["-10%", "110%"] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sinai-glow-orange/40 to-transparent z-20 pointer-events-none"
+                />
+              )}
             </div>
           </motion.div>
         </div>
@@ -421,6 +460,14 @@ const AIAutomationHero = () => {
 };
 
 export default function AIAutomationClient() {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeCapId, setActiveCapId] = React.useState<string | null>(null);
   
@@ -500,7 +547,7 @@ export default function AIAutomationClient() {
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 z-10">
               <div className="w-[700px] h-[700px] border border-white/5 rounded-full" />
               <div className="absolute w-[500px] h-[500px] border border-white/5 rounded-full" />
-              <div className="absolute w-[350px] h-[350px] border border-sinai-glow-orange/10 rounded-full animate-pulse" />
+              <div className={`absolute w-[350px] h-[350px] border border-sinai-glow-orange/10 rounded-full ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
             </div>
           </div>
         </div>
@@ -537,7 +584,7 @@ export default function AIAutomationClient() {
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative group hover:border-sinai-glow-orange/20 transition-colors">
                     <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-sinai-glow-orange/30 rounded-tl-3xl" />
                     <h3 className="text-2xl font-bold mb-6 flex items-center gap-4">
-                      <div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />
+                      <div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                       Autonomous Reasoning
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">
@@ -578,11 +625,13 @@ export default function AIAutomationClient() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                   
                   {/* Scanning Line */}
-                  <motion.div 
-                    animate={{ top: ["-10%", "110%"] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                    className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none"
-                  />
+                  {!effectiveReduceMotion && (
+                    <motion.div 
+                      animate={{ top: ["-10%", "110%"] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                      className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none"
+                    />
+                  )}
 
                   {/* Technical Frame Markers */}
                   <div className="absolute top-10 left-10 text-[8px] font-mono text-sinai-glow-orange/60 tracking-widest">
@@ -597,7 +646,7 @@ export default function AIAutomationClient() {
 
                 {/* Floating Meta-Data */}
                 <motion.div 
-                  animate={{ y: [0, -15, 0] }}
+                  animate={shouldReduceMotion ? {} : { y: [0, -15, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute -right-12 top-1/4 p-6 rounded-3xl bg-black/80 backdrop-blur-3xl border border-sinai-glow-orange/30 z-30 shadow-2xl max-w-[200px]"
                 >
@@ -606,7 +655,7 @@ export default function AIAutomationClient() {
                     {[1, 2, 3].map(i => (
                       <div key={i} className="h-1 bg-white/5 rounded-full overflow-hidden">
                         <motion.div 
-                          animate={{ width: ["0%", `${30 + i * 20}%`, "0%"] }}
+                          animate={shouldReduceMotion ? { width: `${30 + i * 20}%` } : { width: ["0%", `${30 + i * 20}%`, "0%"] }}
                           transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
                           className="h-full bg-sinai-glow-orange"
                         />
@@ -644,11 +693,13 @@ export default function AIAutomationClient() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                   
                   {/* Circular Radar Scan */}
-                  <motion.div 
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0 border-[1px] border-sinai-glow-orange/10 rounded-full scale-[1.2] opacity-50 pointer-events-none"
-                  />
+                  {!shouldReduceMotion && (
+                    <motion.div 
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-0 border-[1px] border-sinai-glow-orange/10 rounded-full scale-[1.2] opacity-50 pointer-events-none"
+                    />
+                  )}
 
                   {/* Technical Frame Markers */}
                   <div className="absolute top-10 right-10 text-[8px] font-mono text-sinai-glow-orange/60 tracking-widest text-right">
@@ -663,7 +714,7 @@ export default function AIAutomationClient() {
 
                 {/* Floating Meta-Data */}
                 <motion.div 
-                  animate={{ y: [0, 15, 0] }}
+                  animate={shouldReduceMotion ? {} : { y: [0, 15, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute -left-12 bottom-1/4 p-6 rounded-3xl bg-black/80 backdrop-blur-3xl border border-sinai-glow-orange/30 z-30 shadow-2xl max-w-[200px]"
                 >
@@ -674,7 +725,7 @@ export default function AIAutomationClient() {
                         <div className="text-[8px] text-zinc-500 font-mono">AGENT_{i}</div>
                         <div className="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
                           <motion.div 
-                            animate={{ width: [`${40 + i * 15}%`, "20%", `${40 + i * 15}%`] }}
+                            animate={shouldReduceMotion ? { width: `${40 + i * 15}%` } : { width: [`${40 + i * 15}%`, "20%", `${40 + i * 15}%`] }}
                             transition={{ duration: 3, repeat: Infinity, delay: i * 0.7 }}
                             className="h-full bg-sinai-glow-orange"
                           />
@@ -705,7 +756,7 @@ export default function AIAutomationClient() {
                     <div className="absolute -top-4 -right-4 w-20 h-20 border-t-2 border-r-2 border-sinai-glow-orange/30 rounded-tl-3xl" />
                     <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 justify-end lg:justify-start">
                       Swarm Intelligence
-                      <div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />
+                      <div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg text-right lg:text-left">
                       Our orchestration layer deploys multi-agent swarms that collaborate synchronously. By breaking complex enterprise objectives into atomized tasks, we achieve a level of concurrency and precision that traditional RPA cannot match.
@@ -757,7 +808,7 @@ export default function AIAutomationClient() {
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative group hover:border-sinai-glow-orange/20 transition-colors">
                     <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-sinai-glow-orange/30 rounded-tl-3xl" />
                     <h3 className="text-2xl font-bold mb-6 flex items-center gap-4">
-                      <div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />
+                      <div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
                       Decision Intelligence
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg text-left">
@@ -798,18 +849,19 @@ export default function AIAutomationClient() {
                   {/* Dynamic HUD Overlays */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                   
-                  {/* Data Stream Animation */}
-                  <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
-                    {[...Array(5)].map((_, i) => (
-                      <motion.div 
-                        key={i}
-                        animate={{ y: ["-100%", "200%"], opacity: [0, 0.5, 0] }}
-                        transition={{ duration: 3 + i, repeat: Infinity, ease: "linear", delay: i * 0.5 }}
-                        className="absolute w-px h-40 bg-gradient-to-b from-transparent via-sinai-glow-orange/40 to-transparent"
-                        style={{ left: `${20 + i * 15}%` }}
-                      />
-                    ))}
-                  </div>
+                  {!shouldReduceMotion && (
+                    <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
+                      {[...Array(5)].map((_, i) => (
+                        <motion.div 
+                          key={i}
+                          animate={{ y: ["-100%", "200%"], opacity: [0, 0.5, 0] }}
+                          transition={{ duration: 3 + i, repeat: Infinity, ease: "linear", delay: i * 0.5 }}
+                          className="absolute w-px h-40 bg-gradient-to-b from-transparent via-sinai-glow-orange/40 to-transparent"
+                          style={{ left: `${20 + i * 15}%` }}
+                        />
+                      ))}
+                    </div>
+                  )}
 
                   {/* Technical Frame Markers */}
                   <div className="absolute top-10 left-10 text-[8px] font-mono text-sinai-glow-orange/60 tracking-widest text-left">
@@ -824,7 +876,7 @@ export default function AIAutomationClient() {
 
                 {/* Floating Meta-Data */}
                 <motion.div 
-                  animate={{ x: [0, -15, 0] }}
+                  animate={shouldReduceMotion ? {} : { x: [0, -15, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute -right-12 top-1/3 p-6 rounded-3xl bg-black/80 backdrop-blur-3xl border border-sinai-glow-orange/30 z-30 shadow-2xl max-w-[220px]"
                 >
@@ -842,7 +894,7 @@ export default function AIAutomationClient() {
         <div className="container mx-auto px-6 text-center">
           <SectionReveal>
             <div className="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/10">
-              <span className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />
+              <span className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
               <span className="text-[10px] font-mono text-zinc-500 tracking-[0.4em] uppercase font-bold">System_Core // Processing_Flow</span>
             </div>
             <h2 className="text-6xl md:text-8xl font-black mb-24 tracking-tighter">The APEX <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange to-white/40">Brain Architecture</span></h2>
@@ -1035,7 +1087,7 @@ export default function AIAutomationClient() {
               {/* Top Branding Tag */}
               <div className="flex justify-center">
                 <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/10 backdrop-blur-md">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                  <span className={`w-1.5 h-1.5 rounded-full bg-sinai-glow-orange ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
                   <span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.4em] font-black uppercase">Engagement_Initialization // AI_NODE_V5.0</span>
                 </div>
               </div>
@@ -1056,11 +1108,13 @@ export default function AIAutomationClient() {
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" />
                   
                   {/* Internal Shimmer */}
-                  <motion.div 
-                    animate={{ left: ["-100%", "200%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
-                  />
+                  {!shouldReduceMotion && (
+                    <motion.div 
+                      animate={{ left: ["-100%", "200%"] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
+                    />
+                  )}
                 </Link>
 
                 <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600 tracking-widest uppercase">

@@ -20,6 +20,13 @@ export function TerminalHero() {
   const [streamedEngine, setStreamedEngine] = useState("");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
 
   const fullTitle = "APEX EXPERTS";
   const fullBadge = "AI SOLUTIONS";
@@ -45,12 +52,12 @@ export function TerminalHero() {
   };
 
   const opacityScroll = calculateTransform(scrollYValue, [0, 450], [1, 0]);
-  const scaleScroll = shouldReduceMotion ? 1 : calculateTransform(scrollYValue, [0, 450], [1, 0.95]);
-  const yScroll = shouldReduceMotion ? 0 : calculateTransform(scrollYValue, [0, 450], [0, 100]);
+  const scaleScroll = effectiveReduceMotion ? 1 : calculateTransform(scrollYValue, [0, 450], [1, 0.95]);
+  const yScroll = effectiveReduceMotion ? 0 : calculateTransform(scrollYValue, [0, 450], [0, 100]);
 
   useEffect(() => {
     if (stage === 0) {
-      if (shouldReduceMotion) {
+      if (effectiveReduceMotion) {
         gsap.fromTo(
           windowRef.current,
           { opacity: 0 },
@@ -74,7 +81,7 @@ export function TerminalHero() {
       }
     }
 
-    const typeSpeed = shouldReduceMotion ? 10 : 50;
+    const typeSpeed = effectiveReduceMotion ? 10 : 50;
     if (stage === 1) {
       let idx = 0;
       const interval = setInterval(() => {
@@ -111,9 +118,9 @@ export function TerminalHero() {
           idx++;
         } else {
           clearInterval(interval);
-          setTimeout(() => setStage(4), shouldReduceMotion ? 200 : 800);
+          setTimeout(() => setStage(4), effectiveReduceMotion ? 200 : 800);
         }
-      }, shouldReduceMotion ? 10 : 40);
+      }, effectiveReduceMotion ? 10 : 40);
       return () => clearInterval(interval);
     }
   }, [stage]);
@@ -145,7 +152,7 @@ export function TerminalHero() {
               <span className="text-[10px] font-mono text-zinc-600 tracking-widest uppercase font-bold">APEX_CLI_v4.0.2</span>
               <span className="h-3 w-px bg-white/10" />
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                <span className={`w-1.5 h-1.5 rounded-full bg-green-500 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                 <span className="text-[10px] font-mono text-green-500/80">CONNECTED</span>
               </div>
             </div>
@@ -157,17 +164,17 @@ export function TerminalHero() {
             <div className="relative z-10 h-full flex flex-col">
               <div className="mb-10 min-h-[140px] md:min-h-[180px]">
                 <div className="text-sinai-glow-orange text-5xl md:text-[7rem] font-black tracking-tighter leading-[0.8] mb-6">
-                  {streamedTitle}<span className={stage === 1 ? "animate-pulse" : ""}>_</span>
+                  {streamedTitle}<span className={stage === 1 && !effectiveReduceMotion ? "animate-pulse" : ""}>_</span>
                 </div>
                 <div className="flex items-center gap-4 flex-wrap">
                   {streamedBadge && (
                     <span className="px-3 py-1 rounded bg-sinai-glow-orange text-[9px] font-black text-white uppercase tracking-[0.3em]">
-                      {streamedBadge}<span className={stage === 2 ? "animate-pulse" : ""}>_</span>
+                      {streamedBadge}<span className={stage === 2 && !effectiveReduceMotion ? "animate-pulse" : ""}>_</span>
                     </span>
                   )}
                   {streamedEngine && (
                     <span className="text-xs text-zinc-500 tracking-[0.4em] uppercase font-bold">
-                      {streamedEngine}<span className={stage === 3 ? "animate-pulse" : ""}>_</span>
+                      {streamedEngine}<span className={stage === 3 && !effectiveReduceMotion ? "animate-pulse" : ""}>_</span>
                     </span>
                   )}
                 </div>

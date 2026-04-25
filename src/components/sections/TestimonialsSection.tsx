@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
 const REVIEWS = [
@@ -33,6 +33,14 @@ const REVIEWS = [
 
 export function TestimonialsSection() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
 
   return (
     <section id="testimonials" className="scroll-mt-28 py-40 border-t border-white/5 relative overflow-hidden">
@@ -77,7 +85,7 @@ export function TestimonialsSection() {
                   className="object-cover"
                 />
               </div>
-              <div className={`text-left transition-all duration-500 ${activeIdx === i ? "translate-x-0" : "-translate-x-2"}`}>
+              <div className={`text-left transition-all duration-500 ${activeIdx === i ? "translate-x-0" : (effectiveReduceMotion ? "" : "-translate-x-2")}`}>
                 <div className="text-sm font-bold text-white leading-none mb-1">{review.author}</div>
                 <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">{review.role}</div>
               </div>
@@ -90,9 +98,9 @@ export function TestimonialsSection() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIdx}
-              initial={{ opacity: 0, scale: 0.98, y: 20 }}
+              initial={{ opacity: 0, scale: effectiveReduceMotion ? 1 : 0.98, y: effectiveReduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 1.02, y: -20 }}
+              exit={{ opacity: 0, scale: effectiveReduceMotion ? 1 : 1.02, y: effectiveReduceMotion ? 0 : -20 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-center space-y-10"
             >

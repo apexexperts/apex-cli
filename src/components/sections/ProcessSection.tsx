@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useSpring } from "framer-motion";
+import { motion, useSpring, useReducedMotion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 const STEPS = [
@@ -37,15 +37,17 @@ const STEPS = [
 export function ProcessSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollYProgressValue, setScrollYProgressValue] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
       // Calculate progress relative to the section's position in the viewport
-      // 0 when section starts entering, 1 when section finishes exiting
       const start = rect.top - windowHeight;
       const end = rect.bottom;
       const progress = Math.min(Math.max(-start / (end - start), 0), 1);
@@ -56,6 +58,8 @@ export function ProcessSection() {
     handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
 
   const scaleY = useSpring(scrollYProgressValue, {
     stiffness: 100,
@@ -73,7 +77,7 @@ export function ProcessSection() {
       {/* Background Atmosphere */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-white/[0.05]" />
       <motion.div 
-        style={{ scaleY, originY: 0 }}
+        style={{ scaleY: effectiveReduceMotion ? scrollYProgressValue : scaleY, originY: 0 }}
         className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-sinai-glow-orange via-sinai-glow-orange/50 to-transparent z-10"
       />
 
@@ -100,7 +104,7 @@ export function ProcessSection() {
             {/* Step content */}
             <div className={`${i % 2 === 0 ? "md:order-1" : "md:order-2 md:text-right"}`}>
               <motion.div
-                initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+                initial={{ opacity: 0, x: effectiveReduceMotion ? 0 : (i % 2 === 0 ? -40 : 40) }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 className="space-y-6"
@@ -134,12 +138,12 @@ export function ProcessSection() {
             {/* Central Node Visual */}
             <div className={`hidden md:flex absolute left-1/2 -translate-x-1/2 items-center justify-center`}>
               <motion.div 
-                initial={{ scale: 0 }}
+                initial={{ scale: effectiveReduceMotion ? 1 : 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 className="w-12 h-12 rounded-full bg-[#0F0807] border-2 border-sinai-glow-orange flex items-center justify-center shadow-[0_0_30px_rgba(138,59,19,0.4)] z-20"
               >
-                <div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />
+                <div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
               </motion.div>
             </div>
 

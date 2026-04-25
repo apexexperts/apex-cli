@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 
 interface GlobeParticle {
   phi: number;
@@ -13,6 +14,14 @@ interface GlobeParticle {
 
 export function CinematicGlobe() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -52,7 +61,11 @@ export function CinematicGlobe() {
     function animate() {
       if (!ctx || !canvas) return; // Add check here
       ctx.clearRect(0, 0, width, height);
-      rotation += 0.002;
+      
+      // Stop rotation if reduced motion is preferred
+      if (!effectiveReduceMotion) {
+        rotation += 0.002;
+      }
 
       // Draw Globe Aura/Glow
       const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, globeRadius * 1.5);
@@ -87,7 +100,7 @@ export function CinematicGlobe() {
       const asY = centerY - globeRadius * 0.2; // Slightly above center
 
       // Draw Pulse for Alexandria
-      const pulse = (Math.sin(Date.now() * 0.005) + 1) / 2;
+      const pulse = effectiveReduceMotion ? 0.5 : (Math.sin(Date.now() * 0.005) + 1) / 2;
       ctx.beginPath();
       ctx.arc(asX, asY, 8 + pulse * 10, 0, Math.PI * 2);
       ctx.strokeStyle = `rgba(242, 162, 75, ${0.5 * (1 - pulse)})`;
@@ -115,7 +128,11 @@ export function CinematicGlobe() {
       ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
       ctx.stroke();
 
-      requestAnimationFrame(animate);
+      // Only request next frame if not reduced motion OR 
+      // if we want a static but refreshed render (though here it's easier to just stop)
+      if (!effectiveReduceMotion) {
+        requestAnimationFrame(animate);
+      }
     }
 
     animate();
@@ -131,7 +148,7 @@ export function CinematicGlobe() {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [effectiveReduceMotion]);
 
   return (
     <div className="relative w-full aspect-square max-w-2xl mx-auto flex items-center justify-center">
@@ -142,11 +159,11 @@ export function CinematicGlobe() {
       
       {/* Decorative Overlays */}
       <div className="absolute inset-0 rounded-full border border-white/5 pointer-events-none scale-110" />
-      <div className="absolute inset-0 rounded-full border border-sinai-glow-orange/10 pointer-events-none scale-125 opacity-20 animate-pulse" />
+      <div className={`absolute inset-0 rounded-full border border-sinai-glow-orange/10 pointer-events-none scale-125 opacity-20 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
       
       {/* Orbital Text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-full h-full animate-[spin_60s_linear_infinite] opacity-20">
+        <div className={`w-full h-full opacity-20 ${effectiveReduceMotion ? '' : 'animate-[spin_60s_linear_infinite]'}`}>
           <svg viewBox="0 0 100 100" className="w-full h-full">
             <path id="curve" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="transparent" />
             <text className="text-[3px] font-mono fill-white tracking-[0.5em] uppercase">

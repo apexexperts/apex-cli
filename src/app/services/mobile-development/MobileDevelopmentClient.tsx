@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -129,23 +129,31 @@ const TechSingularityNode = ({ item, index, total, active }: { item: MobileTechI
 };
 
 const TechSingularity = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
 
   return (
     <div className="relative w-full min-h-[1000px] flex items-center justify-center py-20 overflow-visible bg-black">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.05)_0%,transparent_70%)] pointer-events-none" />
       
       <div className="relative z-20 flex items-center justify-center scale-125 lg:scale-150">
-        <motion.div animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="absolute w-64 h-64 border border-sinai-glow-orange/20 rounded-full border-dashed" />
+        <motion.div animate={effectiveReduceMotion ? {} : { rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="absolute w-64 h-64 border border-sinai-glow-orange/20 rounded-full border-dashed" />
         
         <div className="relative w-48 h-48 rounded-full bg-black/40 backdrop-blur-3xl border border-white/10 flex items-center justify-center overflow-hidden group shadow-[0_0_80px_rgba(242,162,75,0.2)]">
-          <motion.div animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 4, repeat: Infinity }} className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.3)_0%,transparent_70%)]" />
+          <motion.div animate={effectiveReduceMotion ? { opacity: 0.4 } : { scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }} transition={{ duration: 4, repeat: Infinity }} className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.3)_0%,transparent_70%)]" />
           <div className="relative z-10 flex flex-col items-center">
-            <Smartphone className="w-12 h-12 text-sinai-glow-orange mb-3 animate-pulse" />
+            <Smartphone className={`w-12 h-12 text-sinai-glow-orange mb-3 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
             <div className="text-[10px] font-mono text-white tracking-[0.5em] font-black uppercase">Mobile</div>
             <div className="text-[8px] font-mono text-sinai-glow-orange tracking-[0.2em] font-bold">ECOSYSTEM</div>
           </div>
-          <motion.div animate={{ rotate: -360 }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[3px] border-sinai-glow-orange/10 border-t-sinai-glow-orange/40 rounded-full" />
+          <motion.div animate={effectiveReduceMotion ? {} : { rotate: -360 }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[3px] border-sinai-glow-orange/10 border-t-sinai-glow-orange/40 rounded-full" />
         </div>
       </div>
 
@@ -168,7 +176,16 @@ const TechSingularity = () => {
 // --- Sub-Components ---
 
 const StreamingText = ({ text, delay = 0, className = "" }: { text: string, delay?: number, className?: string }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
+
   useEffect(() => {
     const startTimeout = setTimeout(() => {
       let i = 0;
@@ -185,20 +202,29 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
 };
 
 const NeuralCore = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
+
   return (
     <div className="relative w-[500px] h-[500px] flex items-center justify-center">
-      <motion.div animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border border-sinai-glow-orange/10 rounded-full border-dashed" />
-      <motion.div animate={{ rotate: -360 }} transition={{ duration: 60, repeat: Infinity, ease: "linear" }} className="absolute inset-16 border border-white/5 rounded-full border-dashed" />
+      <motion.div animate={effectiveReduceMotion ? {} : { rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border border-sinai-glow-orange/10 rounded-full border-dashed" />
+      <motion.div animate={effectiveReduceMotion ? {} : { rotate: -360 }} transition={{ duration: 60, repeat: Infinity, ease: "linear" }} className="absolute inset-16 border border-white/5 rounded-full border-dashed" />
       <div className="relative w-80 h-80 rounded-full bg-gradient-to-br from-white/[0.05] to-transparent flex items-center justify-center backdrop-blur-3xl border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
-        <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} className="absolute w-56 h-56 rounded-full bg-sinai-glow-orange/20 blur-[60px]" />
+        <motion.div animate={effectiveReduceMotion ? { opacity: 0.4 } : { scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} className="absolute w-56 h-56 rounded-full bg-sinai-glow-orange/20 blur-[60px]" />
         <div className="relative z-10 flex flex-col items-center">
           <div className="px-3 py-1 rounded-sm border border-sinai-glow-orange/40 bg-sinai-glow-orange/5 mb-4 relative overflow-hidden group-hover:border-sinai-glow-orange transition-colors">
             <div className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black flex items-center gap-2">
-              <span className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
+              <span className={`w-1 h-1 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
               MOBILE_ENGINE_V3.0
             </div>
-            <motion.div animate={{ left: ["-100%", "200%"] }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} className="absolute top-0 bottom-0 w-8 bg-white/20 skew-x-12 -translate-x-full" />
+            <motion.div animate={effectiveReduceMotion ? {} : { left: ["-100%", "200%"] }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} className="absolute top-0 bottom-0 w-8 bg-white/20 skew-x-12 -translate-x-full" />
           </div>
           <div className="relative">
             <h3 className="text-6xl font-black tracking-[-0.05em] text-white flex flex-col items-center leading-none">
@@ -208,7 +234,7 @@ const NeuralCore = () => {
           </div>
         </div>
       </div>
-      <motion.div animate={{ scale: [0.8, 1.2, 0.8], opacity: [0, 0.5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute w-[450px] h-[450px] border-2 border-sinai-glow-orange/30 rounded-full" />
+      <motion.div animate={effectiveReduceMotion ? { opacity: 0.1, scale: 1 } : { scale: [0.8, 1.2, 0.8], opacity: [0, 0.5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute w-[450px] h-[450px] border-2 border-sinai-glow-orange/30 rounded-full" />
     </div>
   );
 };
@@ -232,6 +258,15 @@ const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: Mob
 };
 
 const CapabilityDetailView = ({ cap }: { cap: MobileCapability }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group">
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
@@ -248,17 +283,19 @@ const CapabilityDetailView = ({ cap }: { cap: MobileCapability }) => {
       <div className="space-y-8 relative z-10 text-left">
         <div className="flex items-center gap-4"><div className="px-4 py-1.5 rounded-full bg-sinai-glow-orange/10 border border-sinai-glow-orange/30 text-sinai-glow-orange text-[9px] font-mono font-bold tracking-widest uppercase">Mobile_Capability // {cap.id}</div><div className="h-px flex-1 bg-white/5" /></div>
         <div className="space-y-6"><h3 className="text-4xl md:text-5xl font-black tracking-tight leading-tight">{cap.title}</h3><p className="text-xl text-zinc-400 font-light leading-relaxed"><StreamingText text={cap.desc} delay={100} /></p></div>
-        <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600"><span className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-green-500/50 animate-pulse" />ENGINE_SYNC: ACTIVE</span><span className="w-px h-4 bg-white/10" /><span>ARM_V9: COMPATIBLE</span></div>
+        <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600"><span className="flex items-center gap-2"><div className={`w-1.5 h-1.5 rounded-full bg-green-500/50 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />ENGINE_SYNC: ACTIVE</span><span className="w-px h-4 bg-white/10" /><span>ARM_V9: COMPATIBLE</span></div>
       </div>
     </div>
   );
 };
 
 const Particles = ({ count = 20 }: { count?: number }) => {
+  const shouldReduceMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
   const [positions, setPositions] = useState<{ left: string, top: string, delay: number, duration: number }[]>([]);
 
   useEffect(() => {
+    if (shouldReduceMotion) return;
     const frame = requestAnimationFrame(() => {
       setMounted(true);
       const newPositions = [...Array(count)].map(() => ({
@@ -270,9 +307,9 @@ const Particles = ({ count = 20 }: { count?: number }) => {
       setPositions(newPositions);
     });
     return () => cancelAnimationFrame(frame);
-  }, [count]);
+  }, [count, shouldReduceMotion]);
 
-  if (!mounted) return null;
+  if (!mounted || shouldReduceMotion) return null;
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -300,8 +337,18 @@ const Particles = ({ count = 20 }: { count?: number }) => {
   );
 };
 
-const MobileHero = () => (
-  <section className="relative min-h-screen flex items-center pt-32 overflow-hidden bg-black">
+const MobileHero = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
+
+  return (
+    <section className="relative min-h-screen flex items-center pt-32 overflow-hidden bg-black">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(242,162,75,0.08)_0%,transparent_50%)]" />
     <div className="container mx-auto px-6 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -326,18 +373,27 @@ const MobileHero = () => (
               className="object-cover group-hover:scale-110 transition-transform duration-[5000ms] brightness-75" 
               priority 
             />
-            <motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sinai-glow-orange/40 to-transparent z-20 pointer-events-none" />
+            <motion.div animate={effectiveReduceMotion ? {} : { top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sinai-glow-orange/40 to-transparent z-20 pointer-events-none" />
           </div>
         </motion.div>
       </div>
     </div>
     <div className="absolute inset-0 pointer-events-none"><Particles count={8} /></div>
   </section>
-);
+  );
+};
 
 export default function MobileDevelopmentClient() {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const [activeCapId, setActiveCapId] = useState<string | null>(null);
   const activeCap = MOBILE_CAPABILITIES.find(c => c.id === activeCapId);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
 
   return (
     <div className="relative bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black font-sans">
@@ -384,7 +440,7 @@ export default function MobileDevelopmentClient() {
                 <div className="space-y-10">
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative group hover:border-sinai-glow-orange/20 transition-colors">
                     <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-sinai-glow-orange/30 rounded-tl-3xl" />
-                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />Premium App Architectures</h3>
+                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />Premium App Architectures</h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">We engineer bespoke mobile applications that combine native performance with cinematic design. From enterprise solutions to consumer-facing masterpieces, we build for impact.</p>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
@@ -397,7 +453,7 @@ export default function MobileDevelopmentClient() {
                       { title: "Support", desc: "24/7 technical surveillance.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="/#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 relative overflow-hidden"><div className="relative z-10"><div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />{service.title}</div><p className="text-[10px] text-white/70 leading-tight uppercase tracking-tighter">{service.desc}</p></div></Link>
+                        <Link href="/#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 relative overflow-hidden"><div className="relative z-10"><div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase flex items-center gap-2"><span className={`w-1.5 h-1.5 rounded-full bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />{service.title}</div><p className="text-[10px] text-white/70 leading-tight uppercase tracking-tighter">{service.desc}</p></div></Link>
                       ) : (
                         <div key={i} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-sinai-glow-orange/30 transition-all duration-300 group/item"><div className="text-[9px] font-mono text-sinai-glow-orange mb-2 tracking-[0.1em] font-black uppercase">{service.title}</div><p className="text-[10px] text-zinc-500 group-hover/item:text-zinc-300 transition-colors leading-tight uppercase tracking-tighter">{service.desc}</p></div>
                       )
@@ -406,7 +462,7 @@ export default function MobileDevelopmentClient() {
                 </div>
               </div>
             </SectionReveal>
-            <SectionReveal><div className="relative"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-dev-hero.png" alt="Custom Mobile App Development" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
+            <SectionReveal><div className="relative"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-dev-hero.png" alt="Custom Mobile App Development" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={effectiveReduceMotion ? {} : { top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
           </div>
         </div>
       </section>
@@ -416,7 +472,7 @@ export default function MobileDevelopmentClient() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.03)_0%,transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <SectionReveal><div className="relative order-2 lg:order-1"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-uiux.png" alt="UI/UX Mastery" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
+            <SectionReveal><div className="relative order-2 lg:order-1"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-uiux.png" alt="UI/UX Mastery" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={effectiveReduceMotion ? {} : { top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
             <SectionReveal>
               <div className="space-y-16 text-left order-1 lg:order-2">
                 <div className="space-y-6">
@@ -426,7 +482,7 @@ export default function MobileDevelopmentClient() {
                 <div className="space-y-10">
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative group hover:border-sinai-glow-orange/20 transition-colors">
                     <div className="absolute -top-4 -right-4 w-20 h-20 border-t-2 border-r-2 border-sinai-glow-orange/30 rounded-tr-3xl" />
-                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />Immersive Experiences</h3>
+                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />Immersive Experiences</h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">We design interfaces that feel alive. Our focus on fluid motion, intuitive patterns, and haptic feedback ensures your app is not just used, but enjoyed.</p>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
@@ -439,7 +495,7 @@ export default function MobileDevelopmentClient() {
                       { title: "Support", desc: "Continuous design evolution.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="/#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 relative overflow-hidden"><div className="relative z-10"><div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />{service.title}</div><p className="text-[10px] text-white/70 leading-tight uppercase tracking-tighter">{service.desc}</p></div></Link>
+                        <Link href="/#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 relative overflow-hidden"><div className="relative z-10"><div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase flex items-center gap-2"><span className={`w-1.5 h-1.5 rounded-full bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />{service.title}</div><p className="text-[10px] text-white/70 leading-tight uppercase tracking-tighter">{service.desc}</p></div></Link>
                       ) : (
                         <div key={i} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-sinai-glow-orange/30 transition-all duration-300 group/item"><div className="text-[9px] font-mono text-sinai-glow-orange mb-2 tracking-[0.1em] font-black uppercase">{service.title}</div><p className="text-[10px] text-zinc-500 group-hover/item:text-zinc-300 transition-colors leading-tight uppercase tracking-tighter">{service.desc}</p></div>
                       )
@@ -466,7 +522,7 @@ export default function MobileDevelopmentClient() {
                 <div className="space-y-10">
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative group hover:border-sinai-glow-orange/20 transition-colors">
                     <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-sinai-glow-orange/30 rounded-tl-3xl" />
-                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />The Digital Backbone</h3>
+                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />The Digital Backbone</h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">We build the infrastructure that powers your app. From complex API orchestrations to secure user authentication, our backends are engineered for scale and speed.</p>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
@@ -479,7 +535,7 @@ export default function MobileDevelopmentClient() {
                       { title: "Support", desc: "Technical surveillance & optimization.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="/#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 relative overflow-hidden"><div className="relative z-10"><div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />{service.title}</div><p className="text-[10px] text-white/70 leading-tight uppercase tracking-tighter">{service.desc}</p></div></Link>
+                        <Link href="/#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 relative overflow-hidden"><div className="relative z-10"><div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase flex items-center gap-2"><span className={`w-1.5 h-1.5 rounded-full bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />{service.title}</div><p className="text-[10px] text-white/70 leading-tight uppercase tracking-tighter">{service.desc}</p></div></Link>
                       ) : (
                         <div key={i} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-sinai-glow-orange/30 transition-all duration-300 group/item"><div className="text-[9px] font-mono text-sinai-glow-orange mb-2 tracking-[0.1em] font-black uppercase">{service.title}</div><p className="text-[10px] text-zinc-500 group-hover/item:text-zinc-300 transition-colors leading-tight uppercase tracking-tighter">{service.desc}</p></div>
                       )
@@ -488,7 +544,7 @@ export default function MobileDevelopmentClient() {
                 </div>
               </div>
             </SectionReveal>
-            <SectionReveal><div className="relative"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-backend.png" alt="Backend Core" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
+            <SectionReveal><div className="relative"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-backend.png" alt="Backend Core" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={effectiveReduceMotion ? {} : { top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
           </div>
         </div>
       </section>
@@ -498,7 +554,7 @@ export default function MobileDevelopmentClient() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(242,162,75,0.03)_0%,transparent_70%)] pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <SectionReveal><div className="relative order-2 lg:order-1"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-dev-hero.png" alt="Maintenance Hub" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={{ top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
+            <SectionReveal><div className="relative order-2 lg:order-1"><div className="relative aspect-square max-w-2xl mx-auto rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.1)] group"><Image src="/images/mobile-dev-hero.png" alt="Maintenance Hub" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-[3000ms] brightness-50" /><div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" /><motion.div animate={effectiveReduceMotion ? {} : { top: ["-10%", "110%"] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-sinai-glow-orange/20 to-transparent z-20 pointer-events-none" /></div></div></SectionReveal>
             <SectionReveal>
               <div className="space-y-16 text-left order-1 lg:order-2">
                 <div className="space-y-6">
@@ -508,7 +564,7 @@ export default function MobileDevelopmentClient() {
                 <div className="space-y-10">
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative group hover:border-sinai-glow-orange/20 transition-colors">
                     <div className="absolute -top-4 -right-4 w-20 h-20 border-t-2 border-r-2 border-sinai-glow-orange/30 rounded-tr-3xl" />
-                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className="w-2 h-2 rounded-full bg-sinai-glow-orange animate-pulse" />Life Cycle Excellence</h3>
+                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />Life Cycle Excellence</h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">Apps require constant care. We provide continuous monitoring, performance tuning, and feature updates to ensure your product remains at the cutting edge of the market.</p>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
@@ -521,7 +577,7 @@ export default function MobileDevelopmentClient() {
                       { title: "Support", desc: "Engagement initialization.", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
-                        <Link href="/#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 relative overflow-hidden"><div className="relative z-10"><div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />{service.title}</div><p className="text-[10px] text-white/70 leading-tight uppercase tracking-tighter">{service.desc}</p></div></Link>
+                        <Link href="/#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 relative overflow-hidden"><div className="relative z-10"><div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase flex items-center gap-2"><span className={`w-1.5 h-1.5 rounded-full bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />{service.title}</div><p className="text-[10px] text-white/70 leading-tight uppercase tracking-tighter">{service.desc}</p></div></Link>
                       ) : (
                         <div key={i} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-sinai-glow-orange/30 transition-all duration-300 group/item"><div className="text-[9px] font-mono text-sinai-glow-orange mb-2 tracking-[0.1em] font-black uppercase">{service.title}</div><p className="text-[10px] text-zinc-500 group-hover/item:text-zinc-300 transition-colors leading-tight uppercase tracking-tighter">{service.desc}</p></div>
                       )
@@ -575,7 +631,7 @@ export default function MobileDevelopmentClient() {
               {/* Top Branding Tag */}
               <div className="flex justify-center">
                 <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/10 backdrop-blur-md">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                  <span className={`w-1.5 h-1.5 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                   <span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.4em] font-black uppercase">Engagement_Initialization // V5.0</span>
                 </div>
               </div>
@@ -597,7 +653,7 @@ export default function MobileDevelopmentClient() {
                   
                   {/* Internal Shimmer */}
                   <motion.div 
-                    animate={{ left: ["-100%", "200%"] }}
+                    animate={effectiveReduceMotion ? {} : { left: ["-100%", "200%"] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
                   />

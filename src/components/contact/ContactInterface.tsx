@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion, AnimatePresence, Variants, useReducedMotion } from "framer-motion";
 import { ChevronDown, Search, Check, Loader2, 
   Cpu, Database, Globe, Smartphone, Layers, MoreHorizontal 
 } from "lucide-react";
@@ -26,26 +26,9 @@ const SERVICES = [
   { name: "Other", icon: <MoreHorizontal className="w-4 h-4" /> },
 ];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-  }
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-  }
-};
-
 export function ContactInterface() {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[0]);
   const [selectedService, setSelectedService] = useState("");
   const [isCountryOpen, setIsCountryOpen] = useState(false);
@@ -62,19 +45,42 @@ export function ContactInterface() {
   const serviceRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
-      setIsLoaded(true);
-    });
+    setMounted(true);
     const handleClickOutside = (event: MouseEvent) => {
       if (countryRef.current && !countryRef.current.contains(event.target as Node)) setIsCountryOpen(false);
       if (serviceRef.current && !serviceRef.current.contains(event.target as Node)) setIsServiceOpen(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      cancelAnimationFrame(frame);
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: effectiveReduceMotion ? 0 : 0.1, delayChildren: 0.2 }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: effectiveReduceMotion ? 0 : 30, filter: effectiveReduceMotion ? "none" : "blur(10px)" },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      filter: "blur(0px)",
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
+  const dropdownVariants: Variants = {
+    hidden: { opacity: 0, y: effectiveReduceMotion ? 0 : 10 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: effectiveReduceMotion ? 0 : 10 }
+  };
 
   const handleCountrySelect = (country: typeof COUNTRIES[0]) => {
     setSelectedCountry(country);
@@ -118,7 +124,7 @@ export function ContactInterface() {
       
       {/* ── Background Atmosphere (Matching About) ── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-sinai-glow-orange/[0.05] blur-[150px] animate-pulse" />
+        <div className={`absolute top-0 left-1/4 w-[800px] h-[800px] bg-sinai-glow-orange/[0.05] blur-[150px] ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
         <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-sinai-glow-orange/[0.03] blur-[150px]" />
         <div className="absolute inset-0 opacity-[0.03]" 
              style={{ backgroundImage: 'radial-gradient(circle, #f2a24b 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -127,7 +133,7 @@ export function ContactInterface() {
       <motion.div 
         variants={containerVariants}
         initial="hidden"
-        animate={isLoaded ? "visible" : "hidden"}
+        animate={mounted ? "visible" : "hidden"}
         className="max-w-7xl mx-auto relative z-10 w-full"
       >
         <div className="grid lg:grid-cols-12 gap-16 items-center">
@@ -175,7 +181,7 @@ export function ContactInterface() {
                 {isSuccess ? (
                   <motion.div 
                     key="success"
-                    initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                    initial={{ opacity: 0, scale: effectiveReduceMotion ? 1 : 0.9, filter: effectiveReduceMotion ? "none" : "blur(10px)" }}
                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     className="py-20 text-center space-y-8"
                   >
@@ -198,7 +204,7 @@ export function ContactInterface() {
                 ) : (
                   <motion.form 
                     key="form"
-                    exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+                    exit={{ opacity: 0, scale: effectiveReduceMotion ? 1 : 0.95, filter: effectiveReduceMotion ? "none" : "blur(10px)" }}
                     onSubmit={handleSubmit}
                     className="relative z-10 space-y-8"
                   >
@@ -276,9 +282,10 @@ export function ContactInterface() {
                           <AnimatePresence>
                             {isCountryOpen && (
                               <motion.div 
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 10 }}
+                                variants={dropdownVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
                                 className="mt-4 bg-[#0f0f0f] border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden"
                               >
                                 <div className="p-4 border-b border-white/5 flex items-center gap-3 bg-white/[0.02]">
@@ -396,9 +403,10 @@ export function ContactInterface() {
                         <AnimatePresence>
                           {isServiceOpen && (
                             <motion.div 
-                              initial={{ opacity: 0, y: 10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: 10 }}
+                              variants={dropdownVariants}
+                              initial="hidden"
+                              animate="visible"
+                              exit="exit"
                               className="mt-4 bg-[#0f0f0f] border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden"
                               role="listbox"
                             >
@@ -466,7 +474,7 @@ export function ContactInterface() {
                         <div className="relative z-10 flex items-center justify-center gap-4">
                           {isSubmitting ? (
                             <>
-                              <Loader2 className="w-6 h-6 animate-spin text-sinai-glow-orange" />
+                              <Loader2 className={`w-6 h-6 text-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-spin'}`} />
                               <span>Transmitting...</span>
                             </>
                           ) : (
@@ -477,7 +485,7 @@ export function ContactInterface() {
                       <div className="mt-8 flex justify-center items-center gap-6 text-[8px] font-mono text-zinc-700 tracking-[0.3em] uppercase">
                         <span>Protocol: Stable</span>
                         <span className="w-px h-3 bg-white/5" />
-                        <span className={isSubmitting ? "animate-pulse text-sinai-glow-orange" : "text-sinai-glow-orange/60"}>
+                        <span className={(isSubmitting && !effectiveReduceMotion) ? "animate-pulse text-sinai-glow-orange" : "text-sinai-glow-orange/60"}>
                           {isSubmitting ? "Uploading Data..." : "Secure Transmission Active"}
                         </span>
                       </div>

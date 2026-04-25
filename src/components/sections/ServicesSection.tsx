@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const SERVICES = [
   {
@@ -10,11 +10,11 @@ const SERVICES = [
     title: "AI & Process Automation",
     desc: "Revolutionizing workflows with intelligent autonomous agents and robotic process automation (RPA) engineered for maximum operational efficiency.",
     tags: ["Agentic AI", "RPA", "Workflow Optimization"],
-    icon: (
+    icon: (reduced: boolean) => (
       <div className="relative w-12 h-12">
         <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-          <motion.circle cx="12" cy="12" r="9" stroke="url(#grad1)" strokeWidth="1.5" animate={{ rotate: 360 }} transition={{ duration: 8, repeat: Infinity, ease: "linear" }} strokeDasharray="4 4" />
-          <motion.circle cx="12" cy="12" r="5" stroke="url(#grad1)" strokeWidth="2" animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
+          <motion.circle cx="12" cy="12" r="9" stroke="url(#grad1)" strokeWidth="1.5" animate={reduced ? {} : { rotate: 360 }} transition={{ duration: 8, repeat: Infinity, ease: "linear" }} strokeDasharray="4 4" />
+          <motion.circle cx="12" cy="12" r="5" stroke="url(#grad1)" strokeWidth="2" animate={reduced ? {} : { scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
           <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
           <defs>
             <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -26,11 +26,11 @@ const SERVICES = [
         <div className="absolute inset-0 bg-sinai-glow-orange/20 blur-xl rounded-full" />
       </div>
     ),
-    diagram: (
+    diagram: (reduced: boolean) => (
       <div className="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none group-hover:opacity-20 transition-opacity">
         <svg width="200" height="200" viewBox="0 0 200 200">
           <circle cx="100" cy="100" r="80" stroke="currentColor" strokeDasharray="5 5" fill="none" />
-          <motion.path d="M100 20 L100 180 M20 100 L180 100" stroke="currentColor" animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
+          <motion.path d="M100 20 L100 180 M20 100 L180 100" stroke="currentColor" animate={reduced ? {} : { rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
         </svg>
       </div>
     )
@@ -40,7 +40,7 @@ const SERVICES = [
     title: "Oracle APEX development",
     desc: "Building world-class, data-centric enterprise applications using Oracle APEX with unparalleled speed, database precision, and enterprise-grade scalability.",
     tags: ["Low-Code Elite", "Database Design", "Oracle Cloud"],
-    icon: (
+    icon: (reduced: boolean) => (
       <div className="relative w-14 h-14">
         <svg viewBox="0 0 24 24" fill="none" className="w-full h-full drop-shadow-[0_0_10px_rgba(242,162,75,0.2)]">
           {/* Ruler (Back Layer) - Top-Left to Bottom-Right (\) - THICKER */}
@@ -54,10 +54,10 @@ const SERVICES = [
           <line x1="10" y1="10" x2="12" y2="8" stroke="#000" strokeOpacity="0.3" strokeWidth="0.8" />
           <line x1="13" y1="13" x2="15" y2="11" stroke="#000" strokeOpacity="0.3" strokeWidth="0.8" />
           <line x1="16" y1="16" x2="18" y2="14" stroke="#000" strokeOpacity="0.3" strokeWidth="0.8" />
-
+          
           {/* Pencil (Front Layer) - Bottom-Left to Top-Right (/) - THICKER */}
           <motion.g
-            animate={{ 
+            animate={reduced ? {} : { 
               y: [-0.5, 0.5, -0.5],
               rotate: [-1, 1, -1]
             }}
@@ -88,11 +88,11 @@ const SERVICES = [
         </svg>
       </div>
     ),
-    diagram: (
+    diagram: (reduced: boolean) => (
       <div className="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none group-hover:opacity-20 transition-opacity">
         <svg width="200" height="200" viewBox="0 0 200 200">
           {[...Array(5)].map((_, i) => (
-            <motion.rect key={i} x={40} y={40 + i * 25} width={120} height={15} stroke="currentColor" fill="none" animate={{ x: [40, 50, 40] }} transition={{ duration: 2, delay: i * 0.2, repeat: Infinity }} />
+            <motion.rect key={i} x={40} y={40 + i * 25} width={120} height={15} stroke="currentColor" fill="none" animate={reduced ? {} : { x: [40, 50, 40] }} transition={{ duration: 2, delay: i * 0.2, repeat: Infinity }} />
           ))}
         </svg>
       </div>
@@ -103,11 +103,11 @@ const SERVICES = [
     title: "Web Development",
     desc: "Crafting high-performance, cinematic web experiences using modern frameworks and production-grade architectures that prioritize user engagement.",
     tags: ["Next.js", "React", "Scalable UI"],
-    icon: (
+    icon: (reduced: boolean) => (
       <div className="relative w-12 h-12">
         <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-          <motion.path d="M12 2l10 5v10l-10 5-10-5V7l10-5z" stroke="url(#grad3)" strokeWidth="1.5" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: [0, 100] }} strokeDasharray="10 5" transition={{ duration: 5, repeat: Infinity, ease: "linear" }} />
-          <circle cx="12" cy="12" r="3" fill="white" className="animate-pulse" />
+          <motion.path d="M12 2l10 5v10l-10 5-10-5V7l10-5z" stroke="url(#grad3)" strokeWidth="1.5" initial={{ strokeDashoffset: 0 }} animate={reduced ? {} : { strokeDashoffset: [0, 100] }} strokeDasharray="10 5" transition={{ duration: 5, repeat: Infinity, ease: "linear" }} />
+          <circle cx="12" cy="12" r="3" fill="white" className={reduced ? '' : 'animate-pulse'} />
           <defs>
             <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#F2A24B" />
@@ -118,10 +118,10 @@ const SERVICES = [
         <div className="absolute inset-0 bg-blue-500/10 blur-xl rounded-full" />
       </div>
     ),
-    diagram: (
+    diagram: (reduced: boolean) => (
       <div className="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none group-hover:opacity-20 transition-opacity">
         <svg width="200" height="200" viewBox="0 0 200 200">
-          <motion.path d="M50 100 Q100 20 150 100 T250 100" stroke="currentColor" fill="none" strokeDasharray="10 5" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: -100 }} transition={{ duration: 5, repeat: Infinity, ease: "linear" }} />
+          <motion.path d="M50 100 Q100 20 150 100 T250 100" stroke="currentColor" fill="none" strokeDasharray="10 5" initial={{ strokeDashoffset: 0 }} animate={reduced ? {} : { strokeDashoffset: -100 }} transition={{ duration: 5, repeat: Infinity, ease: "linear" }} />
         </svg>
       </div>
     )
@@ -131,11 +131,11 @@ const SERVICES = [
     title: "Mobile Development",
     desc: "Engineering premium native and cross-platform mobile applications that prioritize speed, advanced security, and world-class UX/UI design.",
     tags: ["iOS/Android", "React Native", "Secure Mobile"],
-    icon: (
+    icon: (reduced: boolean) => (
       <div className="relative w-12 h-12">
         <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
           <rect x="5" y="2" width="14" height="20" rx="3" stroke="url(#grad4)" strokeWidth="1.5" />
-          <motion.path d="M5 18h14" stroke="url(#grad4)" strokeWidth="1" animate={{ y: [-5, 5, -5] }} transition={{ duration: 4, repeat: Infinity }} />
+          <motion.path d="M5 18h14" stroke="url(#grad4)" strokeWidth="1" animate={reduced ? {} : { y: [-5, 5, -5] }} transition={{ duration: 4, repeat: Infinity }} />
           <circle cx="12" cy="19" r="1" fill="white" />
           <defs>
             <linearGradient id="grad4" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -147,10 +147,10 @@ const SERVICES = [
         <div className="absolute inset-0 bg-sinai-glow-orange/10 blur-xl rounded-full" />
       </div>
     ),
-    diagram: (
+    diagram: (reduced: boolean) => (
       <div className="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none group-hover:opacity-20 transition-opacity">
         <svg width="200" height="200" viewBox="0 0 200 200">
-          <motion.path d="M100 20 L180 160 L20 160 Z" stroke="currentColor" fill="none" initial={{ strokeDashoffset: 0 }} animate={{ strokeDashoffset: [0, 400] }} transition={{ duration: 10, repeat: Infinity }} />
+          <motion.path d="M100 20 L180 160 L20 160 Z" stroke="currentColor" fill="none" initial={{ strokeDashoffset: 0 }} animate={reduced ? {} : { strokeDashoffset: [0, 400] }} transition={{ duration: 10, repeat: Infinity }} />
         </svg>
       </div>
     )
@@ -158,6 +158,15 @@ const SERVICES = [
 ];
 
 export function ServicesSection() {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
+
   return (
     <section id="services" className="scroll-mt-28 py-32 border-t border-white/5 relative">
       {/* Dynamic Background Grid */}
@@ -191,13 +200,13 @@ export function ServicesSection() {
             </div>
 
             {/* Background Diagram */}
-            {service.diagram}
+            {typeof service.diagram === 'function' ? service.diagram(!!effectiveReduceMotion) : service.diagram}
 
             {/* Icon & Content */}
             <div className="relative z-10 space-y-10 h-full flex flex-col">
               <div className="w-24 h-24 rounded-[2rem] bg-white/[0.03] border border-white/10 flex items-center justify-center group-hover:border-sinai-glow-orange/20 transition-all duration-500 shadow-2xl overflow-hidden relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                {service.icon}
+                {typeof service.icon === 'function' ? service.icon(!!effectiveReduceMotion) : service.icon}
               </div>
 
               <div className="space-y-6">

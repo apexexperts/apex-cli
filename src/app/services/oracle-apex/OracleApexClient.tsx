@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -69,6 +69,14 @@ const APEX_CAPABILITIES = [
 
 const StreamingText = ({ text, delay = 0, className = "" }: { text: string, delay?: number, className?: string }) => {
   const [displayedText, setDisplayedText] = useState("");
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   
   useEffect(() => {
     const startTimeout = setTimeout(() => {
@@ -77,27 +85,35 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
         setDisplayedText(text.slice(0, i + 1));
         i++;
         if (i >= text.length) clearInterval(interval);
-      }, 30);
+      }, effectiveReduceMotion ? 10 : 30);
       return () => clearInterval(interval);
     }, delay);
     
     return () => clearTimeout(startTimeout);
-  }, [text, delay]);
+  }, [text, delay, shouldReduceMotion]);
 
-  return <span className={className}>{displayedText}<span className="animate-pulse inline-block w-1 h-8 md:h-12 bg-sinai-glow-orange ml-1" /></span>;
+  return <span className={className}>{displayedText}<span className={`${effectiveReduceMotion ? '' : 'animate-pulse'} inline-block w-1 h-8 md:h-12 bg-sinai-glow-orange ml-1`} /></span>;
 };
 
 const NeuralCore = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   return (
     <div className="relative w-[500px] h-[500px] flex items-center justify-center">
       {/* Outer Orbital Rings */}
       <motion.div 
-        animate={{ rotate: 360 }}
+        animate={effectiveReduceMotion ? {} : { rotate: 360 }}
         transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         className="absolute inset-0 border border-sinai-glow-orange/10 rounded-full border-dashed"
       />
       <motion.div 
-        animate={{ rotate: -360 }}
+        animate={effectiveReduceMotion ? {} : { rotate: -360 }}
         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
         className="absolute inset-16 border border-white/5 rounded-full border-dashed"
       />
@@ -108,7 +124,7 @@ const NeuralCore = () => {
         
         {/* Internal Pulsing Plasma */}
         <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+          animate={effectiveReduceMotion ? { opacity: 0.4 } : { scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-56 h-56 rounded-full bg-sinai-glow-orange/20 blur-[60px]"
         />
@@ -117,14 +133,16 @@ const NeuralCore = () => {
         <div className="relative z-10 flex flex-col items-center">
           <div className="px-3 py-1 rounded-sm border border-sinai-glow-orange/40 bg-sinai-glow-orange/5 mb-4 relative overflow-hidden group-hover:border-sinai-glow-orange transition-colors">
             <div className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.3em] font-black flex items-center gap-2">
-              <span className="w-1 h-1 rounded-full bg-sinai-glow-orange animate-pulse" />
+              <span className={`w-1 h-1 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
               ORACLE_ENGINE_V24.1
             </div>
-            <motion.div 
-              animate={{ left: ["-100%", "200%"] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              className="absolute top-0 bottom-0 w-8 bg-white/20 skew-x-12 -translate-x-full"
-            />
+            {!effectiveReduceMotion && (
+              <motion.div 
+                animate={{ left: ["-100%", "200%"] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                className="absolute top-0 bottom-0 w-8 bg-white/20 skew-x-12 -translate-x-full"
+              />
+            )}
           </div>
 
           <div className="relative">
@@ -137,7 +155,7 @@ const NeuralCore = () => {
         </div>
 
         {/* Orbiting Data Fragments */}
-        {[...Array(3)].map((_, i) => (
+        {!effectiveReduceMotion && APEX_CAPABILITIES.slice(0, 3).map((_, i) => (
           <motion.div
             key={i}
             animate={{ rotate: 360 }}
@@ -153,7 +171,7 @@ const NeuralCore = () => {
 
       {/* Floating Scanning Ring */}
       <motion.div 
-        animate={{ scale: [0.8, 1.2, 0.8], opacity: [0, 0.5, 0] }}
+        animate={effectiveReduceMotion ? { opacity: 0.1, scale: 1 } : { scale: [0.8, 1.2, 0.8], opacity: [0, 0.5, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         className="absolute w-[450px] h-[450px] border-2 border-sinai-glow-orange/30 rounded-full"
       />
@@ -209,6 +227,14 @@ const OrbitalNode = ({ cap, index, total, active, onEnter, onLeave }: { cap: Ora
 };
 
 const CapabilityDetailView = ({ cap }: { cap: OracleCapability }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/[0.02] backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] relative overflow-hidden group pointer-events-auto">
       <div className="absolute inset-0 bg-gradient-to-br from-sinai-glow-orange/5 to-transparent opacity-50" />
@@ -243,7 +269,7 @@ const CapabilityDetailView = ({ cap }: { cap: OracleCapability }) => {
 
         <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600">
           <span className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-500/50 animate-pulse" />
+            <div className={`w-1.5 h-1.5 rounded-full bg-green-500/50 ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
             SYSTEM_SYNC: ACTIVE
           </span>
           <span className="w-px h-4 bg-white/10" />
@@ -257,8 +283,10 @@ const CapabilityDetailView = ({ cap }: { cap: OracleCapability }) => {
 const Particles = ({ count = 10 }: { count?: number }) => {
   const [mounted, setMounted] = React.useState(false);
   const [positions, setPositions] = React.useState<{ x: string, delay: number }[]>([]);
+  const shouldReduceMotion = useReducedMotion();
 
   React.useEffect(() => {
+    if (shouldReduceMotion) return;
     const frame = requestAnimationFrame(() => {
       setMounted(true);
       setPositions(
@@ -269,9 +297,9 @@ const Particles = ({ count = 10 }: { count?: number }) => {
       );
     });
     return () => cancelAnimationFrame(frame);
-  }, [count]);
+  }, [count, shouldReduceMotion]);
 
-  if (!mounted) return null;
+  if (!mounted || shouldReduceMotion) return null;
 
   return (
     <>
@@ -289,6 +317,14 @@ const Particles = ({ count = 10 }: { count?: number }) => {
 };
 
 const OracleApexHero = () => {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   return (
     <section className="relative min-h-screen flex items-center pt-32 overflow-hidden bg-black">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(242,162,75,0.08)_0%,transparent_50%)]" />
@@ -380,11 +416,13 @@ const OracleApexHero = () => {
               </div>
 
               {/* Scanning Line Animation */}
-              <motion.div 
-                animate={{ top: ["-10%", "110%"] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C42A1E]/40 to-transparent z-20 pointer-events-none"
-              />
+              {!effectiveReduceMotion && (
+                <motion.div 
+                  animate={{ top: ["-10%", "110%"] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C42A1E]/40 to-transparent z-20 pointer-events-none"
+                />
+              )}
             </div>
           </motion.div>
         </div>
@@ -399,6 +437,14 @@ const OracleApexHero = () => {
 
 export default function OracleApexClient() {
   const [activeCapId, setActiveCapId] = useState<string | null>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
   const activeCap = APEX_CAPABILITIES.find(c => c.id === activeCapId);
 
   return (
@@ -471,7 +517,7 @@ export default function OracleApexClient() {
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 z-10">
               <div className="w-[700px] h-[700px] border border-white/5 rounded-full" />
               <div className="absolute w-[500px] h-[500px] border border-white/5 rounded-full" />
-              <div className="absolute w-[350px] h-[350px] border border-sinai-glow-orange/10 rounded-full animate-pulse" />
+              <div className={`absolute w-[350px] h-[350px] border border-sinai-glow-orange/10 rounded-full ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
             </div>
           </div>
         </div>
@@ -508,7 +554,7 @@ export default function OracleApexClient() {
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative group hover:border-[#C42A1E]/20 transition-colors">
                     <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-[#C42A1E]/30 rounded-tl-3xl" />
                     <h3 className="text-2xl font-bold mb-6 flex items-center gap-4">
-                      <div className="w-2 h-2 rounded-full bg-[#C42A1E] animate-pulse" />
+                      <div className={`w-2 h-2 rounded-full bg-[#C42A1E] ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                       Mission-Critical Architecture
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">
@@ -530,7 +576,7 @@ export default function OracleApexClient() {
                           <div className="absolute inset-0 bg-gradient-to-br from-[#C42A1E]/20 to-transparent opacity-50" />
                           <div className="relative z-10">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2">
-                              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                              <span className={`w-1.5 h-1.5 rounded-full bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                               {service.title}
                             </div>
                             <p className="text-[10px] text-white/70 group-hover/item:text-white transition-colors leading-tight uppercase tracking-tighter">
@@ -697,7 +743,7 @@ export default function OracleApexClient() {
                     <div className="absolute -top-4 -right-4 w-20 h-20 border-t-2 border-r-2 border-[#C42A1E]/30 rounded-tl-3xl" />
                     <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 justify-end lg:justify-start">
                       Intelligence-Driven Automation
-                      <div className="w-2 h-2 rounded-full bg-[#C42A1E] animate-pulse" />
+                      <div className={`w-2 h-2 rounded-full bg-[#C42A1E] ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">
                       Leverage the power of Oracle Database 23ai directly within APEX. We build advanced RAG (Retrieval-Augmented Generation) systems, vector-based semantic search, and AI-powered workflows that transform how users interact with enterprise data.
@@ -718,7 +764,7 @@ export default function OracleApexClient() {
                           <div className="absolute inset-0 bg-gradient-to-br from-[#C42A1E]/20 to-transparent opacity-50" />
                           <div className="relative z-10 text-right lg:text-left">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2 justify-end lg:justify-start">
-                              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                              <span className={`w-1.5 h-1.5 rounded-full bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                               {service.title}
                             </div>
                             <p className="text-[10px] text-white/70 group-hover/item:text-white transition-colors leading-tight uppercase tracking-tighter">
@@ -767,7 +813,7 @@ export default function OracleApexClient() {
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative group hover:border-[#C42A1E]/20 transition-colors">
                     <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-[#C42A1E]/30 rounded-tl-3xl" />
                     <h3 className="text-2xl font-bold mb-6 flex items-center gap-4">
-                      <div className="w-2 h-2 rounded-full bg-[#C42A1E] animate-pulse" />
+                      <div className={`w-2 h-2 rounded-full bg-[#C42A1E] ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                       Legacy Modernization
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">
@@ -787,7 +833,7 @@ export default function OracleApexClient() {
                           <div className="absolute inset-0 bg-gradient-to-br from-[#C42A1E]/20 to-transparent opacity-50" />
                           <div className="relative z-10">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2">
-                              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                              <span className={`w-1.5 h-1.5 rounded-full bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                               {service.title}
                             </div>
                             <p className="text-[10px] text-white/70 group-hover/item:text-white transition-colors leading-tight uppercase tracking-tighter">
@@ -825,11 +871,13 @@ export default function OracleApexClient() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                   
                   {/* Scanning Line */}
-                  <motion.div 
-                    animate={{ top: ["-10%", "110%"] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                    className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-[#C42A1E]/20 to-transparent z-20 pointer-events-none"
-                  />
+                  {!effectiveReduceMotion && (
+                    <motion.div 
+                      animate={{ top: ["-10%", "110%"] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                      className="absolute left-0 right-0 h-20 bg-gradient-to-b from-transparent via-[#C42A1E]/20 to-transparent z-20 pointer-events-none"
+                    />
+                  )}
 
                   {/* Technical Frame Markers */}
                   <div className="absolute top-10 left-10 text-[8px] font-mono text-[#C42A1E]/60 tracking-widest">
@@ -844,7 +892,7 @@ export default function OracleApexClient() {
 
                 {/* Floating Meta-Data */}
                 <motion.div 
-                  animate={{ y: [0, -15, 0] }}
+                  animate={shouldReduceMotion ? {} : { y: [0, -15, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute -right-12 top-1/4 p-6 rounded-3xl bg-black/80 backdrop-blur-3xl border border-[#C42A1E]/30 z-30 shadow-2xl max-w-[200px]"
                 >
@@ -853,7 +901,7 @@ export default function OracleApexClient() {
                     {[1, 2, 3].map(i => (
                       <div key={i} className="h-1 bg-white/5 rounded-full overflow-hidden">
                         <motion.div 
-                          animate={{ width: ["0%", `${30 + i * 20}%`, "0%"] }}
+                          animate={shouldReduceMotion ? { width: `${30 + i * 20}%` } : { width: ["0%", `${30 + i * 20}%`, "0%"] }}
                           transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
                           className="h-full bg-[#C42A1E]"
                         />
@@ -891,11 +939,13 @@ export default function OracleApexClient() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                   
                   {/* Circular Radar Scan */}
-                  <motion.div 
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0 border-[1px] border-[#C42A1E]/10 rounded-full scale-[1.2] opacity-50 pointer-events-none"
-                  />
+                  {!shouldReduceMotion && (
+                    <motion.div 
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-0 border-[1px] border-[#C42A1E]/10 rounded-full scale-[1.2] opacity-50 pointer-events-none"
+                    />
+                  )}
 
                   {/* Technical Frame Markers */}
                   <div className="absolute top-10 right-10 text-[8px] font-mono text-[#C42A1E]/60 tracking-widest text-right">
@@ -910,7 +960,7 @@ export default function OracleApexClient() {
 
                 {/* Floating Meta-Data */}
                 <motion.div 
-                  animate={{ y: [0, 15, 0] }}
+                  animate={shouldReduceMotion ? {} : { y: [0, 15, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute -left-12 bottom-1/4 p-6 rounded-3xl bg-black/80 backdrop-blur-3xl border border-[#C42A1E]/30 z-30 shadow-2xl max-w-[200px]"
                 >
@@ -921,7 +971,7 @@ export default function OracleApexClient() {
                         <div className="text-[8px] text-zinc-500 font-mono">LEVEL_{i}</div>
                         <div className="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
                           <motion.div 
-                            animate={{ width: [`${40 + i * 15}%`, "20%", `${40 + i * 15}%`] }}
+                            animate={shouldReduceMotion ? { width: `${40 + i * 15}%` } : { width: [`${40 + i * 15}%`, "20%", `${40 + i * 15}%`] }}
                             transition={{ duration: 3, repeat: Infinity, delay: i * 0.7 }}
                             className="h-full bg-[#C42A1E]"
                           />
@@ -952,7 +1002,7 @@ export default function OracleApexClient() {
                     <div className="absolute -top-4 -right-4 w-20 h-20 border-t-2 border-r-2 border-[#C42A1E]/30 rounded-tl-3xl" />
                     <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 justify-end lg:justify-start">
                       Expert Knowledge Transfer
-                      <div className="w-2 h-2 rounded-full bg-[#C42A1E] animate-pulse" />
+                      <div className={`w-2 h-2 rounded-full bg-[#C42A1E] ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">
                       Empower your team with elite Oracle APEX expertise. We offer comprehensive training modules from fundamental building blocks to advanced architectural mastery, tailored for both corporate teams and educational institutions.
@@ -970,7 +1020,7 @@ export default function OracleApexClient() {
                           <div className="absolute inset-0 bg-gradient-to-br from-[#C42A1E]/20 to-transparent opacity-50" />
                           <div className="relative z-10 text-right lg:text-left">
                             <div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase whitespace-nowrap flex items-center gap-2 justify-end lg:justify-start">
-                              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                              <span className={`w-1.5 h-1.5 rounded-full bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                               {service.title}
                             </div>
                             <p className="text-[10px] text-white/70 group-hover/item:text-white transition-colors leading-tight uppercase tracking-tighter">
@@ -1002,7 +1052,7 @@ export default function OracleApexClient() {
         {/* Scrolling Technical Text Background */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none flex flex-col justify-between py-20">
           {[...Array(5)].map((_, i) => (
-            <div key={i} className="whitespace-nowrap text-[12rem] font-black leading-none tracking-tighter flex gap-20 animate-infinite-scroll">
+            <div key={i} className={`whitespace-nowrap text-[12rem] font-black leading-none tracking-tighter flex gap-20 ${effectiveReduceMotion ? '' : 'animate-infinite-scroll'}`}>
               <span className="text-white">LEGACY_ENGINEERING</span>
               <span className="text-transparent stroke-white stroke-1">EST_2007</span>
               <span className="text-white">ORACLE_MASTERY</span>
@@ -1049,7 +1099,7 @@ export default function OracleApexClient() {
                         <div className="mt-8 pt-8 border-t border-white/5 flex items-center justify-between">
                           <div className="flex gap-2">
                              {[...Array(5)].map((_, i) => (
-                               <div key={i} className="w-1 h-4 bg-[#C42A1E]/40 rounded-full animate-pulse" style={{ animationDelay: `${i * 0.2}s` }} />
+                               <div key={i} className={`w-1 h-4 bg-[#C42A1E]/40 rounded-full ${effectiveReduceMotion ? '' : 'animate-pulse'}`} style={{ animationDelay: `${i * 0.2}s` }} />
                              ))}
                           </div>
                           <div className="text-[9px] font-mono text-zinc-700 uppercase">Success_Rate: 100%</div>
@@ -1179,7 +1229,7 @@ export default function OracleApexClient() {
               {/* Top Branding Tag */}
               <div className="flex justify-center">
                 <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/10 backdrop-blur-md">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sinai-glow-orange animate-pulse" />
+                  <span className={`w-1.5 h-1.5 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                   <span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.4em] font-black uppercase">Engagement_Initialization // APEX_NODE_V24.1</span>
                 </div>
               </div>
@@ -1199,12 +1249,13 @@ export default function OracleApexClient() {
                   <span className="relative z-10">Initialize Project</span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" />
                   
-                  {/* Internal Shimmer */}
-                  <motion.div 
-                    animate={{ left: ["-100%", "200%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
-                  />
+                  {!effectiveReduceMotion && (
+                    <motion.div 
+                      animate={{ left: ["-100%", "200%"] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
+                    />
+                  )}
                 </Link>
 
                 <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-600 tracking-widest uppercase">
