@@ -56,13 +56,22 @@ export const metadata: Metadata = {
     siteName: "APEX Experts AI Solutions",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/images/dark-logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "APEX Experts AI Solutions - AI, Oracle APEX, Web and Mobile Development",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title:
       "APEX Experts AI Solutions | AI Systems, Oracle APEX & Custom Software",
     description:
       "Practical AI systems, Oracle APEX applications, dashboards, automation, and custom software built for real business use.",
+    images: ["/images/dark-logo.jpg"],
   },
   robots: {
     index: true,
@@ -84,11 +93,12 @@ export const metadata: Metadata = {
         url: "/favicon.ico",
       },
       {
-        url: "/images/logo-dark.svg",
+        url: "/images/dark-logo.jpg",
         type: "image/svg+xml",
       },
     ],
     shortcut: "/favicon.ico",
+    apple: "/images/dark-logo.jpg",
   },
 };
 
