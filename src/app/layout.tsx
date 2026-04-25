@@ -23,9 +23,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://apexexperts.net"),
+  metadataBase: new URL("https://apex-cli-eight.vercel.app"),
   title: {
-    default: "APEX Experts AI Solutions — Premium AI Engineering",
+    default: "APEX Experts AI Solutions",
     template: "%s | APEX Experts AI Solutions",
   },
   description:
@@ -42,13 +42,13 @@ export const metadata: Metadata = {
     title: "APEX Experts AI Solutions",
     description:
       "Engineering production-grade AI systems for forward-thinking enterprises.",
-    url: "https://apexexperts.net",
+    url: "https://apex-cli-eight.vercel.app",
     siteName: "APEX Experts AI Solutions",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/images/og-main.png",
+        url: "/images/logo-footer.png",
         width: 1200,
         height: 630,
         alt: "APEX Experts AI Solutions",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title: "APEX Experts AI Solutions",
     description:
       "Engineering production-grade AI systems for forward-thinking enterprises.",
-    images: ["/images/og-main.png"],
+    images: ["/images/logo-footer.png"],
   },
   robots: {
     index: true,
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://apexexperts.net",
+    canonical: "https://apex-cli-eight.vercel.app",
   },
 };
 
