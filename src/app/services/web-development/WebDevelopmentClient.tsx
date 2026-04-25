@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import { Globe, Palette, CloudUpload, ShieldCheck, Layers, Zap } from "lucide-react";
-import { Header } from "@/components/Header";
 import { SectionReveal } from "@/components/SectionReveal";
 
 interface WebTechItem {
@@ -587,8 +586,6 @@ export default function WebDevelopmentClient() {
 
   return (
     <div className="relative bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black">
-      <Header />
-      
       <WebDevelopmentHero />
       
       {/* Capability Hub */}

@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Smartphone, Apple, Zap, Palette, Database } from "lucide-react";
-import { Header } from "@/components/Header";
 import { SectionReveal } from "@/components/SectionReveal";
 
 interface MobileCapability {
@@ -342,7 +341,6 @@ export default function MobileDevelopmentClient() {
 
   return (
     <div className="relative bg-[#050505] text-white min-h-screen selection:bg-sinai-glow-orange selection:text-black font-sans">
-      <Header />
       <MobileHero />
       
       {/* Capability Hub */}
