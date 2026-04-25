@@ -10,7 +10,7 @@ const POSITIONS = [
     title: "Technical Depth",
     short: "We prioritize engineering rigor over surface-level AI integration. Every solution is architected for production reliability.",
     header: "Precision-engineered AI",
-    subHeader: "for real-world systems.",
+    subHeader: " for real-world systems.",
     description: "APEX Experts AI Solutions is a specialized engineering practice focused on designing, building, and deploying production-grade artificial intelligence systems."
   },
   {
@@ -18,7 +18,7 @@ const POSITIONS = [
     title: "Strategic Focus",
     short: "We partner with organizations that understand AI as infrastructure — not as a feature checkbox.",
     header: "AI as Infrastructure",
-    subHeader: "not just a feature checkbox.",
+    subHeader: " not just a feature checkbox.",
     description: "We work at the intersection of advanced machine learning research and robust software engineering — translating complex AI capabilities into reliable, scalable solutions."
   },
   {
@@ -26,7 +26,7 @@ const POSITIONS = [
     title: "Quality Standard",
     short: "Our work meets the same bar as the tools we build with: tested, documented, and designed to evolve.",
     header: "Built to Evolve",
-    subHeader: "designed for longevity.",
+    subHeader: " designed for longevity.",
     description: "Every deployment meets our rigorous standards: fully tested, extensively documented, and architected to grow with your business objectives."
   }
 ];
