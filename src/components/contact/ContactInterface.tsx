@@ -204,14 +204,41 @@ export function ContactInterface() {
                   >
                     {/* Identity Group */}
                     <div className="grid md:grid-cols-2 gap-8">
-                      <PremiumField name="name" label="Full Name" placeholder="Your full identity" required />
-                      <PremiumField name="email" label="Email Address" placeholder="name@company.com" type="email" required />
+                      <PremiumField 
+                        id="full_name"
+                        name="name" 
+                        label="Full Name" 
+                        placeholder="Your full identity" 
+                        autoComplete="name"
+                        required 
+                      />
+                      <PremiumField 
+                        id="email_address"
+                        name="email" 
+                        label="Email Address" 
+                        placeholder="name@company.com" 
+                        type="email" 
+                        autoComplete="email"
+                        required 
+                      />
                     </div>
 
                     {/* Professional Context */}
                     <div className="grid md:grid-cols-2 gap-8">
-                      <PremiumField name="job_title" label="Job Title" placeholder="Architect / CTO" />
-                      <PremiumField name="company" label="Company" placeholder="Organization name" />
+                      <PremiumField 
+                        id="job_title"
+                        name="job_title" 
+                        label="Job Title" 
+                        placeholder="Architect / CTO" 
+                        autoComplete="organization-title"
+                      />
+                      <PremiumField 
+                        id="company_name"
+                        name="company" 
+                        label="Company" 
+                        placeholder="Organization name" 
+                        autoComplete="organization"
+                      />
                     </div>
 
                     {/* Geographic & Direct Link */}
@@ -346,8 +373,14 @@ export function ContactInterface() {
 
                     {/* Message Box */}
                     <div className="space-y-3">
-                      <label className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4">Project_Intel (Message)</label>
+                      <label 
+                        htmlFor="message" 
+                        className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4"
+                      >
+                        Project_Intel (Message)
+                      </label>
                       <textarea 
+                        id="message"
                         name="message"
                         rows={4}
                         required
@@ -405,17 +438,26 @@ interface PremiumFieldProps {
   label: string;
   placeholder: string;
   name: string;
+  id: string;
   type?: string;
   required?: boolean;
+  autoComplete?: string;
 }
 
-const PremiumField = ({ label, placeholder, name, type = "text", required = false }: PremiumFieldProps) => (
+const PremiumField = ({ label, placeholder, name, id, type = "text", required = false, autoComplete }: PremiumFieldProps) => (
   <div className="space-y-3">
-    <label className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4">{label}</label>
+    <label 
+      htmlFor={id} 
+      className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4"
+    >
+      {label}
+    </label>
     <input 
+      id={id}
       name={name}
       type={type}
       required={required}
+      autoComplete={autoComplete}
       placeholder={placeholder}
       className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-4 text-white text-base focus:outline-none focus:border-sinai-glow-orange/30 transition-all placeholder:text-white/20 font-bold tracking-tight disabled:opacity-50"
     />
