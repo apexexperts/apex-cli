@@ -171,22 +171,15 @@ export function Header() {
             : "bg-transparent border-transparent"
         }`}>
           {/* Logo Area */}
-          <Link href="/" className="flex items-center gap-3 group pl-4">
-            <div className="w-10 h-10 rounded-xl bg-sinai-glow-orange flex items-center justify-center shadow-[0_0_20px_rgba(138,59,19,0.3)] group-hover:shadow-[0_0_30px_rgba(138,59,19,0.6)] transition-all relative overflow-hidden">
-              <span className="text-white font-black text-lg z-10">AE</span>
-              <div className="absolute inset-0 opacity-40 scale-150">
-                <Image 
-                  src="/images/brand-logo-ae.png" 
-                  alt="APEX Experts" 
-                  fill 
-                  sizes="40px"
-                  className="object-cover" 
-                />
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-black tracking-tighter text-white uppercase leading-none">APEX Experts</span>
-              <span className="text-[8px] font-mono text-sinai-glow-orange tracking-[0.3em] uppercase font-bold">Engineering_Studio</span>
+          <Link href="/" className="flex items-center group pl-4">
+            <div className="relative w-48 h-12 transition-all duration-500 group-hover:scale-105">
+              <Image 
+                src="/images/logo.png" 
+                alt="APEX Experts AI Solutions" 
+                fill 
+                className="object-contain object-left" 
+                priority
+              />
             </div>
           </Link>
 

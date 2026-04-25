@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { useReducedMotion } from "framer-motion";
 
@@ -18,9 +19,8 @@ export function Footer() {
   return (
     <footer className="relative pt-32 pb-16 px-6 md:px-12 border-t border-white/5 bg-[#06080a] overflow-hidden">
       {/* Massive Background Branding (Watermark) */}
-      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-[25vw] font-black text-white/[0.02] select-none pointer-events-none whitespace-nowrap tracking-tighter">
-        APEX EXPERTS
-      </div>
+      {/* Massive Background Branding (Watermark) - Removed to focus on clean logo */}
+
 
       {/* Cinematic Glow */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-sinai-glow-orange/[0.02] blur-[120px] pointer-events-none" />
@@ -30,15 +30,17 @@ export function Footer() {
           
           {/* Brand Column */}
           <div className="lg:col-span-4 space-y-10">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-sinai-glow-orange flex items-center justify-center shadow-[0_0_30px_rgba(138,59,19,0.4)]">
-                <span className="text-white font-black text-xl">A</span>
+            <Link href="/" className="inline-block transition-all duration-500 hover:scale-105">
+              <div className="relative w-[450px] h-32">
+                <Image 
+                  src="/images/logo-footer.png" 
+                  alt="APEX Experts AI Solutions" 
+                  fill 
+                  className="object-contain object-left" 
+                  priority
+                />
               </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-black tracking-tighter text-white uppercase">APEX Experts</span>
-                <span className="text-[9px] font-mono text-sinai-glow-orange tracking-[0.4em] uppercase font-bold">AI Engineering Studio</span>
-              </div>
-            </div>
+            </Link>
             <p className="text-lg text-zinc-500 max-w-sm leading-relaxed text-balance">
               Architecting the next generation of production-grade AI systems with technical precision and strategic depth.
             </p>
