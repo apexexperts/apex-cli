@@ -47,13 +47,14 @@ export function ContactInterface() {
   const serviceRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
     const handleClickOutside = (event: MouseEvent) => {
       if (countryRef.current && !countryRef.current.contains(event.target as Node)) setIsCountryOpen(false);
       if (serviceRef.current && !serviceRef.current.contains(event.target as Node)) setIsServiceOpen(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
+      cancelAnimationFrame(frame);
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
@@ -115,7 +116,8 @@ export function ContactInterface() {
       } else {
         setFormError(result.error || "Failed to send message. Please try again.");
       }
-    } catch (err) {
+    } catch (error) {
+      console.error(error);
       setFormError("An unexpected error occurred. Please try again later.");
     } finally {
       setIsSubmitting(false);
@@ -269,7 +271,7 @@ export function ContactInterface() {
                           onKeyDown={(e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
                               e.preventDefault();
-                              !isSubmitting && setIsCountryOpen(!isCountryOpen);
+                              if (!isSubmitting) setIsCountryOpen(!isCountryOpen);
                             }
                           }}
                           className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-white/[0.06] transition-all relative z-10 focus:ring-2 focus:ring-sinai-glow-orange/30 outline-none"
@@ -378,7 +380,7 @@ export function ContactInterface() {
                         onKeyDown={(e) => {
                           if (e.key === 'Enter' || e.key === ' ') {
                             e.preventDefault();
-                            !isSubmitting && setIsServiceOpen(!isServiceOpen);
+                            if (!isSubmitting) setIsServiceOpen(!isServiceOpen);
                           }
                         }}
                         className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-white/[0.06] transition-all focus:ring-2 focus:ring-sinai-glow-orange/30 outline-none"

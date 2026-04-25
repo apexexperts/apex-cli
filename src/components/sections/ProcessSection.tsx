@@ -41,7 +41,7 @@ export function ProcessSection() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
     const handleScroll = () => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
@@ -56,7 +56,10 @@ export function ProcessSection() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial check
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;

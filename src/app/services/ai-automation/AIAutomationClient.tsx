@@ -90,7 +90,8 @@ const NeuralCore = () => {
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -229,7 +230,8 @@ const CapabilityDetailView = ({ cap }: { cap: AutomationCapability }) => {
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -318,7 +320,8 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -346,7 +349,8 @@ const AIAutomationHero = () => {
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -464,7 +468,8 @@ export default function AIAutomationClient() {
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;

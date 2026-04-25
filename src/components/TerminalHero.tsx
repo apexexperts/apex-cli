@@ -23,7 +23,8 @@ export function TerminalHero() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -123,7 +124,7 @@ export function TerminalHero() {
       }, effectiveReduceMotion ? 10 : 40);
       return () => clearInterval(interval);
     }
-  }, [stage]);
+  }, [stage, effectiveReduceMotion]);
 
   return (
     <div className="relative min-h-screen bg-[#06080a]">

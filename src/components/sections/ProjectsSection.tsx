@@ -138,7 +138,8 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;

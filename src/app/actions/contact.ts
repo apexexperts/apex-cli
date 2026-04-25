@@ -54,7 +54,7 @@ async function verifyTurnstile(token: string) {
     });
     const outcome = await result.json();
     return outcome.success;
-  } catch (err) {
+  } catch {
     return false;
   }
 }
@@ -87,7 +87,7 @@ export async function submitContactForm(formData: FormData) {
 
     // 5. Transmission Logic
     if (process.env.RESEND_API_KEY) {
-      const { data, error } = await resend.emails.send({
+      const { error } = await resend.emails.send({
         from: process.env.CONTACT_FORM_FROM || "onboarding@resend.dev",
         to: [process.env.CONTACT_FORM_TO || "hello@apexexperts.net"],
         subject: `[Lead] ${validatedData.service} request from ${validatedData.name}`,

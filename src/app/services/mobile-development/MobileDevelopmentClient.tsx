@@ -134,7 +134,8 @@ const TechSingularity = () => {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -176,15 +177,7 @@ const TechSingularity = () => {
 // --- Sub-Components ---
 
 const StreamingText = ({ text, delay = 0, className = "" }: { text: string, delay?: number, className?: string }) => {
-  const shouldReduceMotion = useReducedMotion();
-  const [mounted, setMounted] = useState(false);
   const [displayedText, setDisplayedText] = useState("");
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
 
   useEffect(() => {
     const startTimeout = setTimeout(() => {
@@ -206,7 +199,8 @@ const NeuralCore = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -262,7 +256,8 @@ const CapabilityDetailView = ({ cap }: { cap: MobileCapability }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -342,7 +337,8 @@ const MobileHero = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -390,7 +386,8 @@ export default function MobileDevelopmentClient() {
   const activeCap = MOBILE_CAPABILITIES.find(c => c.id === activeCapId);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;

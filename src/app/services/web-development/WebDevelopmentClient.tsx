@@ -136,7 +136,8 @@ const TechSingularity = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -263,7 +264,8 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -281,7 +283,7 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
     }, delay);
     
     return () => clearTimeout(startTimeout);
-  }, [text, delay]);
+  }, [text, delay, effectiveReduceMotion]);
 
   return <span className={className}>{displayedText}</span>;
 };
@@ -291,7 +293,8 @@ const NeuralCore = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -424,7 +427,8 @@ const CapabilityDetailView = ({ cap }: { cap: WebCapability }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -513,7 +517,8 @@ const WebDevelopmentHero = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -632,7 +637,8 @@ export default function WebDevelopmentClient() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -706,7 +712,7 @@ export default function WebDevelopmentClient() {
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 z-10">
               <div className="w-[700px] h-[700px] border border-white/5 rounded-full" />
               <div className="absolute w-[500px] h-[500px] border border-white/5 rounded-full" />
-              <div className={`absolute w-[350px] h-[350px] border border-sinai-glow-orange/10 rounded-full ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
+              <div className={`absolute w-[350px] h-[350px] border border-sinai-glow-orange/10 rounded-full ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
             </div>
           </div>
         </div>

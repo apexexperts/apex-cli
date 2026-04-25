@@ -73,7 +73,8 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -87,10 +88,10 @@ const StreamingText = ({ text, delay = 0, className = "" }: { text: string, dela
         if (i >= text.length) clearInterval(interval);
       }, effectiveReduceMotion ? 10 : 30);
       return () => clearInterval(interval);
-    }, delay);
+    }, effectiveReduceMotion ? 100 : delay);
     
     return () => clearTimeout(startTimeout);
-  }, [text, delay, shouldReduceMotion]);
+  }, [text, delay, effectiveReduceMotion]);
 
   return <span className={className}>{displayedText}<span className={`${effectiveReduceMotion ? '' : 'animate-pulse'} inline-block w-1 h-8 md:h-12 bg-sinai-glow-orange ml-1`} /></span>;
 };
@@ -100,7 +101,8 @@ const NeuralCore = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -231,7 +233,8 @@ const CapabilityDetailView = ({ cap }: { cap: OracleCapability }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -321,7 +324,8 @@ const OracleApexHero = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
@@ -441,7 +445,8 @@ export default function OracleApexClient() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const effectiveReduceMotion = mounted ? shouldReduceMotion : false;
