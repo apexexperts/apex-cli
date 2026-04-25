@@ -13,6 +13,20 @@ export const metadata: Metadata = {
     description: "The unified system of record for SaaS growth. Explore the Tasto revenue intelligence deployment.",
     url: "https://apexexperts.net/projects/tasto",
     type: "website",
+    images: [
+      {
+        url: "/images/tasto-premium.png",
+        width: 1200,
+        height: 630,
+        alt: "Tasto Project",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tasto | SaaS Revenue Metrics",
+    description: "The unified system of record for SaaS growth.",
+    images: ["/images/tasto-premium.png"],
   },
 };
 

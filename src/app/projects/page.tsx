@@ -13,6 +13,20 @@ export const metadata: Metadata = {
     description: "Explore the technical precision and elite aesthetic execution of our production-grade deployments.",
     url: "https://apexexperts.net/projects",
     type: "website",
+    images: [
+      {
+        url: "/images/og-projects.png",
+        width: 1200,
+        height: 630,
+        alt: "APEX Experts Projects",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Production Registry | Projects",
+    description: "Explore the technical precision and elite aesthetic execution of our production-grade deployments.",
+    images: ["/images/og-projects.png"],
   },
 };
 

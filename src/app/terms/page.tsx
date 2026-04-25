@@ -5,6 +5,28 @@ import ReactMarkdown from "react-markdown";
 export const metadata: Metadata = {
   title: "Terms of Service | APEX Experts AI Solutions",
   description: "Official Master Terms and Conditions governing the use of APEX Experts AI Solutions and platforms.",
+  alternates: {
+    canonical: "https://apexexperts.net/terms",
+  },
+  openGraph: {
+    title: "Terms of Service | APEX Experts AI Solutions",
+    description: "Official Master Terms and Conditions.",
+    url: "https://apexexperts.net/terms",
+    images: [
+      {
+        url: "/images/og-main.png",
+        width: 1200,
+        height: 630,
+        alt: "Terms of Service",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service | APEX Experts AI Solutions",
+    description: "Official Master Terms and Conditions.",
+    images: ["/images/og-main.png"],
+  },
 };
 
 const TERMS_CONTENT = `# Terms of Service

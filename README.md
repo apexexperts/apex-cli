@@ -59,7 +59,7 @@ All placeholder content is labeled with `[PLACEHOLDER: ...]` markers. Key locati
 | Global metadata     | `src/app/layout.tsx`   |
 | Sitemap             | `src/app/sitemap.ts`   |
 | Robots              | `src/app/robots.ts`    |
-| Domain URL          | All three files above — search for `apex-experts.com` |
+| Domain URL          | All three files above — search for `apexexperts.net` |
 
 ## How the Hero Animation Works
 

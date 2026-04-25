@@ -46,12 +46,21 @@ export const metadata: Metadata = {
     siteName: "APEX Experts AI Solutions",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/images/og-main.png",
+        width: 1200,
+        height: 630,
+        alt: "APEX Experts AI Solutions",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "APEX Experts AI Solutions",
     description:
       "Engineering production-grade AI systems for forward-thinking enterprises.",
+    images: ["/images/og-main.png"],
   },
   robots: {
     index: true,

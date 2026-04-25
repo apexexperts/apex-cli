@@ -5,6 +5,28 @@ import ReactMarkdown from "react-markdown";
 export const metadata: Metadata = {
   title: "Privacy Protocol | APEX Experts AI Solutions",
   description: "Official Data Protection and Privacy Governance Framework for APEX Experts AI Solutions.",
+  alternates: {
+    canonical: "https://apexexperts.net/privacy",
+  },
+  openGraph: {
+    title: "Privacy Protocol | APEX Experts AI Solutions",
+    description: "Official Data Protection and Privacy Governance Framework.",
+    url: "https://apexexperts.net/privacy",
+    images: [
+      {
+        url: "/images/og-main.png",
+        width: 1200,
+        height: 630,
+        alt: "Privacy Protocol",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Protocol | APEX Experts AI Solutions",
+    description: "Official Data Protection and Privacy Governance Framework.",
+    images: ["/images/og-main.png"],
+  },
 };
 
 const PRIVACY_CONTENT = `# Privacy Policy

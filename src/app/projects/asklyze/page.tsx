@@ -13,6 +13,20 @@ export const metadata: Metadata = {
     description: "Transform complex data into conversational intelligence within Oracle APEX. Explore the ASKLYZE plugin.",
     url: "https://apexexperts.net/projects/asklyze",
     type: "website",
+    images: [
+      {
+        url: "/images/asklyze-premium.png",
+        width: 1200,
+        height: 630,
+        alt: "Asklyze Project",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Asklyze | Plugin for Oracle APEX",
+    description: "Transform complex data into conversational intelligence within Oracle APEX.",
+    images: ["/images/asklyze-premium.png"],
   },
 };
 
