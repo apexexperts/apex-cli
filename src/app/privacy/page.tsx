@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 const PRIVACY_CONTENT = `# Privacy Policy
 
 **APEX Experts AI Solutions**
-**Effective Date:** April 24, 2024
-**Last Updated:** April 24, 2024
-**Version:** 3.0 FINAL - Official Publication
+**Effective Date:** April 25, 2026
+**Last Updated:** April 25, 2026
+**Version:** 3.0 — Official Publication
 
 This Privacy Policy explains how APEX Experts AI Solutions and its affiliated business units, products, and service teams, including APEX Experts, Asklyze, MyQuery, and Tasto, collect, use, store, protect, disclose, and delete personal data. It is written for website visitors, prospective customers, customers, users of our products, business partners, suppliers, job applicants, and any person whose personal data may be processed through our websites, platforms, applications, support channels, professional services, or AI-enabled solutions.
 
@@ -846,23 +846,7 @@ Because we build AI, Oracle APEX, web, mobile, analytics, automation, and enterp
 
 If you have a privacy question, contact us at **[info@apexexperts.net](mailto:info@apexexperts.net)**.
 
-## 54. Implementation Note for Website Publication
-
-Before publishing this Privacy Policy, APEX should complete the following internal review:
-
-* Confirm the official legal company name.
-* Confirm whether the company wants to list Alexandria, Dubai, or both as public locations.
-* Confirm the official privacy contact email.
-* Confirm whether a dedicated privacy email should be created, such as [privacy@apexexperts.net](mailto:privacy@apexexperts.net).
-* Confirm whether any specific third-party providers must be listed.
-* Confirm whether cookie banner behavior matches the cookie section.
-* Confirm whether any products use third-party AI providers and whether this must be disclosed in more detail.
-* Confirm whether any product stores prompts, generated SQL, query logs, dashboards, or analytics outputs.
-* Confirm retention periods for support tickets, audit logs, backups, billing records, and marketing contacts.
-* Confirm whether Asklyze, MyQuery, or Tasto need separate product-specific privacy pages.
-* Confirm whether any security certifications are actually held before mentioning them publicly.
-* Confirm whether a Data Processing Agreement is available for enterprise customers.
-* Confirm whether the company needs a cookie policy, acceptable use policy, security policy, or sub-processor page.`;
+`;
 
 import OfficialStamp from "@/components/OfficialStamp";
 

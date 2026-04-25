@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 const TERMS_CONTENT = `# Terms of Service
 
 **APEX Experts AI Solutions**
-**Effective Date:** [Insert Date]
-**Last Updated:** [Insert Date]
-**Version:** 1.0 — Public Website Draft
+**Effective Date:** April 25, 2026
+**Last Updated:** April 25, 2026
+**Version:** 1.0 — Official Publication
 
 These Terms of Service explain the rules that apply when you access or use the websites, products, software, platforms, applications, professional services, support channels, and related offerings provided by APEX Experts AI Solutions and its affiliated product and service teams.
 
@@ -619,37 +619,6 @@ AI features are helpful tools, but they are not perfect. They may be wrong. They
 
 If there is a signed agreement between APEX and a customer, that agreement controls where it conflicts with these public Terms.
 
-## 61. Internal Publication Checklist
-
-This section is for APEX internal review and should be removed before publishing the public version.
-
-Before publishing these Terms, APEX should confirm:
-
-* The official legal company name and contracting entity.
-* Whether the public Terms should say “Terms of Service,” “Terms and Conditions,” or both.
-* Whether the Terms apply to all products or whether Asklyze, MyQuery, and Tasto need separate product-specific terms.
-* The governing law and dispute forum.
-* Whether arbitration, UAE courts, Egyptian courts, DIFC courts, ADGM courts, or another forum should apply.
-* Whether consumer users are accepted or whether the services are strictly B2B.
-* Whether subscriptions auto-renew and what cancellation notice applies.
-* Whether refunds are allowed and under what conditions.
-* Whether trial and beta services may use production data.
-* Whether specific service level commitments exist.
-* Whether support response times are promised.
-* Whether a public Acceptable Use Policy should be separated into a standalone page.
-* Whether a public Security Policy should be separated into a standalone page.
-* Whether a Data Processing Agreement is available for enterprise customers.
-* Whether sub-processors should be listed on a public page.
-* Whether AI providers or cloud providers should be disclosed.
-* Whether customer logos may be used in marketing only with written permission.
-* Whether the limitation of liability is appropriate under applicable law.
-* Whether payment terms match actual invoices and subscription behavior.
-* Whether Tasto requires stronger accounting, HR, tax, or ERP-specific disclaimers.
-* Whether Asklyze requires a plugin license agreement.
-* Whether MyQuery requires connector-specific limitations.
-* Whether mobile apps require app store-specific terms.
-* Whether any open-source notices must be added.
-* Whether the company wants a dedicated legal email, such as [legal@apexexperts.net](mailto:legal@apexexperts.net).
 `;
 
 import OfficialStamp from "@/components/OfficialStamp";
