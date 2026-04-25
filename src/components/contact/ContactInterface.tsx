@@ -253,10 +253,17 @@ export function ContactInterface() {
                         <div 
                           id="country-trigger"
                           role="button"
+                          tabIndex={0}
                           aria-haspopup="listbox"
                           aria-expanded={isCountryOpen}
                           onClick={() => !isSubmitting && setIsCountryOpen(!isCountryOpen)}
-                          className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-white/[0.06] transition-all relative z-10"
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              !isSubmitting && setIsCountryOpen(!isCountryOpen);
+                            }
+                          }}
+                          className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-white/[0.06] transition-all relative z-10 focus:ring-2 focus:ring-sinai-glow-orange/30 outline-none"
                         >
                           <div className="flex items-center gap-3">
                             <span className="text-xl">{selectedCountry.flag}</span>
@@ -288,12 +295,21 @@ export function ContactInterface() {
                                     onChange={(e) => setCountrySearch(e.target.value)}
                                   />
                                 </div>
-                                <div className="max-h-56 overflow-y-auto custom-scrollbar bg-[#0f0f0f]">
+                                <div className="max-h-56 overflow-y-auto custom-scrollbar bg-[#0f0f0f]" role="listbox">
                                   {filteredCountries.map((country) => (
                                     <div 
                                       key={country.name}
+                                      role="option"
+                                      tabIndex={0}
+                                      aria-selected={selectedCountry.name === country.name}
                                       onClick={() => handleCountrySelect(country)}
-                                      className="px-8 py-4 flex items-center justify-between hover:bg-sinai-glow-orange/10 cursor-pointer transition-colors group"
+                                      onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                          e.preventDefault();
+                                          handleCountrySelect(country);
+                                        }
+                                      }}
+                                      className="px-8 py-4 flex items-center justify-between hover:bg-sinai-glow-orange/10 cursor-pointer transition-colors group outline-none focus:bg-sinai-glow-orange/20"
                                     >
                                       <div className="flex items-center gap-4">
                                         <span className="text-xl">{country.flag}</span>
@@ -345,10 +361,17 @@ export function ContactInterface() {
                       <div 
                         id="service-trigger"
                         role="button"
+                        tabIndex={0}
                         aria-haspopup="listbox"
                         aria-expanded={isServiceOpen}
                         onClick={() => !isSubmitting && setIsServiceOpen(!isServiceOpen)}
-                        className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-white/[0.06] transition-all"
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            !isSubmitting && setIsServiceOpen(!isServiceOpen);
+                          }
+                        }}
+                        className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-white/[0.06] transition-all focus:ring-2 focus:ring-sinai-glow-orange/30 outline-none"
                       >
                         <div className="flex items-center gap-3">
                           {selectedService ? (
@@ -377,12 +400,23 @@ export function ContactInterface() {
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: 10 }}
                               className="mt-4 bg-[#0f0f0f] border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden"
+                              role="listbox"
                             >
                               {SERVICES.map((service) => (
                                 <div 
                                   key={service.name}
+                                  role="option"
+                                  tabIndex={0}
+                                  aria-selected={selectedService === service.name}
                                   onClick={() => { setSelectedService(service.name); setIsServiceOpen(false); }}
-                                  className="px-8 py-4 flex items-center justify-between hover:bg-sinai-glow-orange/10 cursor-pointer transition-colors group"
+                                  onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                      e.preventDefault();
+                                      setSelectedService(service.name);
+                                      setIsServiceOpen(false);
+                                    }
+                                  }}
+                                  className="px-8 py-4 flex items-center justify-between hover:bg-sinai-glow-orange/10 cursor-pointer transition-colors group outline-none focus:bg-sinai-glow-orange/20"
                                 >
                                   <div className="flex items-center gap-4">
                                     <span className="text-zinc-500 group-hover:text-sinai-glow-orange transition-colors">

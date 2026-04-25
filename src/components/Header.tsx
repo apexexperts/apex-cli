@@ -196,6 +196,9 @@ export function Header() {
                     className="relative"
                   >
                     <button 
+                      onClick={() => setIsServicesOpen(!isServicesOpen)}
+                      aria-haspopup="true"
+                      aria-expanded={isServicesOpen}
                       className={`px-5 py-2 text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-300 relative ${
                         active || isServicesOpen ? "text-sinai-glow-orange" : "text-zinc-400 hover:text-white"
                       }`}
@@ -234,8 +237,12 @@ export function Header() {
                                       href={service.href}
                                       onClick={() => setIsServicesOpen(false)}
                                       onMouseEnter={() => setHoveredService(service)}
-                                      className={`group/item flex items-start gap-6 p-6 rounded-2xl transition-all duration-500 text-left ${
-                                        hoveredService.id === service.id ? "bg-white/[0.03] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]" : "hover:bg-white/[0.01]"
+                                      onFocus={() => {
+                                        setIsServicesOpen(true);
+                                        setHoveredService(service);
+                                      }}
+                                      className={`group/item flex items-start gap-6 p-6 rounded-2xl transition-all duration-500 text-left outline-none ${
+                                        hoveredService.id === service.id ? "bg-white/[0.03] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]" : "hover:bg-white/[0.01] focus:bg-white/[0.02]"
                                       }`}
                                     >
                                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 border ${
@@ -373,6 +380,9 @@ export function Header() {
                     className="relative"
                   >
                     <button 
+                      onClick={() => setIsProjectsOpen(!isProjectsOpen)}
+                      aria-haspopup="true"
+                      aria-expanded={isProjectsOpen}
                       className={`px-5 py-2 text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-300 relative ${
                         active || isProjectsOpen ? "text-sinai-glow-orange" : "text-zinc-400 hover:text-white"
                       }`}
@@ -411,8 +421,12 @@ export function Header() {
                                       href={project.href}
                                       onClick={() => setIsProjectsOpen(false)}
                                       onMouseEnter={() => setHoveredProject(project)}
-                                      className={`group/item flex items-start gap-6 p-6 rounded-2xl transition-all duration-500 text-left ${
-                                        hoveredProject.id === project.id ? "bg-white/[0.03] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]" : "hover:bg-white/[0.01]"
+                                      onFocus={() => {
+                                        setIsProjectsOpen(true);
+                                        setHoveredProject(project);
+                                      }}
+                                      className={`group/item flex items-start gap-6 p-6 rounded-2xl transition-all duration-500 text-left outline-none ${
+                                        hoveredProject.id === project.id ? "bg-white/[0.03] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]" : "hover:bg-white/[0.01] focus:bg-white/[0.02]"
                                       }`}
                                     >
                                       <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 border ${
