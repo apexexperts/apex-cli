@@ -17,6 +17,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/oracle-apex",
     "/services/web-development",
     "/services/mobile-development",
+    "/projects/asklyze",
+    "/projects/myquery",
+    "/projects/tasto",
+    "/privacy",
+    "/terms",
   ];
 
   const staticRoutes = routes.map((route) => ({
