@@ -244,8 +244,17 @@ export function ContactInterface() {
                     {/* Geographic & Direct Link */}
                     <div className="grid md:grid-cols-2 gap-8 relative">
                       <div className={`space-y-3 relative transition-all ${isCountryOpen ? 'z-[110]' : 'z-10'}`} ref={countryRef}>
-                        <label className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4">Origin_Point</label>
+                        <label 
+                          htmlFor="country-trigger" 
+                          className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4"
+                        >
+                          Origin_Point
+                        </label>
                         <div 
+                          id="country-trigger"
+                          role="button"
+                          aria-haspopup="listbox"
+                          aria-expanded={isCountryOpen}
                           onClick={() => !isSubmitting && setIsCountryOpen(!isCountryOpen)}
                           className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-white/[0.06] transition-all relative z-10"
                         >
@@ -268,8 +277,11 @@ export function ContactInterface() {
                                 <div className="p-4 border-b border-white/5 flex items-center gap-3 bg-white/[0.02]">
                                   <Search className="w-4 h-4 text-zinc-500" />
                                   <input 
+                                    id="country-search"
+                                    name="country-search"
                                     autoFocus
                                     type="text" 
+                                    aria-label="Search country"
                                     placeholder="Search country..."
                                     className="bg-transparent w-full text-white text-sm focus:outline-none"
                                     value={countrySearch}
@@ -298,15 +310,22 @@ export function ContactInterface() {
                       </div>
 
                       <div className="space-y-3">
-                        <label className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4">Direct_Link (Phone)</label>
+                        <label 
+                          htmlFor="phone-input" 
+                          className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4"
+                        >
+                          Direct_Link (Phone)
+                        </label>
                         <div className="relative">
                           <div className="absolute left-6 top-1/2 -translate-y-1/2 text-zinc-600 font-mono text-base font-bold">
                             {selectedCountry.code}
                           </div>
                           <input 
+                            id="phone-input"
                             ref={phoneInputRef}
                             name="phone"
                             type="tel" 
+                            autoComplete="tel"
                             disabled={isSubmitting}
                             placeholder="Mobile connection"
                             className="w-full bg-white/[0.03] border border-white/5 rounded-2xl pl-16 pr-6 py-4 text-white text-base focus:outline-none focus:border-sinai-glow-orange/30 transition-all placeholder:text-white/20 disabled:opacity-50"
@@ -317,8 +336,17 @@ export function ContactInterface() {
 
                     {/* Service Selection */}
                     <div className="space-y-3 relative" ref={serviceRef}>
-                      <label className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4">Objective_Domain</label>
+                      <label 
+                        htmlFor="service-trigger" 
+                        className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4"
+                      >
+                        Objective_Domain
+                      </label>
                       <div 
+                        id="service-trigger"
+                        role="button"
+                        aria-haspopup="listbox"
+                        aria-expanded={isServiceOpen}
                         onClick={() => !isSubmitting && setIsServiceOpen(!isServiceOpen)}
                         className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-4 flex items-center justify-between cursor-pointer hover:bg-white/[0.06] transition-all"
                       >
