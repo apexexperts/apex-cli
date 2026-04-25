@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: "AI & Process Automation — Autonomous Enterprise Agents",
   description: "Revolutionizing enterprise workflows with intelligent autonomous agents and cognitive RPA architectures. Engineer the future of digital intelligence.",
   alternates: {
-    canonical: "https://apex-experts.net/services/ai-automation",
+    canonical: "https://apexexperts.net/services/ai-automation",
   },
   openGraph: {
     title: "AI & Process Automation — Autonomous Enterprise Agents",
     description: "Revolutionizing enterprise workflows with intelligent autonomous agents and cognitive RPA architectures.",
-    url: "https://apex-experts.net/services/ai-automation",
+    url: "https://apexexperts.net/services/ai-automation",
     images: [
       {
         url: "/images/og-ai-automation.png",

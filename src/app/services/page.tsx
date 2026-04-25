@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: "Services — Enterprise AI & Oracle APEX Architectures",
   description: "A definitive catalog of our engineering operation units. From AI automation to Oracle APEX development, we transform complex challenges into technical advantages.",
   alternates: {
-    canonical: "https://apex-experts.net/services",
+    canonical: "https://apexexperts.net/services",
   },
   openGraph: {
     title: "Services — Enterprise AI & Oracle APEX Architectures",
     description: "A definitive catalog of our engineering operation units. From AI automation to Oracle APEX development, we transform complex challenges into technical advantages.",
-    url: "https://apex-experts.net/services",
+    url: "https://apexexperts.net/services",
     images: [
       {
         url: "/images/og-services.png",
@@ -42,7 +42,7 @@ export default function ServicesPage() {
             "provider": {
               "@type": "Organization",
               "name": "APEX Experts AI Solutions",
-              "url": "https://apex-experts.net"
+              "url": "https://apexexperts.net"
             },
             "hasOfferCatalog": {
               "@type": "OfferCatalog",

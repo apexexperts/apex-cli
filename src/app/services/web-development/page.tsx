@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: "Web Engineering — High-Performance Next.js Architectures",
   description: "Crafting high-performance, cinematic web experiences with production-grade Next.js architectures, immersive design, and technical mastery.",
   alternates: {
-    canonical: "https://apex-experts.net/services/web-development",
+    canonical: "https://apexexperts.net/services/web-development",
   },
   openGraph: {
     title: "Web Engineering — High-Performance Next.js Architectures",
     description: "Crafting high-performance, cinematic web experiences with production-grade Next.js architectures.",
-    url: "https://apex-experts.net/services/web-development",
+    url: "https://apexexperts.net/services/web-development",
     images: [
       {
         url: "/images/og-web-development.png",

@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: "Mobile Architecture — Premium iOS & Android Engineering",
   description: "Engineering premium native and cross-platform mobile apps with world-class UX/UI. High-performance iOS and Android architectures for the digital elite.",
   alternates: {
-    canonical: "https://apex-experts.net/services/mobile-development",
+    canonical: "https://apexexperts.net/services/mobile-development",
   },
   openGraph: {
     title: "Mobile Architecture — Premium iOS & Android Engineering",
     description: "Engineering premium native and cross-platform mobile apps with world-class UX/UI.",
-    url: "https://apex-experts.net/services/mobile-development",
+    url: "https://apexexperts.net/services/mobile-development",
     images: [
       {
         url: "/images/og-mobile-development.png",

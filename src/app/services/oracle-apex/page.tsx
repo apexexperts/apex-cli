@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: "Oracle APEX Development — Mission-Critical Low-Code",
   description: "Technical mastery in Oracle APEX. End-to-end engineering of mission-critical applications, AI integration, and legacy migration with database precision.",
   alternates: {
-    canonical: "https://apex-experts.net/services/oracle-apex",
+    canonical: "https://apexexperts.net/services/oracle-apex",
   },
   openGraph: {
     title: "Oracle APEX Development — Mission-Critical Low-Code",
     description: "Technical mastery in Oracle APEX. End-to-end engineering of mission-critical applications, AI integration, and legacy migration.",
-    url: "https://apex-experts.net/services/oracle-apex",
+    url: "https://apexexperts.net/services/oracle-apex",
     images: [
       {
         url: "/images/og-oracle-apex.png",

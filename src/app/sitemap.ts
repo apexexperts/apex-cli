@@ -4,7 +4,7 @@ import { BLOG_POSTS } from "@/data/blog";
 const getTopicSlug = (category: string) => category.toLowerCase().replace(/\s+/g, "-");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://apex-experts.net";
+  const baseUrl = "https://apexexperts.net";
 
   const routes = [
     "",

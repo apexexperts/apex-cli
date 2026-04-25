@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: "Contact APEX Experts — Initiate Technical Link",
   description: "Secure a direct neural link with our AI engineering team. Strategic consultation for elite AI solutions and enterprise scaling.",
   alternates: {
-    canonical: "https://apex-experts.net/contact",
+    canonical: "https://apexexperts.net/contact",
   },
   openGraph: {
     title: "Contact APEX Experts — Initiate Technical Link",
     description: "Secure a direct neural link with our AI engineering team.",
-    url: "https://apex-experts.net/contact",
+    url: "https://apexexperts.net/contact",
     images: [
       {
         url: "/images/og-contact.png",
@@ -45,7 +45,7 @@ export default function ContactPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "Technical Support",
-                "email": "info@apex-experts.net"
+                "email": "info@apexexperts.net"
               }
             }
           }),

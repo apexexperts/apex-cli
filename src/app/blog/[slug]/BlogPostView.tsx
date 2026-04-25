@@ -32,11 +32,11 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     publisher: {
       "@type": "Organization",
       name: "APEX Experts AI Solutions",
-      url: "https://apex-experts.net",
+      url: "https://apexexperts.net",
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://apex-experts.net/blog/${post.slug}`,
+      "@id": `https://apexexperts.net/blog/${post.slug}`,
     },
     keywords: post.categories.join(", "),
   };

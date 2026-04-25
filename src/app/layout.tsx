@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://apex-experts.net"),
+  metadataBase: new URL("https://apexexperts.net"),
   title: {
     default: "APEX Experts AI Solutions — Premium AI Engineering",
     template: "%s | APEX Experts AI Solutions",
@@ -36,12 +36,13 @@ export const metadata: Metadata = {
     "enterprise AI",
     "machine learning engineering",
     "AI architecture",
+    "machine learning",
   ],
   openGraph: {
     title: "APEX Experts AI Solutions",
     description:
       "Engineering production-grade AI systems for forward-thinking enterprises.",
-    url: "https://apex-experts.net",
+    url: "https://apexexperts.net",
     siteName: "APEX Experts AI Solutions",
     locale: "en_US",
     type: "website",
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://apex-experts.net",
+    canonical: "https://apexexperts.net",
   },
 };
 

@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: "About APEX Experts — Architecting Digital Intelligence",
   description: "Meet the elite engineering team at APEX Experts. We bridge the gap between complex AI capabilities and real-world enterprise scalability.",
   alternates: {
-    canonical: "https://apex-experts.net/about",
+    canonical: "https://apexexperts.net/about",
   },
   openGraph: {
     title: "About APEX Experts — Architecting Digital Intelligence",
     description: "Meet the elite engineering team at APEX Experts. We bridge the gap between complex AI capabilities and real-world enterprise scalability.",
-    url: "https://apex-experts.net/about",
+    url: "https://apexexperts.net/about",
     images: [
       {
         url: "/images/og-about.png",
@@ -44,7 +44,7 @@ export default function AboutPage() {
               "name": "APEX Experts AI Solutions",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://apex-experts.net/logo.png"
+                "url": "https://apexexperts.net/logo.png"
               }
             }
           }),
