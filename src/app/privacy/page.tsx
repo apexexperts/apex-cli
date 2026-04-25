@@ -249,7 +249,7 @@ Our privacy approach for Asklyze is based on controlled scope and customer gover
 
 Depending on the deployment and configuration, Asklyze may process prompts, metadata, approved schema context, generated SQL, query logs, chart definitions, dashboard configurations, and user feedback. Asklyze should not be configured to expose sensitive data to users who are not authorized to access it.
 
-Where Asklyze is deployed in a zero-data-movement or customer-controlled architecture, customer data remains within the customer’s environment except for the minimum context required to operate the agreed AI workflow, if any. The exact technical behavior should be confirmed in the applicable product documentation, deployment guide, and customer agreement.
+Where Asklyze is deployed in a zero-data-movement or customer-controlled architecture, customer data remains within the customer’s environment except for the minimum context required to operate the agreed AI workflow, if any. The exact technical behavior is governed by the applicable product documentation, deployment guide, and customer agreement.
 
 Asklyze is not intended to bypass Oracle database permissions, Oracle APEX authorization schemes, row-level security, application security, customer governance rules, or internal approval workflows. Customers are responsible for configuring safe access boundaries and validating that generated outputs are appropriate for their users and use cases.
 

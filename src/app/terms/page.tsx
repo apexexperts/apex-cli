@@ -592,11 +592,7 @@ Each party is an independent contractor unless a signed agreement expressly stat
 
 The governing law and dispute resolution process may be stated in the applicable signed agreement, order form, or statement of work. If a signed agreement specifies governing law, courts, arbitration, venue, or dispute process, that agreement will control.
 
-For public website use or services without a separate signed agreement, the governing law and dispute forum should be confirmed by APEX before publication of these Terms. APEX may choose the jurisdiction that reflects its corporate registration, primary contracting entity, customer location, or operating structure.
-
 Before starting a formal dispute, the parties should first try to resolve the issue through good-faith discussions. Either party may seek urgent injunctive or equitable relief where necessary to protect confidential information, intellectual property, security, or unauthorized system access.
-
-This section should be reviewed by legal counsel before publication, especially if APEX intends to use arbitration, UAE courts, Egyptian courts, DIFC courts, ADGM courts, or another forum.
 
 ## 57. Entire Agreement
 
