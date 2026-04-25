@@ -79,7 +79,12 @@ export const metadata: Metadata = {
     canonical: "https://apexexperts.net",
   },
   icons: {
-    icon: "/images/logo-dark.svg",
+    icon: [
+      {
+        url: "/images/logo-dark.svg",
+        type: "image/svg+xml",
+      },
+    ],
     shortcut: "/images/logo-dark.svg",
     apple: "/images/logo-dark.svg",
   },

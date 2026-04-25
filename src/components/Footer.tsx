@@ -47,9 +47,9 @@ export function Footer() {
             </p>
             
             <div className="flex items-center gap-5">
-              <SocialIcon href="#" icon={<XIcon />} label="X" />
-              <SocialIcon href="#" icon={<LinkedInIcon />} label="LinkedIn" />
-              <SocialIcon href="#" icon={<GitHubIcon />} label="GitHub" />
+              <SocialIcon href="https://x.com/apexexperts_ai" icon={<XIcon />} label="X" />
+              <SocialIcon href="https://www.linkedin.com/company/apex-experts-ai-solutions" icon={<LinkedInIcon />} label="LinkedIn" />
+              <SocialIcon href="https://github.com/APEX-Experts" icon={<GitHubIcon />} label="GitHub" />
               <SocialIcon href="#" icon={<DiscordIcon />} label="Discord" />
             </div>
           </div>
@@ -132,7 +132,13 @@ function FooterLinkGroup({ title, links }: { title: string; links: { name: strin
 
 function SocialIcon({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
   return (
-    <Link href={href} aria-label={label} className="w-12 h-12 rounded-xl bg-white/[0.02] border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/[0.05] transition-all duration-500 group">
+    <Link 
+      href={href} 
+      aria-label={label} 
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-12 h-12 rounded-xl bg-white/[0.02] border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/[0.05] transition-all duration-500 group"
+    >
       <div className="w-5 h-5 group-hover:scale-110 transition-transform duration-500">
         {icon}
       </div>
