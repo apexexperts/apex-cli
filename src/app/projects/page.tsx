@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { ProjectsClient } from "./ProjectsClient";
+import ProjectsClient from "./ProjectsClient";
 
 export const metadata: Metadata = {
   title: "Production Registry | Projects",

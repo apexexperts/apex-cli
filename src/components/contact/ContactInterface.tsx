@@ -6,6 +6,7 @@ import { ChevronDown, Search, Check, Loader2,
   Cpu, Database, Globe, Smartphone, Layers, MoreHorizontal 
 } from "lucide-react";
 import { submitContactForm } from "@/app/actions/contact";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 const COUNTRIES = [
   { name: "Egypt", code: "+20", flag: "🇪🇬" },
@@ -34,6 +35,7 @@ export function ContactInterface() {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isServiceOpen, setIsServiceOpen] = useState(false);
   const [countrySearch, setCountrySearch] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   
   // Submission States
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -104,6 +106,7 @@ export function ContactInterface() {
     formData.append("country", selectedCountry.name);
     formData.append("country_code", selectedCountry.code);
     formData.append("service", selectedService);
+    formData.append("turnstileToken", turnstileToken || "");
 
     try {
       const result = await submitContactForm(formData);
@@ -457,6 +460,27 @@ export function ContactInterface() {
                         disabled={isSubmitting}
                         placeholder="Briefly describe your requirements or vision..."
                         className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-4 text-white text-base focus:outline-none focus:border-sinai-glow-orange/30 transition-all placeholder:text-white/20 resize-none font-bold tracking-tight disabled:opacity-50"
+                      />
+                    </div>
+
+                    {/* Honeypot for Spam Protection */}
+                    <input 
+                      type="text" 
+                      name="honeypot" 
+                      className="hidden" 
+                      tabIndex={-1} 
+                      autoComplete="off" 
+                    />
+
+                    {/* Security Verification (Invisible Mode) */}
+                    <div className="flex justify-center h-0 overflow-hidden">
+                      <Turnstile
+                        siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""}
+                        onSuccess={(token: string) => setTurnstileToken(token)}
+                        options={{
+                          theme: "dark",
+                          appearance: "interaction-only",
+                        }}
                       />
                     </div>
 

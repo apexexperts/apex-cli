@@ -61,6 +61,22 @@ All placeholder content is labeled with `[PLACEHOLDER: ...]` markers. Key locati
 | Robots              | `src/app/robots.ts`    |
 | Domain URL          | All three files above — search for `apexexperts.net` |
 
+## Contact Form Configuration
+
+The contact form uses [Resend](https://resend.com) for reliable email delivery, [Upstash](https://upstash.com) for rate limiting, and [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/) for invisible spam protection.
+
+To enable full production features:
+1. Copy `.env.example` to `.env.local`.
+2. Add your `RESEND_API_KEY`.
+3. Add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` from your Upstash console.
+4. Add `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` from your Cloudflare dashboard.
+
+The system includes:
+- **Server-side Zod Validation**: Strict schema checking for all fields.
+- **Honeypot Protection**: Detects automated bots.
+- **Sliding Window Rate Limiting**: Prevents API abuse (3 requests per 10 mins per IP).
+- **Turnstile Verification**: Advanced bot protection without UX friction.
+
 ## How the Hero Animation Works
 
 The terminal hero (`src/components/TerminalHero.tsx`) is a state machine with these phases:
