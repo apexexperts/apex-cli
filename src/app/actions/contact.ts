@@ -39,6 +39,31 @@ const ContactSchema = z.object({
   turnstileToken: z.string().min(1, "Verification required"),
 });
 
+const HTML_ESCAPE_LOOKUP: Record<string, string> = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+};
+
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (character) => HTML_ESCAPE_LOOKUP[character]);
+}
+
+function emailFallback(value: string | undefined, fallback: string) {
+  const trimmedValue = value?.trim();
+  return trimmedValue ? trimmedValue : fallback;
+}
+
+function formatEmailMessage(value: string) {
+  return escapeHtml(value).replace(/\r\n|\r|\n/g, "<br />");
+}
+
+function sanitizeSubjectPart(value: string) {
+  return value.replace(/[\u0000-\u001F\u007F]+/g, " ").trim();
+}
+
 async function verifyTurnstile(token: string) {
   const secretKey = process.env.TURNSTILE_SECRET_KEY;
   if (!secretKey) return true; // Skip if not configured (dev)
@@ -87,22 +112,34 @@ export async function submitContactForm(formData: FormData) {
 
     // 5. Transmission Logic
     if (process.env.RESEND_API_KEY) {
+      const emailHtml = {
+        name: escapeHtml(validatedData.name),
+        email: escapeHtml(validatedData.email),
+        company: escapeHtml(emailFallback(validatedData.company, "Not provided")),
+        jobTitle: escapeHtml(emailFallback(validatedData.job_title, "No Title")),
+        country: escapeHtml(validatedData.country),
+        countryCode: escapeHtml(validatedData.country_code),
+        phone: escapeHtml(validatedData.phone),
+        service: escapeHtml(validatedData.service),
+        message: formatEmailMessage(validatedData.message),
+      };
+
       const { error } = await resend.emails.send({
         from: process.env.CONTACT_FORM_FROM || "onboarding@resend.dev",
         to: [process.env.CONTACT_FORM_TO || "hello@apexexperts.net"],
-        subject: `[Lead] ${validatedData.service} request from ${validatedData.name}`,
+        subject: `[Lead] ${sanitizeSubjectPart(validatedData.service)} request from ${sanitizeSubjectPart(validatedData.name)}`,
         replyTo: validatedData.email,
         html: `
           <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
             <h2 style="color: #f2a24b;">New Contact Request</h2>
-            <p><strong>From:</strong> ${validatedData.name} (${validatedData.email})</p>
-            <p><strong>Company:</strong> ${validatedData.company || "Not provided"} - ${validatedData.job_title || "No Title"}</p>
-            <p><strong>Location:</strong> ${validatedData.country} (${validatedData.country_code})</p>
-            <p><strong>Phone:</strong> ${validatedData.phone}</p>
-            <p><strong>Service:</strong> ${validatedData.service}</p>
+            <p><strong>From:</strong> ${emailHtml.name} (${emailHtml.email})</p>
+            <p><strong>Company:</strong> ${emailHtml.company} - ${emailHtml.jobTitle}</p>
+            <p><strong>Location:</strong> ${emailHtml.country} (${emailHtml.countryCode})</p>
+            <p><strong>Phone:</strong> ${emailHtml.phone}</p>
+            <p><strong>Service:</strong> ${emailHtml.service}</p>
             <div style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-left: 4px solid #f2a24b;">
               <strong>Message:</strong><br />
-              ${validatedData.message.replace(/\n/g, '<br />')}
+              ${emailHtml.message}
             </div>
             <p style="font-size: 10px; color: #999; margin-top: 30px;">
               Submitted via APEX Experts AI Solutions CLI Interface.
