@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { getCspNonce } from "@/lib/csp";
 import AIAutomationClient from "./AIAutomationClient";
 
 export const metadata: Metadata = {
@@ -28,10 +29,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AIAutomationPage() {
+export default async function AIAutomationPage() {
+  const nonce = await getCspNonce();
+
   return (
     <>
       <script
+        nonce={nonce}
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({

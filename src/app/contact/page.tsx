@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { getCspNonce } from "@/lib/csp";
 import { ContactInterface } from "../../components/contact/ContactInterface";
 
 export const metadata: Metadata = {
@@ -28,10 +29,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const nonce = await getCspNonce();
+
   return (
     <div className="bg-[#050505] min-h-screen selection:bg-sinai-glow-orange/30 selection:text-white overflow-x-hidden">
       <script
+        nonce={nonce}
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({

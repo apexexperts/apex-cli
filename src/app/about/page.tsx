@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { getCspNonce } from "@/lib/csp";
 import AboutClient from "./AboutClient";
 
 export const metadata: Metadata = {
@@ -28,10 +29,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const nonce = await getCspNonce();
+
   return (
     <>
       <script
+        nonce={nonce}
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({

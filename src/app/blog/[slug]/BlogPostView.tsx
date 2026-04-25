@@ -9,7 +9,12 @@ import { ArrowLeft, Share2, Bookmark } from "lucide-react";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "@/data/blog";
 
-export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+interface BlogPostPageProps {
+  params: Promise<{ slug: string }>;
+  nonce?: string;
+}
+
+export default function BlogPostPage({ params, nonce }: BlogPostPageProps) {
   const { slug } = use(params);
   const post = BLOG_POSTS.find(p => p.slug === slug);
   const shouldReduceMotion = useReducedMotion();
@@ -55,6 +60,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   return (
     <article className="min-h-screen bg-[#06080a] text-white pt-40 pb-40 overflow-hidden relative">
       <script
+        nonce={nonce}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />

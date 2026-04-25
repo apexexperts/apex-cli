@@ -16,6 +16,8 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+export const dynamic = "force-dynamic";
+
 export const viewport: Viewport = {
   themeColor: "#06080a",
   width: "device-width",

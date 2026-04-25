@@ -1,6 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { BLOG_POSTS } from "@/data/blog";
+import { getCspNonce } from "@/lib/csp";
 import BlogPostView from "./BlogPostView";
 import { notFound } from "next/navigation";
 
@@ -51,6 +52,7 @@ export default async function Page({ params }: PageProps) {
   const { slug } = await params;
   const post = BLOG_POSTS.find(p => p.slug === slug);
   if (!post) notFound();
+  const nonce = await getCspNonce();
 
-  return <BlogPostView params={params} />;
+  return <BlogPostView params={params} nonce={nonce} />;
 }
