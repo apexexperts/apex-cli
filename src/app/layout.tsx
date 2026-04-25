@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/logo-footer.png",
+        url: "/images/mark-logo.png",
         width: 1200,
         height: 630,
         alt: "APEX Experts AI Solutions",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title: "APEX Experts AI Solutions",
     description:
       "Engineering production-grade AI systems for forward-thinking enterprises.",
-    images: ["/images/logo-footer.png"],
+    images: ["/images/mark-logo.png"],
   },
   robots: {
     index: true,
