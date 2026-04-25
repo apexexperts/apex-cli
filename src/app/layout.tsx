@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://apex-cli-eight.vercel.app"),
+  metadataBase: new URL("https://apexexperts.net"),
   title: {
     default: "APEX Experts AI Solutions",
     template: "%s | APEX Experts AI Solutions",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "APEX Experts AI Solutions",
     description:
       "Engineering production-grade AI systems for forward-thinking enterprises.",
-    url: "https://apex-cli-eight.vercel.app",
+    url: "https://apexexperts.net",
     siteName: "APEX Experts AI Solutions",
     locale: "en_US",
     type: "website",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://apex-cli-eight.vercel.app",
+    canonical: "https://apexexperts.net",
   },
 };
 
