@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 
 const MENU_ITEMS = [
@@ -19,6 +19,7 @@ export function TerminalHero() {
   const [streamedBadge, setStreamedBadge] = useState("");
   const [streamedEngine, setStreamedEngine] = useState("");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const fullTitle = "APEX EXPERTS";
   const fullBadge = "AI SOLUTIONS";
@@ -44,23 +45,36 @@ export function TerminalHero() {
   };
 
   const opacityScroll = calculateTransform(scrollYValue, [0, 450], [1, 0]);
-  const scaleScroll = calculateTransform(scrollYValue, [0, 450], [1, 0.95]);
-  const yScroll = calculateTransform(scrollYValue, [0, 450], [0, 100]);
+  const scaleScroll = shouldReduceMotion ? 1 : calculateTransform(scrollYValue, [0, 450], [1, 0.95]);
+  const yScroll = shouldReduceMotion ? 0 : calculateTransform(scrollYValue, [0, 450], [0, 100]);
 
   useEffect(() => {
     if (stage === 0) {
-      gsap.fromTo(
-        windowRef.current,
-        { scale: 0.85, opacity: 0, rotationX: 15, y: 120, filter: "blur(20px)" },
-        { 
-          scale: 1, opacity: 1, rotationX: 0, y: 0, filter: "blur(0px)",
-          duration: 1.8, ease: "expo.out", delay: 0.4,
-          onComplete: () => setStage(1)
-        }
-      );
+      if (shouldReduceMotion) {
+        gsap.fromTo(
+          windowRef.current,
+          { opacity: 0 },
+          { 
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            onComplete: () => setStage(1)
+          }
+        );
+      } else {
+        gsap.fromTo(
+          windowRef.current,
+          { scale: 0.85, opacity: 0, rotationX: 15, y: 120, filter: "blur(20px)" },
+          { 
+            scale: 1, opacity: 1, rotationX: 0, y: 0, filter: "blur(0px)",
+            duration: 1.8, ease: "expo.out", delay: 0.4,
+            onComplete: () => setStage(1)
+          }
+        );
+      }
     }
 
-    const typeSpeed = 50;
+    const typeSpeed = shouldReduceMotion ? 10 : 50;
     if (stage === 1) {
       let idx = 0;
       const interval = setInterval(() => {
@@ -97,9 +111,9 @@ export function TerminalHero() {
           idx++;
         } else {
           clearInterval(interval);
-          setTimeout(() => setStage(4), 800);
+          setTimeout(() => setStage(4), shouldReduceMotion ? 200 : 800);
         }
-      }, 40);
+      }, shouldReduceMotion ? 10 : 40);
       return () => clearInterval(interval);
     }
   }, [stage]);
