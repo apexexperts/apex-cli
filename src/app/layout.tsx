@@ -78,6 +78,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://apexexperts.net",
   },
+  icons: {
+    icon: "/images/logo-dark.svg",
+    shortcut: "/images/logo-dark.svg",
+    apple: "/images/logo-dark.svg",
+  },
 };
 
 export default function RootLayout({
