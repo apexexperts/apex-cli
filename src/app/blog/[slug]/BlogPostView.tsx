@@ -5,8 +5,9 @@ import { useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionReveal } from "@/components/SectionReveal";
-import { ArrowLeft, Share2, Bookmark } from "lucide-react";
+import { ArrowLeft, Share2, Bookmark, Copy } from "lucide-react";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
 import { BLOG_POSTS } from "@/data/blog";
 
 interface BlogPostPageProps {
@@ -58,7 +59,7 @@ export default function BlogPostPage({ params, nonce }: BlogPostPageProps) {
   let headingIndex = 0;
 
   return (
-    <article className="min-h-screen bg-[#06080a] text-white pt-40 pb-40 overflow-hidden relative">
+    <article className="min-h-screen bg-[#06080a] text-white pt-32 pb-32 overflow-hidden relative">
       <script
         nonce={nonce}
         type="application/ld+json"
@@ -72,7 +73,7 @@ export default function BlogPostPage({ params, nonce }: BlogPostPageProps) {
       <div className="container mx-auto px-6 relative z-10">
         {/* Navigation / Back Button */}
         <SectionReveal>
-          <div className="flex items-center justify-between mb-24">
+          <div className="flex items-center justify-between mb-16">
             <Link href="/blog" className="group flex items-center gap-4 text-[10px] font-mono tracking-[0.5em] text-zinc-500 hover:text-white transition-colors uppercase">
               <div className="w-10 h-10 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center group-hover:bg-sinai-glow-orange group-hover:border-sinai-glow-orange group-hover:text-white transition-all">
                 <ArrowLeft className="w-4 h-4" />
@@ -92,7 +93,7 @@ export default function BlogPostPage({ params, nonce }: BlogPostPageProps) {
 
         {/* Header Section */}
         <SectionReveal>
-          <div className="max-w-5xl mx-auto space-y-12 mb-24">
+          <div className="max-w-5xl mx-auto space-y-8 mb-16">
             <div className="flex flex-wrap gap-4">
               {post.categories?.map((cat: string) => (
                 <Link 
@@ -105,16 +106,16 @@ export default function BlogPostPage({ params, nonce }: BlogPostPageProps) {
               ))}
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-white uppercase">
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-white uppercase">
               {post.title}
             </h1>
 
-            <p className="text-2xl md:text-3xl text-zinc-500 font-light leading-relaxed max-w-3xl">
+            <p className="text-xl md:text-2xl text-zinc-500 font-light leading-relaxed max-w-3xl">
               {post.excerpt}
             </p>
 
-            <div className="flex flex-wrap items-center gap-12 pt-12 border-t border-white/5">
-              <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center gap-8 pt-8 border-t border-white/5">
+              <div className="flex items-center gap-4">
                 <div className="relative w-16 h-16 rounded-2xl overflow-hidden border border-white/10">
                   <Image src={post.author.image} alt={post.author.name} fill className="object-cover" />
                 </div>
@@ -149,15 +150,14 @@ export default function BlogPostPage({ params, nonce }: BlogPostPageProps) {
 
         {/* Main Image */}
         <SectionReveal>
-          <div className="relative aspect-[21/9] rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.05)] mb-32">
+          <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(242,162,75,0.05)] mb-16 bg-zinc-950">
             <Image
               src={post.mainImage}
               alt={post.title}
               fill
               priority
-              className="object-cover"
+              className="object-contain"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#06080a] via-transparent to-transparent opacity-40" />
           </div>
         </SectionReveal>
 
@@ -165,7 +165,7 @@ export default function BlogPostPage({ params, nonce }: BlogPostPageProps) {
         <div className="max-w-4xl mx-auto">
           <SectionReveal>
             {/* Technical Synopsis Card */}
-            <div className="mb-20 p-10 rounded-[2.5rem] bg-sinai-glow-orange/[0.03] border border-sinai-glow-orange/20 relative overflow-hidden group">
+            <div className="mb-12 p-8 rounded-3xl bg-sinai-glow-orange/[0.03] border border-sinai-glow-orange/20 relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-4 opacity-20">
                 <Bookmark className="w-8 h-8 text-sinai-glow-orange" />
               </div>
@@ -177,20 +177,78 @@ export default function BlogPostPage({ params, nonce }: BlogPostPageProps) {
               </div>
             </div>
 
-            <div className="prose prose-invert max-w-none space-y-12">
+            <div className="prose prose-invert max-w-none">
               {post.body.map((block, i) => {
                 if (block.type === "h2") {
                   const headingNumber = String(++headingIndex).padStart(2, "0");
                   return (
-                    <h2 key={i} className="text-4xl md:text-5xl font-black tracking-tighter uppercase mt-24 mb-12 text-white leading-tight flex items-center gap-6">
-                      <span className="text-sinai-glow-orange/40 font-mono text-2xl">{headingNumber}</span>
-                      {block.text}
+                    <h2 key={i} className="text-xl md:text-2xl font-bold tracking-tight uppercase mt-10 mb-4 text-white leading-tight flex items-center gap-3 group/h2">
+                      <span className="text-sinai-glow-orange/30 font-mono text-base">{headingNumber}</span>
+                      <span className="relative">
+                        {block.text}
+                        <div className="absolute -bottom-1 left-0 w-8 h-0.5 bg-sinai-glow-orange/40 rounded-full" />
+                      </span>
                     </h2>
                   );
                 }
-                if (block.type === "p") return <p key={i} className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed mb-12">{block.text}</p>;
+                if (block.type === "p") return (
+                  <div key={i} className="text-base text-zinc-300 font-normal leading-snug mb-3">
+                    <ReactMarkdown components={{
+                      strong: ({node, ...props}) => <span className="font-bold text-white" {...props} />,
+                      a: ({node, ...props}) => <a className="text-sinai-glow-orange hover:underline underline-offset-2 transition-all" {...props} />,
+                      code: ({node, ...props}) => <code className="px-1 py-0.5 rounded bg-white/5 border border-white/10 font-mono text-xs text-sinai-glow-orange" {...props} />
+                    }}>
+                      {block.text}
+                    </ReactMarkdown>
+                  </div>
+                );
+                if (block.type === "ul") return (
+                  <ul key={i} className="space-y-1.5 my-4 list-none">
+                    {block.items.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-base text-zinc-400 font-normal leading-snug group/item">
+                        <span className="mt-2 w-1 h-1 rounded-full bg-sinai-glow-orange/40 shrink-0" />
+                        <div className="flex-1">
+                          <ReactMarkdown components={{
+                            strong: ({node, ...props}) => <span className="font-bold text-white" {...props} />,
+                            a: ({node, ...props}) => <a className="text-sinai-glow-orange hover:underline underline-offset-2 transition-all" {...props} />,
+                            code: ({node, ...props}) => <code className="px-1 py-0.5 rounded bg-white/5 border border-white/10 font-mono text-xs text-sinai-glow-orange" {...props} />
+                          }}>
+                            {item}
+                          </ReactMarkdown>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                );
+                if (block.type === "code") return (
+                  <div key={i} className="my-8 rounded-xl bg-[#0d1117] border border-white/10 overflow-hidden group">
+                    <div className="flex items-center justify-between px-4 py-2 bg-white/[0.03] border-b border-white/5">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/20 border border-red-500/40" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20 border border-amber-500/40" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/20 border border-emerald-500/40" />
+                        <span className="ml-2 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">{block.language}</span>
+                      </div>
+                      <button 
+                        onClick={() => {
+                          navigator.clipboard.writeText(block.code);
+                          // Optional: Add toast notification here if available
+                        }}
+                        className="p-1.5 rounded-md hover:bg-white/5 transition-colors text-zinc-500 hover:text-white"
+                        title="Copy Code"
+                      >
+                        <Copy className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                    <div className="p-4 overflow-x-auto custom-scrollbar">
+                      <pre className="font-mono text-xs md:text-sm leading-normal text-zinc-300 whitespace-pre">
+                        <code>{block.code}</code>
+                      </pre>
+                    </div>
+                  </div>
+                );
                 if (block.type === "image") return (
-                  <div key={i} className="my-20 space-y-6">
+                  <div key={i} className="my-16 space-y-4">
                     <div className="relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 bg-zinc-950 shadow-2xl">
                       <Image
                         src={block.src}
