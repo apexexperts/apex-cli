@@ -616,9 +616,9 @@ Google Gemini;GOOGLE`}</CodeBlock>
           </p>
           <p className="mb-6">
             Download the full package source here:{" "}
-            <Link href={packageSourceLink} className="text-sinai-glow-orange underline decoration-sinai-glow-orange/40 underline-offset-4 hover:text-white">
+            <a href={packageSourceLink} download className="text-sinai-glow-orange underline decoration-sinai-glow-orange/40 underline-offset-4 hover:text-white">
               AI_DOC_DESIGNER_PKG package source
-            </Link>
+            </a>
           </p>
           <CodeBlock language="sql" title="AI_DOC_DESIGNER_PKG public interface">{packageInterface}</CodeBlock>
           <p className="mb-4">The package has four public functions:</p>
@@ -694,9 +694,9 @@ Google Gemini;GOOGLE`}</CodeBlock>
           </p>
           <p className="mb-4">
             Download the full JavaScript controller here:{" "}
-            <Link href={javascriptSourceLink} className="text-sinai-glow-orange underline decoration-sinai-glow-orange/40 underline-offset-4 hover:text-white">
+            <a href={javascriptSourceLink} download className="text-sinai-glow-orange underline decoration-sinai-glow-orange/40 underline-offset-4 hover:text-white">
               JavaScript controller source
-            </Link>
+            </a>
           </p>
           <div className="my-6 rounded-xl border border-white/10 bg-white/[0.02] p-5">
             <ol className="space-y-3 text-sm leading-6 text-zinc-400">
@@ -743,12 +743,12 @@ Google Gemini;GOOGLE`}</CodeBlock>
             <Link href={demoLink} target="_blank" rel="noreferrer" className="px-6 py-2 rounded-lg bg-sinai-glow-orange text-white text-xs font-bold uppercase tracking-widest hover:bg-sinai-glow-orange/80 transition-all">
               Open Live Demo
             </Link>
-            <Link href={exportedAppLink} className="px-6 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-xs font-bold uppercase tracking-widest hover:bg-white/10 transition-all">
+            <a href={exportedAppLink} download className="px-6 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-xs font-bold uppercase tracking-widest hover:bg-white/10 transition-all text-center">
               Download APEX App Export
-            </Link>
-            <Link href={packageSourceLink} className="px-6 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-xs font-bold uppercase tracking-widest hover:bg-white/10 transition-all">
+            </a>
+            <a href={packageSourceLink} download className="px-6 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-xs font-bold uppercase tracking-widest hover:bg-white/10 transition-all text-center">
               Download PL/SQL Package
-            </Link>
+            </a>
           </div>
           <CodeBlock language="text" title="Demo access credentials">{demoCredentials}</CodeBlock>
 
