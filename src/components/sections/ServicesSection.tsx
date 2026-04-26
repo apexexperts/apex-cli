@@ -8,7 +8,7 @@ const SERVICES = [
   {
     id: "01",
     title: "AI & Process Automation",
-    desc: "Revolutionizing workflows with intelligent autonomous agents and robotic process automation (RPA) engineered for maximum operational efficiency.",
+    desc: "Automating repeatable workflows with AI agents, RPA, and human approval where risk is high.",
     tags: ["Agentic AI", "RPA", "Workflow Optimization"],
     icon: (reduced: boolean) => (
       <div className="relative w-12 h-12">
@@ -38,7 +38,7 @@ const SERVICES = [
   {
     id: "02",
     title: "Oracle APEX development",
-    desc: "Building world-class, data-centric enterprise applications using Oracle APEX with unparalleled speed, database precision, and enterprise-grade scalability.",
+    desc: "Building Oracle APEX applications for data entry, approvals, dashboards, reporting, and internal operations.",
     tags: ["Low-Code Elite", "Database Design", "Oracle Cloud"],
     icon: (reduced: boolean) => (
       <div className="relative w-14 h-14">
@@ -101,7 +101,7 @@ const SERVICES = [
   {
     id: "03",
     title: "Web Development",
-    desc: "Crafting high-performance, cinematic web experiences using modern frameworks and production-grade architectures that prioritize user engagement.",
+    desc: "Building fast, polished websites and web apps with Next.js, React, and clean backend integrations.",
     tags: ["Next.js", "React", "Scalable UI"],
     icon: (reduced: boolean) => (
       <div className="relative w-12 h-12">
@@ -129,7 +129,7 @@ const SERVICES = [
   {
     id: "04",
     title: "Mobile Development",
-    desc: "Engineering premium native and cross-platform mobile applications that prioritize speed, advanced security, and world-class UX/UI design.",
+    desc: "Building iOS, Android, and cross-platform apps with clear UX, secure APIs, and reliable performance",
     tags: ["iOS/Android", "React Native", "Secure Mobile"],
     icon: (reduced: boolean) => (
       <div className="relative w-12 h-12">

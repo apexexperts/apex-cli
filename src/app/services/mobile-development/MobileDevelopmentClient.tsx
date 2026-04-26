@@ -351,8 +351,8 @@ const MobileHero = () => {
         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="space-y-12 text-left">
           <div className="space-y-6">
             <div className="flex items-center gap-4 mb-4"><div className="h-px w-12 bg-sinai-glow-orange/30" /><span className="px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-[9px] uppercase tracking-[0.5em] text-sinai-glow-orange font-bold">MOBILE_ENGINEERING // SOL_04</span></div>
-            <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] text-white">Mobile <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-white/40">Mastery.</span></h1>
-            <p className="text-xl md:text-2xl text-zinc-400 max-w-xl font-light leading-relaxed">We engineer high-performance native and cross-platform mobile experiences that prioritize fluid motion, advanced security, and world-class engagement.</p>
+            <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] text-white">Mobile <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-white/40">Mobile App Development.</span></h1>
+            <p className="text-xl md:text-2xl text-zinc-400 max-w-xl font-light leading-relaxed">We engineer high-performance native and cross-platform mobile experiences that prioritize fluid motion, advanced security, and clear UX and reliable performance.</p>
           </div>
           <div className="flex flex-wrap gap-6 pt-4">
             <Link href="/#contact" className="group relative px-12 py-6 rounded-full overflow-hidden bg-sinai-glow-orange text-white font-bold text-sm tracking-[0.3em] uppercase transition-all hover:shadow-[0_0_50px_rgba(242,162,75,0.4)]"><span className="relative z-10">Initialize Project</span><div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" /></Link>
@@ -437,8 +437,8 @@ export default function MobileDevelopmentClient() {
                 <div className="space-y-10">
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative group hover:border-sinai-glow-orange/20 transition-colors">
                     <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-sinai-glow-orange/30 rounded-tl-3xl" />
-                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />Premium App Architectures</h3>
-                    <p className="text-zinc-400 leading-relaxed font-light text-lg">We engineer bespoke mobile applications that combine native performance with cinematic design. From enterprise solutions to consumer-facing masterpieces, we build for impact.</p>
+                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />Custom Mobile Apps</h3>
+                    <p className="text-zinc-400 leading-relaxed font-light text-lg">We engineer bespoke mobile applications that combine native performance with cinematic design. From enterprise solutions to customer-facing apps, we build for impact.</p>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     {[
@@ -446,8 +446,8 @@ export default function MobileDevelopmentClient() {
                       { title: "Android Development", desc: "Kotlin-first robust engineering." },
                       { title: "Cross-Platform", desc: "Flutter & React Native excellence." },
                       { title: "Business Apps", desc: "Scalable enterprise mobile solutions." },
-                      { title: "Performance", desc: "Optimizing for buttery smooth FPS." },
-                      { title: "Support", desc: "24/7 technical surveillance.", isCTA: true }
+                      { title: "Performance", desc: "Optimizing for smooth interactions and fast screen loading." },
+                      { title: "Support", desc: "support, monitoring, and improvements", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
                         <Link href="/#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 relative overflow-hidden"><div className="relative z-10"><div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase flex items-center gap-2"><span className={`w-1.5 h-1.5 rounded-full bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />{service.title}</div><p className="text-[10px] text-white/70 leading-tight uppercase tracking-tighter">{service.desc}</p></div></Link>
@@ -519,7 +519,7 @@ export default function MobileDevelopmentClient() {
                 <div className="space-y-10">
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative group hover:border-sinai-glow-orange/20 transition-colors">
                     <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-sinai-glow-orange/30 rounded-tl-3xl" />
-                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />The Digital Backbone</h3>
+                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 text-white"><div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />Backend & API Integration</h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">We build the infrastructure that powers your app. From complex API orchestrations to secure user authentication, our backends are engineered for scale and speed.</p>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
@@ -529,7 +529,7 @@ export default function MobileDevelopmentClient() {
                       { title: "Database Connect", desc: "Optimized data sync & offline-first." },
                       { title: "Third-Party Sync", desc: "Integrating CRM, ERP, and payment nodes." },
                       { title: "Cloud Scale", desc: "Serverless & automated infrastructure." },
-                      { title: "Support", desc: "Technical surveillance & optimization.", isCTA: true }
+                      { title: "Support", desc: "support, monitoring, and improvements", isCTA: true }
                     ].map((service, i) => (
                       service.isCTA ? (
                         <Link href="/#contact" key={i} className="p-6 rounded-2xl bg-sinai-glow-orange/10 border border-sinai-glow-orange/40 hover:bg-sinai-glow-orange/20 transition-all duration-300 relative overflow-hidden"><div className="relative z-10"><div className="text-[9px] font-mono text-white mb-2 tracking-[0.1em] font-black uppercase flex items-center gap-2"><span className={`w-1.5 h-1.5 rounded-full bg-white ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />{service.title}</div><p className="text-[10px] text-white/70 leading-tight uppercase tracking-tighter">{service.desc}</p></div></Link>
@@ -569,7 +569,7 @@ export default function MobileDevelopmentClient() {
                       { title: "Performance Opt", desc: "Speed & responsiveness tuning." },
                       { title: "Updates & Fixes", desc: "Proactive bug resolution & OS sync." },
                       { title: "Enhancements", desc: "New feature rollouts & evolution." },
-                      { title: "Support", desc: "24/7 technical surveillance." },
+                      { title: "Support", desc: "support, monitoring, and improvements" },
                       { title: "Security Audits", desc: "Continuous vulnerability protection." },
                       { title: "Support", desc: "Engagement initialization.", isCTA: true }
                     ].map((service, i) => (

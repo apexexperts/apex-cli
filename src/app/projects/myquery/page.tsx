@@ -4,7 +4,7 @@ import { MyQueryClient } from "./MyQueryClient";
 
 export const metadata: Metadata = {
   title: "MyQuery | AI-Powered Data Analytics",
-  description: "Advanced SQL orchestration and database visualization platform for high-performance engineering teams. Transform complex data into cinematic insights.",
+  description: "A data analytics tool for teams that need reports and charts without writing SQL every time. Turn database questions into clear reports and dashboards.",
   alternates: {
     canonical: "https://apexexperts.net/projects/myquery",
   },

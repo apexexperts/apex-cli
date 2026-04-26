@@ -269,7 +269,7 @@ const PIPELINE_STEPS = [
   },
   {
     step: "02",
-    title: "Neural Parsing",
+    title: "Natural-Language Query Generation",
     desc: "Our advanced NLP engine translates plain English into optimized cross-database queries. It handles complex joins and aggregations without needing a single line of SQL.",
     icon: <Cpu className="w-6 h-6" />,
     image: "/images/myquery-premium.png"
@@ -284,7 +284,7 @@ const PIPELINE_STEPS = [
   {
     step: "04",
     title: "Cinematic Insights",
-    desc: "The final intelligence is rendered into beautiful, interactive dashboards. Stakeholders get the answers they need through a premium, technical interface designed for clarity.",
+    desc: "Results are shown as charts, summaries, and dashboards that teams can understand",
     icon: <Globe className="w-6 h-6" />,
     image: "/images/project3.png"
   }

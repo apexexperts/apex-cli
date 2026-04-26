@@ -85,7 +85,7 @@ export default function ProjectsClient() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8">
               <p className="text-2xl text-zinc-400 font-light leading-relaxed italic">
-                A definitive catalog of our production-grade deployments. Each entry represents a collision of technical precision and elite aesthetic execution.
+                A selection of APEX Experts products and project-ready platforms. Each project shows the product direction, the problem it solves, and the systems behind it.
               </p>
               <div className="flex flex-col justify-end items-start md:items-end gap-4 text-[10px] font-mono text-zinc-700 tracking-[0.3em] uppercase text-right">
                 <div>{"// REGISTRY_SECURE: YES"}</div>

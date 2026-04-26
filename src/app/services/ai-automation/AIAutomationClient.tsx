@@ -46,7 +46,7 @@ const CAPABILITIES = [
   {
     id: "04",
     title: "Agentic Orchestration",
-    desc: "Deploy a swarm of specialized AI agents that collaborate autonomously to solve multi-step enterprise challenges.",
+    desc: "Use focused AI steps for planning, lookup, drafting, approval, and handoff.",
     icon: <Layers className="w-8 h-8" />,
     image: "/images/agentic-orchestration-detail.png"
   }
@@ -387,7 +387,7 @@ const AIAutomationHero = () => {
               </h1>
               
               <p className="text-xl md:text-2xl text-zinc-400 max-w-xl font-light leading-relaxed">
-                Engineering autonomous enterprise intelligence through agentic workflows, cognitive RPA, and predictive optimization.
+                We design AI workflows that help teams route work, summarize information, trigger actions, and keep approvals visible.
               </p>
             </div>
 
@@ -590,10 +590,10 @@ export default function AIAutomationClient() {
                     <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-sinai-glow-orange/30 rounded-tl-3xl" />
                     <h3 className="text-2xl font-bold mb-6 flex items-center gap-4">
                       <div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
-                      Autonomous Reasoning
+                      AI-Assisted Decisions
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">
-                      Our engines don&apos;t just follow scripts. They perceive environment changes, weigh constraints, and synthesize optimal execution paths in real-time. This is the difference between simple automation and true enterprise intelligence.
+                      Our engines don&apos;t just follow scripts. The system checks context, rules, and available data before recommending the next approved step. This is the difference between simple automation and true enterprise intelligence.
                     </p>
                   </div>
 
@@ -760,7 +760,7 @@ export default function AIAutomationClient() {
                   <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl relative group hover:border-sinai-glow-orange/20 transition-colors">
                     <div className="absolute -top-4 -right-4 w-20 h-20 border-t-2 border-r-2 border-sinai-glow-orange/30 rounded-tl-3xl" />
                     <h3 className="text-2xl font-bold mb-6 flex items-center gap-4 justify-end lg:justify-start">
-                      Swarm Intelligence
+                      Connected AI Steps
                       <div className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg text-right lg:text-left">
@@ -817,7 +817,7 @@ export default function AIAutomationClient() {
                       Decision Intelligence
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg text-left">
-                      Turn raw operational noise into high-fidelity decision intelligence. Our synthesis engine aggregates distributed data streams into real-time, actionable insights and immersive executive dashboards that reveal the hidden pulse of your enterprise.
+                      Turn data from your tools into dashboards and alerts that show what needs attention. Our synthesis engine aggregates distributed data streams into real-time, actionable insights and immersive executive dashboards that reveal the hidden pulse of your enterprise.
                     </p>
                   </div>
 
@@ -902,7 +902,7 @@ export default function AIAutomationClient() {
               <span className={`w-2 h-2 rounded-full bg-sinai-glow-orange ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
               <span className="text-[10px] font-mono text-zinc-500 tracking-[0.4em] uppercase font-bold">System_Core // Processing_Flow</span>
             </div>
-            <h2 className="text-6xl md:text-8xl font-black mb-24 tracking-tighter">The APEX <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange to-white/40">Brain Architecture</span></h2>
+            <h2 className="text-6xl md:text-8xl font-black mb-24 tracking-tighter">APEX <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange to-white/40">Automation Architecture</span></h2>
             
             <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[

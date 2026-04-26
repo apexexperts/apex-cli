@@ -4,7 +4,7 @@ import { TastoClient } from "./TastoClient";
 
 export const metadata: Metadata = {
   title: "Tasto | SaaS Revenue Metrics",
-  description: "A cinematic, premium e-commerce and SaaS metrics platform. Turn complex recurring revenue into a clear system of record with predictive AI growth modeling.",
+  description: "A SaaS revenue metrics platform for tracking MRR, churn, retention, and forecasts. Turn complex recurring revenue into a clear system of record with predictive AI growth modeling.",
   alternates: {
     canonical: "https://apexexperts.net/projects/tasto",
   },

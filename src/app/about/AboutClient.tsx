@@ -126,13 +126,13 @@ export default function AboutClient() {
               <div className="space-y-6 text-zinc-400 text-lg md:text-xl leading-relaxed font-light italic">
                 <p className="relative">
                   <span className="absolute -left-8 -top-4 text-6xl font-serif text-sinai-glow-orange/20">&quot;</span>
-                  At APEX Experts, we don&apos;t just build software; we engineer the future of digital intelligence. Our mission is to bridge the gap between complex AI capabilities and real-world enterprise scalability.
+                  At APEX Experts, we don&apos;t just build software; we build software for teams that need AI, data, and business workflows to work together reliably. Our mission is to bridge the gap between complex AI capabilities and real-world enterprise scalability.
                 </p>
                 <p>
-                  Every line of code we write, every model we train, and every interface we design is driven by a single obsession: <span className="text-white font-medium">Technical Excellence without Compromise.</span>
+                  Every line of code we write, every model we train, and every interface we design is driven by a single obsession: <span className="text-white font-medium">clear thinking, careful engineering, and maintainable delivery.</span>
                 </p>
                 <p className="relative">
-                  We are here to empower visionaries with the tools they need to redefine what&apos;s possible in their industries.<span className="absolute -right-8 -bottom-4 text-6xl font-serif text-sinai-glow-orange/20 rotate-180">&quot;</span>
+                  We are here to help clients turn a clear operational need into useful software. in their industries.<span className="absolute -right-8 -bottom-4 text-6xl font-serif text-sinai-glow-orange/20 rotate-180">&quot;</span>
                 </p>
               </div>
 
@@ -206,7 +206,7 @@ export default function AboutClient() {
                     <span className="text-sinai-glow-orange">The Future</span>
                   </h3>
                   <p className="text-zinc-400 text-lg lg:text-xl leading-relaxed max-w-md font-light italic text-left">
-                    To be the global architectural benchmark for AI-native enterprise solutions, redefining how businesses interact with data through the lens of technical mastery.
+                    To be a trusted engineering partner for practical AI, Oracle APEX, and custom software projects., redefining how businesses interact with data through the lens of technical mastery.
                   </p>
                   <div className="flex items-center gap-6 pt-4">
                     <div className="w-12 h-12 rounded-full border border-sinai-glow-orange/20 flex items-center justify-center group-hover:border-sinai-glow-orange transition-colors">
@@ -270,7 +270,7 @@ export default function AboutClient() {
                     <span className="text-white">The Impact</span>
                   </h3>
                   <p className="text-zinc-400 text-lg lg:text-xl leading-relaxed max-w-md ml-auto md:ml-0 font-light italic text-right md:text-left">
-                    Empowering global industries through radical innovation and database-driven intelligence. We engineer scalable architectures that transform complexity into simplicity.
+                    Helping teams replace slow manual work with reliable software, clear dashboards, and safer automation.
                   </p>
                   <div className="flex items-center gap-6 pt-4 justify-end md:justify-start">
                     <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">Active_Deployment_Logic</span>
@@ -340,8 +340,8 @@ export default function AboutClient() {
 
             {/* DNA Nodes */}
             {[
-              { id: "01", title: "Precision", col: "lg:col-span-5", align: "left", desc: "Military-grade structural integrity in every byte.", tech: "ERR_TOLERANCE: 0.0001%" },
-              { id: "02", title: "Intelligence", col: "lg:col-span-5 lg:col-start-8", align: "right", desc: "Autonomous reasoning embedded in the architecture.", tech: "NEURAL_SYNAPSE: 4.2ms" },
+              { id: "01", title: "Precision", col: "lg:col-span-5", align: "left", desc: "Clear structure, tested flows, and fewer fragile shortcuts.", tech: "ERR_TOLERANCE: 0.0001%" },
+              { id: "02", title: "Intelligence", col: "lg:col-span-5 lg:col-start-8", align: "right", desc: "AI used where it can safely support decisions.", tech: "NEURAL_SYNAPSE: 4.2ms" },
               { id: "03", title: "Precision", col: "lg:col-span-5", align: "left", desc: "Enterprise-grade Oracle database supremacy.", tech: "QUERY_PRECISION: NANO" },
               { id: "04", title: "Cinematic", col: "lg:col-span-5 lg:col-start-8", align: "right", desc: "The intersection of high-engineering and art.", tech: "MOTION_FIDELITY: 120fps" }
             ].map((node, i) => (
@@ -416,11 +416,11 @@ export default function AboutClient() {
                   <span className="text-[10px] font-mono text-zinc-500 tracking-[0.4em] uppercase">Tech_Ecosystem // Integrated</span>
                 </div>
                 <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none">
-                  The <br/>
-                  <span className="text-sinai-glow-orange">Power</span> Matrix
+                  Tools <br/>
+                  <span className="text-sinai-glow-orange">We</span> Use
                 </h2>
                 <p className="text-zinc-400 text-xl leading-relaxed max-w-lg font-light italic">
-                  We don&apos;t just use tools; we engineer ecosystems. Our tech stack is a curated symphony of enterprise-grade reliability and cutting-edge AI innovation.
+                  We don&apos;t just use tools; we engineer ecosystems. We choose tools based on the project: reliability, maintainability, security, and speed of delivery.
                 </p>
               </div>
 
@@ -585,10 +585,10 @@ export default function AboutClient() {
               <span className="text-[10px] font-mono text-sinai-glow-orange tracking-[0.5em] uppercase font-black">Human_Capital // Strategic_Assets</span>
             </motion.div>
             <h2 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-none">
-              The <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40 text-glow-white">Nexus</span> Collective
+              The Team
             </h2>
             <p className="text-zinc-500 text-lg max-w-2xl mx-auto font-light">
-              Architecting the future through a collision of elite engineering, creative vision, and strategic mastery.
+              The people who design, build, test, and support APEX Experts projects
             </p>
           </div>
 

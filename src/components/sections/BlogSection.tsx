@@ -19,17 +19,16 @@ export function BlogSection() {
         <div className="flex items-center gap-4 mb-8">
           <div className="h-px w-12 bg-sinai-glow-orange" />
           <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-sinai-glow-orange font-bold">
-            05 // Intellectual Capital
+            05 // Insights
           </span>
         </div>
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-white uppercase leading-[0.85]">
-            Intelligence <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange to-white opacity-90 italic">Architecture.</span>
+            Practical AI <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange to-white opacity-90 italic">Notes.</span>
           </h2>
           <p className="text-zinc-500 font-mono text-[9px] leading-relaxed tracking-widest uppercase max-w-xs lg:text-right">
-            Dispatches from the front lines of <br />
-            AI architecture & data sovereignty.
+            Short guides on AI, Oracle APEX, product delivery, and technical SEO.
           </p>
         </div>
       </div>
@@ -82,7 +81,7 @@ export function BlogSection() {
 
               <div className="pt-4">
                 <div className="inline-flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.5em] text-white group-hover:text-sinai-glow-orange transition-colors">
-                  Read Full Insight
+                  Read Article
                   <ArrowRight className="w-4 h-4 translate-x-0 group-hover:translate-x-2 transition-transform" />
                 </div>
               </div>
@@ -127,7 +126,7 @@ export function BlogSection() {
             <Link href="/blog" className="group relative px-12 py-5 rounded-full border border-white/10 overflow-hidden inline-flex items-center gap-6 hover:border-sinai-glow-orange/50 transition-all duration-500">
               <div className="absolute inset-0 bg-sinai-glow-orange/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.5em] text-white">
-                Access_All_Knowledge
+                View All Articles
               </span>
               <div className="relative z-10 w-8 h-px bg-zinc-700 group-hover:w-12 group-hover:bg-sinai-glow-orange transition-all duration-500" />
             </Link>

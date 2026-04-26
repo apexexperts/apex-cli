@@ -8,18 +8,18 @@ const POSITIONS = [
   {
     id: "depth",
     title: "Technical Depth",
-    short: "We prioritize engineering rigor over surface-level AI integration. Every solution is architected for production reliability.",
-    header: "Precision-engineered AI",
-    subHeader: " for real-world systems.",
+    short: "We start with your workflow, data, users, and security rules before choosing the AI layer.",
+    header: "AI that fits",
+    subHeader: " real business workflows.",
     description: "APEX Experts AI Solutions is a specialized engineering practice focused on designing, building, and deploying production-grade artificial intelligence systems."
   },
   {
     id: "focus",
     title: "Strategic Focus",
-    short: "We partner with organizations that understand AI as infrastructure — not as a feature checkbox.",
-    header: "AI as Infrastructure",
-    subHeader: " not just a feature checkbox.",
-    description: "We work at the intersection of advanced machine learning research and robust software engineering — translating complex AI capabilities into reliable, scalable solutions."
+    short: "We work with teams that need AI to connect to real data, approvals, permissions, and daily operations.",
+    header: "AI connected",
+    subHeader: " to the systems your team already uses.",
+    description: "We work at the intersection of advanced machine learning research and robust software engineering — turning AI ideas into working software your team can actually use."
   },
   {
     id: "quality",
@@ -27,7 +27,7 @@ const POSITIONS = [
     short: "Our work meets the same bar as the tools we build with: tested, documented, and designed to evolve.",
     header: "Built to Evolve",
     subHeader: " designed for longevity.",
-    description: "Every deployment meets our rigorous standards: fully tested, extensively documented, and architected to grow with your business objectives."
+    description: "Every project is planned for testing, documentation, handover, and future changes."
   }
 ];
 

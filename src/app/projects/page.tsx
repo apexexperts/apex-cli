@@ -3,14 +3,14 @@ import { Metadata } from "next";
 import ProjectsClient from "./ProjectsClient";
 
 export const metadata: Metadata = {
-  title: "Production Registry | Projects",
-  description: "A definitive catalog of our production-grade AI deployments, engineering tools, and cinematic web experiences.",
+  title: "Projects | Projects",
+  description: "A selection of APEX Experts products and project-ready platforms.",
   alternates: {
     canonical: "https://apexexperts.net/projects",
   },
   openGraph: {
-    title: "Production Registry | Projects",
-    description: "Explore the technical precision and elite aesthetic execution of our production-grade deployments.",
+    title: "Projects | Projects",
+    description: "Explore the AI, analytics, Oracle APEX, web, and SaaS product work from APEX Experts of our production-grade deployments.",
     url: "https://apexexperts.net/projects",
     type: "website",
     images: [
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Production Registry | Projects",
-    description: "Explore the technical precision and elite aesthetic execution of our production-grade deployments.",
+    title: "Projects | Projects",
+    description: "Explore the AI, analytics, Oracle APEX, web, and SaaS product work from APEX Experts of our production-grade deployments.",
     images: ["/images/og-projects.png"],
   },
 };

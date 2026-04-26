@@ -151,11 +151,11 @@ export function ContactInterface() {
                 <span className="text-[11px] font-mono text-sinai-glow-orange tracking-[0.5em] uppercase font-black">Link_Initialization_V4.0</span>
               </div>
               <h1 className="text-7xl md:text-9xl font-black text-white tracking-tighter leading-[0.85] uppercase">
-                Initiate <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-white/20">The Link.</span>
+                Start <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-white/20">a Project.</span>
               </h1>
               <p className="text-zinc-500 text-xl md:text-2xl font-light leading-relaxed max-w-md border-l-2 border-sinai-glow-orange/20 pl-8 italic">
-                Secure a direct high-bandwidth neural connection with our architectural core. Strategic mastery begins here.
+                Tell us what you’re trying to build, what systems it needs to connect to, and where you need help.
               </p>
             </motion.div>
 
@@ -194,9 +194,9 @@ export function ContactInterface() {
                       <Check className="w-12 h-12 text-sinai-glow-orange" strokeWidth={3} />
                     </div>
                     <div className="space-y-4">
-                      <h2 className="text-4xl font-black text-white uppercase tracking-tight">Transmission Received</h2>
+                      <h2 className="text-4xl font-black text-white uppercase tracking-tight">Message Sent</h2>
                       <p className="text-zinc-500 text-lg max-w-sm mx-auto">
-                        Your architectural inquiry has been secured. Our core team will initiate contact shortly.
+                        Thanks. We received your message and will get back to you soon.
                       </p>
                     </div>
                     <button 
@@ -259,7 +259,7 @@ export function ContactInterface() {
                           htmlFor="country-trigger" 
                           className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4"
                         >
-                          Origin_Point
+                          Country
                         </label>
                         <div 
                           id="country-trigger"
@@ -342,7 +342,7 @@ export function ContactInterface() {
                           htmlFor="phone-input" 
                           className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4"
                         >
-                          Direct_Link (Phone)
+                          Phone
                         </label>
                         <div className="relative">
                           <div className="absolute left-6 top-1/2 -translate-y-1/2 text-zinc-600 font-mono text-base font-bold">
@@ -368,7 +368,7 @@ export function ContactInterface() {
                         htmlFor="service-trigger" 
                         className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4"
                       >
-                        Objective_Domain
+                        Service
                       </label>
                       <div 
                         id="service-trigger"
@@ -452,7 +452,7 @@ export function ContactInterface() {
                         htmlFor="message" 
                         className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-black ml-4"
                       >
-                        Project_Intel (Message)
+                        Project Details
                       </label>
                       <textarea 
                         id="message"

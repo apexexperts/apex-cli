@@ -13,21 +13,21 @@ const STEPS = [
   },
   {
     id: "02",
-    title: "AI-Native Architecture",
+    title: "Workflow & System Design",
     subtitle: "CORE_LOGIC_DESIGN",
-    desc: "Moving beyond simple API calls, we architect a custom foundation. This includes vector database selection, model quantization strategies, and edge/cloud hybrid logic.",
+    desc: "We decide where AI belongs, what data it can use, what systems it must connect to, and where human approval stays required.",
     details: ["Schema & Vector DB design", "Model selection & Benchmarking", "Infrastructure blueprints"]
   },
   {
     id: "03",
-    title: "Precision Engineering",
+    title: "Build, Test & Integrate",
     subtitle: "HIGH_FIDELITY_DEV",
-    desc: "The build phase focuses on clean, production-ready code. We implement custom ML models and LLM chains with a focus on latency, cost-efficiency, and error-handling.",
+    desc: "We build the software, connect it to your systems, test the main paths and edge cases, and tune cost, latency, and reliability.",
     details: ["Bespoke ML development", "RAG & LLM integration", "End-to-end testing"]
   },
   {
     id: "04",
-    title: "Continuous Evolution",
+    title: "Monitor & Improve",
     subtitle: "PERFORMANCE_SCALING",
     desc: "AI systems are never 'finished'. We deploy monitoring systems to track model drift, accuracy, and latency, ensuring the system evolves with your data.",
     details: ["A/B testing & Evaluation", "Drift monitoring", "Performance scaling"]
@@ -97,7 +97,7 @@ export function ProcessSection() {
           How we <span className="opacity-40">work.</span>
         </h2>
         <p className="text-zinc-500 max-w-xl text-lg leading-relaxed">
-          Our engineering-first approach ensures that AI is integrated as a robust, scalable asset rather than a temporary fix.
+          AI should become part of the workflow, not a demo added on top of it.
         </p>
       </div>
 

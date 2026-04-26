@@ -115,7 +115,7 @@ const FEATURES = [
   {
     id: "02",
     title: "Predictive Growth",
-    desc: "Stop guessing your future MRR. Tasto uses advanced financial AI to forecast growth, churn, and expansion with unprecedented accuracy.",
+    desc: "Stop guessing your future MRR. Tasto uses advanced financial AI to forecast growth, churn, and expansion with clearer forecasts for planning.",
     icon: <TrendingUp className="w-8 h-8" />,
     image: "/images/project3.png" 
   },
@@ -168,8 +168,8 @@ const PIPELINE_STEPS = [
   },
   {
     step: "03",
-    title: "Neural Forecasting",
-    desc: "Tasto's AI models analyze historical trends and seasonal patterns to predict future revenue performance, giving you a 12-month head start on planning.",
+    title: "Revenue Forecasting",
+    desc: "Tasto's AI models analyze historical trends and seasonal patterns to predict future revenue performance, giving your team a forward view for planning.",
     icon: <Cpu className="w-6 h-6" />,
     image: "/images/project3.png"
   },

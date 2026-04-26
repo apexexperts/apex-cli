@@ -560,17 +560,17 @@ export default function OracleApexClient() {
                     <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-[#C42A1E]/30 rounded-tl-3xl" />
                     <h3 className="text-2xl font-bold mb-6 flex items-center gap-4">
                       <div className={`w-2 h-2 rounded-full bg-[#C42A1E] ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
-                      Mission-Critical Architecture
+                      Oracle APEX Application Development
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">
-                      We specialize in crafting high-performance Data Models, custom Plugin architectures, and robust Database logic. Our expertise extends to Web Services orchestration, seamless AI Integrations, and advanced Enterprise Reporting engines.
+                      We specialize in crafting high-performance Data Models, custom Plugin architectures, and robust Database logic. Our expertise extends to API integrations, AI-assisted features, and reporting workflows inside Oracle APEX.
                     </p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     {[
                       { title: "Plugin Dev", desc: "Bespoke extensions for unique business logic." },
-                      { title: "Database Dev", desc: "Architecting mission-critical schemas." },
+                      { title: "Database Dev", desc: "Designing schemas for stable APEX apps." },
                       { title: "Web Services", desc: "Seamless REST/SOAP orchestration." },
                       { title: "AI Integrations", desc: "Predictive intelligence & LLM capabilities." },
                       { title: "Reporting", desc: "Analytical insights & custom dashboards." },
@@ -759,7 +759,7 @@ export default function OracleApexClient() {
                     {[
                       { title: "Vector Search", desc: "Native semantic discovery within Oracle 23ai." },
                       { title: "RAG Systems", desc: "Intelligent Retrieval-Augmented Generation." },
-                      { title: "AI Workflows", desc: "Native v24.1 process orchestration engines." },
+                      { title: "AI Workflows", desc: "APEX workflows and approval logic." },
                       { title: "Generative AI", desc: "Custom LLM integrations & chat interfaces." },
                       { title: "Data Analytics", desc: "AI-driven insight extraction & modeling." },
                       { title: "AI Support", desc: "24/7 AI model monitoring & maintenance.", isCTA: true }
@@ -1010,7 +1010,7 @@ export default function OracleApexClient() {
                       <div className={`w-2 h-2 rounded-full bg-[#C42A1E] ${effectiveReduceMotion ? '' : 'animate-pulse'}`} />
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">
-                      Empower your team with elite Oracle APEX expertise. We offer comprehensive training modules from fundamental building blocks to advanced architectural mastery, tailored for both corporate teams and educational institutions.
+                      Train your team on Oracle APEX fundamentals, application structure, database logic, and maintainable delivery practices. We offer comprehensive training modules from fundamental building blocks to advanced architectural mastery, tailored for both corporate teams and educational institutions.
                     </p>
                   </div>
 
@@ -1085,7 +1085,7 @@ export default function OracleApexClient() {
 
                 <SectionReveal>
                   <p className="text-2xl md:text-3xl text-zinc-400 font-light leading-relaxed max-w-3xl">
-                    For nearly two decades, we have been the silent architects behind mission-critical systems. 17+ years of deep Oracle engineering, serving 12+ elite institutions with a commitment to technical precision and future-proof innovation.
+                    Long-term Oracle APEX experience across internal applications, reporting, integrations, and training
                   </p>
                 </SectionReveal>
               </div>

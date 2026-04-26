@@ -230,7 +230,7 @@ const WEB_CAPABILITIES = [
   {
     id: "02",
     title: "Security & Scale",
-    desc: "Hardened security protocols and elastic architectures designed to handle millions of concurrent users with military-grade encryption and protection.",
+    desc: "Hardened security protocols and elastic architectures designed to handle secure access patterns, reliable hosting, and architecture that can grow with traffic.",
     icon: <ShieldCheck className="w-8 h-8" />,
     image: "/images/project3.png"
   },
@@ -251,7 +251,7 @@ const WEB_CAPABILITIES = [
   {
     id: "05",
     title: "Website Optimization & Support",
-    desc: "Elite performance tuning, SEO dominance, and 24/7 technical support to ensure your digital presence remains optimal and synchronized.",
+    desc: "Elite performance tuning, technical SEO improvements, and 24/7 technical support to ensure your digital presence remains optimal and synchronized.",
     icon: <Zap className="w-8 h-8" />,
     image: "/images/project3.png"
   }
@@ -550,12 +550,12 @@ const WebDevelopmentHero = () => {
               <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] text-white">
                 Web <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange via-white to-white/40">
-                  Mastery.
+                  Web Development.
                 </span>
               </h1>
               
               <p className="text-xl md:text-2xl text-zinc-400 max-w-xl font-light leading-relaxed">
-                We craft high-performance, cinematic web experiences using production-grade architectures that prioritize speed, security, and world-class engagement.
+                We craft high-performance, cinematic web experiences using production-grade architectures that prioritize speed, security, and clear user journeys and fast page performance.
               </p>
             </div>
 
@@ -943,7 +943,7 @@ export default function WebDevelopmentClient() {
                       End-to-End Mastery
                     </h3>
                     <p className="text-zinc-400 leading-relaxed font-light text-lg">
-                      Our full-stack engineers orchestrate the perfect symphony between reactive frontends and robust, scalable backends. We build the entire nervous system of your digital platform, from complex database schemas to intuitive admin control centers.
+                      Our full-stack engineers connect frontend interfaces, APIs, databases, admin panels, and authentication into one working product. from complex database schemas to intuitive admin control centers.
                     </p>
                   </div>
 
@@ -1271,7 +1271,7 @@ export default function WebDevelopmentClient() {
                 The <span className="text-transparent bg-clip-text bg-gradient-to-r from-sinai-glow-orange to-white/40">Tech Stack.</span>
               </h2>
               <p className="text-zinc-500 max-w-2xl mx-auto font-light text-lg">
-                We leverage the world&apos;s most advanced frameworks and architectural patterns to build digital empires.
+                We leverage the world&apos;s most advanced frameworks and architectural patterns to build reliable web products.
               </p>
             </div>
           </SectionReveal>

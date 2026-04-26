@@ -4,13 +4,13 @@ import { ContactInterface } from "../../components/contact/ContactInterface";
 
 export const metadata: Metadata = {
   title: "Contact APEX Experts — Initiate Technical Link",
-  description: "Secure a direct neural link with our AI engineering team. Strategic consultation for elite AI solutions and enterprise scaling.",
+  description: "Contact our team about AI, Oracle APEX, web, or mobile development. Strategic consultation for elite AI solutions and enterprise scaling.",
   alternates: {
     canonical: "https://apexexperts.net/contact",
   },
   openGraph: {
     title: "Contact APEX Experts — Initiate Technical Link",
-    description: "Secure a direct neural link with our AI engineering team.",
+    description: "Contact our team about AI, Oracle APEX, web, or mobile development.",
     url: "https://apexexperts.net/contact",
     images: [
       {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Contact APEX Experts — Initiate Technical Link",
-    description: "Secure a direct neural link with our AI engineering team.",
+    description: "Contact our team about AI, Oracle APEX, web, or mobile development.",
     images: ["/images/og-contact.png"],
   },
 };

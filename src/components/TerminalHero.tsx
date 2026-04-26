@@ -5,12 +5,12 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 
 const MENU_ITEMS = [
-  { label: "ABOUT_SYSTEM", id: "about", desc: "Company mission & elite positioning." },
-  { label: "CORE_SERVICES", id: "services", desc: "Production-grade AI architectures." },
+  { label: "ABOUT_SYSTEM", id: "about", desc: "Who we are and how we approach AI projects." },
+  { label: "CORE_SERVICES", id: "services", desc: "AI, Oracle APEX, web, and mobile development services." },
   { label: "ENGINEERING_PIPELINE", id: "process", desc: "Our methodology & delivery flow." },
   { label: "PRODUCTION_REGISTRY", id: "projects", desc: "Live case studies & deployments." },
   { label: "INTELLECTUAL_CAPITAL", id: "blog", desc: "Engineering dispatches & research." },
-  { label: "ENGAGE_PROTOCOL", id: "contact", desc: "Initialize contact & engagement." },
+  { label: "ENGAGE_PROTOCOL", id: "contact", desc: "Tell us what you want to build." },
 ];
 
 export function TerminalHero() {
@@ -31,7 +31,7 @@ export function TerminalHero() {
 
   const fullTitle = "APEX EXPERTS";
   const fullBadge = "AI SOLUTIONS";
-  const fullEngine = "AUTONOMOUS INTELLIGENCE ENGINE";
+  const fullEngine = "PRACTICAL AI SYSTEMS ENGINE";
 
   const windowRef = useRef<HTMLDivElement>(null);
   const [scrollYValue, setScrollYValue] = useState(0);
@@ -249,7 +249,7 @@ export function TerminalHero() {
               <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between text-[9px] text-zinc-700 tracking-widest font-bold">
                 <div>LOCATION: 37.7749° N, 122.4194° W</div>
                 <div className="flex items-center gap-6">
-                  <span>ENCRYPTION: AES-256</span>
+                  <span>FORM STATUS: READY</span>
                   <span>STATE: READY</span>
                 </div>
               </div>

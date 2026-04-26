@@ -297,7 +297,7 @@ const PIPELINE_STEPS = [
   {
     step: "04",
     title: "Insight Rendering",
-    desc: "Data is instantly transformed into intelligence. ASKLYZE auto-generates interactive APEX reports and cinematic charts, ready for executive decision-making.",
+    desc: "Asklyze turns approved query results into APEX reports, charts, and dashboards",
     icon: <BarChart3 className="w-6 h-6" />,
     image: "/images/project3.png"
   }
