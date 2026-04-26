@@ -9,10 +9,31 @@ export const metadata = {
   title: "Building an AI-Powered PDF Report Designer in Oracle APEX",
   description:
     "A practical, step-by-step technical walkthrough for building an Oracle APEX prototype that generates AI-designed PDF reports from SQL queries.",
+  alternates: {
+    canonical: "/blog/building-ai-powered-pdf-report-designer-oracle-apex",
+  },
   openGraph: {
     title: "Building an AI-Powered PDF Report Designer in Oracle APEX",
     description:
       "How we built an Oracle APEX prototype that turns SQL queries and natural language requests into AI-designed PDF reports.",
+    url: "https://apex-experts.com/blog/building-ai-powered-pdf-report-designer-oracle-apex",
+    siteName: "APEX Experts AI Solutions",
+    images: [
+      {
+        url: "/images/apex-smart-docs.png",
+        width: 1200,
+        height: 630,
+        alt: "AI PDF Designer in Oracle APEX",
+      },
+    ],
+    type: "article",
+    publishedTime: "2026-04-26T21:24:00Z",
+    authors: ["Ahmed Alsaied"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Building an AI-Powered PDF Report Designer in Oracle APEX",
+    description: "How we built an Oracle APEX prototype that turns SQL queries into AI-designed PDF reports.",
     images: ["/images/apex-smart-docs.png"],
   },
 };
