@@ -102,6 +102,8 @@ export const metadata: Metadata = {
   },
 };
 
+import Script from "next/script";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -109,6 +111,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-W8EQJ9KESW"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-W8EQJ9KESW');
+          `}
+        </Script>
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
