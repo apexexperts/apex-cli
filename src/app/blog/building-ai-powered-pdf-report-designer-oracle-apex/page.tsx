@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Share2, Bookmark } from "lucide-react";
 import { CodeBlock } from "../../../components/blog/CodeBlock";
+import { BlogActions } from "../../../components/blog/BlogActions";
 import { AUTHORS } from "@/data/blog";
 
 export const metadata = {
@@ -506,14 +507,10 @@ export default function AIReportDesignerPage() {
             <ArrowLeft className="w-4 h-4" />
             Archive
           </Link>
-          <div className="flex items-center gap-3">
-            <button className="p-2 rounded-full bg-white/5 border border-white/10 text-zinc-500 hover:text-white transition-all" aria-label="Share article">
-              <Share2 className="w-4 h-4" />
-            </button>
-            <button className="p-2 rounded-full bg-white/5 border border-white/10 text-zinc-500 hover:text-white transition-all" aria-label="Bookmark article">
-              <Bookmark className="w-4 h-4" />
-            </button>
-          </div>
+          <BlogActions 
+            title="Building an AI-Powered PDF Report Designer in Oracle APEX" 
+            url="https://apexexperts.net/blog/building-ai-powered-pdf-report-designer-oracle-apex" 
+          />
         </div>
 
         <header className="max-w-4xl mx-auto mb-12">
